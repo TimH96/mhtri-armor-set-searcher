@@ -13,7 +13,12 @@ async function main() {
         charms: [],
     }
 
-    search(data)
+    search(
+        data,
+        {
+            weaponSlots: 0
+        }
+    )
 }
 
 main()
