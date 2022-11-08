@@ -8,5 +8,5 @@ export default interface ArmorPiece extends Equipment {
   type: ArmorType;
   defense: Defense;
   resistance: Resistance;
-  skillsList: SkillsList;
+  skills: SkillsList;
 }

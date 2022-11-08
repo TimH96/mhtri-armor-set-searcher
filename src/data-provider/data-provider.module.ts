@@ -1,9 +1,11 @@
+import ArmorPiece from "./models/equipment/ArmorPiece"
+
 const getRawData = async (url: string) => {
     return (await fetch(url)).json()
 }
 
-const getHead = async () => {
-    return getRawData("./head.json")
+const getHead = async (): Promise<ArmorPiece[]> => {
+    return getRawData("./head.json") as unknown as ArmorPiece[]
 }
 
 const getChest = async () => {
