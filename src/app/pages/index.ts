@@ -16,7 +16,8 @@ async function main () {
   search(
     data,
     {
-      weaponSlots: 0
+      weaponSlots: 0,
+      skillActivations: []
     }
   )
 }
