@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "name": "Quro Head",
+    "slots": 1,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0001": 1
+    }
+  },
+  {
+    "name": "Barioth Head",
+    "slots": 1,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0001": 3,
+        "0003": 1
+    }
+  },
+  {
+    "name": "Barroth Head",
+    "slots": 1,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0002": 4,
+        "0003": 2
+    }
+  }
+]

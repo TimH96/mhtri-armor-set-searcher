@@ -17,3 +17,8 @@ enum ArmorType {
   GUNNER = 2,
 }
 ```
+
+0001 evasion
+0002 attack
+0003 stamina
+0004 defense

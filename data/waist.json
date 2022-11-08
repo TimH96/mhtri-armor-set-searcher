@@ -1,1 +1,47 @@
-[]
+[
+  {
+    "name": "Quro Waist",
+    "slots": 1,
+    "category": 4,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+      "0001": 2,
+      "0002": 2
+    }
+  },
+  {
+    "name": "Barioth Waist",
+    "slots": 0,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0001": 2,
+        "0003": 4
+    }
+  },
+  {
+    "name": "Barroth Waist",
+    "slots": 1,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0002": 1,
+        "0003": 3
+    }
+  }
+]

@@ -1,1 +1,46 @@
-[]
+[
+  {
+    "name": "Quro Chest",
+    "slots": 1,
+    "category": 2,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+      "0001": 2
+    }
+  },
+  {
+    "name": "Barioth Chest",
+    "slots": 1,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0001": 2,
+        "0003": 2
+    }
+  },
+  {
+    "name": "Barroth Chest",
+    "slots": 0,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0002": 3,
+        "0003": 1
+    }
+  }
+]

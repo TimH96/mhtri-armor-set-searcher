@@ -1,6 +1,6 @@
 [
   {
-    "name": "Qurupeco Vambraces",
+    "name": "Quro Arms",
     "slots": 1,
     "category": 3,
     "type": 1,
@@ -9,6 +9,39 @@
       "max": 24
     },
     "resistance": [2, -2, -3, 0, 1],
-    "skills": {}
+    "skills": {
+      "0001": 2,
+      "0002": 2
+    }
+  },
+  {
+    "name": "Barioth Arms",
+    "slots": 0,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0001": 5,
+        "0003": 2
+    }
+  },
+  {
+    "name": "Barroth Arms",
+    "slots": 1,
+    "category": 1,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {
+        "0002": 4,
+        "0003": 1
+    }
   }
 ]
