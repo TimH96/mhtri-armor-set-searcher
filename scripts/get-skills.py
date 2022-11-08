@@ -7,7 +7,7 @@ import re
 if __name__ == "__main__":
     skill_counter = 0
 
-    with open("./raw-skills.txt") as f:
+    with open("./raw-skills-sanitized.txt") as f:
         txt = "".join(f.readlines()[4:])
     tables = txt.split("\n\n")
     

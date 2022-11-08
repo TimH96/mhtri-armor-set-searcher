@@ -412,7 +412,7 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |Blunt Edge ||Increases the rate at which your weapon's sharpness drops a level||Helios  ||Helios+  ||-10
 |-
 |rowspan="2"|Sharpening
-|Spd Sharpening ||Decreases the time it takes to sharpen a weapon ||Alloy Steel  ||Alloy+ Steel+ ||+1-
+|Spd Sharpening ||Decreases the time it takes to sharpen a weapon ||Alloy Steel  ||Alloy+ Steel+ ||+10
 |-style="color:red"
 |Slow Sharpening ||Increases the time it takes to sharpen a weapon  ||  ||  ||-10
 |-
