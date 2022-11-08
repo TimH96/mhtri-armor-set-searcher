@@ -1,5 +1,6 @@
 import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
 import Charm from '../../data-provider/models/equipment/Charm'
+import Decoration from '../../data-provider/models/equipment/Decoration'
 
 /** includes all available data (armors pieces, decorations, charms) */
 export default interface DataInput {
@@ -8,6 +9,6 @@ export default interface DataInput {
     arms: ArmorPiece[];
     waist: ArmorPiece[];
     legs: ArmorPiece[];
-    decorations: any; // TODO
+    decorations: Decoration[];
     charms: Charm[];
 }
