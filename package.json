@@ -16,7 +16,7 @@
   "staticFiles": {
     "staticPath": "data",
     "watcherGlob": "**"
-},
+  },
   "devDependencies": {
     "@typescript-eslint/eslint-plugin": "^5.21.0",
     "@typescript-eslint/parser": "^5.21.0",

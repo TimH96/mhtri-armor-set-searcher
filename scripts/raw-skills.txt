@@ -1,0 +1,572 @@
+{{Skills}}
+<br />
+This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|Monster Hunter Tri]].
+
+=Attack and Defense=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|rowspan="3"|Potential
+|Adrenaline +2|| Greatly Increases Attack and Defense when Health is under 40%|| ||Barroth+ || +15
+|-
+|Adrenaline +1 || Increases Attack and Defense when Health is under 40%||Barroth ||Black Leather Pants || +10
+|-style="color:red"
+|Worrywart|| Decreases Attack and Defense when Health is under 40%|| || || -10
+|-
+|rowspan="1"|Survivor
+|Fortify|| Attack Increases Massively when you fall in battle || ||SoulHunter Jacket || +10
+|-
+|rowspan="6"|Attack
+|Attack Up (L)||Greatly Boosts Attack ||  || || +20
+|-
+|Attack UP (M)||Moderately Boosts Attack || Rathalos || Deviljho, Great Jaggi+ ||+15
+|-
+|Attack Up (S)||Slightly Boosts Attack|| Jaggi, Barroth || Barroth+ ||+10
+|-
+|-style="color:Red"
+|Attack Down (S)||Slightly decreases Attack|| || ||-10
+|-style="color:Red"
+|Attack Down (M)||Moderately decreases Attack|| || ||-15
+|-style="color:Red"
+|Attack Down (L)||Greatly decreases Attack|| || ||-20 
+|-
+|rowspan="6"|Expert
+|Critical Eye +3|| Boosts Affinity by 30%|| || ||+20
+|-
+|Critcal Eye +2|| Boosts Affinity by 20%|| ||Alloy+ Rathalos+ ||+15
+|-
+|Critical Eye +1|| Boosts Affinity by 10%||Alloy Rathalos ||Gobul+ || +10
+|-style="color:red"
+|Critical Eye -1|| Lowers Affinity by 5%|| || || -10
+|-style="color:red"
+|Critical Eye -2|| Lowers Affinity by 10%|| || || -15
+|-style="color:red"
+|Critical Eye -3|| Lowers Affinity by 15%|| || ||-20
+|-
+|rowspan="2"|Elemental Attack
+|Element Attack Up|| Boosts Elemental inflicting damage||Lagiacrus ||Lagiacrus+ ||+10
+|-style="color:red"
+|Element Attack Down|| Lowers Elemental inflicting damage|| || ||-10
+|-
+|rowspan="2"|Status Attack
+|Status Attack Up|| Boosts Status inflicting damage||Bnahabra Gigginox ||Bnahabra+ Gigginox+ || +10
+|-style="color:red"
+|Status Attack Down|| Lowers Status inflicting damage|| || ||-10
+|-
+|rowspan="6"|Defense
+|Defense Up (L)||Greatly Increases Defense || || || +20
+|-
+|Defense Up (M)|| Moderatetly Increases Defense ||Uragaan ||Uragaan+ || +15
+|-
+|Defense Up (S)||Slightly Increases Defense||Qurupeco ||Qurupeco+ || +10
+|-style="color:red"
+|Defense Down (S)|| Slightly Decreases Defense || || || -10
+|-style="color:red"
+|Defense Down (M)|| Moderately Decreases Defense || || || -15
+|-style="color:red"
+|Defense Down (L)|| Greatly Decreases Defense || || || -20
+|-
+|rowspan="6"|Protection
+|Divine Blessing ||Has a 25% chance of reducing damage from attacks || Ludroth ||Ludrtoh+ || +10
+|-style="color:Red"
+|Demonic Blessing||Has a 25% chance of increasing damage from attacks ||Rathian Ceadeus ||Rahtian+ Ceadeus+ ||-10
+|}
+
+=Health and Stamina=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|rowspan="4"|Health
+|Health +50 || Increases Max health by 50 points||  ||Chainmail+ Rahtian+ Damascus  || +15
+|-
+|Health +20 || Increaces Max health by 20 points|| Chainmail Rathian ||  || +10
+|-style="color:Red"
+|Health -10 || Decreases Max health by 10 points||  || Gigginox+ || -10
+|-style="color:Red"
+|Health -30 || Decreases Max health by 30 points || || || -15
+|-
+|rowspan="4"|Rec Speed
+|Recovery speed +2|| Recovers red bar fastest|| ||Jhen Mohran+ || +15
+|-
+|Recovery Speed +1|| Recovers red bar faster||Loc Lac Jhen Mohran ||Loc Lac+ || +10
+|-style="color:red"
+|Recovery Speed -1|| Recovers red bar slower|| || ||-10
+|-style:"color:red"
+|Recovery Speed -2|| Recovers red bar slowest|| || ||-15
+|-
+|rowspan="4"|Constitution
+|Constitution +2 ||Greatly reduces stamina depletion while blocking and evading ||Ludroth  ||Ludroth+ Gigginox+ ||+15
+|-
+|Constitution +1 || Reduces stamina depletion while blocking and evading ||Ludroth  ||  ||+10
+|-style="color:Red"
+|Constitution -1 ||Increases stamina depletion while blocking and evading || || ||-10
+|-style="color:Red"
+|Constitution -2 ||Greatly Increases stamina depletion while blocking and evading || || ||-15
+|-
+|rowspan="2"|Stamina
+|Marathon Runner ||Reduces stamina depletion for sprinting ||Barroth Barioth ||Bone+ Barroth+ Dober ||+10
+|-style="color:Red"
+|Short Sprinter||Increases stamina depletion for sprinting ||Agnaktor ||Agnaktor+ ||-10
+|-
+|rowspan="4"|Hunger
+|Negate Hunger ||Negates maximum stamina depletion ||Bone  ||Bone+ ||+15
+|-
+|Halve Hunger ||Halves Stamina depletion||  ||  ||+10
+|-style="color:Red"
+|Raise Hunger|| Raises maximum stamina depletion || ||Deviljho ||-10
+|-style="color:Red"
+|Double Hunger ||Doubles maximum stamina depletion || || ||-15
+|-
+|rowspan="2"|Oxygen
+|Oxygen Up ||Decreases the use of oxygen underwater ||Piscine ||Piscine+ ||+10
+|-style="color:Red"
+|Oxygen Down ||Increases the use of oxygen underwater  ||  ||  ||-10
+|}
+
+=Evade and Blocking=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|rowspan="2"|Evasion
+|Evasion +2|| Extends invulnerability for a longer time while dodging||Barioth Guild/Scholar's ||Barioth+ || +15
+|-
+|Evasion +1|| Extends invulnerability time while dodging||Qurupeco ||Hunter+ || +10
+|-
+|rowspan="1"|Evade Distance
+|Evasion Up|| Further Evasion Distance|| ||Barioth+ Escadora ||+15
+|-
+|rowspan="3"|Guard
+|Guard +2 ||Greatly decreases knockback from an attack ||Agnaktor  ||Agnaktor+ ||+15
+|-
+|Guard +1 ||Decreases knockback from attacks ||Steel  ||Steel+  ||+10
+|-style="color:Red"
+|Guard -1 ||Increases knock back from attacks || || ||-10
+|-
+|rowspan="1"|Guard Up
+|Guard Boost ||Allows hunters to block unblockable attacks || Ingot Agnaktor ||Ingot+ Damascus ||+10
+|-
+|rowspan="1"|Auto Guard
+|Auto Guard ||Automatically blocks attacks for the hunter (when possible)
+|colspan="2"|Auto Guard talisman ||+10
+|}
+
+=Movement=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|rowspan="1"|Transporter
+|Pro Transporter ||Increases Movement speed when  carrying eggs or podwerstones ||Loc Lac  ||Loc Lac+ ||+10
+|-
+|rowspan="2"|Swimming
+|Olympic Swimmer ||Increases movement speed underwater ||Lagiacrus Piscine ||Lagiacrus+ Piscine ||+10
+|-style="color:Red"
+|Doggy Paddler ||Decreases movement speed underwater  || Steel ||Steel+  ||-10
+|}
+
+=Resistances=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|rowspan="2"|Hearing
+|High Grade Earplugs ||Negates the effects of all loud monster roars || Helios ||Helios+ ||+15
+|-
+|Earplugs ||Negates the effects of some loud monster roars ||  ||  ||+10
+|-
+|rowspan="2"|Poison
+|Negate Poison|| Negates the effects of Poison||Gigginox ||Gigginox+ || +10
+|-style="color:red"
+|Double Poison|| Doubles the damage of Poison||Bnahabra ||Bnahabra+ || -10
+|-
+|rowspan="2"|Paralysis
+|Negate Paralysis|| Negates the effects of Paralysis|| || || +10
+|-style="color:red"
+|Double Paralysis|| Doubles the length of Paralysis|| || || -10
+|-
+|rowspan="2"|Sleep
+|Negate Sleep|| Negates the effects of Sleep|| || || +10
+|-style="color:red"
+|Double Sleep|| Doubles the length of Sleep|| || ||-10
+|-
+|rowspan="3"|Stun
+|Negate Stun|| Negates the effects of Stun || ||Gobul+ Jaggi+ || +15
+|-
+|Halves Stun|| Reduces chance of being Stunned||Gobul Jaggi || ||+10
+|-style="color:red"
+|Double Stun|| Takes longer to fight being Stunned|| || || -10
+|-
+|rowspan="4"|Heat Cancel
+|Heat Cancel (Hi)|| Negates all Heat damage|| ||Loc Lac+ Rathalos+ ||+15
+|-
+|Heat Cancel (Lo)|| Negates most Heat damage||Rathalos Loc Lac+ || || +10
+|-style="color:red"
+|Heat Surge (Lo)|| Increases damage from heat||Barioth ||Barioth+ || -10
+|-style="color:red"
+|Heat Surge (Hi)|| Greatly increases damage from heat|| || ||-15
+|-
+|rowspan="4"|Cold Cancel
+|Cold Cancel (Hi)|| Negates all Cold|| || ||+15
+|-
+|Cold Cancel (Lo)|| Negates some Cold||Barioth ||Barioth+ ||+10
+|-style="color:red"
+|Cold Surge (Lo)|| Increases stanima deduction speed|| || || -10
+|-style="color:red"
+|Cold Surge (Hi)|| Greatly increases stamina deduction speed|| || ||-15
+|-
+|rowspan="2"|Current Res
+|Current Res (Hi)|| Negates the effects of Current from monsters|| ||Piscine+ ||+15
+|-
+|Current Res (Lo)|| Reduces the effects of Current from monsters||Royal Ludroth Piscine ||Royal Ludroth+ ||+10
+|-
+|rowspan="2"|Wind-Proof
+|Wind Res (Hi)|| Negates the effects of Wind Pressure||Ingot ||Ingot+ Rhenoplos+ ||+15
+|-
+|Wind Res (Lo)|| Reduces the effesct of Wind Pressure||Rhenoplos || ||+10
+|-
+|rowspan="1"|Tremor-Proof
+|Tremor Res|| Reduces effects of Quakes made by monsters||Diablos ||Diablos+ ||+10
+|-
+|rowspan="1"|Mud/Snow
+|Mud/Snow|| Prevents Snowman and Mudball Effects||Rhenoplos ||Rhenoplos+||+10
+|-
+|rowspan="5"|Fire Res
+|Fire Res +20|| Increases Fire Resistance by 20|| || ||+20
+|-
+|Fire Res +15|| Increases Fire Resistence by 15|| || ||+15
+|-
+|Fire Res +10|| Increases Fire Resistence by 10||Rathian ||Rathian+ ||+10
+|-style="color:red"
+|Fire Res -10|| Decreases Fire Resistence by 10|| || || -10
+|-style="color:red"
+|Fire Res -15|| Decreases Fire Resistence by 15|| || ||-15
+|-
+|rowspan="5"|Water Res
+|Water Res +20|| Increases Water Resistence by 20|| || ||+20
+|-
+|Water Res +15|| Increases Water Resistence by 15|| || || +15
+|-
+|Water Res +10|| Increases Water Resistence by 10||Gobul || ||+10
+|-style="color:red"
+|Water Res -10|| Decreases Water Resistence by 10|| || ||-10
+|-style="color:red"
+|Water Res -15|| Decreases Water Resistence by 15|| || || -15
+|-
+|rowspan="5"|Thunder Res
+|Thunder Res +20|| Increases Thunder Resistence by 20|| || ||+20
+|-
+|Thunder Res +15|| Increases Thunder Resistence by 15|| || || +15
+|-
+|Thunder Res +10|| Increases Thunder Resistence by 10||Ingot ||Ingot+ || +10
+|-style="color:red"
+|Thunder Res -10|| Decreases Thunder Resistence by 10|| || ||-10
+|-style="color:red"
+|Thunder Res -15|| Decreases Thunder Resistence by 15|| || ||-15
+|-
+|rowspan="5"|Ice Res
+|Ice Res +20|| Increases Ice Resistence by 20|| ||Great Baggi ||+20
+|-
+|Ice Res +15|| Increases Ice Resistence by 15|| || ||+15
+|-
+|Ice Res +10|| Increases Ice Resistence by 10||Great Baggi || ||+10
+|-style="color:red"
+|Ice Res -10|| Decreases Ice Resistence by 10|| || ||-10
+|-style="color:red"
+|Ice Res -15|| Decreases Ice Resistence by 15|| || ||-15
+|-
+|rowspan="5"|Dragon Res
+|Dragon Res +20|| Increases Dragon Resistence by 20|| || ||+20
+|-
+|Dragon Res +15|| Increases Dragon Resistence by 15|| ||Dober{Blademaster} || +15
+|-
+|Dragon Res +10|| Increases Dragon Resistence by 10|| ||Dober{Gunner} || +10
+|-style="color:red"
+|Dragon Res -10|| Decreases Dragon Resistence by 10|| || ||-10
+|-style="color:red"
+|Dragon Res -15|| Decreases Dragon Resistence by 15|| || || -15
+|-
+|rowspan="1"|Blight Res
+|Blightproof|| Negates the Effect of blights|| ||Escadora(Alatreon)|| +10
+|}
+
+=Item Related=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|rowspan="1"|Speed Setup
+|trap Master ||Speeds up trap and bomb setup time. Increases combination rate for traps to 100% ||Alloy ||Alloy+ ||+10
+|-
+|rowspan="1"|Bomb boost
+|Bombardier ||Increase bomb damage and raise combination rate for all explosives to 100% ||Uragaan Blast Earring||Uragaan+ ||+10
+|-
+|rowspan="6"|Combo Rate
+|Combination +45% ||Increases combination rate by 45% ||Pursuit Earring || ||+20
+|-
+|Combination +25% ||Increases combination rate by 25%  || Chanmail ||Chainmail+  ||+15
+|-
+|Combination +15% ||Increases combination rate by 15% ||  || ||+10 
+|-style="color:Red"
+|Combination -5% ||Decreases combination rate by -5% ||Jhen Mohran  ||Jhen Mohran+ ||-15
+|-style="color:Red"
+|Combination -10%||Decreases combination rate by -10% || || ||-15
+|-style="color:Red"
+|Combination -15%||Decreases combination rate by -15% || || ||-20
+|-
+|rowspan="1"|Combo Plus
+|Combination Pro ||Guarantees maximum possible combination output ||Chainmail  ||Chainmail+ ||+10
+|-
+|rowspan="2"|Lasting Power
+|Item use Up ||Increases item effect durations ||Bone  || ||+10
+|-sytle="color:red"
+|Item Use down ||decreases item effect durations  ||  ||  ||-10
+|-
+|rowspan="2"|Wide Range
+|Wide Range +2 ||Certain item effects are carried over to other members in the same area(Herbs, potions, and seeds) ||  ||Qurupeco+ Grace Earring ||+20
+|-
+|Wide Range +1 ||1/2 of certain item effects are carried over to other members in the same area (Herbs, potions, and seeds)   ||Ranger  ||  ||+10
+|-
+|rowspan="3"|Eating
+|Speed Eating +2 ||Greatly increases item and meat consumption speed ||Gobul  ||Gobul+ ||+15
+|-
+|Speed Eating +1 ||Increases meat eating speed  ||Rhenoplos  ||Rhenoplos+  ||+10
+|-
+|Slow Eater ||Decreases meat eating speed ||  ||Uragaan+ ||-10
+|-
+|rowspan="2"|Rec Level
+|Recovery Up ||Boosts the efficiency of health recovery items ||Qurupeco  ||Qurupeco+ ||+10
+|-style="color:red"
+|Recovery Down ||Lowers the efficiency of health recovery items  ||  ||Alatreon  ||-10
+|-
+|rowspan="2"|Gluttony
+|Scavenger ||Increases the efficiency of items that increase stamina ||  || ||+15
+|-
+|Gourmand ||sometimes increases the efficiency of items that increase stamina  ||Great Jaggi  ||Great Jaggi  ||+10
+|-
+|rowspan="1"|BBQ 
+|BBQ Expert ||Makes cooking well done steaks easier ||Hunter  || ||+10
+|-
+|rowspan="1"|Fishing
+|Fishing Expert ||Causes fish to always bite on the first cast ||Chainmail  || ||+10
+|-
+|rowspan="1"|Dungmaster
+|Dung Bomb Expert ||Increases dung bomb efficiency. Raises dung bomb combo rate to 100% ||  || ||+10
+|}
+
+=Blademaster Exclusives=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|Handicraft
+|Sharpness +1 ||Increases the sharpness of melee weapons || Helios ||Helios+ Deviljho||+15
+|-
+|Crit Draw
+|Critical Draw ||All draw attacks will deal critical hits ||Diablos  ||Diablos+ Dober ||+10
+|-
+|PunishDraw
+|Punishing Draw ||When the player draw attacks a monsters' head, the weapon will also inflict KO damage ||Uragaan  ||Uragaan+ Damascus ||+10
+|-
+|rowspan="2"|Fast Charge
+|Focus ||Decreases the time it takes to perform a charge attack, and also charges the spirit gauge and switch axe gauge faster ||Baggi Yamato/Hinata  ||Baggi+ Yamato/Hinata+ ||+10
+|-style="color:red"
+|Distraction ||Increases the time it takes to perform a charge attack, and also the spirit gauge and switch axe gauge || || ||-10
+|-
+|Fencing
+|Mind's Eye ||Allows weapons to follow through with an attack regardless of current sharpness level || ||Rathalos+ Sword Saint earring||+10
+|-
+|rowspan="2"|Sharpness
+|Razor Sharp ||Decreases the rate at which your weapon's sharpness drops a level ||Bnahabra Lagiacrus Yamato/Hinata  ||Bnahabra+ Agnaktor+ Yamato/Hinata+ ||+10
+|-style="color:red"
+|Blunt Edge ||Increases the rate at which your weapon's sharpness drops a level||Helios  ||Helios+  ||-10
+|-
+|rowspan="2"|Sharpening
+|Spd Sharpening ||Decreases the time it takes to sharpen a weapon ||Alloy Steel  ||Alloy+ Steel+ ||+10
+|-style="color:red"
+|Slow Sharpening ||Increases the time it takes to sharpen a weapon  ||  ||  ||-10
+|-
+|Rowspan="1"|Free Element
+|Awaken|| Gives Elements and Status effects to weapons without either|| ||Lagiacrus+ Escadora || +15
+|}
+
+=Gunner Exclusives=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|Pierce S Up
+|Pierce S Boost ||Increases the damage of Pierce Shots ||Diablos  ||Diablos+ ||+10
+|-
+|rowspan="2"|Pierce S+
+|Pierce S All Up ||Allows a bowgun to fire all Pierce S levels ||  || ||+15
+|-
+|Pierce S Lvl Up ||Allows a bowgun to fire Pierce S lvl 1  ||Diablos  ||Diablos+  ||+10
+|-
+|Pellet S Up
+|Pellet S Boost ||Increases the damage of Pellet Shots ||Great Baggi||Great Baggi+ Dober ||+10
+|-
+|rowspan="2"|Pellet S+
+|Pellet S All Up ||Allows a bowgun to fire all Pellet Levels ||  ||Dober ||+15
+|-
+|Pellet S Lvl Up ||Allows a bowgun to fire lvl 1 Pellet shots  ||Royal Ludroth  ||Royal Ludroth+||+10
+|-
+|Normal S Up
+|Normal S Boost ||Increases the damage done by Normal shots ||Lagiacrus  ||Rathalos+ Agnaktor+ ||+10
+|-
+|Normal S+
+|Normal S All Up ||Allows the bowgun to fire all Normal levels ||Alloy  ||Alloy+ Agnaktor+ ||+10
+|-
+|rowspan="2"|Crag S+
+|Crag S All Up ||Allows the bowgun to fire all Crag levels ||  || ||+15
+|-
+|Crag S Lvl Up ||Allows the bowgun to fire Crag level 1 shots  ||Rhenoplos  ||Rhenoplos+  ||+10
+|-
+|rowspan="2"|Clust
+|Clust S All Up ||Allows the bowgun to fire all Clust Levels ||  ||Mutsu+/Amagai+ ||+15
+|-
+|Clust S Lvl Up ||Allows the bowgun to fire Clust level 1 shots  ||Mutsu/Amagai  ||  ||+10
+|-
+|Loading
+|Load Up ||Increases clip size for all useable ammo by one ||Helios/Selene  ||Helios+/Selene+ Vangis Barrage Earring ||+15
+|-
+|Rapid Fire
+|Bonus Shot ||Allows one extra shot to fire when rapid firing ||  ||Lagiacrus+ Escadora(Gunner) ||+10
+|-
+|rowspan="6"|Recoil
+|Recoil Down +3 ||Recoil from firing is reduced greatly ||  || ||+20
+|-
+|Recoil Down +2 ||Recoil from firing is reduced moderately  ||Ingot Uragaan  ||Rhenoplos+ Ingot+ Uragaan+  ||+15
+|-
+|Recoil Down +1 ||Recoil from firing is reduced slightly ||Rhenoplos Mutsu/Amagai ||Mustu+/Amagai+ ||+10 
+|-style="color:Red"
+|Recoil Down -1 ||Recoil from firing is increased slightly ||Ceadeus ||Ceadeus+ ||-10
+|-style="color:Red"
+|Recoil Down -2 ||Recoil from firing is increased moderately || || ||-15
+|-style="color:Red"
+|Recoil Down -3 ||Recoil from firing is increased greatly || || ||-20
+|-
+|rowspan="6"|Reload
+|Reload Speed +3 ||Greatly decreases reload time ||  || ||+20
+|-
+|Reload Speed +2 ||Moderately decreases reload time  ||Agnaktor  ||Damascus  ||+15
+|-
+|Reload speed +1 ||Decreases reload time ||Bnahabra  ||Bnahabra+ ||+10
+|-style="color:Red"
+|Reload speed -1 ||Increases reload time || || ||-10
+|-style="color:Red"
+|Reload speed -2||Moderately increases reload time || || ||-15
+|-style="color:Red"
+|Reload speed -3||Greatly increases reload time|| || ||-20
+|-
+|rowspan="3"|Precision
+|Steadiness +2 ||Greatly decreases deviation while aiming ||  || ||+15
+|-
+|Steadiness +1 ||Decreases deviation while aiming  ||  ||  ||+10
+|-style="color:Red"
+|Steadiness -1 ||Increases deviation while aiming || || ||-10
+|}
+
+=Misc.=
+{|Class="table table-bordered"
+!Skills
+!Skill Name
+!Effect
+!Low Rank Sets
+!High Rank Sets
+!Activation Points
+|-
+|Map
+|Farsight ||Extends the map during quests, without the need for the map supply item ||Hunter ||Hunter+ ||+10
+|-
+|rowspan="2"|Psychic
+|Autotractker ||Marks on the map the location of a large monster. Shows greater detail than detect ||Hunter Guid/Scholar's || Hunter+ Vangis Hawkeye Earring||+15
+|-
+|Detect||Marks the location of a large monster on the map - like a paintball || || ||+10
+|-
+|Preception
+|Capture Guru|| Alerts the player when the monster is ready for capture. Note: the paintball dot on the map will begin to flash when ready. ||Bone || Bone+||+10
+|-
+|Tranquilzr
+|Capture Expert||Provides additional reward items for capturing monsters||Baggi||Baggi+ Guild+||+10
+|-
+|rowspan="4"|Fate
+|Great Luck ||Often increases the number of reward items received at the end of a quest ||  ||  ||+15
+|-
+|Good Luck ||Sometimes increases the number of reward items received at the end of a quest ||Guild Jaggi Mask  ||Guild+ ||+10 
+|-style="color:Red"
+|Bad Luck ||Sometimes decreases the number of reward items received at the end of a quest || || ||-10
+|-style="color:Red"
+| Horrible Luck||Often decreases the number of reward items received at the end of a quest ||Ranger || ||-15
+|-
+|rowspan="2"|Carving
+|Carving Master||Grants carving pro effects and gives 50% chance of an additional carve|| Ranger || ||+15
+|-
+|Carving Pro||Prevents knock back while carving (aside from wind)|| ||Guild+||+10
+|-
+|rowspan="3"|Gathering
+|Gathering +2|| Greatly increases the chance of gathering the maximum number of times|| ||Leather+||+15
+|-
+|Gathering +1|| Increases the chance of gathering the maximum number of times||Leather|| ||+10
+|-style="color:Red"
+|Gathering -1|| Decreases the chance of gathering the maximum number of times|| || ||-10
+|-
+|Spd Gather
+|Speed Gatherer||Increases gathering speed||Leather Ranger|| Leather+||+10
+|-
+|rowspan="4"|Whim
+|Divine Whim ||The chance of gathering tools breaking decreases considerably ||  ||Leather+ ||+15
+|-
+|Spirit's Whim||The chance of gathering tools breaking decreases ||leather ||  ||+10 
+|-style="color:Red"
+|Spectre's Whim ||The chance of gathering tools breaking increases || || ||-10
+|-style="color:Red"
+|Devil's Whim ||The chance of gathering tools breaking increases considerably || || ||-15
+|-
+|rowspan="2"|Sense
+|Sneak||Monsters are less likely to target the hunter|| || ||+10
+|-style="color:Red"
+|Taunt||Monsters are more likely to target the hunter|| || ||-10
+|-
+|Flame Aura
+|Flaming Aura||Causes monsters to react to you as though you were carrying a torch||Agnaktor||Agnaktor+||+10
+|-
+|Theft
+|Anti-Theft||Prevents item theft|| || ||+10
+|-
+|colspan="2"|Torso Up|| Doubles the amount of skill points on the chest piece||Alloy Greaves/Leggings Uragaan Greaves/Leggings Skull Mask|| Alloy+ Greaves/Leggings Vangis Coil/Coat|| N/A
+[[Category:MH3]]
