@@ -1,14 +1,12 @@
 import Defense from './Defense'
 import ArmorType from './ArmorType'
 import Resistance from './Resistance'
-import Slots from './Slots'
+import Equipment from './Equipment'
+import Skills from './Skills'
 
-export default interface ArmorPiece {
-  name: string;
+export default interface ArmorPiece extends Equipment {
   type: ArmorType;
-  category: ArmorCategory;
   defense: Defense;
   resistance: Resistance;
-  slots: Slots;
-  skills: any;
+  skills: Skills;
 }
