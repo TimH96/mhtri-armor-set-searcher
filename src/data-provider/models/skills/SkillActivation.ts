@@ -5,4 +5,5 @@ export default interface SkillActivation {
   requiredPoints: number;
   requiredSkill: GameID;
   isPositive: boolean;
+  category: GameID;
 }
