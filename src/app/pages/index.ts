@@ -1,4 +1,4 @@
-import { getArms, getChest, getHead, getLegs, getWaist } from '../../data-provider/data-provider.module'
+import { getArms, getChest, getDecorations, getHead, getLegs, getSkillActivationMap, getSkillNameMap, getWaist } from '../../data-provider/data-provider.module'
 import DataInput from '../../searcher/models/DataInput'
 import { search } from '../../searcher/searcher.module'
 
@@ -9,8 +9,10 @@ async function main () {
     arms: await getArms(),
     waist: await getWaist(),
     legs: await getLegs(),
-    decorations: [],
+    decorations: await getDecorations(),
     charms: [],
+    skillName: await getSkillNameMap(),
+    skillActivation: await getSkillActivationMap(),
   }
 
   search(

@@ -1,5 +1,8 @@
 import ArmorPiece from './models/equipment/ArmorPiece'
 import GameID from './models/GameId'
+import SkillActivation from './models/skills/SkillActivation'
+import SkillActivationMap from './models/skills/SkillActivationMap'
+import SkillNameMap from './models/skills/SkillNameMap'
 
 /** fetch from data directory */
 const getRawData = async (url: string) => {
@@ -51,11 +54,30 @@ const getDecorations = async () => {
 }
 
 /** get a mapping of internal id to name for all skills */
-const getSkillNameMap = async () => {
+const getSkillNameMap = async (): Promise<SkillNameMap> => {
   const raw = await getRawData('./skill-names')
   const map: Map<GameID, string> = new Map()
   for (const id in raw) {
     map.set(parseInt(id), raw[id])
+  }
+  return map
+}
+
+/** get a mapping of internal id of skill to all activations (positive and negative) of that skill */
+const getSkillActivationMap = async (): Promise<SkillActivationMap> => {
+  const raw = await getRawData('./skills')
+  const map: Map<GameID, SkillActivation[]> = new Map()
+  for (const id in raw) {
+    const parsedId = parseInt(id)
+    map.set(
+      parsedId,
+      raw[id].map((activation: any) => {
+        return {
+          ...activation,
+          requiredSkill: parsedId,
+        }
+      }),
+    )
   }
   return map
 }
@@ -68,4 +90,5 @@ export {
   getLegs,
   getDecorations,
   getSkillNameMap,
+  getSkillActivationMap,
 }
