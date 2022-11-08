@@ -10,15 +10,15 @@ async function main () {
     waist: await getWaist(),
     legs: await getLegs(),
     decorations: undefined,
-    charms: []
+    charms: [],
   }
 
   search(
     data,
     {
       weaponSlots: 0,
-      skillActivations: []
-    }
+      skillActivations: [],
+    },
   )
 }
 

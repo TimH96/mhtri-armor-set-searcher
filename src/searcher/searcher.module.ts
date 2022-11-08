@@ -3,7 +3,7 @@ import SearchConstraints from './models/SearchConstraints'
 
 const search = async (
   data: DataInput,
-  input: SearchConstraints
+  input: SearchConstraints,
 ) => {
 
 }

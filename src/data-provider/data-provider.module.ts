@@ -16,7 +16,7 @@ const getEquipmentData = async (url: string): Promise<ArmorPiece[]> => {
     }
     return {
       ...rawPiece,
-      skills: skillMap
+      skills: skillMap,
     }
   })
 }
@@ -67,5 +67,5 @@ export {
   getWaist,
   getLegs,
   getDecorations,
-  getSkillNameMap
+  getSkillNameMap,
 }
