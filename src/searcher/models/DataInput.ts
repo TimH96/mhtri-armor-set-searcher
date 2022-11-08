@@ -1,5 +1,5 @@
-import ArmorPiece from "../../data-provider/models/equipment/ArmorPiece";
-import Charm from "../../data-provider/models/equipment/Charm";
+import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
+import Charm from '../../data-provider/models/equipment/Charm'
 
 /** includes all available data (armors pieces, decorations, charms) */
 export default interface DataInput {

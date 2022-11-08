@@ -1,24 +1,24 @@
-import { getArms, getChest, getHead, getLegs, getWaist } from "../../data-provider/data-provider.module"
-import DataInput from "../../searcher/models/DataInput"
-import { search } from "../../searcher/searcher.module"
+import { getArms, getChest, getHead, getLegs, getWaist } from '../../data-provider/data-provider.module'
+import DataInput from '../../searcher/models/DataInput'
+import { search } from '../../searcher/searcher.module'
 
-async function main() {
-    const data: DataInput = {
-        head: await getHead(),
-        chest: await getChest(),
-        arms: await getArms(),
-        waist: await getWaist(),
-        legs: await getLegs(),
-        decorations: undefined,
-        charms: [],
+async function main () {
+  const data: DataInput = {
+    head: await getHead(),
+    chest: await getChest(),
+    arms: await getArms(),
+    waist: await getWaist(),
+    legs: await getLegs(),
+    decorations: undefined,
+    charms: []
+  }
+
+  search(
+    data,
+    {
+      weaponSlots: 0
     }
-
-    search(
-        data,
-        {
-            weaponSlots: 0
-        }
-    )
+  )
 }
 
 main()

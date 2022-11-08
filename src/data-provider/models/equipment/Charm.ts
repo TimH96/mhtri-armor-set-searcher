@@ -1,6 +1,6 @@
 import Equipment from './Equipment'
-import SkillsMap from './SkillsMap'
+import EquipmentSkills from './EquipmentSkills'
 
 export default interface Charm extends Equipment {
-    skills: SkillsMap
+    skills: EquipmentSkills
 }

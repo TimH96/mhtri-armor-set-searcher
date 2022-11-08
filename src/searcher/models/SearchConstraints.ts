@@ -1,4 +1,4 @@
-import Slots from "../../data-provider/models/equipment/Slots";
+import Slots from '../../data-provider/models/equipment/Slots'
 
 export default interface SearchConstraints {
     weaponSlots: Slots;
