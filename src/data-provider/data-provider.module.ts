@@ -1,6 +1,5 @@
 import ArmorPiece from './models/equipment/ArmorPiece'
 import GameID from './models/GameId'
-import SkillActivationMap from './models/skills/SkillActivationMap'
 
 /** fetch from data directory */
 const getRawData = async (url: string) => {
@@ -68,5 +67,5 @@ export {
   getWaist,
   getLegs,
   getDecorations,
-  getSkillNameMap,
+  getSkillNameMap
 }

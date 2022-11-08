@@ -1,4 +1,4 @@
-import GameID from "../GameId";
+import GameID from '../GameId'
 
 export default interface SkillActivation {
   name: string;
