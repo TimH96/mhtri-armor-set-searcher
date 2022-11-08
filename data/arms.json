@@ -1,0 +1,14 @@
+[
+  {
+    "name": "Qurupeco Vambraces",
+    "slots": 1,
+    "category": 3,
+    "type": 1,
+    "defense": {
+      "base": 12,
+      "max": 24
+    },
+    "resistance": [2, -2, -3, 0, 1],
+    "skills": {}
+  }
+]
