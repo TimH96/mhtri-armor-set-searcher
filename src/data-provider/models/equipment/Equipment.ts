@@ -1,5 +1,5 @@
-import EquipmentCategory from "./EquipmentCategory";
-import Slots from "./Slots";
+import EquipmentCategory from './EquipmentCategory'
+import Slots from './Slots'
 
 export default interface Equipment {
     name: string;
