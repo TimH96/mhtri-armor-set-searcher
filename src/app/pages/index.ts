@@ -9,7 +9,7 @@ async function main () {
     arms: await getArms(),
     waist: await getWaist(),
     legs: await getLegs(),
-    decorations: undefined,
+    decorations: [],
     charms: [],
   }
 
