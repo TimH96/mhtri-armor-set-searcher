@@ -1,3 +1,3 @@
-type GameID = string;
+type GameID = number;
 
 export default GameID

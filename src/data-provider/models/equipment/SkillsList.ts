@@ -1,5 +1,5 @@
 import GameID from '../GameId'
 
-type SkillsList = Record<GameID, number>;
+type SkillsList = Map<GameID, number>;
 
 export default SkillsList
