@@ -1,8 +1,8 @@
 /* eslint-disable no-unused-vars */
 enum ArmorType {
-  BLADEMASTER = 'Blademaster',
-  GUNNER = 'Gunner',
-  ALL = 'All',
+  ALL = 0,
+  BLADEMASTER = 1,
+  GUNNER = 2,
 }
 
 export default ArmorType

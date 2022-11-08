@@ -1,7 +1,3 @@
-export default interface Resistance {
-  fire: number;
-  water: number;
-  ice: number;
-  thunder: number;
-  dragon: number;
-}
+type Resistance = number[];
+
+export default Resistance
