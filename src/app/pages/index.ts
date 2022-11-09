@@ -9,7 +9,7 @@ const htmlToElement = (html: string): Node => {
   return template.content.firstChild as Node
 }
 
-async function main () {
+const main = async () => {
   const skillCategories = await getSkillCategories()
 
   const data: DataInput = {
