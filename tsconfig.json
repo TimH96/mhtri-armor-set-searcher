@@ -8,6 +8,7 @@
         "sourceMap": true,
         "declaration": true,
         "jsx": "preserve",
+        "downlevelIteration": true,
         "lib": [
             "es2017",
             "dom"

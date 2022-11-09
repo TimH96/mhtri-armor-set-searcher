@@ -1,13 +1,7 @@
 import { getArms, getChest, getDecorations, getHead, getLegs, getSkillActivationMap, getSkillCategories, getSkillNameMap, getWaist } from '../../data-provider/data-provider.module'
 import DataInput from '../../searcher/models/DataInput'
 import { search } from '../../searcher/searcher.module'
-
-const htmlToElement = (html: string): Node => {
-  const template = document.createElement('template')
-  html = html.trim()
-  template.innerHTML = html
-  return template.content.firstChild as Node
-}
+import { renderSkillPicker } from '../ui/picker.component'
 
 const main = async () => {
   const skillData = {
@@ -15,6 +9,8 @@ const main = async () => {
     skillActivation: await getSkillActivationMap(),
     skillCategories: await getSkillCategories(),
   }
+
+  await renderSkillPicker(skillData.skillName, skillData.skillActivation, skillData.skillCategories)
 
   const staticEquipmentData = {
     head: await getHead(),
@@ -39,31 +35,7 @@ const main = async () => {
     },
   )
 
-  //////////////////////////////////////////
-
-  for (const index in skillData.skillCategories) {
-    const categoryName = skillData.skillCategories[index]
-    const node = htmlToElement(`
-      <div class="search-picker-category" id="search-picker-category-${index}" data-category="${index}">
-        <div class="search-picker-category-title">${categoryName}</div>
-      </div>
-    `)
-    document.getElementById("search-skill-picker")!.appendChild(node)
-  }
-
-  data.skillActivation.forEach((activationList) => {
-    activationList
-      .filter(activation => activation.isPositive)
-      .reverse()
-      .forEach((activattion) => {
-        const node = htmlToElement(`
-          <div class="search-picker-activation" data-skill="${activattion.requiredSkill}" data-points="${activattion.requiredPoints}">
-            ${activattion.name}
-          </div>
-        `)
-        document.getElementById(`search-picker-category-${activattion.category}`)!.appendChild(node)
-      })
-  })
+  /// ///////////////////////////////////////
 }
 
 main()
