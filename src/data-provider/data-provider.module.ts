@@ -1,4 +1,5 @@
 import ArmorPiece from './models/equipment/ArmorPiece'
+import Decoration from './models/equipment/Decoration'
 import GameID from './models/GameId'
 import SkillActivation from './models/skills/SkillActivation'
 import SkillActivationMap from './models/skills/SkillActivationMap'
@@ -50,7 +51,7 @@ const getLegs = async (): Promise<ArmorPiece[]> => {
 }
 
 /** get a list of all decorations */
-const getDecorations = async () => {
+const getDecorations = async (): Promise<Decoration[]> => {
   return getRawData('./decorations.json')
 }
 
