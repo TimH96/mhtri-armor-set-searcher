@@ -96,7 +96,7 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |Health -30 || Decreases Max health by 30 points || || || -15
 |-
 |rowspan="4"|Rec Speed
-|Recovery speed +2|| Recovers red bar fastest|| ||Jhen Mohran+ || +15
+|Recovery Speed +2|| Recovers red bar fastest|| ||Jhen Mohran+ || +15
 |-
 |Recovery Speed +1|| Recovers red bar faster||Loc Lac Jhen Mohran ||Loc Lac+ || +10
 |-style="color:red"
@@ -322,9 +322,9 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 !Activation Points
 |-
 |rowspan="1"|Speed Setup
-|trap Master ||Speeds up trap and bomb setup time. Increases combination rate for traps to 100% ||Alloy ||Alloy+ ||+10
+|Trap Master ||Speeds up trap and bomb setup time. Increases combination rate for traps to 100% ||Alloy ||Alloy+ ||+10
 |-
-|rowspan="1"|Bomb boost
+|rowspan="1"|Bomb Boost
 |Bombardier ||Increase bomb damage and raise combination rate for all explosives to 100% ||Uragaan Blast Earring||Uragaan+ ||+10
 |-
 |rowspan="6"|Combo Rate
@@ -344,9 +344,9 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |Combination Pro ||Guarantees maximum possible combination output ||Chainmail  ||Chainmail+ ||+10
 |-
 |rowspan="2"|Lasting Power
-|Item use Up ||Increases item effect durations ||Bone  || ||+10
+|Item Use Up ||Increases item effect durations ||Bone  || ||+10
 |-sytle="color:red"
-|Item Use down ||decreases item effect durations  ||  ||  ||-10
+|Item Use Down ||decreases item effect durations  ||  ||  ||-10
 |-
 |rowspan="2"|Wide Range
 |Wide Range +2 ||Certain item effects are carried over to other members in the same area(Herbs, potions, and seeds) ||  ||Qurupeco+ Grace Earring ||+20
@@ -485,13 +485,13 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |-
 |Reload Speed +2 ||Moderately decreases reload time  ||Agnaktor  ||Damascus  ||+15
 |-
-|Reload speed +1 ||Decreases reload time ||Bnahabra  ||Bnahabra+ ||+10
+|Reload Speed +1 ||Decreases reload time ||Bnahabra  ||Bnahabra+ ||+10
 |-style="color:Red"
-|Reload speed -1 ||Increases reload time || || ||-10
+|Reload Speed -1 ||Increases reload time || || ||-10
 |-style="color:Red"
-|Reload speed -2||Moderately increases reload time || || ||-15
+|Reload Speed -2||Moderately increases reload time || || ||-15
 |-style="color:Red"
-|Reload speed -3||Greatly increases reload time|| || ||-20
+|Reload Speed -3||Greatly increases reload time|| || ||-20
 |-
 |rowspan="3"|Precision
 |Steadiness +2 ||Greatly decreases deviation while aiming ||  || ||+15
@@ -569,4 +569,3 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |Anti-Theft||Prevents item theft|| || ||+10
 |-
 |colspan="2"|Torso Up|| Doubles the amount of skill points on the chest piece||Alloy Greaves/Leggings Uragaan Greaves/Leggings Skull Mask|| Alloy+ Greaves/Leggings Vangis Coil/Coat|| N/A
-[[Category:MH3]]
