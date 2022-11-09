@@ -65,6 +65,11 @@ const getSkillNameMap = async (): Promise<SkillNameMap> => {
   return map
 }
 
+/** get a list of skill category names, as used in the UI */
+const getSkillCategories = async (): Promise<string[]> => {
+  return getRawData('./skill-categories.json')
+}
+
 /** get a mapping of internal id of skill to all activations (positive and negative) of that skill */
 const getSkillActivationMap = async (): Promise<SkillActivationMap> => {
   const raw = await getRawData('./skills.json')
@@ -92,5 +97,6 @@ export {
   getLegs,
   getDecorations,
   getSkillNameMap,
+  getSkillCategories,
   getSkillActivationMap,
 }
