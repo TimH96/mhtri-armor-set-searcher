@@ -4,6 +4,7 @@
   --color-highlight: rgb(230, 230, 230);
   --color-highlighted-background: rgb(194, 218, 255);
   --color-header-background: rgb(37, 37, 37);
+  --color-disclaimer-background: rgb(255, 255, 235);
 }
 
 body {
@@ -30,10 +31,30 @@ ul {
   background-color: var(--color-header-background);
   font-size: 1.6em;
   text-align: center;
-  
+
   width: 100%;
   padding: 0.6em 1em;
   margin: -0.1em 0em 3em 0em;
+}
+
+#open-source {
+  min-width: 680px;
+  max-width: 1200px;
+  margin: auto;
+  margin-bottom: 3em;
+
+  font-size: 1.2em;
+  text-align: center;
+  background-color: var(--color-disclaimer-background);
+
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-border);
+  border-radius: 6px;
+}
+
+#open-source p {
+  padding: 0em 6em;
 }
 
 #main-body {
