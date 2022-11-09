@@ -40,7 +40,7 @@
             "category": 0
         },
         {
-            "name": "Attack UP (M)",
+            "name": "Attack Up (M)",
             "requiredPoints": 15,
             "requiredSkill": 2,
             "isPositive": true,

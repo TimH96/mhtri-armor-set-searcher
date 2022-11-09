@@ -24,7 +24,7 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |rowspan="6"|Attack
 |Attack Up (L)||Greatly Boosts Attack ||  || || +20
 |-
-|Attack UP (M)||Moderately Boosts Attack || Rathalos || Deviljho, Great Jaggi+ ||+15
+|Attack Up (M)||Moderately Boosts Attack || Rathalos || Deviljho, Great Jaggi+ ||+15
 |-
 |Attack Up (S)||Slightly Boosts Attack|| Jaggi, Barroth || Barroth+ ||+10
 |-
