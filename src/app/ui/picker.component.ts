@@ -1,5 +1,53 @@
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
+import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 import { htmlToElement } from './html.helper'
+import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
+
+const getActivationElements = () => {
+  return Array.from(document.getElementsByClassName('search-picker-activation'))
+}
+
+/** uncheck all selected skill activations */
+const resetSkillActivations = () => {
+  const activations = getActivationElements()
+
+  activations.forEach((element) => {
+    const checkbox = element.children[0] as HTMLInputElement
+    const text = element.children[1] as HTMLElement
+
+    checkbox.checked = false
+    text.classList.remove('highlighted')
+  })
+}
+
+/** get list of currently selected skill activations */
+const getSkillActivations = (data: {
+  skillName: SkillNameMap,
+  skillActivation: SkillActivationMap,
+}): SkillActivation[] => {
+  const activations = getActivationElements()
+
+  return activations
+    // get only checked skills
+    .filter((element) => {
+      const checkbox = element.children[0] as HTMLInputElement
+      return checkbox.checked
+    })
+    // map to proper data model
+    .map((element) => {
+      const requiredSkill = parseInt(element.getAttribute('data-skill')!)
+      const requiredPoints = parseInt(element.getAttribute('data-points')!)
+      const category = parseInt(element.parentElement!.getAttribute('data-category')!)
+
+      return {
+        name: data.skillName.get(requiredSkill)!,
+        requiredPoints,
+        requiredSkill,
+        isPositive: requiredPoints > 0,
+        category,
+      }
+    })
+}
 
 const renderCategories = (skillCategories: string[]) => {
   for (const index in skillCategories) {
@@ -48,6 +96,7 @@ const attachClickListener = () => {
   }
 }
 
+/** render all components of skillpicker and attach listeners */
 const renderSkillPicker = (
   skillActivation: SkillActivationMap,
   skillCategories: string[],
@@ -57,4 +106,8 @@ const renderSkillPicker = (
   attachClickListener()
 }
 
-export { renderSkillPicker }
+export {
+  renderSkillPicker,
+  getSkillActivations,
+  resetSkillActivations,
+}
