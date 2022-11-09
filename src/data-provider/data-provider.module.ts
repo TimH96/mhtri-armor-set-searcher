@@ -49,13 +49,14 @@ const getLegs = async (): Promise<ArmorPiece[]> => {
   return getRawData('./legs.json')
 }
 
+/** get a list of all decorations */
 const getDecorations = async () => {
   return getRawData('./decorations.json')
 }
 
 /** get a mapping of internal id to name for all skills */
 const getSkillNameMap = async (): Promise<SkillNameMap> => {
-  const raw = await getRawData('./skill-names')
+  const raw = await getRawData('./skill-names.json')
   const map: Map<GameID, string> = new Map()
   for (const id in raw) {
     map.set(parseInt(id), raw[id])
@@ -65,7 +66,7 @@ const getSkillNameMap = async (): Promise<SkillNameMap> => {
 
 /** get a mapping of internal id of skill to all activations (positive and negative) of that skill */
 const getSkillActivationMap = async (): Promise<SkillActivationMap> => {
-  const raw = await getRawData('./skills')
+  const raw = await getRawData('./skills.json')
   const map: Map<GameID, SkillActivation[]> = new Map()
   for (const id in raw) {
     const parsedId = parseInt(id)
