@@ -9,6 +9,7 @@ const searchLogic = (data: DataInput) => {
 
   const searchParams: SearchConstraints = {
     weaponSlots: globalSettings.weaponSlots,
+    armorType: globalSettings.armorType,
     skillActivations: getSkillActivations(data),
   }
 
