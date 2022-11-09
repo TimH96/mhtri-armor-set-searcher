@@ -10,18 +10,25 @@ const htmlToElement = (html: string): Node => {
 }
 
 const main = async () => {
-  const skillCategories = await getSkillCategories()
+  const skillData = {
+    skillName: await getSkillNameMap(),
+    skillActivation: await getSkillActivationMap(),
+    skillCategories: await getSkillCategories(),
+  }
 
-  const data: DataInput = {
+  const staticEquipmentData = {
     head: await getHead(),
     chest: await getChest(),
     arms: await getArms(),
     waist: await getWaist(),
     legs: await getLegs(),
     decorations: await getDecorations(),
+  }
+
+  const data: DataInput = {
+    ...skillData,
+    ...staticEquipmentData,
     charms: [],
-    skillName: await getSkillNameMap(),
-    skillActivation: await getSkillActivationMap(),
   }
 
   search(
@@ -34,8 +41,8 @@ const main = async () => {
 
   //////////////////////////////////////////
 
-  for (const index in skillCategories) {
-    const categoryName = skillCategories[index]
+  for (const index in skillData.skillCategories) {
+    const categoryName = skillData.skillCategories[index]
     const node = htmlToElement(`
       <div class="search-picker-category" id="search-picker-category-${index}" data-category="${index}">
         <div class="search-picker-category-title">${categoryName}</div>
