@@ -1,8 +1,8 @@
 # raw skill list gotten from here:
 # https://monsterhunter.neoseeker.com/w/index.php?title=Skills_MH3&action=edit
-# data has been sanitized just a little
 
 import re
+import json
 
 if __name__ == "__main__":
     skill_counter = 0
@@ -10,38 +10,45 @@ if __name__ == "__main__":
     with open("./raw-skills-sanitized.txt") as f:
         txt = "".join(f.readlines()[4:])
     tables = txt.split("\n\n")
-    
+
+    skills = []
+    activations = []
+    # iterate over all tables
     for category, table in enumerate(tables):
         split_table = table.splitlines()
-        title = table[1:table[1:].find("=")+1]
+        title = table[1 : table[1:].find("=") + 1]
 
         activation_exclusions = [
-            re.compile('(\|-)(style=".*")?(style:".*")?(\n|$)'), # placeholders
+            re.compile('(\|-)(style|sytle)?(:|=)?(".*")?(\n|$)'),  # placeholders
         ]
-        activation_finder = re.compile('(\|)([^\|]*)\|\|([^\|]*)\|\|([^\|]*)\|\|([^\|]*)\|\|([^\|]*)(\n|$)')
+        activation_finder = re.compile(
+            "(\|)([^\|]*)\|\|([^\|]*)\|\|([^\|]*)\|\|([^\|]*)\|\|([^\|]*)(\n|$)"
+        )
 
         name_finder = re.compile('(\|)(rowspan="\d"\|)?([^\|]*)(\n|$)')
         name_exclusions = [
-            re.compile('(=)(.*)(=)'), # table name
-            re.compile('{\|'), # table start
-            re.compile('\|}'), # table end
-            re.compile('\!'), # table header
-            re.compile('[[Category:MH3]]'), # document end
-            re.compile('(\|)(colspan="2"\|)?(Auto Guard) '), # special exception
-            activation_finder
+            re.compile("(=)(.*)(=)"),  # table name
+            re.compile("{\|"),  # table start
+            re.compile("\|}"),  # table end
+            re.compile("\!"),  # table header
+            re.compile('(\|)(colspan="2"\|)?(Auto Guard) '),  # special exception
+            activation_finder,
         ] + activation_exclusions
 
-        skills = []
+        # find skill names
+        skills_of_table = []
         for i, line in enumerate(split_table):
             if any([x.search(line) for x in name_exclusions]):
                 continue
-            
+
             name = name_finder.search(line).groups()[2]
             skills.append([name, i, skill_counter])
+            skills_of_table.append([name, i, skill_counter])
             skill_counter += 1
 
-        for (skill_name, line_number, skill_id) in skills:
-            if skill_name == "Auto Guard": # special exception
+        # find all activations
+        for (skill_name, line_number, skill_id) in skills_of_table:
+            if skill_name == "Auto Guard":  # special exception
                 skill_activation = {
                     "name": "Auto Guard",
                     "requiredPoints": 10,
@@ -49,9 +56,9 @@ if __name__ == "__main__":
                     "isPositive": True,
                     "category": category,
                 }
-                print(skill_activation)
+                activations.append(skill_activation)
 
-            for i, line in enumerate(split_table[line_number+1:]):
+            for i, line in enumerate(split_table[line_number + 1 :]):
                 if any([x.search(line) for x in activation_exclusions]):
                     continue
 
@@ -59,7 +66,7 @@ if __name__ == "__main__":
                 if not result:
                     break
 
-                if line.startswith('|colspan="2"|Torso Up||'): # special exception
+                if line.startswith('|colspan="2"|Torso Up||'):  # special exception
                     break
 
                 act_name = result.groups()[1].strip()
@@ -72,6 +79,26 @@ if __name__ == "__main__":
                     "isPositive": act_points > 0,
                     "category": category,
                 }
-                print(skill_activation)
+                activations.append(skill_activation)
 
+    # build skill name map
+    skill_name_map = {}
+    for (skill_name, line_number, skill_id) in skills:
+        skill_name_map[skill_id] = skill_name
 
+    # build skill activation map
+    skill_activation_map = {}
+    for (skill_name, line_number, skill_id) in skills:
+        skill_activation_map[skill_id] = []
+    for activation in activations:
+        id = activation["requiredSkill"]
+        skill_activation_map[id].append(activation)
+
+    for activation in activations:
+        print(activation["name"])
+
+    # save files
+    with open("../data/skill-names.json", "w") as f:
+        f.write(json.dumps(skill_name_map, indent=4))
+    with open("../data/skills.json", "w") as f:
+        f.write(json.dumps(skill_activation_map, indent=4))
