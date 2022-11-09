@@ -21,8 +21,6 @@ const searchLogic = (data: DataInput) => {
 
 const resetLogic = () => {
   resetSkillActivations()
-
-  // TODO reset list
 }
 
 export const attachControlListeners = (data: DataInput) => {
