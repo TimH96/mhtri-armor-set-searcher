@@ -10,7 +10,7 @@ const main = async () => {
     skillCategories: await getSkillCategories(),
   }
 
-  await renderSkillPicker(skillData.skillName, skillData.skillActivation, skillData.skillCategories)
+  await renderSkillPicker(skillData.skillActivation, skillData.skillCategories)
 
   const staticEquipmentData = {
     head: await getHead(),

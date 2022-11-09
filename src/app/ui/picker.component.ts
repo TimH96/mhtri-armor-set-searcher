@@ -1,4 +1,3 @@
-import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import { htmlToElement } from './html.helper'
 
@@ -50,7 +49,6 @@ const attachClickListener = () => {
 }
 
 const renderSkillPicker = async (
-  skillName: SkillNameMap,
   skillActivation: SkillActivationMap,
   skillCategories: string[],
 ) => {
