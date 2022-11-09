@@ -27,6 +27,52 @@
   </head>
 
   <body>
+    <div id="main-body">
+      <!-- navbar -->
+      <div id="navbar-container">
+        <ul class="navbar">
+          <li>Search</li>
+          <li>Charms</li>
+        </ul>
+      </div>
+
+      <!-- search -->
+      <div id="search-container">
+        <!-- global settings -->
+        <div id="search-global-settings">
+          <ul>
+            <li>
+              <select name="armor-type" id="armor-type">
+                <option value="1">Blademaster</option>
+                <option value="2">Gunner</option>
+              </select>
+            </li>
+            <li>
+              <select name="weapon-slots" id="weapon-slots">
+                <option value="0">0 Weapon Slots</option>
+                <option value="1">1 Weapon Slots</option>
+                <option value="2">2 Weapon Slots</option>
+                <option value="3">3 Weapon Slots</option>
+              </select>
+            </li>
+          </ul>
+        </div>
+
+        <!-- skill picker -->
+        <div id="search-skill-picker"></div>
+
+        <!-- controls -->
+        <div id="search-controls">
+          <ul>
+            <li><button>Search</button></li>
+            <li><button>Reset</button></li>
+          </ul>
+        </div>
+
+        <!-- results -->
+        <div id="search-results"></div>
+      </div>
+    </div>
     <script src="./index.ts"></script>
   </body>
 </html>

@@ -1,0 +1,23 @@
+body {
+  line-height: 1.4;
+  color: #444;
+  font: 14px/1.5 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+ul > li {
+  display: inline-block;
+  list-style-type: none;
+  padding-right: 0.2em;
+}
+
+.search-controls button {
+  font-size: 1.2em;
+}
+
+#main-body {
+  min-width: 680px;
+  max-width: 1200px;
+  margin: auto;
+}
