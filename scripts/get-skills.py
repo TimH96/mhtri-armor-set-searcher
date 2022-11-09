@@ -94,9 +94,6 @@ if __name__ == "__main__":
         id = activation["requiredSkill"]
         skill_activation_map[id].append(activation)
 
-    for activation in activations:
-        print(activation["name"])
-
     # save files
     with open("../data/skill-names.json", "w") as f:
         f.write(json.dumps(skill_name_map, indent=4))
