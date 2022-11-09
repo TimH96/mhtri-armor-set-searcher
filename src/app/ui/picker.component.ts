@@ -48,7 +48,7 @@ const attachClickListener = () => {
   }
 }
 
-const renderSkillPicker = async (
+const renderSkillPicker = (
   skillActivation: SkillActivationMap,
   skillCategories: string[],
 ) => {
