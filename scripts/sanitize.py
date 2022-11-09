@@ -15,6 +15,7 @@ if __name__ == "__main__":
         ("Item Use down", "Item Use Down"),
         ("trap Master", "Trap Master"),
         ("Recovery speed", "Recovery Speed"),
+        ("Critcal Eye", "Critical Eye"),
     ]:
         out = re.sub(s, r, out)
 

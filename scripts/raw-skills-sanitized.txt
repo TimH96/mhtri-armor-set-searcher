@@ -38,7 +38,7 @@ This is a list of skills and a description for each in [[Monster Hunter 3 (Wii)|
 |rowspan="6"|Expert
 |Critical Eye +3|| Boosts Affinity by 30%|| || ||+20
 |-
-|Critcal Eye +2|| Boosts Affinity by 20%|| ||Alloy+ Rathalos+ ||+15
+|Critical Eye +2|| Boosts Affinity by 20%|| ||Alloy+ Rathalos+ ||+15
 |-
 |Critical Eye +1|| Boosts Affinity by 10%||Alloy Rathalos ||Gobul+ || +10
 |-style="color:red"

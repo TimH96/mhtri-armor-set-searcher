@@ -84,7 +84,7 @@
             "category": 0
         },
         {
-            "name": "Critcal Eye +2",
+            "name": "Critical Eye +2",
             "requiredPoints": 15,
             "requiredSkill": 3,
             "isPositive": true,
