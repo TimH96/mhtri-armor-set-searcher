@@ -13,10 +13,12 @@ if __name__ == "__main__":
 
     skills = []
     activations = []
+    categories = []
     # iterate over all tables
     for category, table in enumerate(tables):
         split_table = table.splitlines()
         title = table[1 : table[1:].find("=") + 1]
+        categories.append(title)
 
         activation_exclusions = [
             re.compile('(\|-)(style|sytle)?(:|=)?(".*")?(\n|$)'),  # placeholders
@@ -99,3 +101,5 @@ if __name__ == "__main__":
         f.write(json.dumps(skill_name_map, indent=4))
     with open("../data/skills.json", "w") as f:
         f.write(json.dumps(skill_activation_map, indent=4))
+    with open("../data/skill-categories.json", "w") as f:
+        f.write(json.dumps(categories, indent=4))
