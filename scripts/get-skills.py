@@ -5,37 +5,52 @@ import re
 import json
 
 if __name__ == "__main__":
-    skill_counter = 0
+    # read input
+    with open("./raw-skills.txt") as f:
+        txt = f.read()
 
-    with open("./raw-skills-sanitized.txt") as f:
-        txt = "".join(f.readlines()[4:])
+    # sanitize input
+    for (s, r) in [
+        ("\|\+1-", "|+10"),
+        ("Bomb boost", "Bomb Boost"),
+        ("\[\[Category:MH3]]\n", ""),
+        ("Reload speed", "Reload Speed"),
+        ("Item use", "Item Use"),
+        ("Item Use down", "Item Use Down"),
+        ("trap Master", "Trap Master"),
+        ("Recovery speed", "Recovery Speed"),
+        ("Critcal Eye", "Critical Eye"),
+        ("UP", "Up"),
+        ("({{Skills}})\n(\<br \/>)\n(This is a list of skills .*)(\n\n)", ""),
+        ('(\|-)(style|sytle)?(:|=)?(".*")?(\n|$)', ""),
+        ("\|}\n", ""),
+        ("{\|(.*)\n", ""),
+        ("\!(.*)\n", ""),
+    ]:
+        txt = re.sub(s, r, txt)
+
+    # initiate tables
     tables = txt.split("\n\n")
-
+    skill_counter = 0
     skills = []
     activations = []
     categories = []
+
     # iterate over all tables
     for category, table in enumerate(tables):
         split_table = table.splitlines()
         title = table[1 : table[1:].find("=") + 1]
         categories.append(title)
 
-        activation_exclusions = [
-            re.compile('(\|-)(style|sytle)?(:|=)?(".*")?(\n|$)'),  # placeholders
-        ]
         activation_finder = re.compile(
             "(\|)([^\|]*)\|\|([^\|]*)\|\|([^\|]*)\|\|([^\|]*)\|\|([^\|]*)(\n|$)"
         )
-
         name_finder = re.compile('(\|)(rowspan="\d"\|)?([^\|]*)(\n|$)')
         name_exclusions = [
             re.compile("(=)(.*)(=)"),  # table name
-            re.compile("{\|"),  # table start
-            re.compile("\|}"),  # table end
-            re.compile("\!"),  # table header
             re.compile('(\|)(colspan="2"\|)?(Auto Guard) '),  # special exception
             activation_finder,
-        ] + activation_exclusions
+        ]
 
         # find skill names
         skills_of_table = []
@@ -61,9 +76,6 @@ if __name__ == "__main__":
                 activations.append(skill_activation)
 
             for i, line in enumerate(split_table[line_number + 1 :]):
-                if any([x.search(line) for x in activation_exclusions]):
-                    continue
-
                 result = activation_finder.search(line)
                 if not result:
                     break
