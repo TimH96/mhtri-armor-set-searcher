@@ -35,13 +35,12 @@ const main = async () => {
   //////////////////////////////////////////
 
   for (const index in skillCategories) {
-    const category = skillCategories[index]
+    const categoryName = skillCategories[index]
     const node = htmlToElement(`
       <div class="search-picker-category" id="search-picker-category-${index}" data-category="${index}">
-        ${category}
+        <div class="search-picker-category-title">${categoryName}</div>
       </div>
     `)
-    console.log(category)
     document.getElementById("search-skill-picker")!.appendChild(node)
   }
 
