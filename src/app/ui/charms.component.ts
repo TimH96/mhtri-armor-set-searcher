@@ -1,8 +1,103 @@
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
+import Charm from '../../data-provider/models/equipment/Charm'
+import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
 import { htmlToElement } from './html.helper'
+import Slots from '../../data-provider/models/equipment/Slots'
+import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
+import GameID from '../../data-provider/models/GameId'
+
+/*
+  TODO this file is the only file so far where I'm regretting this straightforward functional
+  component approach, probably needs some refactoring at some point, I think moving different
+  parts (picker vs table vs export) into own files would fix it already
+*/
 
 const range = (start: number, end: number) => Array.from({ length: (end - start) }, (_, k) => k + start)
+
+const validSkill = (skill: {id: GameID, points: number}) => {
+  return skill.points !== 0 && skill.id !== -1
+}
+
+const removeTableElement = (index: number) => {
+  const ele = document.getElementsByClassName(`charm-${index}`)[0]
+  ele.remove()
+}
+
+const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) => {
+  const ele = htmlToElement(`<tr class="charm-${index}" data-index="${index}"></tr>`)
+
+  // get real table elements
+  for (const skill of Array.from(charm.skills.keys())) {
+    ele.appendChild(htmlToElement(`<td>${skillNames.get(skill)}</td>`))
+    ele.appendChild(htmlToElement(`<td>${charm.skills.get(skill)}</td>`))
+  }
+
+  // get placeholder table elements
+  const amountOfSkills = Array.from(charm.skills.keys()).length
+  // eslint-disable-next-line no-unused-vars
+  for (const _ in range(amountOfSkills, 2)) {
+    ele.appendChild(htmlToElement('<td></td>'))
+    ele.appendChild(htmlToElement('<td></td>'))
+  }
+
+  // get slots and delete
+  ele.appendChild(htmlToElement(`<td>${charm.slots}</td>`))
+  const d = htmlToElement('<td>X</td>')
+  d.addEventListener('click', () => removeCharm(index))
+  ele.appendChild(d)
+
+  // add final element
+  const tbody = document.getElementById('charm-table')!.children[0]
+  tbody.appendChild(ele)
+}
+
+const addCharm = (charm: Charm, skillNames: SkillNameMap) => {
+  const i = UserCharmList.Instance.add(charm)
+  addTableElement(charm, i - 1, skillNames)
+  console.log(UserCharmList.Instance.get())
+}
+
+const removeCharm = (index: number) => {
+  UserCharmList.Instance.remove(index)
+  removeTableElement(index)
+  console.log(UserCharmList.Instance.get())
+}
+
+const onAddClick = (skillNames: SkillNameMap) => {
+  // parse data
+  const slots = parseInt((document.getElementById('charm-slots') as HTMLSelectElement).value)
+  const skills = [1, 2].map((x) => {
+    return {
+      id: parseInt((document.getElementById(`charm-skill-${x}-name`) as HTMLSelectElement).value),
+      points: parseInt((document.getElementById(`charm-skill-${x}-points`) as HTMLSelectElement).value),
+    }
+  })
+
+  // return if charm invalid
+  if (slots === 0 && !skills.some(validSkill)) {
+    return
+  }
+
+  // map to model
+  const charm: Charm = {
+    name: 'charm',
+    slots: slots as Slots,
+    category: EquipmentCategory.CHARM,
+    skills: new Map(skills
+      .filter(validSkill)
+      .map((skill) => {
+        return [skill.id, skill.points]
+      })),
+  }
+
+  // add
+  addCharm(charm, skillNames)
+}
+
+const attachControlListeners = (skillNames: SkillNameMap) => {
+  document.getElementById('charm-add')!.addEventListener('click', () => onAddClick(skillNames))
+}
 
 const populatePointsPickers = () => {
   const pickers = document.getElementsByClassName('charm-points-pick')
@@ -68,4 +163,5 @@ export const renderCharmPicker = (
   skillCategories: string[],
 ) => {
   populateCharmPicker(skillNames, skillActivation, skillCategories)
+  attachControlListeners(skillNames)
 }
