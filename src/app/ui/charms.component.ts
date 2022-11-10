@@ -7,14 +7,13 @@ import { htmlToElement } from './html.helper'
 import Slots from '../../data-provider/models/equipment/Slots'
 import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
 import GameID from '../../data-provider/models/GameId'
+import { range } from '../../helper/range.helper'
 
 /*
   TODO this file is the only file so far where I'm regretting this straightforward functional
   component approach, probably needs some refactoring at some point, I think moving different
   parts (picker vs table vs export) into own files would fix it already
 */
-
-const range = (start: number, end: number) => Array.from({ length: (end - start) }, (_, k) => k + start)
 
 const validSkill = (skill: {id: GameID, points: number}) => {
   return skill.points !== 0 && skill.id !== -1
@@ -31,7 +30,7 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
   // get real table elements
   for (const skill of Array.from(charm.skills.keys())) {
     ele.appendChild(htmlToElement(`<td>${skillNames.get(skill)}</td>`))
-    ele.appendChild(htmlToElement(`<td>${charm.skills.get(skill)}</td>`))
+    ele.appendChild(htmlToElement(`<td>${charm.skills.get(skill)!.points}</td>`))
   }
 
   // get placeholder table elements
