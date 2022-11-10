@@ -28,4 +28,9 @@ export default class UserCharmList {
   remove (index: number) {
     this.list = this.list.filter((_, i) => i !== index)
   }
+
+  /** serializes charm list as csv */
+  serialize () {
+    return this.list
+  }
 }

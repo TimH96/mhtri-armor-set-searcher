@@ -1,6 +1,7 @@
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 import Charm from '../../data-provider/models/equipment/Charm'
+import Skill from '../../data-provider/models/skills/Skill'
 import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
 import { htmlToElement } from './html.helper'
 import Slots from '../../data-provider/models/equipment/Slots'
@@ -82,10 +83,14 @@ const onAddClick = (skillNames: SkillNameMap) => {
     name: 'charm',
     slots: slots as Slots,
     category: EquipmentCategory.CHARM,
-    skills: new Map(skills
+    skills: new Map<GameID, Skill>(skills
       .filter(validSkill)
       .map((skill) => {
-        return [skill.id, skill.points]
+        return [skill.id, {
+          id: skill.id,
+          name: skillNames.get(skill.id)!,
+          points: skill.points,
+        }]
       })),
   }
 
