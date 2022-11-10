@@ -44,13 +44,13 @@
       <!-- navbar -->
       <div id="navbar-container">
         <ul class="navbar">
-          <li class="navbar-option navbar-selected">Search</li>
-          <li class="navbar-option navbar">Charms</li>
+          <li class="navbar-option" data-selection="0">Search</li>
+          <li class="navbar-option" data-selection="1">Charms</li>
         </ul>
       </div>
 
       <!-- search -->
-      <div id="search-container">
+      <div class="panel" id="search-container" data-panel-number="0">
         <!-- global settings -->
         <div id="search-global-settings">
           <ul>
@@ -84,6 +84,11 @@
 
         <!-- results -->
         <div id="search-results"></div>
+      </div>
+
+      <!-- charms -->
+      <div class="panel" id="charms-container" data-panel-number="1">
+        Hello World
       </div>
     </div>
     <script src="./index.ts"></script>

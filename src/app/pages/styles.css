@@ -87,7 +87,7 @@ ul {
 
 .navbar-selected {
   border-style: solid;
-  border-width: 1px 1px 3px 1px;
+  border-width: 1px 1px 2px 1px;
   border-color: var(--color-border) var(--color-border) var(--color-background);
   border-radius: 0.4em 0.4em 0 0;
   z-index: 3;
@@ -97,6 +97,10 @@ ul {
   background-color: var(--color-tab-hover);
   border-radius: 0.4em 0.4em 0 0;
   z-index: 3;
+}
+
+.panel-hide {
+  display: none;
 }
 
 #search-global-settings select {
