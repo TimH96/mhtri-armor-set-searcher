@@ -184,3 +184,8 @@ th {
 #charm-table th {
   background-color: var(--color-highlight);
 }
+
+.charm-delete {
+  cursor: pointer;
+  user-select: none;
+}

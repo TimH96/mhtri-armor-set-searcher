@@ -43,7 +43,7 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
 
   // get slots and delete
   ele.appendChild(htmlToElement(`<td>${charm.slots}</td>`))
-  const d = htmlToElement('<td>X</td>')
+  const d = htmlToElement('<td class="charm-delete">X</td>')
   d.addEventListener('click', () => removeCharm(index))
   ele.appendChild(d)
 
@@ -55,13 +55,11 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
 const addCharm = (charm: Charm, skillNames: SkillNameMap) => {
   const i = UserCharmList.Instance.add(charm)
   addTableElement(charm, i - 1, skillNames)
-  console.log(UserCharmList.Instance.get())
 }
 
 const removeCharm = (index: number) => {
   UserCharmList.Instance.remove(index)
   removeTableElement(index)
-  console.log(UserCharmList.Instance.get())
 }
 
 const onAddClick = (skillNames: SkillNameMap) => {
