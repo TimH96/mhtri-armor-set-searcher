@@ -15,6 +15,14 @@ import { range } from '../../helper/range.helper'
   parts (picker vs table vs export) into own files would fix it already
 */
 
+const saveToStorage = () => {
+  window.localStorage.setItem('charms', UserCharmList.Instance.serialize())
+}
+
+const getFromStorage = () => {
+  return window.localStorage.getItem('charms')
+}
+
 const validSkill = (skill: {id: GameID, points: number}) => {
   return skill.points !== 0 && skill.id !== -1
 }
@@ -22,6 +30,13 @@ const validSkill = (skill: {id: GameID, points: number}) => {
 const removeTableElement = (index: number) => {
   const ele = document.getElementsByClassName(`charm-${index}`)[0]
   ele.remove()
+}
+
+const populateCharmsFromCSV = (csv: string, skillNames: SkillNameMap) => {
+  UserCharmList.Instance.deserialize(csv, skillNames)
+  UserCharmList.Instance.get().forEach((charm, i) => {
+    addTableElement(charm, i, skillNames)
+  })
 }
 
 const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) => {
@@ -55,11 +70,13 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
 const addCharm = (charm: Charm, skillNames: SkillNameMap) => {
   const i = UserCharmList.Instance.add(charm)
   addTableElement(charm, i - 1, skillNames)
+  saveToStorage()
 }
 
 const removeCharm = (index: number) => {
   UserCharmList.Instance.remove(index)
   removeTableElement(index)
+  saveToStorage()
 }
 
 const onAddClick = (skillNames: SkillNameMap) => {
@@ -166,4 +183,9 @@ export const renderCharmPicker = (
 ) => {
   populateCharmPicker(skillNames, skillActivation, skillCategories)
   attachControlListeners(skillNames)
+
+  const savedCharms = getFromStorage()
+  if (savedCharms) {
+    populateCharmsFromCSV(savedCharms, skillNames)
+  }
 }
