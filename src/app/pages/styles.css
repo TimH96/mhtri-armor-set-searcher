@@ -155,6 +155,10 @@ ul {
   border-color: var(--color-border);
 }
 
+#charm-import {
+  margin-left: 2em;
+}
+
 .charm-skill-pick {
   width: 10em;
 }

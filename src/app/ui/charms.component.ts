@@ -39,8 +39,15 @@ const populateCharmsFromCSV = (csv: string, skillNames: SkillNameMap) => {
   })
 }
 
+const purgeTable = () => {
+  const entries = document.getElementsByClassName('charm-table-ele')
+  for (const entry of Array.from(entries)) {
+    entry.remove()
+  }
+}
+
 const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) => {
-  const ele = htmlToElement(`<tr class="charm-${index}" data-index="${index}"></tr>`)
+  const ele = htmlToElement(`<tr class="charm-table-ele charm-${index}" data-index="${index}"></tr>`)
 
   // get real table elements
   for (const skill of Array.from(charm.skills.keys())) {
@@ -77,6 +84,46 @@ const removeCharm = (index: number) => {
   UserCharmList.Instance.remove(index)
   removeTableElement(index)
   saveToStorage()
+}
+
+const onExportClick = () => {
+  const str = UserCharmList.Instance.serialize()
+  const blob = new Blob([str], { type: 'text/plain' })
+  const a = document.getElementById('charm-download') as HTMLAnchorElement
+  const url = window.URL.createObjectURL(blob)
+
+  a.href = url
+  a.download = 'charms.csv'
+  a.click()
+}
+
+const onImportClick = (e: MouseEvent) => {
+  e.preventDefault()
+
+  const inp = document.getElementById('charm-upload') as HTMLInputElement
+  inp.click()
+}
+
+const onFileUploaded = (skillNames: SkillNameMap) => {
+  const inp = document.getElementById('charm-upload') as HTMLInputElement
+
+  if (!inp.files) {
+    return
+  }
+
+  const file = inp.files[0]
+  file.text().then((text) => {
+    try {
+      UserCharmList.Instance.deserialize(text, skillNames)
+      saveToStorage()
+      purgeTable()
+      UserCharmList.Instance.get().forEach((charm, i) => {
+        addTableElement(charm, i, skillNames)
+      })
+    } catch {
+      alert('Could not process file')
+    }
+  })
 }
 
 const onAddClick = (skillNames: SkillNameMap) => {
@@ -116,6 +163,9 @@ const onAddClick = (skillNames: SkillNameMap) => {
 
 const attachControlListeners = (skillNames: SkillNameMap) => {
   document.getElementById('charm-add')!.addEventListener('click', () => onAddClick(skillNames))
+  document.getElementById('charm-export')!.addEventListener('click', () => onExportClick())
+  document.getElementById('charm-import')!.addEventListener('click', (e) => onImportClick(e))
+  document.getElementById('charm-upload')!.addEventListener('change', () => onFileUploaded(skillNames))
 }
 
 const populatePointsPickers = () => {
