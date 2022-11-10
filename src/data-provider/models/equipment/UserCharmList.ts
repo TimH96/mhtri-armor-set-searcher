@@ -1,3 +1,4 @@
+import { range } from '../../../helper/range.helper'
 import Charm from './Charm'
 
 export default class UserCharmList {
@@ -31,6 +32,24 @@ export default class UserCharmList {
 
   /** serializes charm list as csv */
   serialize () {
-    return this.list
+    return this.list.map((charm) => {
+      let s = []
+
+      const skillArray = Array.from(charm.skills.entries())
+      for (const skill of skillArray) {
+        s.push(`${skill[1].name},${skill[1].points},`)
+      }
+
+      const amountOfSkills = skillArray.length
+      // eslint-disable-next-line no-unused-vars
+      for (const _ in range(amountOfSkills, 2)) {
+        console.log("bla")
+        s.push(`,,`)
+      }
+
+      s.push(`${charm.slots}`)
+
+      return s.join("")
+    }).join("\n")
   }
 }
