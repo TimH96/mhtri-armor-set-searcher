@@ -2,7 +2,7 @@ import SkillActivationMap from '../../data-provider/models/skills/SkillActivatio
 import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 import { htmlToElement } from './html.helper'
 
-const range = (start: number, end: number) => Array.from({ length: (end - start) }, (v, k) => k + start)
+const range = (start: number, end: number) => Array.from({ length: (end - start) }, (_, k) => k + start)
 
 const populatePointsPickers = () => {
   const pickers = document.getElementsByClassName('charm-points-pick')
