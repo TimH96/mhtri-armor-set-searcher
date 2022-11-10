@@ -39,5 +39,5 @@ export const initiateNavbar = () => {
     li.addEventListener('click', () => onClick(ul, li))
   }
 
-  onClick(ul, ul.children[2])
+  onClick(ul, ul.children[0])
 }
