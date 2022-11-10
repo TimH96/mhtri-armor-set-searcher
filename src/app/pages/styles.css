@@ -143,3 +143,18 @@ ul {
 .highlighted {
   background-color: var(--color-highlighted-background);
 }
+
+#charm-picker {
+  padding-bottom: 0.4em;
+  border-width: 0 0 1px 0;
+  border-style: solid;
+  border-color: var(--color-border);
+}
+
+.charm-skill-pick {
+  width: 10em;
+}
+
+.charm-points-pick {
+  width: 3em;
+}

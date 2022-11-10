@@ -88,7 +88,49 @@
 
       <!-- charms -->
       <div class="panel" id="charms-container" data-panel-number="1">
-        Hello World
+        <!-- charm picker -->
+        <div id="charm-picker">
+          <ul>
+            <li>Add Charm</li>
+            <li>
+              <select
+                class="charm-skill-pick"
+                name="charm-skill-1-name"
+                id="charm-skill-1-name"
+              ></select>
+            </li>
+            <li>
+              <select
+                class="charm-points-pick"
+                name="charm-skill-1-points"
+                id="charm-skill-1-points"
+              ></select>
+            </li>
+            <li>
+              <select
+                class="charm-skill-pick"
+                name="charm-skill-2-name"
+                id="charm-skill-2-name"
+              ></select>
+            </li>
+            <li>
+              <select
+                class="charm-points-pick"
+                name="charm-skill-2-points"
+                id="charm-skill-2-points"
+              ></select>
+            </li>
+            <li>
+              <select name="charm-slots" id="charm-slots">
+                <option value="0">0 Slots</option>
+                <option value="1">1 Slots</option>
+                <option value="2">2 Slots</option>
+                <option value="3">3 Slots</option>
+              </select>
+            </li>
+            <li><button id="charm-add">Add</button></li>
+          </ul>
+        </div>
       </div>
     </div>
     <script src="./index.ts"></script>
