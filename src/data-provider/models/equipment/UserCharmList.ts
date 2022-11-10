@@ -43,7 +43,6 @@ export default class UserCharmList {
       const amountOfSkills = skillArray.length
       // eslint-disable-next-line no-unused-vars
       for (const _ in range(amountOfSkills, 2)) {
-        console.log("bla")
         s.push(`,,`)
       }
 
