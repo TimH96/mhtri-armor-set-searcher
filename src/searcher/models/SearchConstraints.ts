@@ -6,4 +6,5 @@ export default interface SearchConstraints {
     weaponSlots: Slots;
     armorType: ArmorType;
     skillActivations: SkillActivation[];
+    limit: number;
 }

@@ -11,6 +11,7 @@ const searchLogic = (data: DataInput) => {
     weaponSlots: globalSettings.weaponSlots,
     armorType: globalSettings.armorType,
     skillActivations: getSkillActivations(data),
+    limit: 200,
   }
 
   const result = search(data, searchParams)
