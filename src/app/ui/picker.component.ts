@@ -96,7 +96,7 @@ const attachClickListener = () => {
   }
 }
 
-/** render all components of skillpicker and attach listeners */
+/** render all components of skillpicker and attach handlers */
 const renderSkillPicker = (
   skillActivation: SkillActivationMap,
   skillCategories: string[],

@@ -23,6 +23,7 @@ const resetLogic = () => {
   resetSkillActivations()
 }
 
+/** attach handlers for control buttons */
 export const attachControlListeners = (data: DataInput) => {
   const searchBtn = document.getElementById('search-btn') as HTMLButtonElement
   const resetBtn = document.getElementById('reset-btn') as HTMLButtonElement
