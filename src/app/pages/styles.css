@@ -12,6 +12,10 @@
   --color-tab-hover: rgb(175, 175, 175);
 }
 
+table {
+  border-collapse: collapse;
+}
+
 body {
   background-color: var(--color-background);
   overflow-x: hidden;
@@ -157,4 +161,26 @@ ul {
 
 .charm-points-pick {
   width: 3em;
+}
+
+#charm-table {
+  margin-top: 2em;
+}
+
+#charm-table tr,
+td,
+th {
+  width: 6em;
+  text-align: center;
+  font-size: 1.1em;
+}
+
+#charm-table tr {
+  border-width: 1px 0;
+  border-color: var(--color-border);
+  border-style: solid;
+}
+
+#charm-table th {
+  background-color: var(--color-highlight);
 }
