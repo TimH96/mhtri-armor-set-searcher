@@ -95,7 +95,11 @@ if __name__ == "__main__":
     for (skill_name, line_number, skill_id, category) in skills:
         if skill_name in name_replacements:
             skill_name = name_replacements[skill_name]
-        skill_id_map[skill_id] = {"name": skill_name, "category": category}
+        skill_id_map[skill_id] = {
+            "name": skill_name,
+            "category": category,
+            "id": skill_id,
+        }
 
     # save files
     with open("./parsed-skill-map.json", "w") as f:
