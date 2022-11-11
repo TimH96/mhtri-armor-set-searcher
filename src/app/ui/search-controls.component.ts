@@ -18,6 +18,11 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
     limit: 200,
   }
 
+  if (searchParams.skillActivations.length === 0) {
+    alert('Please select at least one skill')
+    return
+  }
+
   const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams)
 
   // TODO build list

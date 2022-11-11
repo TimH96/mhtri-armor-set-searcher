@@ -142,20 +142,21 @@ const onAddClick = (skillNames: SkillNameMap) => {
   }
 
   // map to model
+  const skillsMap = new Map<GameID, Skill>(skills
+    .filter(validSkill)
+    .map((skill) => {
+      return [skill.id, {
+        id: skill.id,
+        name: skillNames.get(skill.id)!,
+        points: skill.points,
+      }]
+    }))
   const charm: Charm = {
-    name: 'charm',
+    name: UserCharmList.getCharmName(skillsMap, slots as Slots),
     slots: slots as Slots,
     category: EquipmentCategory.CHARM,
     rarity: 0,
-    skills: new Map<GameID, Skill>(skills
-      .filter(validSkill)
-      .map((skill) => {
-        return [skill.id, {
-          id: skill.id,
-          name: skillNames.get(skill.id)!,
-          points: skill.points,
-        }]
-      })),
+    skills: skillsMap,
   }
 
   // add

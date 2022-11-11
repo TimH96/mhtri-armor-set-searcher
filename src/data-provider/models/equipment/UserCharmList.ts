@@ -3,6 +3,7 @@ import Skill from '../skills/Skill'
 import SkillNameMap from '../skills/SkillNameMap'
 import Charm from './Charm'
 import EquipmentCategory from './EquipmentCategory'
+import EquipmentSkills from './EquipmentSkills'
 import Slots from './Slots'
 
 export default class UserCharmList {
@@ -17,6 +18,10 @@ export default class UserCharmList {
 
   public static get Instance () {
     return this._instance || (this._instance = new this())
+  }
+
+  public static getCharmName (skills: EquipmentSkills, slots: Slots): string {
+    return 'charm'
   }
 
   /** get the list of charms */
@@ -83,18 +88,19 @@ export default class UserCharmList {
           return skill
         })
 
+      const skillMap = new Map(skills.map((skill) => {
+        return [skill.id, {
+          id: skill.id,
+          name: skillNames.get(skill.id)!,
+          points: skill.points,
+        }]
+      }))
       const newCharm: Charm = {
-        name: 'charm',
+        name: UserCharmList.getCharmName(skillMap, slots as Slots),
         category: EquipmentCategory.CHARM,
         slots: slots as Slots,
         rarity: 0,
-        skills: new Map(skills.map((skill) => {
-          return [skill.id, {
-            id: skill.id,
-            name: skillNames.get(skill.id)!,
-            points: skill.points,
-          }]
-        })),
+        skills: skillMap,
       }
 
       newList.push(newCharm)
