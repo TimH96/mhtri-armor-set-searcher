@@ -4,10 +4,8 @@ if __name__ == "__main__":
     # read input
     with open("./parsed-armor.json") as f:
         armor = json.loads(f.read())
-    with open("./parsed-skills.json") as f:
-        decos = list(json.loads(f.read()))
     with open("./parsed-decos.json") as f:
-        skills = list(json.loads(f.read()))
+        decos = list(json.loads(f.read()))
     with open("./parsed-id-mapping.json") as f:
         id_map = json.loads(f.read())
 
@@ -56,7 +54,21 @@ if __name__ == "__main__":
             pieces_of_cat.append(modeled_piece)
         pieces_per_category.append(pieces_of_cat)
 
+    # iterate over decorations
+    new_decos = []
+    for d in decos:
+        new_s = {id_map[k]: v for (k, v) in d["skills"].items()}
+        modeled_deco = {
+            "name": d["name"],
+            "requiredSlots": d["slots"],
+            "skills": new_s,
+            "rarity": d["rarity"],
+        }
+        new_decos.append(modeled_deco)
+
     # save files
     for (i, cat_name) in enumerate(["head", "chest", "arms", "waist", "legs"]):
         with open(f"../data/{cat_name}.json", "w") as f:
             f.write(json.dumps(pieces_per_category[i], indent=4, sort_keys=True))
+    with open("../data/decorations.json", "w") as f:
+        f.write(json.dumps(new_decos, indent=4, sort_keys=True))
