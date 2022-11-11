@@ -196,6 +196,11 @@ const populateSkillsPickers = (
 
     // append skill options to optgroup
     skillActivation.forEach((activationList) => {
+      // continue if skill cant be activated -- Torso Up
+      if (activationList.length === 0) {
+        return
+      }
+
       const dummyActivation = activationList[0]
       const category = dummyActivation.category
       const skill = dummyActivation.requiredSkill
