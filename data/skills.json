@@ -1,1540 +1,1547 @@
 {
     "0": [
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Adrenaline +2",
             "requiredPoints": 15,
-            "requiredSkill": 0,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 0
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Adrenaline +1",
             "requiredPoints": 10,
-            "requiredSkill": 0,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 0
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Worrywart",
             "requiredPoints": -10,
-            "requiredSkill": 0,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 0
         }
     ],
     "1": [
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Fortify",
             "requiredPoints": 10,
-            "requiredSkill": 1,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 1
         }
     ],
     "2": [
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Attack Up (L)",
             "requiredPoints": 20,
-            "requiredSkill": 2,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 2
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Attack Up (M)",
             "requiredPoints": 15,
-            "requiredSkill": 2,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 2
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Attack Up (S)",
             "requiredPoints": 10,
-            "requiredSkill": 2,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 2
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Attack Down (S)",
             "requiredPoints": -10,
-            "requiredSkill": 2,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 2
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Attack Down (M)",
             "requiredPoints": -15,
-            "requiredSkill": 2,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 2
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Attack Down (L)",
             "requiredPoints": -20,
-            "requiredSkill": 2,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 2
         }
     ],
     "3": [
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Critical Eye +3",
             "requiredPoints": 20,
-            "requiredSkill": 3,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 3
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Critical Eye +2",
             "requiredPoints": 15,
-            "requiredSkill": 3,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 3
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Critical Eye +1",
             "requiredPoints": 10,
-            "requiredSkill": 3,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 3
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Critical Eye -1",
             "requiredPoints": -10,
-            "requiredSkill": 3,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 3
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Critical Eye -2",
             "requiredPoints": -15,
-            "requiredSkill": 3,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 3
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Critical Eye -3",
             "requiredPoints": -20,
-            "requiredSkill": 3,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 3
         }
     ],
     "4": [
         {
-            "name": "Element Attack Up",
-            "requiredPoints": 10,
-            "requiredSkill": 4,
+            "category": 0,
             "isPositive": true,
-            "category": 0
+            "name": "Element Atk Up",
+            "requiredPoints": 10,
+            "requiredSkill": 4
         },
         {
-            "name": "Element Attack Down",
-            "requiredPoints": -10,
-            "requiredSkill": 4,
+            "category": 0,
             "isPositive": false,
-            "category": 0
+            "name": "Element Atk Down",
+            "requiredPoints": -10,
+            "requiredSkill": 4
         }
     ],
     "5": [
         {
-            "name": "Status Attack Up",
-            "requiredPoints": 10,
-            "requiredSkill": 5,
+            "category": 0,
             "isPositive": true,
-            "category": 0
+            "name": "Status Atk Up",
+            "requiredPoints": 10,
+            "requiredSkill": 5
         },
         {
-            "name": "Status Attack Down",
-            "requiredPoints": -10,
-            "requiredSkill": 5,
+            "category": 0,
             "isPositive": false,
-            "category": 0
+            "name": "Status Atk Down",
+            "requiredPoints": -10,
+            "requiredSkill": 5
         }
     ],
     "6": [
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Defense Up (L)",
             "requiredPoints": 20,
-            "requiredSkill": 6,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 6
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Defense Up (M)",
             "requiredPoints": 15,
-            "requiredSkill": 6,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 6
         },
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Defense Up (S)",
             "requiredPoints": 10,
-            "requiredSkill": 6,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 6
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Defense Down (S)",
             "requiredPoints": -10,
-            "requiredSkill": 6,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 6
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Defense Down (M)",
             "requiredPoints": -15,
-            "requiredSkill": 6,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 6
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Defense Down (L)",
             "requiredPoints": -20,
-            "requiredSkill": 6,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 6
         }
     ],
     "7": [
         {
+            "category": 0,
+            "isPositive": true,
             "name": "Divine Blessing",
             "requiredPoints": 10,
-            "requiredSkill": 7,
-            "isPositive": true,
-            "category": 0
+            "requiredSkill": 7
         },
         {
+            "category": 0,
+            "isPositive": false,
             "name": "Demonic Blessing",
             "requiredPoints": -10,
-            "requiredSkill": 7,
-            "isPositive": false,
-            "category": 0
+            "requiredSkill": 7
         }
     ],
     "8": [
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Health +50",
             "requiredPoints": 15,
-            "requiredSkill": 8,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 8
         },
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Health +20",
             "requiredPoints": 10,
-            "requiredSkill": 8,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 8
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Health -10",
             "requiredPoints": -10,
-            "requiredSkill": 8,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 8
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Health -30",
             "requiredPoints": -15,
-            "requiredSkill": 8,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 8
         }
     ],
     "9": [
         {
-            "name": "Recovery Speed +2",
+            "category": 1,
+            "isPositive": true,
+            "name": "Recovery Spd +2",
             "requiredPoints": 15,
-            "requiredSkill": 9,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 9
         },
         {
-            "name": "Recovery Speed +1",
+            "category": 1,
+            "isPositive": true,
+            "name": "Recovery Spd +1",
             "requiredPoints": 10,
-            "requiredSkill": 9,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 9
         },
         {
-            "name": "Recovery Speed -1",
+            "category": 1,
+            "isPositive": false,
+            "name": "Recovery Spd -1",
             "requiredPoints": -10,
-            "requiredSkill": 9,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 9
         },
         {
-            "name": "Recovery Speed -2",
-            "requiredPoints": -15,
-            "requiredSkill": 9,
+            "category": 1,
             "isPositive": false,
-            "category": 1
+            "name": "Recovery Spd -2",
+            "requiredPoints": -15,
+            "requiredSkill": 9
         }
     ],
     "10": [
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Constitution +2",
             "requiredPoints": 15,
-            "requiredSkill": 10,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 10
         },
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Constitution +1",
             "requiredPoints": 10,
-            "requiredSkill": 10,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 10
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Constitution -1",
             "requiredPoints": -10,
-            "requiredSkill": 10,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 10
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Constitution -2",
             "requiredPoints": -15,
-            "requiredSkill": 10,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 10
         }
     ],
     "11": [
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Marathon Runner",
             "requiredPoints": 10,
-            "requiredSkill": 11,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 11
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Short Sprinter",
             "requiredPoints": -10,
-            "requiredSkill": 11,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 11
         }
     ],
     "12": [
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Negate Hunger",
             "requiredPoints": 15,
-            "requiredSkill": 12,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 12
         },
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Halve Hunger",
             "requiredPoints": 10,
-            "requiredSkill": 12,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 12
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Raise Hunger",
             "requiredPoints": -10,
-            "requiredSkill": 12,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 12
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Double Hunger",
             "requiredPoints": -15,
-            "requiredSkill": 12,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 12
         }
     ],
     "13": [
         {
+            "category": 1,
+            "isPositive": true,
             "name": "Oxygen Up",
             "requiredPoints": 10,
-            "requiredSkill": 13,
-            "isPositive": true,
-            "category": 1
+            "requiredSkill": 13
         },
         {
+            "category": 1,
+            "isPositive": false,
             "name": "Oxygen Down",
             "requiredPoints": -10,
-            "requiredSkill": 13,
-            "isPositive": false,
-            "category": 1
+            "requiredSkill": 13
         }
     ],
     "14": [
         {
+            "category": 2,
+            "isPositive": true,
             "name": "Evasion +2",
             "requiredPoints": 15,
-            "requiredSkill": 14,
-            "isPositive": true,
-            "category": 2
+            "requiredSkill": 14
         },
         {
+            "category": 2,
+            "isPositive": true,
             "name": "Evasion +1",
             "requiredPoints": 10,
-            "requiredSkill": 14,
-            "isPositive": true,
-            "category": 2
+            "requiredSkill": 14
         }
     ],
     "15": [
         {
+            "category": 2,
+            "isPositive": true,
             "name": "Evasion Up",
             "requiredPoints": 15,
-            "requiredSkill": 15,
-            "isPositive": true,
-            "category": 2
+            "requiredSkill": 15
         }
     ],
     "16": [
         {
+            "category": 2,
+            "isPositive": true,
             "name": "Guard +2",
             "requiredPoints": 15,
-            "requiredSkill": 16,
-            "isPositive": true,
-            "category": 2
+            "requiredSkill": 16
         },
         {
+            "category": 2,
+            "isPositive": true,
             "name": "Guard +1",
             "requiredPoints": 10,
-            "requiredSkill": 16,
-            "isPositive": true,
-            "category": 2
+            "requiredSkill": 16
         },
         {
+            "category": 2,
+            "isPositive": false,
             "name": "Guard -1",
             "requiredPoints": -10,
-            "requiredSkill": 16,
-            "isPositive": false,
-            "category": 2
+            "requiredSkill": 16
         }
     ],
     "17": [
         {
+            "category": 2,
+            "isPositive": true,
             "name": "Guard Boost",
             "requiredPoints": 10,
-            "requiredSkill": 17,
-            "isPositive": true,
-            "category": 2
+            "requiredSkill": 17
         }
     ],
     "18": [
         {
-            "name": "Auto Guard",
-            "requiredPoints": 10,
-            "requiredSkill": 18,
+            "category": 2,
             "isPositive": true,
-            "category": 2
+            "name": "Auto-Guard",
+            "requiredPoints": 10,
+            "requiredSkill": 18
         }
     ],
     "19": [
         {
+            "category": 3,
+            "isPositive": true,
             "name": "Pro Transporter",
             "requiredPoints": 10,
-            "requiredSkill": 19,
-            "isPositive": true,
-            "category": 3
+            "requiredSkill": 19
         }
     ],
     "20": [
         {
+            "category": 3,
+            "isPositive": true,
             "name": "Olympic Swimmer",
             "requiredPoints": 10,
-            "requiredSkill": 20,
-            "isPositive": true,
-            "category": 3
+            "requiredSkill": 20
         },
         {
+            "category": 3,
+            "isPositive": false,
             "name": "Doggy Paddler",
             "requiredPoints": -10,
-            "requiredSkill": 20,
-            "isPositive": false,
-            "category": 3
+            "requiredSkill": 20
         }
     ],
     "21": [
         {
-            "name": "High Grade Earplugs",
-            "requiredPoints": 15,
-            "requiredSkill": 21,
+            "category": 4,
             "isPositive": true,
-            "category": 4
+            "name": "HG Earplugs",
+            "requiredPoints": 15,
+            "requiredSkill": 21
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Earplugs",
             "requiredPoints": 10,
-            "requiredSkill": 21,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 21
         }
     ],
     "22": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Negate Poison",
             "requiredPoints": 10,
-            "requiredSkill": 22,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 22
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Double Poison",
             "requiredPoints": -10,
-            "requiredSkill": 22,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 22
         }
     ],
     "23": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Negate Paralysis",
             "requiredPoints": 10,
-            "requiredSkill": 23,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 23
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Double Paralysis",
             "requiredPoints": -10,
-            "requiredSkill": 23,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 23
         }
     ],
     "24": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Negate Sleep",
             "requiredPoints": 10,
-            "requiredSkill": 24,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 24
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Double Sleep",
             "requiredPoints": -10,
-            "requiredSkill": 24,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 24
         }
     ],
     "25": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Negate Stun",
             "requiredPoints": 15,
-            "requiredSkill": 25,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 25
         },
         {
-            "name": "Halves Stun",
+            "category": 4,
+            "isPositive": true,
+            "name": "Halve Stun",
             "requiredPoints": 10,
-            "requiredSkill": 25,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 25
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Double Stun",
             "requiredPoints": -10,
-            "requiredSkill": 25,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 25
         }
     ],
     "26": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Heat Cancel (Hi)",
             "requiredPoints": 15,
-            "requiredSkill": 26,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 26
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Heat Cancel (Lo)",
             "requiredPoints": 10,
-            "requiredSkill": 26,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 26
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Heat Surge (Lo)",
             "requiredPoints": -10,
-            "requiredSkill": 26,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 26
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Heat Surge (Hi)",
             "requiredPoints": -15,
-            "requiredSkill": 26,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 26
         }
     ],
     "27": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Cold Cancel (Hi)",
             "requiredPoints": 15,
-            "requiredSkill": 27,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 27
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Cold Cancel (Lo)",
             "requiredPoints": 10,
-            "requiredSkill": 27,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 27
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Cold Surge (Lo)",
             "requiredPoints": -10,
-            "requiredSkill": 27,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 27
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Cold Surge (Hi)",
             "requiredPoints": -15,
-            "requiredSkill": 27,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 27
         }
     ],
     "28": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Current Res (Hi)",
             "requiredPoints": 15,
-            "requiredSkill": 28,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 28
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Current Res (Lo)",
             "requiredPoints": 10,
-            "requiredSkill": 28,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 28
         }
     ],
     "29": [
         {
-            "name": "Wind Res (Hi)",
-            "requiredPoints": 15,
-            "requiredSkill": 29,
+            "category": 4,
             "isPositive": true,
-            "category": 4
+            "name": "Windproof (Hi)",
+            "requiredPoints": 15,
+            "requiredSkill": 29
         },
         {
-            "name": "Wind Res (Lo)",
-            "requiredPoints": 10,
-            "requiredSkill": 29,
+            "category": 4,
             "isPositive": true,
-            "category": 4
+            "name": "Windproof (Lo)",
+            "requiredPoints": 10,
+            "requiredSkill": 29
         }
     ],
     "30": [
         {
-            "name": "Tremor Res",
-            "requiredPoints": 10,
-            "requiredSkill": 30,
+            "category": 4,
             "isPositive": true,
-            "category": 4
+            "name": "Tremor-Proof",
+            "requiredPoints": 10,
+            "requiredSkill": 30
         }
     ],
     "31": [
         {
-            "name": "Mud/Snow",
-            "requiredPoints": 10,
-            "requiredSkill": 31,
+            "category": 4,
             "isPositive": true,
-            "category": 4
+            "name": "Negate Mud/Snow",
+            "requiredPoints": 10,
+            "requiredSkill": 31
         }
     ],
     "32": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Fire Res +20",
             "requiredPoints": 20,
-            "requiredSkill": 32,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 32
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Fire Res +15",
             "requiredPoints": 15,
-            "requiredSkill": 32,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 32
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Fire Res +10",
             "requiredPoints": 10,
-            "requiredSkill": 32,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 32
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Fire Res -10",
             "requiredPoints": -10,
-            "requiredSkill": 32,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 32
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Fire Res -15",
             "requiredPoints": -15,
-            "requiredSkill": 32,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 32
         }
     ],
     "33": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Water Res +20",
             "requiredPoints": 20,
-            "requiredSkill": 33,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 33
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Water Res +15",
             "requiredPoints": 15,
-            "requiredSkill": 33,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 33
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Water Res +10",
             "requiredPoints": 10,
-            "requiredSkill": 33,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 33
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Water Res -10",
             "requiredPoints": -10,
-            "requiredSkill": 33,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 33
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Water Res -15",
             "requiredPoints": -15,
-            "requiredSkill": 33,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 33
         }
     ],
     "34": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Thunder Res +20",
             "requiredPoints": 20,
-            "requiredSkill": 34,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 34
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Thunder Res +15",
             "requiredPoints": 15,
-            "requiredSkill": 34,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 34
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Thunder Res +10",
             "requiredPoints": 10,
-            "requiredSkill": 34,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 34
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Thunder Res -10",
             "requiredPoints": -10,
-            "requiredSkill": 34,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 34
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Thunder Res -15",
             "requiredPoints": -15,
-            "requiredSkill": 34,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 34
         }
     ],
     "35": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Ice Res +20",
             "requiredPoints": 20,
-            "requiredSkill": 35,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 35
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Ice Res +15",
             "requiredPoints": 15,
-            "requiredSkill": 35,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 35
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Ice Res +10",
             "requiredPoints": 10,
-            "requiredSkill": 35,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 35
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Ice Res -10",
             "requiredPoints": -10,
-            "requiredSkill": 35,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 35
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Ice Res -15",
             "requiredPoints": -15,
-            "requiredSkill": 35,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 35
         }
     ],
     "36": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Dragon Res +20",
             "requiredPoints": 20,
-            "requiredSkill": 36,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 36
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Dragon Res +15",
             "requiredPoints": 15,
-            "requiredSkill": 36,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 36
         },
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Dragon Res +10",
             "requiredPoints": 10,
-            "requiredSkill": 36,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 36
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Dragon Res -10",
             "requiredPoints": -10,
-            "requiredSkill": 36,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 36
         },
         {
+            "category": 4,
+            "isPositive": false,
             "name": "Dragon Res -15",
             "requiredPoints": -15,
-            "requiredSkill": 36,
-            "isPositive": false,
-            "category": 4
+            "requiredSkill": 36
         }
     ],
     "37": [
         {
+            "category": 4,
+            "isPositive": true,
             "name": "Blightproof",
             "requiredPoints": 10,
-            "requiredSkill": 37,
-            "isPositive": true,
-            "category": 4
+            "requiredSkill": 37
         }
     ],
     "38": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Trap Master",
             "requiredPoints": 10,
-            "requiredSkill": 38,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 38
         }
     ],
     "39": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Bombardier",
             "requiredPoints": 10,
-            "requiredSkill": 39,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 39
         }
     ],
     "40": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Combination +45%",
             "requiredPoints": 20,
-            "requiredSkill": 40,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 40
         },
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Combination +25%",
             "requiredPoints": 15,
-            "requiredSkill": 40,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 40
         },
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Combination +15%",
             "requiredPoints": 10,
-            "requiredSkill": 40,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 40
         },
         {
-            "name": "Combination -5%",
-            "requiredPoints": -15,
-            "requiredSkill": 40,
+            "category": 5,
             "isPositive": false,
-            "category": 5
+            "name": "Combination -5%",
+            "requiredPoints": -10,
+            "requiredSkill": 40
         },
         {
+            "category": 5,
+            "isPositive": false,
             "name": "Combination -10%",
             "requiredPoints": -15,
-            "requiredSkill": 40,
-            "isPositive": false,
-            "category": 5
+            "requiredSkill": 40
         },
         {
+            "category": 5,
+            "isPositive": false,
             "name": "Combination -15%",
             "requiredPoints": -20,
-            "requiredSkill": 40,
-            "isPositive": false,
-            "category": 5
+            "requiredSkill": 40
         }
     ],
     "41": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Combination Pro",
             "requiredPoints": 10,
-            "requiredSkill": 41,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 41
         }
     ],
     "42": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Item Use Up",
             "requiredPoints": 10,
-            "requiredSkill": 42,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 42
         },
         {
+            "category": 5,
+            "isPositive": false,
             "name": "Item Use Down",
             "requiredPoints": -10,
-            "requiredSkill": 42,
-            "isPositive": false,
-            "category": 5
+            "requiredSkill": 42
         }
     ],
     "43": [
         {
-            "name": "Wide Range +2",
-            "requiredPoints": 20,
-            "requiredSkill": 43,
+            "category": 5,
             "isPositive": true,
-            "category": 5
+            "name": "Wide-Range +2",
+            "requiredPoints": 20,
+            "requiredSkill": 43
         },
         {
-            "name": "Wide Range +1",
-            "requiredPoints": 10,
-            "requiredSkill": 43,
+            "category": 5,
             "isPositive": true,
-            "category": 5
+            "name": "Wide-Range +1",
+            "requiredPoints": 10,
+            "requiredSkill": 43
         }
     ],
     "44": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Speed Eating +2",
             "requiredPoints": 15,
-            "requiredSkill": 44,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 44
         },
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Speed Eating +1",
             "requiredPoints": 10,
-            "requiredSkill": 44,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 44
         },
         {
+            "category": 5,
+            "isPositive": false,
             "name": "Slow Eater",
             "requiredPoints": -10,
-            "requiredSkill": 44,
-            "isPositive": false,
-            "category": 5
+            "requiredSkill": 44
         }
     ],
     "45": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Recovery Up",
             "requiredPoints": 10,
-            "requiredSkill": 45,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 45
         },
         {
+            "category": 5,
+            "isPositive": false,
             "name": "Recovery Down",
             "requiredPoints": -10,
-            "requiredSkill": 45,
-            "isPositive": false,
-            "category": 5
+            "requiredSkill": 45
         }
     ],
     "46": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Scavenger",
             "requiredPoints": 15,
-            "requiredSkill": 46,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 46
         },
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Gourmand",
             "requiredPoints": 10,
-            "requiredSkill": 46,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 46
         }
     ],
     "47": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "BBQ Expert",
             "requiredPoints": 10,
-            "requiredSkill": 47,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 47
         }
     ],
     "48": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Fishing Expert",
             "requiredPoints": 10,
-            "requiredSkill": 48,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 48
         }
     ],
     "49": [
         {
+            "category": 5,
+            "isPositive": true,
             "name": "Dung Bomb Expert",
             "requiredPoints": 10,
-            "requiredSkill": 49,
-            "isPositive": true,
-            "category": 5
+            "requiredSkill": 49
         }
     ],
     "50": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Sharpness +1",
             "requiredPoints": 15,
-            "requiredSkill": 50,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 50
         }
     ],
     "51": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Critical Draw",
             "requiredPoints": 10,
-            "requiredSkill": 51,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 51
         }
     ],
     "52": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Punishing Draw",
             "requiredPoints": 10,
-            "requiredSkill": 52,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 52
         }
     ],
     "53": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Focus",
             "requiredPoints": 10,
-            "requiredSkill": 53,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 53
         },
         {
+            "category": 6,
+            "isPositive": false,
             "name": "Distraction",
             "requiredPoints": -10,
-            "requiredSkill": 53,
-            "isPositive": false,
-            "category": 6
+            "requiredSkill": 53
         }
     ],
     "54": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Mind's Eye",
             "requiredPoints": 10,
-            "requiredSkill": 54,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 54
         }
     ],
     "55": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Razor Sharp",
             "requiredPoints": 10,
-            "requiredSkill": 55,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 55
         },
         {
+            "category": 6,
+            "isPositive": false,
             "name": "Blunt Edge",
             "requiredPoints": -10,
-            "requiredSkill": 55,
-            "isPositive": false,
-            "category": 6
+            "requiredSkill": 55
         }
     ],
     "56": [
         {
-            "name": "Spd Sharpening",
-            "requiredPoints": 10,
-            "requiredSkill": 56,
+            "category": 6,
             "isPositive": true,
-            "category": 6
+            "name": "Speed Sharpening",
+            "requiredPoints": 10,
+            "requiredSkill": 56
         },
         {
+            "category": 6,
+            "isPositive": false,
             "name": "Slow Sharpening",
             "requiredPoints": -10,
-            "requiredSkill": 56,
-            "isPositive": false,
-            "category": 6
+            "requiredSkill": 56
         }
     ],
     "57": [
         {
+            "category": 6,
+            "isPositive": true,
             "name": "Awaken",
             "requiredPoints": 15,
-            "requiredSkill": 57,
-            "isPositive": true,
-            "category": 6
+            "requiredSkill": 57
         }
     ],
     "58": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Pierce S Boost",
             "requiredPoints": 10,
-            "requiredSkill": 58,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 58
         }
     ],
     "59": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Pierce S All Up",
             "requiredPoints": 15,
-            "requiredSkill": 59,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 59
         },
         {
-            "name": "Pierce S Lvl Up",
-            "requiredPoints": 10,
-            "requiredSkill": 59,
+            "category": 7,
             "isPositive": true,
-            "category": 7
+            "name": "Pierce S Lv1 Up",
+            "requiredPoints": 10,
+            "requiredSkill": 59
         }
     ],
     "60": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Pellet S Boost",
             "requiredPoints": 10,
-            "requiredSkill": 60,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 60
         }
     ],
     "61": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Pellet S All Up",
             "requiredPoints": 15,
-            "requiredSkill": 61,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 61
         },
         {
-            "name": "Pellet S Lvl Up",
-            "requiredPoints": 10,
-            "requiredSkill": 61,
+            "category": 7,
             "isPositive": true,
-            "category": 7
+            "name": "Pellet S Lv1 Up",
+            "requiredPoints": 10,
+            "requiredSkill": 61
         }
     ],
     "62": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Normal S Boost",
             "requiredPoints": 10,
-            "requiredSkill": 62,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 62
         }
     ],
     "63": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Normal S All Up",
             "requiredPoints": 10,
-            "requiredSkill": 63,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 63
         }
     ],
     "64": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Crag S All Up",
             "requiredPoints": 15,
-            "requiredSkill": 64,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 64
         },
         {
-            "name": "Crag S Lvl Up",
-            "requiredPoints": 10,
-            "requiredSkill": 64,
+            "category": 7,
             "isPositive": true,
-            "category": 7
+            "name": "Crag S Lv1 Up",
+            "requiredPoints": 10,
+            "requiredSkill": 64
         }
     ],
     "65": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Clust S All Up",
             "requiredPoints": 15,
-            "requiredSkill": 65,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 65
         },
         {
-            "name": "Clust S Lvl Up",
-            "requiredPoints": 10,
-            "requiredSkill": 65,
+            "category": 7,
             "isPositive": true,
-            "category": 7
+            "name": "Clust S Lv1 Up",
+            "requiredPoints": 10,
+            "requiredSkill": 65
         }
     ],
     "66": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Load Up",
             "requiredPoints": 15,
-            "requiredSkill": 66,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 66
         }
     ],
     "67": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Bonus Shot",
             "requiredPoints": 10,
-            "requiredSkill": 67,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 67
         }
     ],
     "68": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Recoil Down +3",
             "requiredPoints": 20,
-            "requiredSkill": 68,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 68
         },
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Recoil Down +2",
             "requiredPoints": 15,
-            "requiredSkill": 68,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 68
         },
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Recoil Down +1",
             "requiredPoints": 10,
-            "requiredSkill": 68,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 68
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Recoil Down -1",
             "requiredPoints": -10,
-            "requiredSkill": 68,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 68
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Recoil Down -2",
             "requiredPoints": -15,
-            "requiredSkill": 68,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 68
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Recoil Down -3",
             "requiredPoints": -20,
-            "requiredSkill": 68,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 68
         }
     ],
     "69": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Reload Speed +3",
             "requiredPoints": 20,
-            "requiredSkill": 69,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 69
         },
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Reload Speed +2",
             "requiredPoints": 15,
-            "requiredSkill": 69,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 69
         },
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Reload Speed +1",
             "requiredPoints": 10,
-            "requiredSkill": 69,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 69
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Reload Speed -1",
             "requiredPoints": -10,
-            "requiredSkill": 69,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 69
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Reload Speed -2",
             "requiredPoints": -15,
-            "requiredSkill": 69,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 69
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Reload Speed -3",
             "requiredPoints": -20,
-            "requiredSkill": 69,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 69
         }
     ],
     "70": [
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Steadiness +2",
             "requiredPoints": 15,
-            "requiredSkill": 70,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 70
         },
         {
+            "category": 7,
+            "isPositive": true,
             "name": "Steadiness +1",
             "requiredPoints": 10,
-            "requiredSkill": 70,
-            "isPositive": true,
-            "category": 7
+            "requiredSkill": 70
         },
         {
+            "category": 7,
+            "isPositive": false,
             "name": "Steadiness -1",
             "requiredPoints": -10,
-            "requiredSkill": 70,
-            "isPositive": false,
-            "category": 7
+            "requiredSkill": 70
         }
     ],
     "71": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Farsight",
             "requiredPoints": 10,
-            "requiredSkill": 71,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 71
+        },
+        {
+            "category": 8,
+            "isPositive": false,
+            "name": "Nearsight",
+            "requiredPoints": -10,
+            "requiredSkill": 71
         }
     ],
     "72": [
         {
-            "name": "Autotractker",
-            "requiredPoints": 15,
-            "requiredSkill": 72,
+            "category": 8,
             "isPositive": true,
-            "category": 8
+            "name": "Autotracker",
+            "requiredPoints": 15,
+            "requiredSkill": 72
         },
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Detect",
             "requiredPoints": 10,
-            "requiredSkill": 72,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 72
         }
     ],
     "73": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Capture Guru",
             "requiredPoints": 10,
-            "requiredSkill": 73,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 73
         }
     ],
     "74": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Capture Expert",
             "requiredPoints": 10,
-            "requiredSkill": 74,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 74
         }
     ],
     "75": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Great Luck",
             "requiredPoints": 15,
-            "requiredSkill": 75,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 75
         },
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Good Luck",
             "requiredPoints": 10,
-            "requiredSkill": 75,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 75
         },
         {
+            "category": 8,
+            "isPositive": false,
             "name": "Bad Luck",
             "requiredPoints": -10,
-            "requiredSkill": 75,
-            "isPositive": false,
-            "category": 8
+            "requiredSkill": 75
         },
         {
+            "category": 8,
+            "isPositive": false,
             "name": "Horrible Luck",
             "requiredPoints": -15,
-            "requiredSkill": 75,
-            "isPositive": false,
-            "category": 8
+            "requiredSkill": 75
         }
     ],
     "76": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Carving Master",
             "requiredPoints": 15,
-            "requiredSkill": 76,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 76
         },
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Carving Pro",
             "requiredPoints": 10,
-            "requiredSkill": 76,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 76
         }
     ],
     "77": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Gathering +2",
             "requiredPoints": 15,
-            "requiredSkill": 77,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 77
         },
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Gathering +1",
             "requiredPoints": 10,
-            "requiredSkill": 77,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 77
         },
         {
+            "category": 8,
+            "isPositive": false,
             "name": "Gathering -1",
             "requiredPoints": -10,
-            "requiredSkill": 77,
-            "isPositive": false,
-            "category": 8
+            "requiredSkill": 77
         }
     ],
     "78": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Speed Gatherer",
             "requiredPoints": 10,
-            "requiredSkill": 78,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 78
         }
     ],
     "79": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Divine Whim",
             "requiredPoints": 15,
-            "requiredSkill": 79,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 79
         },
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Spirit's Whim",
             "requiredPoints": 10,
-            "requiredSkill": 79,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 79
         },
         {
+            "category": 8,
+            "isPositive": false,
             "name": "Spectre's Whim",
             "requiredPoints": -10,
-            "requiredSkill": 79,
-            "isPositive": false,
-            "category": 8
+            "requiredSkill": 79
         },
         {
+            "category": 8,
+            "isPositive": false,
             "name": "Devil's Whim",
             "requiredPoints": -15,
-            "requiredSkill": 79,
-            "isPositive": false,
-            "category": 8
+            "requiredSkill": 79
         }
     ],
     "80": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Sneak",
             "requiredPoints": 10,
-            "requiredSkill": 80,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 80
         },
         {
+            "category": 8,
+            "isPositive": false,
             "name": "Taunt",
             "requiredPoints": -10,
-            "requiredSkill": 80,
-            "isPositive": false,
-            "category": 8
+            "requiredSkill": 80
         }
     ],
     "81": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Flaming Aura",
             "requiredPoints": 10,
-            "requiredSkill": 81,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 81
         }
     ],
     "82": [
         {
+            "category": 8,
+            "isPositive": true,
             "name": "Anti-Theft",
             "requiredPoints": 10,
-            "requiredSkill": 82,
-            "isPositive": true,
-            "category": 8
+            "requiredSkill": 82
         }
     ]
 }
