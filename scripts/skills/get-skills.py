@@ -109,9 +109,9 @@ if __name__ == "__main__":
         skill_activation_map[id].append(activation)
 
     # save files
-    with open("../data/skill-names.json", "w") as f:
+    with open("../../data/skill-names.json", "w") as f:
         f.write(json.dumps(skill_name_map, indent=4))
-    with open("../data/skills.json", "w") as f:
+    with open("../../data/skills.json", "w") as f:
         f.write(json.dumps(skill_activation_map, indent=4))
-    with open("../data/skill-categories.json", "w") as f:
+    with open("../../data/skill-categories.json", "w") as f:
         f.write(json.dumps(categories, indent=4))
