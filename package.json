@@ -3,7 +3,12 @@
   "version": "1.0.0",
   "description": "web-based armor set searcher for Monster Hunter Tri",
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TimH96/mhtri-armor-set-searcher.git"
+  },
   "files": [
+    "data/",
     "src/"
   ],
   "scripts": {
