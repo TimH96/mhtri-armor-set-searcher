@@ -108,11 +108,9 @@ const findSets = (
   charms: Charm[],
   constraints: SearchConstraints,
 ) => {
-  
-
-  console.log({armorPieces})
-  console.log({decorations})
-  console.log({charms})
+  console.log({ armorPieces })
+  console.log({ decorations })
+  console.log({ charms })
 }
 
 const search = async (

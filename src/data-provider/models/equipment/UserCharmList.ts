@@ -21,7 +21,10 @@ export default class UserCharmList {
   }
 
   public static getCharmName (skills: EquipmentSkills, slots: Slots): string {
-    return 'charm'
+    const skillStrings = Array.from(skills.values()).map(s => `${s.name}:${s.points}`)
+    const slotString = slots !== 0 ? `${slots} Slots` : ''
+
+    return [...skillStrings, slotString].join(' ')
   }
 
   /** get the list of charms */
