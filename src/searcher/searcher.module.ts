@@ -96,19 +96,21 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
   const torsoUpPiece = sorted.find(p => p.skills.get(TORSO_UP_ID) !== undefined)
 
   // return list of pieces with wanted skills, with slots, or with torso up
-  const result = pieces
+  const result = sorted
     .filter(x => filterHasSkill(x, skills))
     .concat(...genericSlotPieces)
   return torsoUpPiece ? result.concat(torsoUpPiece) : result
 }
 
 const findSets = (
-  armoritems: ArmorPiece[][],
+  armorPieces: ArmorPiece[][],
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
 ) => {
-  console.log({armoritems})
+  
+
+  console.log({armorPieces})
   console.log({decorations})
   console.log({charms})
 }
