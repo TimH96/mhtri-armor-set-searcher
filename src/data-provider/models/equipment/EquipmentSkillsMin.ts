@@ -1,6 +1,5 @@
 import GameID from '../GameId'
-import SkillMin from '../skills/SkillMin'
 
-type EquipmentSkillsMin = Map<GameID, SkillMin>;
+type EquipmentSkillsMin = Map<GameID, number>;
 
 export default EquipmentSkillsMin

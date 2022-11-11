@@ -1,5 +1,7 @@
+/* eslint-disable no-undef */
 import ArmorPiece from './models/equipment/ArmorPiece'
 import Decoration from './models/equipment/Decoration'
+import EquipmentSkillsMin from './models/equipment/EquipmentSkillsMin'
 import GameID from './models/GameId'
 import SkillActivation from './models/skills/SkillActivation'
 import SkillActivationMap from './models/skills/SkillActivationMap'
@@ -11,15 +13,15 @@ const getRawData = async (url: string) => {
 }
 
 /** fetch and parse generic equipment data */
-const getEquipmentData = async (url: string): Promise<ArmorPiece[]> => {
+const getDataWithTransformedSkillMap = async (url: string): Promise<{skills: EquipmentSkillsMin}[]> => {
   const raw = await getRawData(url)
-  return raw.map((rawPiece: any) => {
+  return raw.map((rawX: any) => {
     const skillMap: Map<GameID, number> = new Map()
-    for (const x in rawPiece.skills) {
-      skillMap.set(parseInt(x), rawPiece.skills[x])
+    for (const x in rawX.skills) {
+      skillMap.set(parseInt(x), rawX.skills[x])
     }
     return {
-      ...rawPiece,
+      ...rawX,
       skills: skillMap,
     }
   })
@@ -27,32 +29,32 @@ const getEquipmentData = async (url: string): Promise<ArmorPiece[]> => {
 
 /** get a list of all head armor pieces */
 const getHead = async (): Promise<ArmorPiece[]> => {
-  return getEquipmentData('./head.json')
+  return getDataWithTransformedSkillMap('./head.json') as unknown as ArmorPiece[]
 }
 
 /** get a list of all chest armor pieces */
 const getChest = async (): Promise<ArmorPiece[]> => {
-  return getRawData('./chest.json')
+  return getDataWithTransformedSkillMap('./chest.json') as unknown as ArmorPiece[]
 }
 
 /** get a list of all arms armor pieces */
 const getArms = async (): Promise<ArmorPiece[]> => {
-  return getRawData('./arms.json')
+  return getDataWithTransformedSkillMap('./arms.json') as unknown as ArmorPiece[]
 }
 
 /** get a list of all waist armor pieces */
 const getWaist = async (): Promise<ArmorPiece[]> => {
-  return getRawData('./waist.json')
+  return getDataWithTransformedSkillMap('./waist.json') as unknown as ArmorPiece[]
 }
 
 /** get a list of all legs armor pieces */
 const getLegs = async (): Promise<ArmorPiece[]> => {
-  return getRawData('./legs.json')
+  return getDataWithTransformedSkillMap('./legs.json') as unknown as ArmorPiece[]
 }
 
 /** get a list of all decorations */
 const getDecorations = async (): Promise<Decoration[]> => {
-  return getRawData('./decorations.json')
+  return getDataWithTransformedSkillMap('./decorations.json') as unknown as Decoration[]
 }
 
 /** get a mapping of internal id to name for all skills */
