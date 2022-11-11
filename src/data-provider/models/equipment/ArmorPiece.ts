@@ -2,11 +2,10 @@ import Defense from './Defense'
 import ArmorType from './ArmorType'
 import Resistance from './Resistance'
 import Equipment from './Equipment'
-import EquipmentSkillsMin from './EquipmentSkillsMin'
+import SkilledItem from './SkilledItem'
 
-export default interface ArmorPiece extends Equipment {
+export default interface ArmorPiece extends Equipment, SkilledItem {
   type: ArmorType;
   defense: Defense;
   resistance: Resistance;
-  skills: EquipmentSkillsMin;
 }
