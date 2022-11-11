@@ -35,7 +35,7 @@ export default class UserCharmList {
   }
 
   /** serializes charm list as csv */
-  serialize () {
+  serialize (): string {
     return this.list.map((charm) => {
       const s = []
 
@@ -57,7 +57,7 @@ export default class UserCharmList {
   }
 
   /** populate charm list from csv */
-  deserialize (csv: string, skillNames: SkillNameMap) {
+  deserialize (csv: string, skillNames: SkillNameMap): Charm[] {
     const newList = []
 
     for (const charm of csv.split('\n')) {
@@ -87,6 +87,7 @@ export default class UserCharmList {
         name: 'charm',
         category: EquipmentCategory.CHARM,
         slots: slots as Slots,
+        rarity: 0,
         skills: new Map(skills.map((skill) => {
           return [skill.id, {
             id: skill.id,
@@ -100,5 +101,6 @@ export default class UserCharmList {
     }
 
     this.list = newList
+    return newList
   }
 }

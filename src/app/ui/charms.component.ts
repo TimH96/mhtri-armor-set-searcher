@@ -146,6 +146,7 @@ const onAddClick = (skillNames: SkillNameMap) => {
     name: 'charm',
     slots: slots as Slots,
     category: EquipmentCategory.CHARM,
+    rarity: 0,
     skills: new Map<GameID, Skill>(skills
       .filter(validSkill)
       .map((skill) => {
