@@ -12,6 +12,8 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   const searchParams: SearchConstraints = {
     weaponSlots: globalSettings.weaponSlots,
     armorType: globalSettings.armorType,
+    armorRarity: globalSettings.armorRarity,
+    decoRarity: globalSettings.decoRarity,
     skillActivations: getSkillActivations(skillData),
     limit: 200,
   }
