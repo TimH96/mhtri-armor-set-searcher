@@ -118,7 +118,7 @@ ul {
 }
 
 .search-picker-category-title {
-  padding: 0.4em;
+  padding: 0.4em 1em;
   margin: 1em 0;
 
   background-color: var(--color-highlight);
