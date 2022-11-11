@@ -1,0 +1,334 @@
+{
+    "0": {
+        "name": "Potential",
+        "category": 0
+    },
+    "1": {
+        "name": "Survivor",
+        "category": 0
+    },
+    "2": {
+        "name": "Attack",
+        "category": 0
+    },
+    "3": {
+        "name": "Expert",
+        "category": 0
+    },
+    "4": {
+        "name": "Elemental",
+        "category": 0
+    },
+    "5": {
+        "name": "Status",
+        "category": 0
+    },
+    "6": {
+        "name": "Defense",
+        "category": 0
+    },
+    "7": {
+        "name": "Protection",
+        "category": 0
+    },
+    "8": {
+        "name": "Health",
+        "category": 1
+    },
+    "9": {
+        "name": "Rec Speed",
+        "category": 1
+    },
+    "10": {
+        "name": "Constitutn",
+        "category": 1
+    },
+    "11": {
+        "name": "Stamina",
+        "category": 1
+    },
+    "12": {
+        "name": "Hunger",
+        "category": 1
+    },
+    "13": {
+        "name": "Oxygen",
+        "category": 1
+    },
+    "14": {
+        "name": "Evasion",
+        "category": 2
+    },
+    "15": {
+        "name": "Evade Dist",
+        "category": 2
+    },
+    "16": {
+        "name": "Guard",
+        "category": 2
+    },
+    "17": {
+        "name": "Guard Up",
+        "category": 2
+    },
+    "18": {
+        "name": "Auto-Guard",
+        "category": 2
+    },
+    "19": {
+        "name": "Transportr",
+        "category": 3
+    },
+    "20": {
+        "name": "Swimming",
+        "category": 3
+    },
+    "21": {
+        "name": "Hearing",
+        "category": 4
+    },
+    "22": {
+        "name": "Poison",
+        "category": 4
+    },
+    "23": {
+        "name": "Paralysis",
+        "category": 4
+    },
+    "24": {
+        "name": "Sleep",
+        "category": 4
+    },
+    "25": {
+        "name": "Stun",
+        "category": 4
+    },
+    "26": {
+        "name": "Heat Res",
+        "category": 4
+    },
+    "27": {
+        "name": "Cold Res",
+        "category": 4
+    },
+    "28": {
+        "name": "CurrentRes",
+        "category": 4
+    },
+    "29": {
+        "name": "Wind Res",
+        "category": 4
+    },
+    "30": {
+        "name": "Tremor Res",
+        "category": 4
+    },
+    "31": {
+        "name": "Mud/Snow",
+        "category": 4
+    },
+    "32": {
+        "name": "Fire Res",
+        "category": 4
+    },
+    "33": {
+        "name": "Water Res",
+        "category": 4
+    },
+    "34": {
+        "name": "ThunderRes",
+        "category": 4
+    },
+    "35": {
+        "name": "Ice Res",
+        "category": 4
+    },
+    "36": {
+        "name": "Dragon Res",
+        "category": 4
+    },
+    "37": {
+        "name": "Blight Res",
+        "category": 4
+    },
+    "38": {
+        "name": "SpeedSetup",
+        "category": 5
+    },
+    "39": {
+        "name": "Bomb Boost",
+        "category": 5
+    },
+    "40": {
+        "name": "Combo Rate",
+        "category": 5
+    },
+    "41": {
+        "name": "Combo Plus",
+        "category": 5
+    },
+    "42": {
+        "name": "LastingPwr",
+        "category": 5
+    },
+    "43": {
+        "name": "Wide-Range",
+        "category": 5
+    },
+    "44": {
+        "name": "Eating",
+        "category": 5
+    },
+    "45": {
+        "name": "Rec Level",
+        "category": 5
+    },
+    "46": {
+        "name": "Gluttony",
+        "category": 5
+    },
+    "47": {
+        "name": "BBQ",
+        "category": 5
+    },
+    "48": {
+        "name": "Fishing",
+        "category": 5
+    },
+    "49": {
+        "name": "Dungmaster",
+        "category": 5
+    },
+    "50": {
+        "name": "Handicraft",
+        "category": 6
+    },
+    "51": {
+        "name": "Crit Draw",
+        "category": 6
+    },
+    "52": {
+        "name": "PunishDraw",
+        "category": 6
+    },
+    "53": {
+        "name": "FastCharge",
+        "category": 6
+    },
+    "54": {
+        "name": "Fencing",
+        "category": 6
+    },
+    "55": {
+        "name": "Sharpness",
+        "category": 6
+    },
+    "56": {
+        "name": "Sharpener",
+        "category": 6
+    },
+    "57": {
+        "name": "FreeElemnt",
+        "category": 6
+    },
+    "58": {
+        "name": "PierceS Up",
+        "category": 7
+    },
+    "59": {
+        "name": "Pierce S+",
+        "category": 7
+    },
+    "60": {
+        "name": "PelletS Up",
+        "category": 7
+    },
+    "61": {
+        "name": "Pellet S+",
+        "category": 7
+    },
+    "62": {
+        "name": "NormalS Up",
+        "category": 7
+    },
+    "63": {
+        "name": "Normal S+",
+        "category": 7
+    },
+    "64": {
+        "name": "Crag S+",
+        "category": 7
+    },
+    "65": {
+        "name": "Clust S+",
+        "category": 7
+    },
+    "66": {
+        "name": "Loading",
+        "category": 7
+    },
+    "67": {
+        "name": "Rapid Fire",
+        "category": 7
+    },
+    "68": {
+        "name": "Recoil",
+        "category": 7
+    },
+    "69": {
+        "name": "Reload Spd",
+        "category": 7
+    },
+    "70": {
+        "name": "Precision",
+        "category": 7
+    },
+    "71": {
+        "name": "Map",
+        "category": 8
+    },
+    "72": {
+        "name": "Psychic",
+        "category": 8
+    },
+    "73": {
+        "name": "Perception",
+        "category": 8
+    },
+    "74": {
+        "name": "Tranquilzr",
+        "category": 8
+    },
+    "75": {
+        "name": "Fate",
+        "category": 8
+    },
+    "76": {
+        "name": "Carving",
+        "category": 8
+    },
+    "77": {
+        "name": "Gathering",
+        "category": 8
+    },
+    "78": {
+        "name": "Spd Gather",
+        "category": 8
+    },
+    "79": {
+        "name": "Whim",
+        "category": 8
+    },
+    "80": {
+        "name": "Sense",
+        "category": 8
+    },
+    "81": {
+        "name": "Flame Aura",
+        "category": 8
+    },
+    "82": {
+        "name": "Anti-Theft",
+        "category": 8
+    }
+}
