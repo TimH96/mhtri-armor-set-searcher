@@ -413,5 +413,10 @@
         "name": "Anti-Theft",
         "category": 8,
         "id": 82
+    },
+    "83": {
+        "name": "Torso Up",
+        "category": -1,
+        "id": 83
     }
 }

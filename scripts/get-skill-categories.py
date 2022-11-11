@@ -100,6 +100,12 @@ if __name__ == "__main__":
             "category": category,
             "id": skill_id,
         }
+    # manually put in torso up
+    skill_id_map[len(skills)] = {
+        "name": "Torso Up",
+        "category": -1,
+        "id": len(skills),
+    }
 
     # save files
     with open("./parsed-skill-map.json", "w") as f:

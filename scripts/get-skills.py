@@ -14,7 +14,7 @@ if __name__ == "__main__":
 
     # iterate over skills
     name_list = [x["name"] for x in skill_map.values()]
-    for (i, skill) in enumerate(skills[: len(skills) - 1]):  # remove Torso Up
+    for (i, skill) in enumerate(skills):
         # get attributes
         name = skill["name"]
         mapped_i = str(name_list.index(name))
@@ -24,16 +24,19 @@ if __name__ == "__main__":
 
         # build activations
         activations = []
-        for (key, val) in skill["bounds"].items():
-            p = int(key)
-            act = {
-                "name": val,
-                "requiredPoints": p,
-                "requiredSkill": id,
-                "isPositive": p > 0,
-                "category": category,
-            }
-            activations.append(act)
+        try:
+            for (key, val) in skill["bounds"].items():
+                p = int(key)
+                act = {
+                    "name": val,
+                    "requiredPoints": p,
+                    "requiredSkill": id,
+                    "isPositive": p > 0,
+                    "category": category,
+                }
+                activations.append(act)
+        except:
+            pass  # only for torso up
 
         # populate output
         skill_names[id] = name
