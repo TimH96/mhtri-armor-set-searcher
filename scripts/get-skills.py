@@ -13,6 +13,7 @@ if __name__ == "__main__":
     id_mapping = {}
 
     # iterate over skills
+    activations_id = 0
     name_list = [x["name"] for x in skill_map.values()]
     for (i, skill) in enumerate(skills):
         # get attributes
@@ -28,6 +29,7 @@ if __name__ == "__main__":
             for (key, val) in skill["bounds"].items():
                 p = int(key)
                 act = {
+                    "id": activations_id,
                     "name": val,
                     "requiredPoints": p,
                     "requiredSkill": id,
@@ -35,6 +37,7 @@ if __name__ == "__main__":
                     "category": category,
                 }
                 activations.append(act)
+                activations_id += 1
         except:
             pass  # only for torso up
 

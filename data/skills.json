@@ -2,6 +2,7 @@
     "0": [
         {
             "category": 0,
+            "id": 105,
             "isPositive": true,
             "name": "Adrenaline +2",
             "requiredPoints": 15,
@@ -9,6 +10,7 @@
         },
         {
             "category": 0,
+            "id": 106,
             "isPositive": true,
             "name": "Adrenaline +1",
             "requiredPoints": 10,
@@ -16,6 +18,7 @@
         },
         {
             "category": 0,
+            "id": 107,
             "isPositive": false,
             "name": "Worrywart",
             "requiredPoints": -10,
@@ -25,6 +28,7 @@
     "1": [
         {
             "category": 0,
+            "id": 194,
             "isPositive": true,
             "name": "Fortify",
             "requiredPoints": 10,
@@ -34,6 +38,7 @@
     "2": [
         {
             "category": 0,
+            "id": 77,
             "isPositive": true,
             "name": "Attack Up (L)",
             "requiredPoints": 20,
@@ -41,6 +46,7 @@
         },
         {
             "category": 0,
+            "id": 78,
             "isPositive": true,
             "name": "Attack Up (M)",
             "requiredPoints": 15,
@@ -48,6 +54,7 @@
         },
         {
             "category": 0,
+            "id": 79,
             "isPositive": true,
             "name": "Attack Up (S)",
             "requiredPoints": 10,
@@ -55,6 +62,7 @@
         },
         {
             "category": 0,
+            "id": 80,
             "isPositive": false,
             "name": "Attack Down (S)",
             "requiredPoints": -10,
@@ -62,6 +70,7 @@
         },
         {
             "category": 0,
+            "id": 81,
             "isPositive": false,
             "name": "Attack Down (M)",
             "requiredPoints": -15,
@@ -69,6 +78,7 @@
         },
         {
             "category": 0,
+            "id": 82,
             "isPositive": false,
             "name": "Attack Down (L)",
             "requiredPoints": -20,
@@ -78,6 +88,7 @@
     "3": [
         {
             "category": 0,
+            "id": 48,
             "isPositive": true,
             "name": "Critical Eye +3",
             "requiredPoints": 20,
@@ -85,6 +96,7 @@
         },
         {
             "category": 0,
+            "id": 49,
             "isPositive": true,
             "name": "Critical Eye +2",
             "requiredPoints": 15,
@@ -92,6 +104,7 @@
         },
         {
             "category": 0,
+            "id": 50,
             "isPositive": true,
             "name": "Critical Eye +1",
             "requiredPoints": 10,
@@ -99,6 +112,7 @@
         },
         {
             "category": 0,
+            "id": 51,
             "isPositive": false,
             "name": "Critical Eye -1",
             "requiredPoints": -10,
@@ -106,6 +120,7 @@
         },
         {
             "category": 0,
+            "id": 52,
             "isPositive": false,
             "name": "Critical Eye -2",
             "requiredPoints": -15,
@@ -113,6 +128,7 @@
         },
         {
             "category": 0,
+            "id": 53,
             "isPositive": false,
             "name": "Critical Eye -3",
             "requiredPoints": -20,
@@ -122,6 +138,7 @@
     "4": [
         {
             "category": 0,
+            "id": 18,
             "isPositive": true,
             "name": "Element Atk Up",
             "requiredPoints": 10,
@@ -129,6 +146,7 @@
         },
         {
             "category": 0,
+            "id": 19,
             "isPositive": false,
             "name": "Element Atk Down",
             "requiredPoints": -10,
@@ -138,6 +156,7 @@
     "5": [
         {
             "category": 0,
+            "id": 16,
             "isPositive": true,
             "name": "Status Atk Up",
             "requiredPoints": 10,
@@ -145,6 +164,7 @@
         },
         {
             "category": 0,
+            "id": 17,
             "isPositive": false,
             "name": "Status Atk Down",
             "requiredPoints": -10,
@@ -154,6 +174,7 @@
     "6": [
         {
             "category": 0,
+            "id": 83,
             "isPositive": true,
             "name": "Defense Up (L)",
             "requiredPoints": 20,
@@ -161,6 +182,7 @@
         },
         {
             "category": 0,
+            "id": 84,
             "isPositive": true,
             "name": "Defense Up (M)",
             "requiredPoints": 15,
@@ -168,6 +190,7 @@
         },
         {
             "category": 0,
+            "id": 85,
             "isPositive": true,
             "name": "Defense Up (S)",
             "requiredPoints": 10,
@@ -175,6 +198,7 @@
         },
         {
             "category": 0,
+            "id": 86,
             "isPositive": false,
             "name": "Defense Down (S)",
             "requiredPoints": -10,
@@ -182,6 +206,7 @@
         },
         {
             "category": 0,
+            "id": 87,
             "isPositive": false,
             "name": "Defense Down (M)",
             "requiredPoints": -15,
@@ -189,6 +214,7 @@
         },
         {
             "category": 0,
+            "id": 88,
             "isPositive": false,
             "name": "Defense Down (L)",
             "requiredPoints": -20,
@@ -198,6 +224,7 @@
     "7": [
         {
             "category": 0,
+            "id": 89,
             "isPositive": true,
             "name": "Divine Blessing",
             "requiredPoints": 10,
@@ -205,6 +232,7 @@
         },
         {
             "category": 0,
+            "id": 90,
             "isPositive": false,
             "name": "Demonic Blessing",
             "requiredPoints": -10,
@@ -214,6 +242,7 @@
     "8": [
         {
             "category": 1,
+            "id": 40,
             "isPositive": true,
             "name": "Health +50",
             "requiredPoints": 15,
@@ -221,6 +250,7 @@
         },
         {
             "category": 1,
+            "id": 41,
             "isPositive": true,
             "name": "Health +20",
             "requiredPoints": 10,
@@ -228,6 +258,7 @@
         },
         {
             "category": 1,
+            "id": 42,
             "isPositive": false,
             "name": "Health -10",
             "requiredPoints": -10,
@@ -235,6 +266,7 @@
         },
         {
             "category": 1,
+            "id": 43,
             "isPositive": false,
             "name": "Health -30",
             "requiredPoints": -15,
@@ -244,6 +276,7 @@
     "9": [
         {
             "category": 1,
+            "id": 44,
             "isPositive": true,
             "name": "Recovery Spd +2",
             "requiredPoints": 15,
@@ -251,6 +284,7 @@
         },
         {
             "category": 1,
+            "id": 45,
             "isPositive": true,
             "name": "Recovery Spd +1",
             "requiredPoints": 10,
@@ -258,6 +292,7 @@
         },
         {
             "category": 1,
+            "id": 46,
             "isPositive": false,
             "name": "Recovery Spd -1",
             "requiredPoints": -10,
@@ -265,6 +300,7 @@
         },
         {
             "category": 1,
+            "id": 47,
             "isPositive": false,
             "name": "Recovery Spd -2",
             "requiredPoints": -15,
@@ -274,6 +310,7 @@
     "10": [
         {
             "category": 1,
+            "id": 113,
             "isPositive": true,
             "name": "Constitution +2",
             "requiredPoints": 15,
@@ -281,6 +318,7 @@
         },
         {
             "category": 1,
+            "id": 114,
             "isPositive": true,
             "name": "Constitution +1",
             "requiredPoints": 10,
@@ -288,6 +326,7 @@
         },
         {
             "category": 1,
+            "id": 115,
             "isPositive": false,
             "name": "Constitution -1",
             "requiredPoints": -10,
@@ -295,6 +334,7 @@
         },
         {
             "category": 1,
+            "id": 116,
             "isPositive": false,
             "name": "Constitution -2",
             "requiredPoints": -15,
@@ -304,6 +344,7 @@
     "11": [
         {
             "category": 1,
+            "id": 26,
             "isPositive": true,
             "name": "Marathon Runner",
             "requiredPoints": 10,
@@ -311,6 +352,7 @@
         },
         {
             "category": 1,
+            "id": 27,
             "isPositive": false,
             "name": "Short Sprinter",
             "requiredPoints": -10,
@@ -320,6 +362,7 @@
     "12": [
         {
             "category": 1,
+            "id": 73,
             "isPositive": true,
             "name": "Negate Hunger",
             "requiredPoints": 15,
@@ -327,6 +370,7 @@
         },
         {
             "category": 1,
+            "id": 74,
             "isPositive": true,
             "name": "Halve Hunger",
             "requiredPoints": 10,
@@ -334,6 +378,7 @@
         },
         {
             "category": 1,
+            "id": 75,
             "isPositive": false,
             "name": "Raise Hunger",
             "requiredPoints": -10,
@@ -341,6 +386,7 @@
         },
         {
             "category": 1,
+            "id": 76,
             "isPositive": false,
             "name": "Double Hunger",
             "requiredPoints": -15,
@@ -350,6 +396,7 @@
     "13": [
         {
             "category": 1,
+            "id": 190,
             "isPositive": true,
             "name": "Oxygen Up",
             "requiredPoints": 10,
@@ -357,6 +404,7 @@
         },
         {
             "category": 1,
+            "id": 191,
             "isPositive": false,
             "name": "Oxygen Down",
             "requiredPoints": -10,
@@ -366,6 +414,7 @@
     "14": [
         {
             "category": 2,
+            "id": 103,
             "isPositive": true,
             "name": "Evasion +2",
             "requiredPoints": 15,
@@ -373,6 +422,7 @@
         },
         {
             "category": 2,
+            "id": 104,
             "isPositive": true,
             "name": "Evasion +1",
             "requiredPoints": 10,
@@ -382,6 +432,7 @@
     "15": [
         {
             "category": 2,
+            "id": 31,
             "isPositive": true,
             "name": "Evasion Up",
             "requiredPoints": 15,
@@ -391,6 +442,7 @@
     "16": [
         {
             "category": 2,
+            "id": 56,
             "isPositive": true,
             "name": "Guard +2",
             "requiredPoints": 15,
@@ -398,6 +450,7 @@
         },
         {
             "category": 2,
+            "id": 57,
             "isPositive": true,
             "name": "Guard +1",
             "requiredPoints": 10,
@@ -405,6 +458,7 @@
         },
         {
             "category": 2,
+            "id": 58,
             "isPositive": false,
             "name": "Guard -1",
             "requiredPoints": -10,
@@ -414,6 +468,7 @@
     "17": [
         {
             "category": 2,
+            "id": 59,
             "isPositive": true,
             "name": "Guard Boost",
             "requiredPoints": 10,
@@ -423,6 +478,7 @@
     "18": [
         {
             "category": 2,
+            "id": 196,
             "isPositive": true,
             "name": "Auto-Guard",
             "requiredPoints": 10,
@@ -432,6 +488,7 @@
     "19": [
         {
             "category": 3,
+            "id": 134,
             "isPositive": true,
             "name": "Pro Transporter",
             "requiredPoints": 10,
@@ -441,6 +498,7 @@
     "20": [
         {
             "category": 3,
+            "id": 117,
             "isPositive": true,
             "name": "Olympic Swimmer",
             "requiredPoints": 10,
@@ -448,6 +506,7 @@
         },
         {
             "category": 3,
+            "id": 118,
             "isPositive": false,
             "name": "Doggy Paddler",
             "requiredPoints": -10,
@@ -457,6 +516,7 @@
     "21": [
         {
             "category": 4,
+            "id": 20,
             "isPositive": true,
             "name": "HG Earplugs",
             "requiredPoints": 15,
@@ -464,6 +524,7 @@
         },
         {
             "category": 4,
+            "id": 21,
             "isPositive": true,
             "name": "Earplugs",
             "requiredPoints": 10,
@@ -473,6 +534,7 @@
     "22": [
         {
             "category": 4,
+            "id": 38,
             "isPositive": true,
             "name": "Negate Poison",
             "requiredPoints": 10,
@@ -480,6 +542,7 @@
         },
         {
             "category": 4,
+            "id": 39,
             "isPositive": false,
             "name": "Double Poison",
             "requiredPoints": -10,
@@ -489,6 +552,7 @@
     "23": [
         {
             "category": 4,
+            "id": 121,
             "isPositive": true,
             "name": "Negate Paralysis",
             "requiredPoints": 10,
@@ -496,6 +560,7 @@
         },
         {
             "category": 4,
+            "id": 122,
             "isPositive": false,
             "name": "Double Paralysis",
             "requiredPoints": -10,
@@ -505,6 +570,7 @@
     "24": [
         {
             "category": 4,
+            "id": 123,
             "isPositive": true,
             "name": "Negate Sleep",
             "requiredPoints": 10,
@@ -512,6 +578,7 @@
         },
         {
             "category": 4,
+            "id": 124,
             "isPositive": false,
             "name": "Double Sleep",
             "requiredPoints": -10,
@@ -521,6 +588,7 @@
     "25": [
         {
             "category": 4,
+            "id": 125,
             "isPositive": true,
             "name": "Negate Stun",
             "requiredPoints": 15,
@@ -528,6 +596,7 @@
         },
         {
             "category": 4,
+            "id": 126,
             "isPositive": true,
             "name": "Halve Stun",
             "requiredPoints": 10,
@@ -535,6 +604,7 @@
         },
         {
             "category": 4,
+            "id": 127,
             "isPositive": false,
             "name": "Double Stun",
             "requiredPoints": -10,
@@ -544,6 +614,7 @@
     "26": [
         {
             "category": 4,
+            "id": 160,
             "isPositive": true,
             "name": "Heat Cancel (Hi)",
             "requiredPoints": 15,
@@ -551,6 +622,7 @@
         },
         {
             "category": 4,
+            "id": 161,
             "isPositive": true,
             "name": "Heat Cancel (Lo)",
             "requiredPoints": 10,
@@ -558,6 +630,7 @@
         },
         {
             "category": 4,
+            "id": 162,
             "isPositive": false,
             "name": "Heat Surge (Lo)",
             "requiredPoints": -10,
@@ -565,6 +638,7 @@
         },
         {
             "category": 4,
+            "id": 163,
             "isPositive": false,
             "name": "Heat Surge (Hi)",
             "requiredPoints": -15,
@@ -574,6 +648,7 @@
     "27": [
         {
             "category": 4,
+            "id": 164,
             "isPositive": true,
             "name": "Cold Cancel (Hi)",
             "requiredPoints": 15,
@@ -581,6 +656,7 @@
         },
         {
             "category": 4,
+            "id": 165,
             "isPositive": true,
             "name": "Cold Cancel (Lo)",
             "requiredPoints": 10,
@@ -588,6 +664,7 @@
         },
         {
             "category": 4,
+            "id": 166,
             "isPositive": false,
             "name": "Cold Surge (Lo)",
             "requiredPoints": -10,
@@ -595,6 +672,7 @@
         },
         {
             "category": 4,
+            "id": 167,
             "isPositive": false,
             "name": "Cold Surge (Hi)",
             "requiredPoints": -15,
@@ -604,6 +682,7 @@
     "28": [
         {
             "category": 4,
+            "id": 192,
             "isPositive": true,
             "name": "Current Res (Hi)",
             "requiredPoints": 15,
@@ -611,6 +690,7 @@
         },
         {
             "category": 4,
+            "id": 193,
             "isPositive": true,
             "name": "Current Res (Lo)",
             "requiredPoints": 10,
@@ -620,6 +700,7 @@
     "29": [
         {
             "category": 4,
+            "id": 93,
             "isPositive": true,
             "name": "Windproof (Hi)",
             "requiredPoints": 15,
@@ -627,6 +708,7 @@
         },
         {
             "category": 4,
+            "id": 94,
             "isPositive": true,
             "name": "Windproof (Lo)",
             "requiredPoints": 10,
@@ -636,6 +718,7 @@
     "30": [
         {
             "category": 4,
+            "id": 111,
             "isPositive": true,
             "name": "Tremor-Proof",
             "requiredPoints": 10,
@@ -645,6 +728,7 @@
     "31": [
         {
             "category": 4,
+            "id": 128,
             "isPositive": true,
             "name": "Negate Mud/Snow",
             "requiredPoints": 10,
@@ -654,6 +738,7 @@
     "32": [
         {
             "category": 4,
+            "id": 135,
             "isPositive": true,
             "name": "Fire Res +20",
             "requiredPoints": 20,
@@ -661,6 +746,7 @@
         },
         {
             "category": 4,
+            "id": 136,
             "isPositive": true,
             "name": "Fire Res +15",
             "requiredPoints": 15,
@@ -668,6 +754,7 @@
         },
         {
             "category": 4,
+            "id": 137,
             "isPositive": true,
             "name": "Fire Res +10",
             "requiredPoints": 10,
@@ -675,6 +762,7 @@
         },
         {
             "category": 4,
+            "id": 138,
             "isPositive": false,
             "name": "Fire Res -10",
             "requiredPoints": -10,
@@ -682,6 +770,7 @@
         },
         {
             "category": 4,
+            "id": 139,
             "isPositive": false,
             "name": "Fire Res -15",
             "requiredPoints": -15,
@@ -691,6 +780,7 @@
     "33": [
         {
             "category": 4,
+            "id": 140,
             "isPositive": true,
             "name": "Water Res +20",
             "requiredPoints": 20,
@@ -698,6 +788,7 @@
         },
         {
             "category": 4,
+            "id": 141,
             "isPositive": true,
             "name": "Water Res +15",
             "requiredPoints": 15,
@@ -705,6 +796,7 @@
         },
         {
             "category": 4,
+            "id": 142,
             "isPositive": true,
             "name": "Water Res +10",
             "requiredPoints": 10,
@@ -712,6 +804,7 @@
         },
         {
             "category": 4,
+            "id": 143,
             "isPositive": false,
             "name": "Water Res -10",
             "requiredPoints": -10,
@@ -719,6 +812,7 @@
         },
         {
             "category": 4,
+            "id": 144,
             "isPositive": false,
             "name": "Water Res -15",
             "requiredPoints": -15,
@@ -728,6 +822,7 @@
     "34": [
         {
             "category": 4,
+            "id": 145,
             "isPositive": true,
             "name": "Thunder Res +20",
             "requiredPoints": 20,
@@ -735,6 +830,7 @@
         },
         {
             "category": 4,
+            "id": 146,
             "isPositive": true,
             "name": "Thunder Res +15",
             "requiredPoints": 15,
@@ -742,6 +838,7 @@
         },
         {
             "category": 4,
+            "id": 147,
             "isPositive": true,
             "name": "Thunder Res +10",
             "requiredPoints": 10,
@@ -749,6 +846,7 @@
         },
         {
             "category": 4,
+            "id": 148,
             "isPositive": false,
             "name": "Thunder Res -10",
             "requiredPoints": -10,
@@ -756,6 +854,7 @@
         },
         {
             "category": 4,
+            "id": 149,
             "isPositive": false,
             "name": "Thunder Res -15",
             "requiredPoints": -15,
@@ -765,6 +864,7 @@
     "35": [
         {
             "category": 4,
+            "id": 150,
             "isPositive": true,
             "name": "Ice Res +20",
             "requiredPoints": 20,
@@ -772,6 +872,7 @@
         },
         {
             "category": 4,
+            "id": 151,
             "isPositive": true,
             "name": "Ice Res +15",
             "requiredPoints": 15,
@@ -779,6 +880,7 @@
         },
         {
             "category": 4,
+            "id": 152,
             "isPositive": true,
             "name": "Ice Res +10",
             "requiredPoints": 10,
@@ -786,6 +888,7 @@
         },
         {
             "category": 4,
+            "id": 153,
             "isPositive": false,
             "name": "Ice Res -10",
             "requiredPoints": -10,
@@ -793,6 +896,7 @@
         },
         {
             "category": 4,
+            "id": 154,
             "isPositive": false,
             "name": "Ice Res -15",
             "requiredPoints": -15,
@@ -802,6 +906,7 @@
     "36": [
         {
             "category": 4,
+            "id": 155,
             "isPositive": true,
             "name": "Dragon Res +20",
             "requiredPoints": 20,
@@ -809,6 +914,7 @@
         },
         {
             "category": 4,
+            "id": 156,
             "isPositive": true,
             "name": "Dragon Res +15",
             "requiredPoints": 15,
@@ -816,6 +922,7 @@
         },
         {
             "category": 4,
+            "id": 157,
             "isPositive": true,
             "name": "Dragon Res +10",
             "requiredPoints": 10,
@@ -823,6 +930,7 @@
         },
         {
             "category": 4,
+            "id": 158,
             "isPositive": false,
             "name": "Dragon Res -10",
             "requiredPoints": -10,
@@ -830,6 +938,7 @@
         },
         {
             "category": 4,
+            "id": 159,
             "isPositive": false,
             "name": "Dragon Res -15",
             "requiredPoints": -15,
@@ -839,6 +948,7 @@
     "37": [
         {
             "category": 4,
+            "id": 195,
             "isPositive": true,
             "name": "Blightproof",
             "requiredPoints": 10,
@@ -848,6 +958,7 @@
     "38": [
         {
             "category": 5,
+            "id": 188,
             "isPositive": true,
             "name": "Trap Master",
             "requiredPoints": 10,
@@ -857,6 +968,7 @@
     "39": [
         {
             "category": 5,
+            "id": 72,
             "isPositive": true,
             "name": "Bombardier",
             "requiredPoints": 10,
@@ -866,6 +978,7 @@
     "40": [
         {
             "category": 5,
+            "id": 175,
             "isPositive": true,
             "name": "Combination +45%",
             "requiredPoints": 20,
@@ -873,6 +986,7 @@
         },
         {
             "category": 5,
+            "id": 176,
             "isPositive": true,
             "name": "Combination +25%",
             "requiredPoints": 15,
@@ -880,6 +994,7 @@
         },
         {
             "category": 5,
+            "id": 177,
             "isPositive": true,
             "name": "Combination +15%",
             "requiredPoints": 10,
@@ -887,6 +1002,7 @@
         },
         {
             "category": 5,
+            "id": 178,
             "isPositive": false,
             "name": "Combination -5%",
             "requiredPoints": -10,
@@ -894,6 +1010,7 @@
         },
         {
             "category": 5,
+            "id": 179,
             "isPositive": false,
             "name": "Combination -10%",
             "requiredPoints": -15,
@@ -901,6 +1018,7 @@
         },
         {
             "category": 5,
+            "id": 180,
             "isPositive": false,
             "name": "Combination -15%",
             "requiredPoints": -20,
@@ -910,6 +1028,7 @@
     "41": [
         {
             "category": 5,
+            "id": 181,
             "isPositive": true,
             "name": "Combination Pro",
             "requiredPoints": 10,
@@ -919,6 +1038,7 @@
     "42": [
         {
             "category": 5,
+            "id": 182,
             "isPositive": true,
             "name": "Item Use Up",
             "requiredPoints": 10,
@@ -926,6 +1046,7 @@
         },
         {
             "category": 5,
+            "id": 183,
             "isPositive": false,
             "name": "Item Use Down",
             "requiredPoints": -10,
@@ -935,6 +1056,7 @@
     "43": [
         {
             "category": 5,
+            "id": 91,
             "isPositive": true,
             "name": "Wide-Range +2",
             "requiredPoints": 20,
@@ -942,6 +1064,7 @@
         },
         {
             "category": 5,
+            "id": 92,
             "isPositive": true,
             "name": "Wide-Range +1",
             "requiredPoints": 10,
@@ -951,6 +1074,7 @@
     "44": [
         {
             "category": 5,
+            "id": 108,
             "isPositive": true,
             "name": "Speed Eating +2",
             "requiredPoints": 15,
@@ -958,6 +1082,7 @@
         },
         {
             "category": 5,
+            "id": 109,
             "isPositive": true,
             "name": "Speed Eating +1",
             "requiredPoints": 10,
@@ -965,6 +1090,7 @@
         },
         {
             "category": 5,
+            "id": 110,
             "isPositive": false,
             "name": "Slow Eater",
             "requiredPoints": -10,
@@ -974,6 +1100,7 @@
     "45": [
         {
             "category": 5,
+            "id": 101,
             "isPositive": true,
             "name": "Recovery Up",
             "requiredPoints": 10,
@@ -981,6 +1108,7 @@
         },
         {
             "category": 5,
+            "id": 102,
             "isPositive": false,
             "name": "Recovery Down",
             "requiredPoints": -10,
@@ -990,6 +1118,7 @@
     "46": [
         {
             "category": 5,
+            "id": 131,
             "isPositive": true,
             "name": "Scavenger",
             "requiredPoints": 15,
@@ -997,6 +1126,7 @@
         },
         {
             "category": 5,
+            "id": 132,
             "isPositive": true,
             "name": "Gourmand",
             "requiredPoints": 10,
@@ -1006,6 +1136,7 @@
     "47": [
         {
             "category": 5,
+            "id": 187,
             "isPositive": true,
             "name": "BBQ Expert",
             "requiredPoints": 10,
@@ -1015,6 +1146,7 @@
     "48": [
         {
             "category": 5,
+            "id": 174,
             "isPositive": true,
             "name": "Fishing Expert",
             "requiredPoints": 10,
@@ -1024,6 +1156,7 @@
     "49": [
         {
             "category": 5,
+            "id": 119,
             "isPositive": true,
             "name": "Dung Bomb Expert",
             "requiredPoints": 10,
@@ -1033,6 +1166,7 @@
     "50": [
         {
             "category": 6,
+            "id": 2,
             "isPositive": true,
             "name": "Sharpness +1",
             "requiredPoints": 15,
@@ -1042,6 +1176,7 @@
     "51": [
         {
             "category": 6,
+            "id": 112,
             "isPositive": true,
             "name": "Critical Draw",
             "requiredPoints": 10,
@@ -1051,6 +1186,7 @@
     "52": [
         {
             "category": 6,
+            "id": 35,
             "isPositive": true,
             "name": "Punishing Draw",
             "requiredPoints": 10,
@@ -1060,6 +1196,7 @@
     "53": [
         {
             "category": 6,
+            "id": 33,
             "isPositive": true,
             "name": "Focus",
             "requiredPoints": 10,
@@ -1067,6 +1204,7 @@
         },
         {
             "category": 6,
+            "id": 34,
             "isPositive": false,
             "name": "Distraction",
             "requiredPoints": -10,
@@ -1076,6 +1214,7 @@
     "54": [
         {
             "category": 6,
+            "id": 3,
             "isPositive": true,
             "name": "Mind's Eye",
             "requiredPoints": 10,
@@ -1085,6 +1224,7 @@
     "55": [
         {
             "category": 6,
+            "id": 0,
             "isPositive": true,
             "name": "Razor Sharp",
             "requiredPoints": 10,
@@ -1092,6 +1232,7 @@
         },
         {
             "category": 6,
+            "id": 1,
             "isPositive": false,
             "name": "Blunt Edge",
             "requiredPoints": -10,
@@ -1101,6 +1242,7 @@
     "56": [
         {
             "category": 6,
+            "id": 54,
             "isPositive": true,
             "name": "Speed Sharpening",
             "requiredPoints": 10,
@@ -1108,6 +1250,7 @@
         },
         {
             "category": 6,
+            "id": 55,
             "isPositive": false,
             "name": "Slow Sharpening",
             "requiredPoints": -10,
@@ -1117,6 +1260,7 @@
     "57": [
         {
             "category": 6,
+            "id": 36,
             "isPositive": true,
             "name": "Awaken",
             "requiredPoints": 15,
@@ -1126,6 +1270,7 @@
     "58": [
         {
             "category": 7,
+            "id": 11,
             "isPositive": true,
             "name": "Pierce S Boost",
             "requiredPoints": 10,
@@ -1135,6 +1280,7 @@
     "59": [
         {
             "category": 7,
+            "id": 14,
             "isPositive": true,
             "name": "Pierce S All Up",
             "requiredPoints": 15,
@@ -1142,6 +1288,7 @@
         },
         {
             "category": 7,
+            "id": 15,
             "isPositive": true,
             "name": "Pierce S Lv1 Up",
             "requiredPoints": 10,
@@ -1151,6 +1298,7 @@
     "60": [
         {
             "category": 7,
+            "id": 12,
             "isPositive": true,
             "name": "Pellet S Boost",
             "requiredPoints": 10,
@@ -1160,6 +1308,7 @@
     "61": [
         {
             "category": 7,
+            "id": 66,
             "isPositive": true,
             "name": "Pellet S All Up",
             "requiredPoints": 15,
@@ -1167,6 +1316,7 @@
         },
         {
             "category": 7,
+            "id": 67,
             "isPositive": true,
             "name": "Pellet S Lv1 Up",
             "requiredPoints": 10,
@@ -1176,6 +1326,7 @@
     "62": [
         {
             "category": 7,
+            "id": 10,
             "isPositive": true,
             "name": "Normal S Boost",
             "requiredPoints": 10,
@@ -1185,6 +1336,7 @@
     "63": [
         {
             "category": 7,
+            "id": 13,
             "isPositive": true,
             "name": "Normal S All Up",
             "requiredPoints": 10,
@@ -1194,6 +1346,7 @@
     "64": [
         {
             "category": 7,
+            "id": 68,
             "isPositive": true,
             "name": "Crag S All Up",
             "requiredPoints": 15,
@@ -1201,6 +1354,7 @@
         },
         {
             "category": 7,
+            "id": 69,
             "isPositive": true,
             "name": "Crag S Lv1 Up",
             "requiredPoints": 10,
@@ -1210,6 +1364,7 @@
     "65": [
         {
             "category": 7,
+            "id": 70,
             "isPositive": true,
             "name": "Clust S All Up",
             "requiredPoints": 15,
@@ -1217,6 +1372,7 @@
         },
         {
             "category": 7,
+            "id": 71,
             "isPositive": true,
             "name": "Clust S Lv1 Up",
             "requiredPoints": 10,
@@ -1226,6 +1382,7 @@
     "66": [
         {
             "category": 7,
+            "id": 28,
             "isPositive": true,
             "name": "Load Up",
             "requiredPoints": 15,
@@ -1235,6 +1392,7 @@
     "67": [
         {
             "category": 7,
+            "id": 37,
             "isPositive": true,
             "name": "Bonus Shot",
             "requiredPoints": 10,
@@ -1244,6 +1402,7 @@
     "68": [
         {
             "category": 7,
+            "id": 4,
             "isPositive": true,
             "name": "Recoil Down +3",
             "requiredPoints": 20,
@@ -1251,6 +1410,7 @@
         },
         {
             "category": 7,
+            "id": 5,
             "isPositive": true,
             "name": "Recoil Down +2",
             "requiredPoints": 15,
@@ -1258,6 +1418,7 @@
         },
         {
             "category": 7,
+            "id": 6,
             "isPositive": true,
             "name": "Recoil Down +1",
             "requiredPoints": 10,
@@ -1265,6 +1426,7 @@
         },
         {
             "category": 7,
+            "id": 7,
             "isPositive": false,
             "name": "Recoil Down -1",
             "requiredPoints": -10,
@@ -1272,6 +1434,7 @@
         },
         {
             "category": 7,
+            "id": 8,
             "isPositive": false,
             "name": "Recoil Down -2",
             "requiredPoints": -15,
@@ -1279,6 +1442,7 @@
         },
         {
             "category": 7,
+            "id": 9,
             "isPositive": false,
             "name": "Recoil Down -3",
             "requiredPoints": -20,
@@ -1288,6 +1452,7 @@
     "69": [
         {
             "category": 7,
+            "id": 60,
             "isPositive": true,
             "name": "Reload Speed +3",
             "requiredPoints": 20,
@@ -1295,6 +1460,7 @@
         },
         {
             "category": 7,
+            "id": 61,
             "isPositive": true,
             "name": "Reload Speed +2",
             "requiredPoints": 15,
@@ -1302,6 +1468,7 @@
         },
         {
             "category": 7,
+            "id": 62,
             "isPositive": true,
             "name": "Reload Speed +1",
             "requiredPoints": 10,
@@ -1309,6 +1476,7 @@
         },
         {
             "category": 7,
+            "id": 63,
             "isPositive": false,
             "name": "Reload Speed -1",
             "requiredPoints": -10,
@@ -1316,6 +1484,7 @@
         },
         {
             "category": 7,
+            "id": 64,
             "isPositive": false,
             "name": "Reload Speed -2",
             "requiredPoints": -15,
@@ -1323,6 +1492,7 @@
         },
         {
             "category": 7,
+            "id": 65,
             "isPositive": false,
             "name": "Reload Speed -3",
             "requiredPoints": -20,
@@ -1332,6 +1502,7 @@
     "70": [
         {
             "category": 7,
+            "id": 184,
             "isPositive": true,
             "name": "Steadiness +2",
             "requiredPoints": 15,
@@ -1339,6 +1510,7 @@
         },
         {
             "category": 7,
+            "id": 185,
             "isPositive": true,
             "name": "Steadiness +1",
             "requiredPoints": 10,
@@ -1346,6 +1518,7 @@
         },
         {
             "category": 7,
+            "id": 186,
             "isPositive": false,
             "name": "Steadiness -1",
             "requiredPoints": -10,
@@ -1355,6 +1528,7 @@
     "71": [
         {
             "category": 8,
+            "id": 168,
             "isPositive": true,
             "name": "Farsight",
             "requiredPoints": 10,
@@ -1362,6 +1536,7 @@
         },
         {
             "category": 8,
+            "id": 169,
             "isPositive": false,
             "name": "Nearsight",
             "requiredPoints": -10,
@@ -1371,6 +1546,7 @@
     "72": [
         {
             "category": 8,
+            "id": 99,
             "isPositive": true,
             "name": "Autotracker",
             "requiredPoints": 15,
@@ -1378,6 +1554,7 @@
         },
         {
             "category": 8,
+            "id": 100,
             "isPositive": true,
             "name": "Detect",
             "requiredPoints": 10,
@@ -1387,6 +1564,7 @@
     "73": [
         {
             "category": 8,
+            "id": 189,
             "isPositive": true,
             "name": "Capture Guru",
             "requiredPoints": 10,
@@ -1396,6 +1574,7 @@
     "74": [
         {
             "category": 8,
+            "id": 32,
             "isPositive": true,
             "name": "Capture Expert",
             "requiredPoints": 10,
@@ -1405,6 +1584,7 @@
     "75": [
         {
             "category": 8,
+            "id": 22,
             "isPositive": true,
             "name": "Great Luck",
             "requiredPoints": 15,
@@ -1412,6 +1592,7 @@
         },
         {
             "category": 8,
+            "id": 23,
             "isPositive": true,
             "name": "Good Luck",
             "requiredPoints": 10,
@@ -1419,6 +1600,7 @@
         },
         {
             "category": 8,
+            "id": 24,
             "isPositive": false,
             "name": "Bad Luck",
             "requiredPoints": -10,
@@ -1426,6 +1608,7 @@
         },
         {
             "category": 8,
+            "id": 25,
             "isPositive": false,
             "name": "Horrible Luck",
             "requiredPoints": -15,
@@ -1435,6 +1618,7 @@
     "76": [
         {
             "category": 8,
+            "id": 29,
             "isPositive": true,
             "name": "Carving Master",
             "requiredPoints": 15,
@@ -1442,6 +1626,7 @@
         },
         {
             "category": 8,
+            "id": 30,
             "isPositive": true,
             "name": "Carving Pro",
             "requiredPoints": 10,
@@ -1451,6 +1636,7 @@
     "77": [
         {
             "category": 8,
+            "id": 95,
             "isPositive": true,
             "name": "Gathering +2",
             "requiredPoints": 15,
@@ -1458,6 +1644,7 @@
         },
         {
             "category": 8,
+            "id": 96,
             "isPositive": true,
             "name": "Gathering +1",
             "requiredPoints": 10,
@@ -1465,6 +1652,7 @@
         },
         {
             "category": 8,
+            "id": 97,
             "isPositive": false,
             "name": "Gathering -1",
             "requiredPoints": -10,
@@ -1474,6 +1662,7 @@
     "78": [
         {
             "category": 8,
+            "id": 98,
             "isPositive": true,
             "name": "Speed Gatherer",
             "requiredPoints": 10,
@@ -1483,6 +1672,7 @@
     "79": [
         {
             "category": 8,
+            "id": 170,
             "isPositive": true,
             "name": "Divine Whim",
             "requiredPoints": 15,
@@ -1490,6 +1680,7 @@
         },
         {
             "category": 8,
+            "id": 171,
             "isPositive": true,
             "name": "Spirit's Whim",
             "requiredPoints": 10,
@@ -1497,6 +1688,7 @@
         },
         {
             "category": 8,
+            "id": 172,
             "isPositive": false,
             "name": "Spectre's Whim",
             "requiredPoints": -10,
@@ -1504,6 +1696,7 @@
         },
         {
             "category": 8,
+            "id": 173,
             "isPositive": false,
             "name": "Devil's Whim",
             "requiredPoints": -15,
@@ -1513,6 +1706,7 @@
     "80": [
         {
             "category": 8,
+            "id": 129,
             "isPositive": true,
             "name": "Sneak",
             "requiredPoints": 10,
@@ -1520,6 +1714,7 @@
         },
         {
             "category": 8,
+            "id": 130,
             "isPositive": false,
             "name": "Taunt",
             "requiredPoints": -10,
@@ -1529,6 +1724,7 @@
     "81": [
         {
             "category": 8,
+            "id": 120,
             "isPositive": true,
             "name": "Flaming Aura",
             "requiredPoints": 10,
@@ -1538,6 +1734,7 @@
     "82": [
         {
             "category": 8,
+            "id": 133,
             "isPositive": true,
             "name": "Anti-Theft",
             "requiredPoints": 10,
