@@ -24,7 +24,7 @@ export default class UserCharmList {
     const skillStrings = Array.from(skills.values()).map(s => `${s.name}:${s.points}`)
     const slotString = slots !== 0 ? `${slots} Slots` : ''
 
-    return [...skillStrings, slotString].join(' ')
+    return [...skillStrings, slotString].join(' ').trim()
   }
 
   /** get the list of charms */
