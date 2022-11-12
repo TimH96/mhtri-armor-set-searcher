@@ -61,8 +61,8 @@ export default class ArmorSet {
     // iterate over all pieces other than charm
     // order matters here because of torso up!
     for (const piece of [this.head, this.arms, this.waist, this.legs, this.chest]) {
-      totalDefense.base = piece.defense.base
-      totalDefense.max = piece.defense.max
+      totalDefense.base += piece.defense.base
+      totalDefense.max += piece.defense.max
       totalResistance = piece.resistance.map((res, i) => res + totalResistance[i])
 
       if (piece.skills.get(TORSO_UP_ID)) {
@@ -129,6 +129,8 @@ export default class ArmorSet {
       torsoUpCount,
       skills: totalSkills,
       activations,
+      defense: totalDefense,
+      resistance: totalResistance,
     }
     this.evaluation = thisEval
     return thisEval
