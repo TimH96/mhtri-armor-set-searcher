@@ -9,6 +9,8 @@
   --color-header-background: rgb(37, 37, 37);
 
   --color-tab-hover: rgb(175, 175, 175);
+
+  --color-negative-skill: rgb(206, 8, 8);
 }
 
 table {
@@ -197,4 +199,76 @@ th {
   margin-top: 0.2em;
   font-size: 1.2em;
   padding: 0.4em 1em;
+}
+
+#results-table {
+  margin-top: 1em;
+  width: 100%;
+}
+
+#results-table th {
+  font-size: 1.4em;
+  text-align: center;
+  background-color: var(--color-highlight);
+
+  border-width: 1px 0;
+  border-color: var(--color-border);
+  border-style: solid;
+}
+
+.result-set {
+  border-width: 1px 0;
+  border-color: var(--color-border);
+  border-style: solid;
+  cursor: pointer;
+}
+
+.result-set-row p {
+  display: inline-block;
+  margin: 0.3em 1em 0.3em 0;
+}
+
+.result-set-row2 td {
+  text-align: left;
+  padding-left: 3em;
+}
+
+.result-set-def {
+  color: rgb(0, 0, 0);
+}
+
+.result-set-fir {
+  color: rgb(235, 69, 69);
+}
+
+.result-set-wat {
+  color: rgb(54, 91, 146);
+}
+
+.result-set-ice {
+  color: rgb(50, 204, 224);
+}
+
+.result-set-thn {
+  color: rgb(207, 204, 9);
+}
+
+.result-set-drg {
+  color: rgb(122, 49, 170);
+}
+
+.result-set-unrelated {
+  margin-left: 3em;
+}
+
+.result-set-unrelated-neg {
+  color: var(--color-negative-skill);
+}
+
+.result-set-unrelated-skill {
+  margin-left: 2em;
+}
+
+.hidden-details {
+  display: none;
 }

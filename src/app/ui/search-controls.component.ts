@@ -22,8 +22,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   // TODO debug remove
   const s = [
     skillData.skillActivation.get(50)![0],
-    skillData.skillActivation.get(21)![0],
-    skillData.skillActivation.get(13)![0],
+    skillData.skillActivation.get(21)![1],
   ]
   searchParams.skillActivations = s
 
@@ -36,8 +35,9 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   // search for sets
   const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams, skillData)
 
+  // TODO remove debug
   // render results
-  renderResults(result, skillData, searchParams)
+  renderResults(result.concat(...result), skillData, searchParams)
 }
 
 const resetLogic = () => {
