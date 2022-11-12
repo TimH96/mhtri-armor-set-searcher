@@ -20,10 +20,10 @@ export default class ArmorSet {
   decorations: EquippedDecoration[] = []
 
   evaluation: Evaluation
-
+  
+  torsoUpCount: number = 0
+  
   private activationGetter: () => SkillActivationMap
-
-  private torsoUpCount: number = 0
 
   constructor (components: {
     head: EquippedArmorPiece,
