@@ -43,63 +43,91 @@ const applyRarityFilter = (items: SkilledItem[], rarity: Rarity) => {
 }
 
 const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
-  // find generic slot charms
-  const genericSlotCharms = [1, 2, 3].map((slots) => {
-    const hasCharmWithSlots = charms.find(c => c.slots === slots)
-    if (!hasCharmWithSlots) {
-      return undefined
+  // find highest generic slot charms
+  const highestGenericSlotCharm: Charm[] = []
+  for (const slots of [3, 2, 1]) {
+    const x = charms.find(c => c.slots === slots)
+    if (x) {
+      const newC: Charm = {
+        name: `${slots} Slot Charm`,
+        slots: slots as Slots,
+        category: EquipmentCategory.CHARM,
+        rarity: 0,
+        skills: new Map(),
+      }
+      highestGenericSlotCharm.push(newC)
+      break
     }
+  }
 
-    const c: Charm = {
-      name: `${slots} Slot Charm`,
-      slots: slots as Slots,
+  // build list of charms with wanted skills or with slots
+  const result = charms
+    .filter(x => filterHasSkillMax(x, skills))
+    .concat(...highestGenericSlotCharm)
+
+  // include dummy if there are no fitting pieces
+  if (result.length === 0) {
+    result.push({
+      name: 'None',
+      slots: 0,
       category: EquipmentCategory.CHARM,
       rarity: 0,
       skills: new Map(),
-    }
-    return c
-  }).filter(x => x !== undefined) as Charm[]
+    })
+  }
 
-  // return list of charms with wanted skills or with slots
-  return charms
-    .filter(x => filterHasSkillMax(x, skills))
-    .concat(...genericSlotCharms)
+  return result
 }
 
-const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType, skills: SkillActivation[]) => {
+const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType, category: EquipmentCategory, skills: SkillActivation[]) => {
   const rarityFiltered = applyRarityFilter(pieces, rarity) as ArmorPiece[]
   const typeFiltered = rarityFiltered.filter(p => filterType(p, type))
   const sorted = typeFiltered.sort((a, b) => b.defense.max - a.defense.max)
 
   // find generic slot pieces with highest defense
-  const genericSlotPieces = [1, 2, 3].map((slots) => {
-    const hasPieceWithSlots = sorted.find(p => p.slots === slots)
-    if (hasPieceWithSlots === undefined) {
-      return undefined
+  const highestGenericSlotPiece: ArmorPiece[] = []
+  for (const slots of [3, 2, 1]) {
+    const x = sorted.find(p => p.slots === slots)
+    if (x) {
+      const p: ArmorPiece = {
+        type: x.type,
+        defense: x.defense,
+        resistance: x.resistance,
+        name: `${slots} Slot Piece`,
+        slots: slots as Slots,
+        category: x.category,
+        rarity: x.rarity,
+        skills: new Map(),
+      }
+      highestGenericSlotPiece.push(p)
+      break
     }
-
-    const aPiece = hasPieceWithSlots
-    const p: ArmorPiece = {
-      type: aPiece.type,
-      defense: aPiece.defense,
-      resistance: aPiece.resistance,
-      name: `${slots} Slot Piece`,
-      slots: slots as Slots,
-      category: aPiece.category,
-      rarity: aPiece.rarity,
-      skills: new Map(),
-    }
-    return p
-  }).filter(x => x !== undefined) as ArmorPiece[]
+  }
 
   // find piece with torso up with highest defense
-  const torsoUpPiece = sorted.find(p => p.skills.get(TORSO_UP_ID) !== undefined)
+  const torsoUpPiece: ArmorPiece[] = [sorted.find(p => p.skills.get(TORSO_UP_ID) !== undefined)].filter(x => x !== undefined) as ArmorPiece[]
 
-  // return list of pieces with wanted skills, with slots, or with torso up
+  // build list of pieces with wanted skills, with slots, or with torso up
   const result = sorted
     .filter(x => filterHasSkill(x, skills))
-    .concat(...genericSlotPieces)
-  return torsoUpPiece ? result.concat(torsoUpPiece) : result
+    .concat(...highestGenericSlotPiece)
+    .concat(...torsoUpPiece)
+
+  // include dummy if there are no fitting pieces
+  if (result.length === 0) {
+    result.push({
+      type,
+      defense: { base: 0, max: 0, maxLr: 0 },
+      resistance: [0, 0, 0, 0, 0],
+      name: 'None',
+      slots: 0,
+      category,
+      rarity: 0,
+      skills: new Map(),
+    })
+  }
+
+  return result
 }
 
 const findSets = (
@@ -120,8 +148,8 @@ const search = async (
   constraints: SearchConstraints,
 ) => {
   const a = armorPieces
-    .map((piecesOfCategory) => {
-      return applyArmorFilter(piecesOfCategory, constraints.armorRarity, constraints.armorType, constraints.skillActivations)
+    .map((piecesOfCategory, i) => {
+      return applyArmorFilter(piecesOfCategory, constraints.armorRarity, constraints.armorType, i + 1, constraints.skillActivations)
     })
   const c = applyCharmFilter(charms, constraints.skillActivations)
   const d = applyRarityFilter(decorations, constraints.decoRarity)
