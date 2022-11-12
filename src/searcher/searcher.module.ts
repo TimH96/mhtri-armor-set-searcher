@@ -159,8 +159,11 @@ const findSets = (
     return skillData.skillActivation
   }
 
+  // TODO remove debug
+  const newSets = armorPieces.map(x => x.filter(y => y.name.startsWith('Helios') && y.name.endsWith('+')))
+
   const validSets = []
-  for (const set of getArmorPermutations(armorPieces, charms, getter)) {
+  for (const set of getArmorPermutations(newSets, charms, getter)) {
     const wantedIds = constraints.skillActivations.map(x => x.id)
     const activatedIds = set.evaluation.activations.map(x => x.id)
 
