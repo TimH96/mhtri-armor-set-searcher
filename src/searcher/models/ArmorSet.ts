@@ -8,6 +8,7 @@ import Resistance from '../../data-provider/models/equipment/Resistance'
 import EquippedCharm from '../../data-provider/models/equipment/EquippedCharm'
 import Evaluation from './Evaluation'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
+import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
 
 export default class ArmorSet {
   readonly head: EquippedArmorPiece
@@ -40,6 +41,16 @@ export default class ArmorSet {
     this.charm = components.charm
     this.activationGetter = activationGetter
     this.evaluation = this.evaluate()
+  }
+
+  getPieces (): EquippedArmorPiece[] {
+    return [
+      this.head,
+      this.chest,
+      this.arms,
+      this.waist,
+      this.legs,
+    ]
   }
 
   evaluate (): Evaluation {
