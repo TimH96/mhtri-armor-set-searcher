@@ -56,7 +56,7 @@ const renderCategories = (skillCategories: string[]) => {
     const categoryName = skillCategories[index]
     const node = htmlToElement(`
       <div class="search-picker-category" id="search-picker-category-${index}" data-category="${index}">
-        <div class="search-picker-category-title">${categoryName}</div>
+        <div class="search-picker-category-title banner">${categoryName}</div>
       </div>
     `)
     document.getElementById('search-skill-picker')!.appendChild(node)

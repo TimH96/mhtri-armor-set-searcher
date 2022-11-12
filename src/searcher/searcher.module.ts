@@ -10,6 +10,7 @@ import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
 import SkillActivationMap from '../data-provider/models/skills/SkillActivationMap'
 import ArmorSet from './models/ArmorSet'
+import DecoSlots from './models/DecoSlots'
 import SearchConstraints from './models/SearchConstraints'
 import StaticSkillData from './models/StaticSkillData'
 
@@ -166,6 +167,28 @@ const findSets = (
   for (const set of getArmorPermutations(newSets, charms, getter)) {
     const wantedIds = constraints.skillActivations.map(x => x.id)
     const activatedIds = set.evaluation.activations.map(x => x.id)
+
+    const slotsList: DecoSlots[] = [
+      { slots: set.charm.slots, torsoUp: false },
+      { slots: constraints.weaponSlots, torsoUp: false },
+      ...set.getPieces().map((x) => {
+        return {
+          slots: x.slots,
+          torsoUp: x.category === EquipmentCategory.CHEST && set.torsoUpCount !== 0,
+        }
+      }),
+    ]
+
+    /**
+     * ideas:
+     * 1: find out difference between skills and wanted skills and go from there
+     * 2: some level of bruteforce
+     */
+
+    // [3, 2, 1]
+    slotsList.map((slot) => {
+      const viableDecos = decorations.filter(d => d.requiredSlots <= slot.slots)
+    })
 
     if (wantedIds.every(wantedAct => activatedIds.includes(wantedAct))) {
       validSets.push(set)

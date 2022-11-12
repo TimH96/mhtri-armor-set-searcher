@@ -55,12 +55,6 @@ ul {
 
   font-size: 1.2em;
   text-align: center;
-  background-color: var(--color-highlight);
-
-  border-style: solid;
-  border-width: 1px;
-  border-color: var(--color-border);
-  border-radius: 6px;
 }
 
 #open-source p {
@@ -102,6 +96,14 @@ ul {
   z-index: 3;
 }
 
+.banner {
+  background-color: var(--color-highlight);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-border);
+  border-radius: 6px;
+}
+
 .panel-hide {
   display: none;
 }
@@ -120,14 +122,7 @@ ul {
 .search-picker-category-title {
   padding: 0.4em 1em;
   margin: 1em 0;
-
-  background-color: var(--color-highlight);
   font-weight: 600;
-
-  border-style: solid;
-  border-width: 1px;
-  border-color: var(--color-border);
-  border-radius: 6px;
 }
 
 .search-picker-activation {
@@ -191,4 +186,15 @@ th {
 .charm-delete {
   cursor: pointer;
   user-select: none;
+}
+
+.results-title {
+  margin-top: 1.6em;
+  font-size: 1.4em;
+}
+
+.results-banner {
+  margin-top: 0.2em;
+  font-size: 1.2em;
+  padding: 0.4em 1em;
 }

@@ -5,10 +5,11 @@ import StaticSkillData from '../../searcher/models/StaticSkillData'
 import { search } from '../../searcher/searcher.module'
 import { getGlobalSettings } from './global-settings.component'
 import { getSkillActivations, resetSkillActivations } from './picker.component'
+import { renderResults } from './search-results.component'
 
 const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) => {
+  // build params
   const globalSettings = getGlobalSettings()
-
   const searchParams: SearchConstraints = {
     weaponSlots: globalSettings.weaponSlots,
     armorType: globalSettings.armorType,
@@ -18,15 +19,25 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
     limit: 200,
   }
 
+  // TODO debug remove
+  const s = [
+    skillData.skillActivation.get(50)![0],
+    skillData.skillActivation.get(21)![0],
+    skillData.skillActivation.get(13)![0],
+  ]
+  searchParams.skillActivations = s
+
+  // return if no skill selected
   if (searchParams.skillActivations.length === 0) {
     alert('Please select at least one skill')
     return
   }
 
+  // search for sets
   const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams, skillData)
 
-  // TODO build list
-  console.log(result)
+  // render results
+  renderResults(result, skillData, searchParams)
 }
 
 const resetLogic = () => {

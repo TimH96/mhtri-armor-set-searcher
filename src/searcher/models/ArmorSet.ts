@@ -8,7 +8,6 @@ import Resistance from '../../data-provider/models/equipment/Resistance'
 import EquippedCharm from '../../data-provider/models/equipment/EquippedCharm'
 import Evaluation from './Evaluation'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
-import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
 
 export default class ArmorSet {
   readonly head: EquippedArmorPiece
@@ -20,9 +19,9 @@ export default class ArmorSet {
   decorations: EquippedDecoration[] = []
 
   evaluation: Evaluation
-  
+
   torsoUpCount: number = 0
-  
+
   private activationGetter: () => SkillActivationMap
 
   constructor (components: {

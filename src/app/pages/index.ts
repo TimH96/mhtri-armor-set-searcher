@@ -30,6 +30,9 @@ const main = async () => {
 
   // initialize search controls
   attachControlListeners({ armor, decorations }, skillData)
+
+  // TODO debug remove
+  document.getElementById('search-btn')!.click()
 }
 
 main()
