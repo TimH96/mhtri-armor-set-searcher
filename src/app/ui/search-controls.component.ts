@@ -23,7 +23,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
     return
   }
 
-  const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams)
+  const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams, skillData)
 
   // TODO build list
   console.log(result)

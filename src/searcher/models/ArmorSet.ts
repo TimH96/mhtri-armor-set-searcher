@@ -6,6 +6,8 @@ import EquipmentSkillsMin from '../../data-provider/models/equipment/EquipmentSk
 import EquippedDecoration from '../../data-provider/models/equipment/EquippedDecoration'
 import Resistance from '../../data-provider/models/equipment/Resistance'
 import EquippedCharm from '../../data-provider/models/equipment/EquippedCharm'
+import Evaluation from './Evaluation'
+import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 
 export default class ArmorSet {
   readonly head: EquippedArmorPiece
@@ -16,6 +18,10 @@ export default class ArmorSet {
   readonly charm: EquippedCharm
   decorations: EquippedDecoration[] = []
 
+  evaluation: Evaluation
+
+  private activationGetter: () => SkillActivationMap
+
   private torsoUpCount: number = 0
 
   constructor (components: {
@@ -25,17 +31,18 @@ export default class ArmorSet {
     waist: EquippedArmorPiece,
     legs: EquippedArmorPiece,
     charm: EquippedCharm,
-  }) {
+  }, activationGetter: () => SkillActivationMap) {
     this.head = components.head
     this.chest = components.chest
     this.arms = components.arms
     this.waist = components.waist
     this.legs = components.legs
     this.charm = components.charm
-    this.evaluate()
+    this.activationGetter = activationGetter
+    this.evaluation = this.evaluate()
   }
 
-  evaluate () {
+  evaluate (): Evaluation {
     const totalSkills: EquipmentSkillsMin = new Map()
     const totalDefense: Defense = { base: 0, max: 0 }
     let totalResistance: Resistance = [0, 0, 0, 0, 0]
@@ -56,7 +63,7 @@ export default class ArmorSet {
       for (const [sId, sVal] of piece.skills) {
         const currentS = totalSkills.get(sId)
         const processedVal = piece.category === EquipmentCategory.CHEST
-          ? sVal.points * torsoUpCount + 1
+          ? sVal.points * (torsoUpCount + 1)
           : sVal.points
         const newPoints = currentS
           ? processedVal + currentS.points
@@ -82,7 +89,7 @@ export default class ArmorSet {
       for (const [sId, sVal] of deco.skills) {
         const currentS = totalSkills.get(sId)
         const processedVal = deco.slottedPiece === EquipmentCategory.CHEST && this.torsoUpCount
-          ? sVal.points * torsoUpCount + 1
+          ? sVal.points * (torsoUpCount + 1)
           : sVal.points
         const newPoints = currentS
           ? processedVal + currentS.points
@@ -90,5 +97,30 @@ export default class ArmorSet {
         totalSkills.set(sId, { points: newPoints })
       }
     }
+
+    // get activations
+    const activations = []
+    for (const [sId, sVal] of totalSkills) {
+      if (Math.abs(sVal.points) < 10) {
+        continue
+      }
+
+      const activationsOfSkill = this.activationGetter().get(sId)!
+        .filter(act => {
+          return act.isPositive
+            ? sVal.points >= act.requiredPoints
+            : sVal.points <= act.requiredPoints
+        })
+      activations.push(...activationsOfSkill)
+    }
+
+    // build, save and return evaluation result
+    const thisEval: Evaluation = {
+      torsoUpCount,
+      skills: totalSkills,
+      activations,
+    }
+    this.evaluation = thisEval
+    return thisEval
   }
 }

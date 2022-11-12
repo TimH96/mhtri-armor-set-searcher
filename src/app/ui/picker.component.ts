@@ -35,11 +35,13 @@ const getSkillActivations = (data: {
     })
     // map to proper data model
     .map((element) => {
+      const id = parseInt(element.getAttribute('data-id')!)
       const requiredSkill = parseInt(element.getAttribute('data-skill')!)
       const requiredPoints = parseInt(element.getAttribute('data-points')!)
       const category = parseInt(element.parentElement!.getAttribute('data-category')!)
 
       return {
+        id,
         name: data.skillName.get(requiredSkill)!,
         requiredPoints,
         requiredSkill,
@@ -66,14 +68,14 @@ const renderActivations = (skillActivation: SkillActivationMap) => {
     activationList
       .filter(activation => activation.isPositive)
       .reverse()
-      .forEach((activattion) => {
+      .forEach((activation) => {
         const node = htmlToElement(`
-          <div class="search-picker-activation" data-skill="${activattion.requiredSkill}" data-points="${activattion.requiredPoints}">
+          <div class="search-picker-activation" data-skill="${activation.requiredSkill}" data-points="${activation.requiredPoints}" data-id="${activation.id}">
             <input style="float:left;" type="checkbox">
-            <div class="search-picker-activation-name">${activattion.name}</div>
+            <div class="search-picker-activation-name">${activation.name}</div>
           </div>
         `)
-        document.getElementById(`search-picker-category-${activattion.category}`)!.appendChild(node)
+        document.getElementById(`search-picker-category-${activation.category}`)!.appendChild(node)
       })
   })
 }

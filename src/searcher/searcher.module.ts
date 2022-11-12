@@ -8,10 +8,12 @@ import Rarity from '../data-provider/models/equipment/Rarity'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
+import SkillActivationMap from '../data-provider/models/skills/SkillActivationMap'
 import ArmorSet from './models/ArmorSet'
 import SearchConstraints from './models/SearchConstraints'
+import StaticSkillData from './models/StaticSkillData'
 
-function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[]) {
+function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[], activationGetter: () => SkillActivationMap) {
   for (const head of armorPieces[0]) {
     for (const chest of armorPieces[1]) {
       for (const arms of armorPieces[2]) {
@@ -25,7 +27,7 @@ function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[]) {
                 waist: { ...waist, usedSlots: 0, remainingSlots: waist.slots },
                 legs: { ...legs, usedSlots: 0, remainingSlots: legs.slots },
                 charm: { ...charm, usedSlots: 0, remainingSlots: charm.slots },
-              })
+              }, activationGetter)
               yield set
             }
           }
@@ -151,22 +153,33 @@ const findSets = (
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
+  skillData: StaticSkillData,
 ) => {
-  console.log({ armorPieces })
-  console.log({ decorations })
-  console.log({ charms })
-
-  for (const set of getArmorPermutations(armorPieces, charms)) {
+  const getter = () => {
+    return skillData.skillActivation
   }
 
-  console.log('done')
+  const validSets = []
+  for (const set of getArmorPermutations(armorPieces, charms, getter)) {
+    const wantedIds = constraints.skillActivations.map(x => x.id)
+    const activatedIds = set.evaluation.activations.map(x => x.id)
+
+    if (wantedIds.every(wantedAct => activatedIds.includes(wantedAct))) {
+      validSets.push(set)
+
+      if (validSets.length === constraints.limit) break
+    }
+  }
+
+  return validSets
 }
 
-const search = async (
+const search = (
   armorPieces: ArmorPiece[][],
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
+  skillData: StaticSkillData,
 ) => {
   const a = armorPieces
     .map((piecesOfCategory, i) => {
@@ -181,6 +194,7 @@ const search = async (
     d as Decoration[],
     c,
     constraints,
+    skillData,
   )
 }
 
