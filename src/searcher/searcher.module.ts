@@ -1,3 +1,4 @@
+import { MAX_RARITY, TORSO_UP_ID } from '../data-provider/data-provider.module'
 import ArmorPiece from '../data-provider/models/equipment/ArmorPiece'
 import ArmorType from '../data-provider/models/equipment/ArmorType'
 import Charm from '../data-provider/models/equipment/Charm'
@@ -7,10 +8,32 @@ import Rarity from '../data-provider/models/equipment/Rarity'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
+import ArmorSet from './models/ArmorSet'
 import SearchConstraints from './models/SearchConstraints'
 
-const MAX_RARITY = 7
-const TORSO_UP_ID = 83
+function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[]) {
+  for (const head of armorPieces[0]) {
+    for (const chest of armorPieces[1]) {
+      for (const arms of armorPieces[2]) {
+        for (const waist of armorPieces[3]) {
+          for (const legs of armorPieces[4]) {
+            for (const charm of charms) {
+              const set: ArmorSet = new ArmorSet({
+                head: { ...head, usedSlots: 0, remainingSlots: head.slots },
+                chest: { ...chest, usedSlots: 0, remainingSlots: chest.slots },
+                arms: { ...arms, usedSlots: 0, remainingSlots: arms.slots },
+                waist: { ...waist, usedSlots: 0, remainingSlots: waist.slots },
+                legs: { ...legs, usedSlots: 0, remainingSlots: legs.slots },
+                charm: { ...charm, usedSlots: 0, remainingSlots: charm.slots },
+              })
+              yield set
+            }
+          }
+        }
+      }
+    }
+  }
+}
 
 const filterType = (piece: ArmorPiece, type: ArmorType) => {
   return piece.type === ArmorType.ALL || piece.type === type
@@ -21,13 +44,6 @@ const filterRarity = (item: SkilledItem, rarity: Rarity) => {
 }
 
 const filterHasSkill = (item: SkilledItem, desiredSkills: SkillActivation[]) => {
-  return desiredSkills.some((act) => {
-    const s = item.skills.get(act.requiredSkill)
-    return s && s > 0
-  })
-}
-
-const filterHasSkillMax = (item: Charm, desiredSkills: SkillActivation[]) => {
   return desiredSkills.some((act) => {
     const s = item.skills.get(act.requiredSkill)
     return s && s.points > 0
@@ -62,7 +78,7 @@ const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
 
   // build list of charms with wanted skills or with slots
   const result = charms
-    .filter(x => filterHasSkillMax(x, skills))
+    .filter(x => filterHasSkill(x, skills))
     .concat(...highestGenericSlotCharm)
 
   // include dummy if there are no fitting pieces
@@ -139,6 +155,11 @@ const findSets = (
   console.log({ armorPieces })
   console.log({ decorations })
   console.log({ charms })
+
+  for (const set of getArmorPermutations(armorPieces, charms)) {
+  }
+
+  console.log('done')
 }
 
 const search = async (

@@ -5,7 +5,12 @@ import EquipmentSkillsMin from './models/equipment/EquipmentSkillsMin'
 import GameID from './models/GameId'
 import SkillActivation from './models/skills/SkillActivation'
 import SkillActivationMap from './models/skills/SkillActivationMap'
+import SkillMin from './models/skills/SkillMin'
 import SkillNameMap from './models/skills/SkillNameMap'
+
+const MAX_RARITY = 7
+
+const TORSO_UP_ID = 83
 
 /** fetch from data directory */
 const getRawData = async (url: string) => {
@@ -16,9 +21,10 @@ const getRawData = async (url: string) => {
 const getDataWithTransformedSkillMap = async (url: string): Promise<{skills: EquipmentSkillsMin}[]> => {
   const raw = await getRawData(url)
   return raw.map((rawX: any) => {
-    const skillMap: Map<GameID, number> = new Map()
+    const skillMap: EquipmentSkillsMin = new Map()
     for (const x in rawX.skills) {
-      skillMap.set(parseInt(x), rawX.skills[x])
+      const skill: SkillMin = { points: rawX.skills[x] }
+      skillMap.set(parseInt(x), skill)
     }
     return {
       ...rawX,
@@ -92,6 +98,8 @@ const getSkillActivationMap = async (): Promise<SkillActivationMap> => {
 }
 
 export {
+  MAX_RARITY,
+  TORSO_UP_ID,
   getHead,
   getChest,
   getArms,
