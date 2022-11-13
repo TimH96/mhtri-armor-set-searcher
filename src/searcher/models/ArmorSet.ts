@@ -1,22 +1,22 @@
 import { TORSO_UP_ID } from '../../data-provider/data-provider.module'
-import EquippedArmorPiece from '../../data-provider/models/equipment/EquippedArmorPiece'
 import Defense from '../../data-provider/models/equipment/Defense'
 import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
 import EquipmentSkillsMin from '../../data-provider/models/equipment/EquipmentSkillsMin'
-import EquippedDecoration from '../../data-provider/models/equipment/EquippedDecoration'
 import Resistance from '../../data-provider/models/equipment/Resistance'
-import EquippedCharm from '../../data-provider/models/equipment/EquippedCharm'
 import Evaluation from './Evaluation'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
+import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
+import Decoration from '../../data-provider/models/equipment/Decoration'
+import Charm from '../../data-provider/models/equipment/Charm'
 
 export default class ArmorSet {
-  readonly head: EquippedArmorPiece
-  readonly chest: EquippedArmorPiece
-  readonly arms: EquippedArmorPiece
-  readonly waist: EquippedArmorPiece
-  readonly legs: EquippedArmorPiece
-  readonly charm: EquippedCharm
-  decorations: EquippedDecoration[] = []
+  readonly head: ArmorPiece
+  readonly chest: ArmorPiece
+  readonly arms: ArmorPiece
+  readonly waist: ArmorPiece
+  readonly legs: ArmorPiece
+  readonly charm: Charm
+  decorations: Decoration[] = []
 
   evaluation: Evaluation
 
@@ -25,12 +25,12 @@ export default class ArmorSet {
   private activationGetter: () => SkillActivationMap
 
   constructor (components: {
-    head: EquippedArmorPiece,
-    chest: EquippedArmorPiece,
-    arms: EquippedArmorPiece,
-    waist: EquippedArmorPiece,
-    legs: EquippedArmorPiece,
-    charm: EquippedCharm,
+    head: ArmorPiece,
+    chest: ArmorPiece,
+    arms: ArmorPiece,
+    waist: ArmorPiece,
+    legs: ArmorPiece,
+    charm: Charm,
   }, activationGetter: () => SkillActivationMap) {
     this.head = components.head
     this.chest = components.chest
@@ -42,7 +42,7 @@ export default class ArmorSet {
     this.evaluation = this.evaluate()
   }
 
-  getPieces (): EquippedArmorPiece[] {
+  getPieces (): ArmorPiece[] {
     return [
       this.head,
       this.chest,
@@ -92,20 +92,6 @@ export default class ArmorSet {
         ? sVal.points + currentS.points
         : sVal.points
       totalSkills.set(sId, { points: newPoints })
-    }
-
-    // add skills from decorations
-    for (const deco of this.decorations) {
-      for (const [sId, sVal] of deco.skills) {
-        const currentS = totalSkills.get(sId)
-        const processedVal = deco.slottedPiece === EquipmentCategory.CHEST && this.torsoUpCount
-          ? sVal.points * (torsoUpCount + 1)
-          : sVal.points
-        const newPoints = currentS
-          ? processedVal + currentS.points
-          : processedVal
-        totalSkills.set(sId, { points: newPoints })
-      }
     }
 
     // get activations

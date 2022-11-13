@@ -24,12 +24,12 @@ function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[], a
           for (const legs of armorPieces[4]) {
             for (const charm of charms) {
               const set: ArmorSet = new ArmorSet({
-                head: { ...head, usedSlots: 0, remainingSlots: head.slots },
-                chest: { ...chest, usedSlots: 0, remainingSlots: chest.slots },
-                arms: { ...arms, usedSlots: 0, remainingSlots: arms.slots },
-                waist: { ...waist, usedSlots: 0, remainingSlots: waist.slots },
-                legs: { ...legs, usedSlots: 0, remainingSlots: legs.slots },
-                charm: { ...charm, usedSlots: 0, remainingSlots: charm.slots },
+                head,
+                chest,
+                arms,
+                waist,
+                legs,
+                charm,
               }, activationGetter)
               yield set
             }
