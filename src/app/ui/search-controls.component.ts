@@ -16,7 +16,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
     armorRarity: globalSettings.armorRarity,
     decoRarity: globalSettings.decoRarity,
     skillActivations: getSkillActivations(skillData),
-    limit: 200,
+    limit: 50,
   }
 
   // return if no skill selected

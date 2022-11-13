@@ -40,13 +40,19 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
     .sort(([_a, a], [_b, b]) => b - a)
     .map(([sId, sVal]) => {
       const r = document.createElement('tr')
+
+      const computedDecoValue = set.decorations
+        .filter(d => d.skills.has(sId))
+        .map(d => d.skills.get(sId)!)
+        .reduce((sum, c) => sum + c, 0)
+
       r.appendChild(htmlToElement(`<td>${skillData.skillName.get(sId) ? skillData.skillName.get(sId)! : ''}</td>`))
       r.appendChild(htmlToElement('<td></td>')) // weapon
       for (const p of set.getPieces()) {
         r.append(htmlToElement(`<td>${p.skills.get(sId) ? p.skills.get(sId)! : ''}</td>`))
       }
       r.append(htmlToElement(`<td>${set.charm.skills.get(sId) ? set.charm.skills.get(sId)! : ''}</td>`))
-      r.append(htmlToElement('<td>deco</td>'))
+      r.append(htmlToElement(`<td>${computedDecoValue}</td>`))
       r.append(htmlToElement(`<td>${sVal}</td>`))
       const possibleAct = set.evaluation!.activations.find(a => a.requiredSkill === sId)
       if (possibleAct) r.append(htmlToElement(`<td ${!possibleAct.isPositive ? 'class="neg-skill"' : ''}}">${possibleAct.name}</td>`))

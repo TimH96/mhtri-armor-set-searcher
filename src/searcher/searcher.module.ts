@@ -315,8 +315,8 @@ const tryAllDecoPermutationsForSet = (
   // where each evaluation is the combination of the evaluation of each individual piece
   // therefore holding both the total amount of decos and skills for the entire set
   for (const eva of getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)) {
-    const decosAreSufficient = Array.from(missingPoints.entries()).every(x => {
-      return eva.skills.has(x[0]) && eva.skills.get(x[0])! >= x[1]
+    const decosAreSufficient = Array.from(missingPoints.entries()).every(([sId, sVal]) => {
+      return eva.skills.has(sId) && eva.skills.get(sId)! >= sVal
     })
 
     if (decosAreSufficient) {

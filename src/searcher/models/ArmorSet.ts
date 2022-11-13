@@ -68,20 +68,16 @@ export default class ArmorSet {
       totalResistance = piece.resistance.map((res, i) => res + totalResistance[i])
     }
 
-    // TODO implement
+    // TODO account for torso up
     // add skills from decorations
-    // for (const deco of this.decorations) {
-    //  for (const [sId, sVal] of deco.skills) {
-    //    const currentS = totalSkills.get(sId)
-    //    const processedVal = deco.slottedPiece === EquipmentCategory.CHEST && this.torsoUpCount
-    //      ? sVal.points * (torsoUpCount + 1)
-    //      : sVal.points
-    //    const newPoints = currentS
-    //      ? processedVal + currentS.points
-    //      : processedVal
-    //    totalSkills.set(sId, { points: newPoints })
-    //  }
-    // }
+    for (const deco of this.decorations) {
+      for (const [sId, sVal] of deco.skills) {
+        const newPoints = totalSkills.has(sId)
+          ? sVal + totalSkills.get(sId)!
+          : sVal
+        totalSkills.set(sId, newPoints)
+      }
+    }
 
     // get activations
     const a: SkillActivation[] = []
