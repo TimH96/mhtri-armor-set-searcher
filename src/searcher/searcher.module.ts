@@ -4,12 +4,14 @@ import ArmorType from '../data-provider/models/equipment/ArmorType'
 import Charm from '../data-provider/models/equipment/Charm'
 import Decoration from '../data-provider/models/equipment/Decoration'
 import EquipmentCategory from '../data-provider/models/equipment/EquipmentCategory'
+import EquipmentSkillsMin from '../data-provider/models/equipment/EquipmentSkillsMin'
 import Rarity from '../data-provider/models/equipment/Rarity'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
 import SkillActivationMap from '../data-provider/models/skills/SkillActivationMap'
 import ArmorSet from './models/ArmorSet'
+import DecoEvaluation from './models/DecoEvaluation'
 import DecoSlots from './models/DecoSlots'
 import SearchConstraints from './models/SearchConstraints'
 import StaticSkillData from './models/StaticSkillData'
@@ -54,10 +56,7 @@ const filterHasSkill = (item: SkilledItem, desiredSkills: SkillActivation[]) => 
 }
 
 const applyRarityFilter = (items: SkilledItem[], rarity: Rarity) => {
-  if (rarity === MAX_RARITY) {
-    return items
-  }
-
+  if (rarity === MAX_RARITY) return items
   return items.filter(x => filterRarity(x, rarity))
 }
 
@@ -149,6 +148,118 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
   return result
 }
 
+const serializeSkillMap = (m: EquipmentSkillsMin) => {
+  return Array.from(m.entries())
+    .sort(([aId, _a], [bId, _b]) => bId - aId)
+    .map(([sId, sVal]) => `${sId}:${sVal}`)
+    .join(',')
+}
+
+const evaluateDecoPermutation = (decos: Decoration[]): DecoEvaluation => {
+  const skillMap: EquipmentSkillsMin = new Map()
+  decos.forEach((deco) => {
+    Array.from(deco.skills.entries()).forEach(([sId, sVal]) => {
+      skillMap.has(sId)
+        ? skillMap.set(sId, { points: skillMap.get(sId)!.points + sVal.points })
+        : skillMap.set(sId, { points: sVal.points })
+    })
+  })
+
+  return {
+    skills: skillMap,
+    serialized: serializeSkillMap(skillMap),
+    decos,
+  }
+}
+
+const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
+  // get all decors of specific slot
+  const rawOneSlots = decorations.filter(d => d.requiredSlots === 1)
+  const rawTwoSlots = decorations.filter(d => d.requiredSlots === 2)
+  const rawThreeSlots = decorations.filter(d => d.requiredSlots === 3)
+
+  // get all variations for 1 slot
+  const oneSlotVariations = rawOneSlots.map(x => [x])
+
+  // get all variations for 2 slots
+  const twoOneSlotDecoVariations = []
+  for (let i = 0; i < oneSlotVariations.length; i++) {
+    const x = oneSlotVariations[i]
+    for (let j = Math.abs(i); j < oneSlotVariations.length; j++) {
+      const y = oneSlotVariations[j]
+      twoOneSlotDecoVariations.push(x.concat(y))
+    }
+  }
+  const twoSlotVariations = rawTwoSlots
+    .map(x => [x])
+    .concat(twoOneSlotDecoVariations)
+
+  // get all variations for 3 slots
+  const threeOneSlotDecoVariations = []
+  for (let i = 0; i < oneSlotVariations.length; i++) {
+    const x = oneSlotVariations[i]
+    for (let j = Math.abs(i); j < twoOneSlotDecoVariations.length; j++) {
+      const y = twoOneSlotDecoVariations[j]
+      threeOneSlotDecoVariations.push(x.concat(y))
+    }
+  }
+  const oneAndTwoSlotDecoVariations = []
+  for (const oneSlot of rawOneSlots) {
+    for (const twoSlot of rawTwoSlots) {
+      oneAndTwoSlotDecoVariations.push([oneSlot, twoSlot])
+    }
+  }
+  const threeSlotVariations = rawThreeSlots
+    .map(x => [x])
+    .concat(oneAndTwoSlotDecoVariations)
+    .concat(threeOneSlotDecoVariations)
+
+  // evaluate all permutations
+  const evaluations = [
+    oneSlotVariations,
+    twoSlotVariations,
+    threeSlotVariations,
+  ].map(variationList => variationList.map(variation => evaluateDecoPermutation(variation)))
+
+  // throw out duplicates and return
+  const deduplicated = evaluations
+    .map(evaluationList => {
+      const serializedList: string[] = []
+      return evaluationList.filter(variation => {
+        if (serializedList.includes(variation.serialized!)) {
+          return false
+        }
+
+        serializedList.push(variation.serialized!)
+        return true
+      })
+    })
+  return deduplicated
+}
+
+const addSkillMaps = (a: EquipmentSkillsMin, b: EquipmentSkillsMin) => {
+  const newSkillMap: EquipmentSkillsMin = new Map()
+  for (const m of [a, b]) {
+    for (const [sId, sVal] of Array.from(m.entries())) {
+      const existingVal = newSkillMap.get(sId)
+
+      if (existingVal) {
+        newSkillMap.set(sId, { points: existingVal.points + sVal.points })
+      } else {
+        newSkillMap.set(sId, { points: sVal.points })
+      }
+    }
+  }
+
+  return newSkillMap
+}
+
+const tryAllDecoPermutations = (set: ArmorSet, decos: DecoEvaluation[], activations: SkillActivation[]): DecoEvaluation => {
+  for (const d of decos) {
+    const skills = addSkillMaps(set.evaluation.skills, d.skills)
+  }
+}
+
 const findSets = (
   armorPieces: ArmorPiece[][],
   decorations: Decoration[],
@@ -156,16 +267,15 @@ const findSets = (
   constraints: SearchConstraints,
   skillData: StaticSkillData,
 ) => {
-  const getter = () => {
-    return skillData.skillActivation
-  }
+  const getter = () => { return skillData.skillActivation }
+  const decoVariations = getDecorationVariationsPerSlot(decorations)
 
   // TODO remove debug
   const newSets = armorPieces.map(x => x.filter(y => y.name.startsWith('Helios') && y.name.endsWith('+')))
 
   const validSets = []
+  const wantedIds = constraints.skillActivations.map(x => x.id)
   for (const set of getArmorPermutations(newSets, charms, getter)) {
-    const wantedIds = constraints.skillActivations.map(x => x.id)
     const activatedIds = set.evaluation.activations.map(x => x.id)
 
     const slotsList: DecoSlots[] = [
@@ -178,17 +288,6 @@ const findSets = (
         }
       }),
     ]
-
-    /**
-     * ideas:
-     * 1: find out difference between skills and wanted skills and go from there
-     * 2: some level of bruteforce
-     */
-
-    // [3, 2, 1]
-    slotsList.map((slot) => {
-      const viableDecos = decorations.filter(d => d.requiredSlots <= slot.slots)
-    })
 
     if (wantedIds.every(wantedAct => activatedIds.includes(wantedAct))) {
       validSets.push(set)
