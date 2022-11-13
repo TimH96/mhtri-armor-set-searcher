@@ -39,6 +39,36 @@ function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[]) {
   }
 }
 
+function * getDecorationPermutationsForSet (
+  set: ArmorSet,
+  slotsList: DecoSlots[],
+  possibilitiesPerArmorSlot: DecoEvaluation[][],
+  chosenVariations: DecoEvaluation[],
+  i: number,
+): Generator<DecoEvaluation, void, undefined> {
+  if (i === -1) {
+    const combinedDecoEvaluation: DecoEvaluation = {
+      decos: chosenVariations.map(v => v.decos).flat(),
+      skills: chosenVariations
+        .map(v => v.skills)
+        .reduce((p, c) => {
+          return addSkillMaps(p, c)
+        }, new Map()),
+    }
+    yield combinedDecoEvaluation
+  } else {
+    for (let j = 0; j < possibilitiesPerArmorSlot[i].length; j++) {
+      yield * getDecorationPermutationsForSet(
+        set,
+        slotsList,
+        possibilitiesPerArmorSlot,
+        chosenVariations.concat(possibilitiesPerArmorSlot[i][j]),
+        i - 1,
+      )
+    }
+  }
+}
+
 const filterType = (piece: ArmorPiece, type: ArmorType) => {
   return piece.type === ArmorType.ALL || piece.type === type
 }
@@ -254,39 +284,6 @@ const addSkillMaps = (a: EquipmentSkills, b: EquipmentSkills) => {
   return newSkillMap
 }
 
-function getDecorationPermutationsForSet (
-  set: ArmorSet,
-  slotsList: DecoSlots[],
-  possibilitiesPerArmorSlot: DecoEvaluation[][],
-  chosenVariations: DecoEvaluation[],
-  i: number,
-): DecoEvaluation[] {
-  if (i === -1) {
-    const combinedDecoEvaluation: DecoEvaluation = {
-      decos: chosenVariations.map(v => v.decos).flat(),
-      skills: chosenVariations
-        .map(v => v.skills)
-        .reduce((p, c) => {
-          return addSkillMaps(p, c)
-        }, new Map()),
-    }
-    return [combinedDecoEvaluation]
-  }
-
-  let r: DecoEvaluation[] = []
-  for (let j = 0; j < possibilitiesPerArmorSlot[i].length; j++) {
-    const a = getDecorationPermutationsForSet(
-      set,
-      slotsList,
-      possibilitiesPerArmorSlot,
-      chosenVariations.concat(possibilitiesPerArmorSlot[i][j]),
-      i - 1,
-    )
-    r = r.concat(...a)
-  }
-  return r
-}
-
 const tryAllDecoPermutationsForSet = (
   set: ArmorSet,
   decoVariationsPerSlot: DecoEvaluation[][],
@@ -317,19 +314,17 @@ const tryAllDecoPermutationsForSet = (
   // after many confusing transforms right here we finally get a list of deco evaluations
   // where each evaluation is the combination of the evaluation of each individual piece
   // therefore holding both the total amount of decos and skills for the entire set
-  const decoPermutations = getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)
-
-  const decoVarExists = decoPermutations
-    .find((eva) => {
-      return Array.from(missingPoints.entries()).every(x => {
-        return eva.skills.has(x[0]) && eva.skills.get(x[0])! >= x[1]
-      })
+  for (const eva of getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)) {
+    const decosAreSufficient = Array.from(missingPoints.entries()).every(x => {
+      return eva.skills.has(x[0]) && eva.skills.get(x[0])! >= x[1]
     })
 
-  if (decoVarExists) {
-    set.addDecorations(decoVarExists.decos)
-    return set
+    if (decosAreSufficient) {
+      set.addDecorations(eva.decos)
+      return set
+    }
   }
+
   return null
 }
 
