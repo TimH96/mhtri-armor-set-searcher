@@ -36,7 +36,7 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
   `)
 
   // build skills rows
-  const skillRows = Array.from(set.evaluation.skills.entries())
+  const skillRows = Array.from(set.evaluation!.skills.entries())
     .sort(([_a, a], [_b, b]) => b - a)
     .map(([sId, sVal]) => {
       const r = document.createElement('tr')
@@ -48,7 +48,7 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
       r.append(htmlToElement(`<td>${set.charm.skills.get(sId) ? set.charm.skills.get(sId)! : ''}</td>`))
       r.append(htmlToElement('<td>deco</td>'))
       r.append(htmlToElement(`<td>${sVal}</td>`))
-      const possibleAct = set.evaluation.activations.find(a => a.requiredSkill === sId)
+      const possibleAct = set.evaluation!.activations.find(a => a.requiredSkill === sId)
       if (possibleAct) r.append(htmlToElement(`<td ${!possibleAct.isPositive ? 'class="neg-skill"' : ''}}">${possibleAct.name}</td>`))
       return r
     })
@@ -78,7 +78,7 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
 const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: SearchConstraints) => {
   // get bonus and negative skills
   const requiredActivations = searchParams.skillActivations
-  const unrelatedActivations = set.evaluation.activations.filter((act) => {
+  const unrelatedActivations = set.evaluation!.activations.filter((act) => {
     return !act.isPositive || // negative skill
       !requiredActivations.find(req => req.requiredSkill === act.requiredSkill) || // skill is not in required
       requiredActivations.find(req => req.requiredSkill === act.requiredSkill && act.requiredPoints > req.requiredPoints) // skill is upgrade of smth required
@@ -103,12 +103,12 @@ const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: 
   const row2 = htmlToElement(`
     <tr class="result-set-row result-set-row2">
       <td colspan="6">
-        <p><span class="def">DEF</span> <span>${set.evaluation.defense.max}</span></p>
-        <p><span class="fir">FIR</span> <span>${set.evaluation.resistance[0]}</span></p>
-        <p><span class="wat">WAT</span> <span>${set.evaluation.resistance[1]}</span></p>
-        <p><span class="ice">ICE</span> <span>${set.evaluation.resistance[2]}</span></p>
-        <p><span class="thn">THN</span> <span>${set.evaluation.resistance[3]}</span></p>
-        <p><span class="drg">DRG</span> <span>${set.evaluation.resistance[4]}</span></p>
+        <p><span class="def">DEF</span> <span>${set.evaluation!.defense.max}</span></p>
+        <p><span class="fir">FIR</span> <span>${set.evaluation!.resistance[0]}</span></p>
+        <p><span class="wat">WAT</span> <span>${set.evaluation!.resistance[1]}</span></p>
+        <p><span class="ice">ICE</span> <span>${set.evaluation!.resistance[2]}</span></p>
+        <p><span class="thn">THN</span> <span>${set.evaluation!.resistance[3]}</span></p>
+        <p><span class="drg">DRG</span> <span>${set.evaluation!.resistance[4]}</span></p>
         <span class="result-set-unrelated">${unrelatedHtmlStrings.join('')}</span>
       </td>
     </tr>`)
