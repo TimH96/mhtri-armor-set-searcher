@@ -9,14 +9,13 @@ import Rarity from '../data-provider/models/equipment/Rarity'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
-import SkillActivationMap from '../data-provider/models/skills/SkillActivationMap'
 import ArmorSet from './models/ArmorSet'
 import DecoEvaluation from './models/DecoEvaluation'
 import DecoSlots from './models/DecoSlots'
 import SearchConstraints from './models/SearchConstraints'
 import StaticSkillData from './models/StaticSkillData'
 
-function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[], activationGetter: () => SkillActivationMap) {
+function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[]) {
   for (const head of armorPieces[0]) {
     for (const chest of armorPieces[1]) {
       for (const arms of armorPieces[2]) {
@@ -30,7 +29,7 @@ function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[], a
                 waist,
                 legs,
                 charm,
-              }, activationGetter)
+              })
               yield set
             }
           }
@@ -311,25 +310,26 @@ const tryAllDecoPermutationsForSet = (
   const missingPoints = new Map(wantedSkills.map((skill) => {
     return [
       skill.requiredSkill,
-      skill.requiredPoints - (set.evaluation.skills.has(skill.requiredSkill)
-        ? set.evaluation.skills.get(skill.requiredSkill)!
-        : 0
-      ),
+      skill.requiredPoints - set.partial.skills.get(skill.requiredSkill)! || 0,
     ]
   }))
 
   // after many confusing transforms right here we finally get a list of deco evaluations
   // where each evaluation is the combination of the evaluation of each individual piece
   // therefore holding both the total amount of decos and skills for the entire set
-  const bla = getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)
-  const decoVarExists = bla
+  const decoPermutations = getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)
+
+  const decoVarExists = decoPermutations
     .find((eva) => {
       return Array.from(missingPoints.entries()).every(x => {
         return eva.skills.has(x[0]) && eva.skills.get(x[0])! >= x[1]
       })
     })
 
-  if (decoVarExists) return set
+  if (decoVarExists) {
+    set.addDecorations(decoVarExists.decos)
+    return set
+  }
   return null
 }
 
@@ -340,14 +340,14 @@ const findSets = (
   constraints: SearchConstraints,
   skillData: StaticSkillData,
 ) => {
-  const getter = () => { return skillData.skillActivation }
   const decoVariations = getDecorationVariationsPerSlot(decorations)
 
   const validSets = []
   const wantedSkills = constraints.skillActivations.map(x => x)
-  for (const set of getArmorPermutations(armorPieces, charms, getter)) {
+  for (const set of getArmorPermutations(armorPieces, charms)) {
     const foundSet = tryAllDecoPermutationsForSet(set, decoVariations, wantedSkills, constraints)
     if (foundSet) {
+      foundSet.evaluate(skillData.skillActivation)
       validSets.push(foundSet)
       if (validSets.length === constraints.limit) break
     }
