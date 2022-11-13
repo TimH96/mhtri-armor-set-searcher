@@ -19,13 +19,6 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
     limit: 200,
   }
 
-  // TODO debug remove
-  const s = [
-    skillData.skillActivation.get(50)![0],
-    skillData.skillActivation.get(21)![1],
-  ]
-  searchParams.skillActivations = s
-
   // return if no skill selected
   if (searchParams.skillActivations.length === 0) {
     alert('Please select at least one skill')
@@ -35,9 +28,8 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   // search for sets
   const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams, skillData)
 
-  // TODO remove debug
   // render results
-  renderResults(result.concat(...result), skillData, searchParams)
+  renderResults(result, skillData, searchParams)
 }
 
 const resetLogic = () => {

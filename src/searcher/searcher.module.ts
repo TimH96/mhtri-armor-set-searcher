@@ -269,7 +269,7 @@ function getDecorationPermutationsForSet (
         .map(v => v.skills)
         .reduce((p, c) => {
           return addSkillMaps(p, c)
-        }),
+        }, new Map()),
     }
     return [combinedDecoEvaluation]
   }
@@ -308,20 +308,28 @@ const tryAllDecoPermutationsForSet = (
   const possibilitiesPerArmorSlot = slotsList
     .map(s => decoVariationsPerSlot[s.slots - 1])
 
+  const missingPoints = new Map(wantedSkills.map((skill) => {
+    return [
+      skill.requiredSkill,
+      skill.requiredPoints - (set.evaluation.skills.has(skill.requiredSkill)
+        ? set.evaluation.skills.get(skill.requiredSkill)!.points
+        : 0
+      ),
+    ]
+  }))
+
   // after many confusing transforms right here we finally get a list of deco evaluations
   // where each evaluation is the combination of the evaluation of each individual piece
   // therefore holding both the total amount of decos and skills for the entire set
-  for (const decoEvaluation of getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)) {
-    const skills = addSkillMaps(set.evaluation.skills, decoEvaluation.skills)
+  const bla = getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)
+  const decoVarExists = bla
+    .find((eva) => {
+      return Array.from(missingPoints.entries()).every(x => {
+        return eva.skills.has(x[0]) && eva.skills.get(x[0])!.points >= x[1]
+      })
+    })
 
-    if (wantedSkills.every(wantedSkill => {
-      const s = skills.get(wantedSkill.requiredSkill)
-      return s && s.points >= wantedSkill.requiredPoints
-    })) {
-      return set
-    }
-  }
-
+  if (decoVarExists) return set
   return null
 }
 
@@ -335,12 +343,9 @@ const findSets = (
   const getter = () => { return skillData.skillActivation }
   const decoVariations = getDecorationVariationsPerSlot(decorations)
 
-  // TODO remove debug
-  const newSets = armorPieces.map(x => x.filter(y => y.name.startsWith('Helios') && y.name.endsWith('+')))
-
   const validSets = []
   const wantedSkills = constraints.skillActivations.map(x => x)
-  for (const set of getArmorPermutations(newSets, charms, getter)) {
+  for (const set of getArmorPermutations(armorPieces, charms, getter)) {
     const foundSet = tryAllDecoPermutationsForSet(set, decoVariations, wantedSkills, constraints)
     if (foundSet) {
       validSets.push(foundSet)
