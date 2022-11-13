@@ -172,6 +172,7 @@ const evaluateDecoPermutation = (decos: Decoration[]): DecoEvaluation => {
   }
 }
 
+/** returns all the ways you can possibly arrange the viable decorations on a given slot level (1, 2, 3) */
 const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
   // get all decors of specific slot
   const rawOneSlots = decorations.filter(d => d.requiredSlots === 1)
@@ -254,10 +255,74 @@ const addSkillMaps = (a: EquipmentSkillsMin, b: EquipmentSkillsMin) => {
   return newSkillMap
 }
 
-const tryAllDecoPermutations = (set: ArmorSet, decos: DecoEvaluation[], activations: SkillActivation[]): DecoEvaluation => {
-  for (const d of decos) {
-    const skills = addSkillMaps(set.evaluation.skills, d.skills)
+function getDecorationPermutationsForSet (
+  set: ArmorSet,
+  slotsList: DecoSlots[],
+  possibilitiesPerArmorSlot: DecoEvaluation[][],
+  chosenVariations: DecoEvaluation[],
+  i: number,
+): DecoEvaluation[] {
+  if (i === -1) {
+    const combinedDecoEvaluation: DecoEvaluation = {
+      decos: chosenVariations.map(v => v.decos).flat(),
+      skills: chosenVariations
+        .map(v => v.skills)
+        .reduce((p, c) => {
+          return addSkillMaps(p, c)
+        }),
+    }
+    return [combinedDecoEvaluation]
   }
+
+  let r: DecoEvaluation[] = []
+  for (let j = 0; j < possibilitiesPerArmorSlot[i].length; j++) {
+    const a = getDecorationPermutationsForSet(
+      set,
+      slotsList,
+      possibilitiesPerArmorSlot,
+      chosenVariations.concat(possibilitiesPerArmorSlot[i][j]),
+      i - 1,
+    )
+    r = r.concat(...a)
+  }
+  return r
+}
+
+const tryAllDecoPermutationsForSet = (
+  set: ArmorSet,
+  decoVariationsPerSlot: DecoEvaluation[][],
+  wantedSkills: SkillActivation[],
+  constraints: SearchConstraints,
+): ArmorSet | null => {
+  const slotsList: DecoSlots[] = [
+    { slots: set.charm.slots, torsoUp: false },
+    { slots: constraints.weaponSlots, torsoUp: false },
+    ...set.getPieces().map((x) => {
+      return {
+        slots: x.slots,
+        torsoUp: x.category === EquipmentCategory.CHEST && set.torsoUpCount !== 0,
+      }
+    }),
+  ].filter(x => x.slots > 0)
+
+  const possibilitiesPerArmorSlot = slotsList
+    .map(s => decoVariationsPerSlot[s.slots - 1])
+
+  // after many confusing transforms right here we finally get a list of deco evaluations
+  // where each evaluation is the combination of the evaluation of each individual piece
+  // therefore holding both the total amount of decos and skills for the entire set
+  for (const decoEvaluation of getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)) {
+    const skills = addSkillMaps(set.evaluation.skills, decoEvaluation.skills)
+
+    if (wantedSkills.every(wantedSkill => {
+      const s = skills.get(wantedSkill.requiredSkill)
+      return s && s.points >= wantedSkill.requiredPoints
+    })) {
+      return set
+    }
+  }
+
+  return null
 }
 
 const findSets = (
@@ -274,24 +339,11 @@ const findSets = (
   const newSets = armorPieces.map(x => x.filter(y => y.name.startsWith('Helios') && y.name.endsWith('+')))
 
   const validSets = []
-  const wantedIds = constraints.skillActivations.map(x => x.id)
+  const wantedSkills = constraints.skillActivations.map(x => x)
   for (const set of getArmorPermutations(newSets, charms, getter)) {
-    const activatedIds = set.evaluation.activations.map(x => x.id)
-
-    const slotsList: DecoSlots[] = [
-      { slots: set.charm.slots, torsoUp: false },
-      { slots: constraints.weaponSlots, torsoUp: false },
-      ...set.getPieces().map((x) => {
-        return {
-          slots: x.slots,
-          torsoUp: x.category === EquipmentCategory.CHEST && set.torsoUpCount !== 0,
-        }
-      }),
-    ]
-
-    if (wantedIds.every(wantedAct => activatedIds.includes(wantedAct))) {
-      validSets.push(set)
-
+    const foundSet = tryAllDecoPermutationsForSet(set, decoVariations, wantedSkills, constraints)
+    if (foundSet) {
+      validSets.push(foundSet)
       if (validSets.length === constraints.limit) break
     }
   }

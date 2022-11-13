@@ -10,6 +10,7 @@
         "jsx": "preserve",
         "downlevelIteration": true,
         "lib": [
+            "es2019",
             "es2017",
             "dom"
         ],
