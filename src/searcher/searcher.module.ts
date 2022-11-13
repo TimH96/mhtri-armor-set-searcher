@@ -346,7 +346,7 @@ const findSets = (
     if (foundSet) {
       foundSet.evaluate(skillData.skillActivation)
       validSets.push(foundSet)
-      if (length - 1 === constraints.limit) break
+      if (length === constraints.limit - 1) break
       length++
     }
   }
