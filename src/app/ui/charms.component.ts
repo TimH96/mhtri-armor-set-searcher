@@ -15,8 +15,8 @@ import { range } from '../../helper/range.helper'
   parts (picker vs table vs export) into own files would fix it already
 */
 
-const saveToStorage = () => {
-  window.localStorage.setItem('charms', UserCharmList.Instance.serialize())
+const saveToStorage = (skillNames: SkillNameMap) => {
+  window.localStorage.setItem('charms', UserCharmList.Instance.serialize(skillNames))
 }
 
 const getFromStorage = () => {
@@ -66,7 +66,7 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
   // get slots and delete
   ele.appendChild(htmlToElement(`<td>${charm.slots}</td>`))
   const d = htmlToElement('<td class="charm-delete">X</td>')
-  d.addEventListener('click', () => removeCharm(index))
+  d.addEventListener('click', () => removeCharm(index, skillNames))
   ele.appendChild(d)
 
   // add final element
@@ -77,17 +77,17 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
 const addCharm = (charm: Charm, skillNames: SkillNameMap) => {
   const i = UserCharmList.Instance.add(charm)
   addTableElement(charm, i - 1, skillNames)
-  saveToStorage()
+  saveToStorage(skillNames)
 }
 
-const removeCharm = (index: number) => {
+const removeCharm = (index: number, skillNames: SkillNameMap) => {
   UserCharmList.Instance.remove(index)
   removeTableElement(index)
-  saveToStorage()
+  saveToStorage(skillNames)
 }
 
-const onExportClick = () => {
-  const str = UserCharmList.Instance.serialize()
+const onExportClick = (skillNames: SkillNameMap) => {
+  const str = UserCharmList.Instance.serialize(skillNames)
   const blob = new Blob([str], { type: 'text/plain' })
   const a = document.getElementById('charm-download') as HTMLAnchorElement
   const url = window.URL.createObjectURL(blob)
@@ -115,7 +115,7 @@ const onFileUploaded = (skillNames: SkillNameMap) => {
   file.text().then((text) => {
     try {
       UserCharmList.Instance.deserialize(text, skillNames)
-      saveToStorage()
+      saveToStorage(skillNames)
       purgeTable()
       UserCharmList.Instance.get().forEach((charm, i) => {
         addTableElement(charm, i, skillNames)
@@ -165,7 +165,7 @@ const onAddClick = (skillNames: SkillNameMap) => {
 
 const attachControlListeners = (skillNames: SkillNameMap) => {
   document.getElementById('charm-add')!.addEventListener('click', () => onAddClick(skillNames))
-  document.getElementById('charm-export')!.addEventListener('click', () => onExportClick())
+  document.getElementById('charm-export')!.addEventListener('click', () => onExportClick(skillNames))
   document.getElementById('charm-import')!.addEventListener('click', (e) => onImportClick(e))
   document.getElementById('charm-upload')!.addEventListener('change', () => onFileUploaded(skillNames))
 }

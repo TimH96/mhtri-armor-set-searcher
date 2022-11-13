@@ -43,14 +43,14 @@ export default class UserCharmList {
   }
 
   /** serializes charm list as csv */
-  serialize (): string {
+  serialize (skillNames: SkillNameMap): string {
     return this.list.map((charm) => {
       const s = []
 
       const skillArray = Array.from(charm.skills.entries())
-      for (const skill of skillArray) {
-        s.push(`${skill[1].name},${skill[1].points},`)
-      }
+      skillArray.forEach(([sId, sVal]) => {
+        s.push(`${skillNames.get(sId)},${sVal.points},`)
+      })
 
       const amountOfSkills = skillArray.length
       // eslint-disable-next-line no-unused-vars
