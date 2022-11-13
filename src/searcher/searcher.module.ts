@@ -203,7 +203,7 @@ const evaluateDecoPermutation = (decos: Decoration[]): DecoEvaluation => {
 
 /** returns all the ways you can possibly arrange the viable decorations on a given slot level (1, 2, 3) */
 const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
-  // get all decors of specific slot
+  // get all decorations of specific slot
   const rawOneSlots = decorations.filter(d => d.requiredSlots === 1)
   const rawTwoSlots = decorations.filter(d => d.requiredSlots === 2)
   const rawThreeSlots = decorations.filter(d => d.requiredSlots === 3)
@@ -338,13 +338,15 @@ const findSets = (
   const decoVariations = getDecorationVariationsPerSlot(decorations)
 
   const validSets = []
+  let length = 0
   const wantedSkills = constraints.skillActivations.map(x => x)
   for (const set of getArmorPermutations(armorPieces, charms)) {
     const foundSet = tryAllDecoPermutationsForSet(set, decoVariations, wantedSkills, constraints)
     if (foundSet) {
       foundSet.evaluate(skillData.skillActivation)
       validSets.push(foundSet)
-      if (validSets.length === constraints.limit) break
+      if (length === constraints.limit) break
+      length++
     }
   }
 
