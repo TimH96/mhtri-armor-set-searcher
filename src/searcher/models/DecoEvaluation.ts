@@ -1,8 +1,8 @@
 import Decoration from '../../data-provider/models/equipment/Decoration'
-import EquipmentSkillsMin from '../../data-provider/models/equipment/EquipmentSkillsMin'
+import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 
 export default interface DecoEvaluation {
-    skills: EquipmentSkillsMin,
+    skills: EquipmentSkills,
     decos: Decoration[],
     serialized?: string,
 }

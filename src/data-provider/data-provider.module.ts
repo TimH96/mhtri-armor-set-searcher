@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 import ArmorPiece from './models/equipment/ArmorPiece'
 import Decoration from './models/equipment/Decoration'
-import EquipmentSkillsMin from './models/equipment/EquipmentSkillsMin'
+import EquipmentSkills from './models/equipment/EquipmentSkills'
 import GameID from './models/GameId'
 import SkillActivation from './models/skills/SkillActivation'
 import SkillActivationMap from './models/skills/SkillActivationMap'
-import SkillMin from './models/skills/SkillMin'
+import Skill from './models/skills/Skill'
 import SkillNameMap from './models/skills/SkillNameMap'
 
 const MAX_RARITY = 7
@@ -18,12 +18,12 @@ const getRawData = async (url: string) => {
 }
 
 /** fetch and parse generic equipment data */
-const getDataWithTransformedSkillMap = async (url: string): Promise<{skills: EquipmentSkillsMin}[]> => {
+const getDataWithTransformedSkillMap = async (url: string): Promise<{skills: EquipmentSkills}[]> => {
   const raw = await getRawData(url)
   return raw.map((rawX: any) => {
-    const skillMap: EquipmentSkillsMin = new Map()
+    const skillMap: EquipmentSkills = new Map()
     for (const x in rawX.skills) {
-      const skill: SkillMin = { points: rawX.skills[x] }
+      const skill: Skill = rawX.skills[x]
       skillMap.set(parseInt(x), skill)
     }
     return {

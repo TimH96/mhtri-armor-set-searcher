@@ -23,8 +23,8 @@ const getFromStorage = () => {
   return window.localStorage.getItem('charms')
 }
 
-const validSkill = (skill: {id: GameID, points: number}) => {
-  return skill.points !== 0 && skill.id !== -1
+const validSkill = (id: GameID, points: Skill) => {
+  return points !== 0 && id !== -1
 }
 
 const removeTableElement = (index: number) => {
@@ -52,7 +52,7 @@ const addTableElement = (charm: Charm, index: number, skillNames: SkillNameMap) 
   // get real table elements
   for (const skill of Array.from(charm.skills.keys())) {
     ele.appendChild(htmlToElement(`<td>${skillNames.get(skill)}</td>`))
-    ele.appendChild(htmlToElement(`<td>${charm.skills.get(skill)!.points}</td>`))
+    ele.appendChild(htmlToElement(`<td>${charm.skills.get(skill)}</td>`))
   }
 
   // get placeholder table elements
@@ -137,22 +137,16 @@ const onAddClick = (skillNames: SkillNameMap) => {
   })
 
   // return if charm invalid
-  if (slots === 0 && !skills.some(validSkill)) {
+  if (slots === 0 && !skills.some(s => validSkill(s.id, s.points))) {
     return
   }
 
   // map to model
   const skillsMap = new Map<GameID, Skill>(skills
-    .filter(validSkill)
-    .map((skill) => {
-      return [skill.id, {
-        id: skill.id,
-        name: skillNames.get(skill.id)!,
-        points: skill.points,
-      }]
-    }))
+    .filter(s => validSkill(s.id, s.points))
+    .map(s => [s.id, s.points]))
   const charm: Charm = {
-    name: UserCharmList.getCharmName(skillsMap, slots as Slots),
+    name: UserCharmList.getCharmName(skillsMap, slots as Slots, skillNames),
     slots: slots as Slots,
     category: EquipmentCategory.CHARM,
     rarity: 0,

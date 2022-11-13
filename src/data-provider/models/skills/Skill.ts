@@ -1,7 +1,3 @@
-import GameID from '../GameId'
-import SkillMin from './SkillMin'
+type Skill = number;
 
-export default interface Skill extends SkillMin {
-    id: GameID,
-    name: string,
-}
+export default Skill

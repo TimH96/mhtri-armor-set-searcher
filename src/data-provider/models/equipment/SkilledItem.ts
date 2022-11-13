@@ -1,7 +1,7 @@
-import EquipmentSkillsMin from './EquipmentSkillsMin'
+import EquipmentSkills from './EquipmentSkills'
 import Rarity from './Rarity'
 
 export default interface SkilledItem {
     rarity: Rarity,
-    skills: EquipmentSkillsMin,
+    skills: EquipmentSkills,
 }

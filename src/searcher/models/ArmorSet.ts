@@ -1,7 +1,7 @@
 import { TORSO_UP_ID } from '../../data-provider/data-provider.module'
 import Defense from '../../data-provider/models/equipment/Defense'
 import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
-import EquipmentSkillsMin from '../../data-provider/models/equipment/EquipmentSkillsMin'
+import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 import Resistance from '../../data-provider/models/equipment/Resistance'
 import Evaluation from './Evaluation'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
@@ -53,7 +53,7 @@ export default class ArmorSet {
   }
 
   evaluate (): Evaluation {
-    const totalSkills: EquipmentSkillsMin = new Map()
+    const totalSkills: EquipmentSkills = new Map()
     const totalDefense: Defense = { base: 0, max: 0 }
     let totalResistance: Resistance = [0, 0, 0, 0, 0]
     let torsoUpCount = 0
@@ -73,12 +73,12 @@ export default class ArmorSet {
       for (const [sId, sVal] of piece.skills) {
         const currentS = totalSkills.get(sId)
         const processedVal = piece.category === EquipmentCategory.CHEST
-          ? sVal.points * (torsoUpCount + 1)
-          : sVal.points
+          ? sVal * (torsoUpCount + 1)
+          : sVal
         const newPoints = currentS
-          ? processedVal + currentS.points
+          ? processedVal + currentS
           : processedVal
-        totalSkills.set(sId, { points: newPoints })
+        totalSkills.set(sId, newPoints)
       }
     }
 
@@ -89,23 +89,23 @@ export default class ArmorSet {
     for (const [sId, sVal] of this.charm.skills) {
       const currentS = totalSkills.get(sId)
       const newPoints = currentS
-        ? sVal.points + currentS.points
-        : sVal.points
-      totalSkills.set(sId, { points: newPoints })
+        ? sVal + currentS
+        : sVal
+      totalSkills.set(sId, newPoints)
     }
 
     // get activations
     const activations = []
     for (const [sId, sVal] of totalSkills) {
-      if (Math.abs(sVal.points) < 10) {
+      if (Math.abs(sVal) < 10) {
         continue
       }
 
       const activationsOfSkill = this.activationGetter().get(sId)!
         .filter(act => {
           return act.isPositive
-            ? sVal.points >= act.requiredPoints
-            : sVal.points <= act.requiredPoints
+            ? sVal >= act.requiredPoints
+            : sVal <= act.requiredPoints
         })
       activations.push(...activationsOfSkill)
     }

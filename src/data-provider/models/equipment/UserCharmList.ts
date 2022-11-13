@@ -1,5 +1,4 @@
 import { range } from '../../../helper/range.helper'
-import Skill from '../skills/Skill'
 import SkillNameMap from '../skills/SkillNameMap'
 import Charm from './Charm'
 import EquipmentCategory from './EquipmentCategory'
@@ -20,8 +19,9 @@ export default class UserCharmList {
     return this._instance || (this._instance = new this())
   }
 
-  public static getCharmName (skills: EquipmentSkills, slots: Slots): string {
-    const skillStrings = Array.from(skills.values()).map(s => `${s.name}:${s.points}`)
+  public static getCharmName (skills: EquipmentSkills, slots: Slots, skillNames: SkillNameMap): string {
+    const skillStrings = Array.from(skills.entries())
+      .map(s => `${skillNames.get(s[0])}:${s[1]}`)
     const slotString = slots !== 0 ? `${slots} Slots` : ''
 
     return [...skillStrings, slotString].join(' ').trim()
@@ -49,7 +49,7 @@ export default class UserCharmList {
 
       const skillArray = Array.from(charm.skills.entries())
       skillArray.forEach(([sId, sVal]) => {
-        s.push(`${skillNames.get(sId)},${sVal.points},`)
+        s.push(`${skillNames.get(sId)},${sVal},`)
       })
 
       const amountOfSkills = skillArray.length
@@ -83,7 +83,7 @@ export default class UserCharmList {
             })![0]
 
           // build skill model
-          const skill: Skill = {
+          const skill = {
             name,
             points: parseInt(spl[j]),
             id,
@@ -91,15 +91,11 @@ export default class UserCharmList {
           return skill
         })
 
-      const skillMap = new Map(skills.map((skill) => {
-        return [skill.id, {
-          id: skill.id,
-          name: skillNames.get(skill.id)!,
-          points: skill.points,
-        }]
+      const skillMap: EquipmentSkills = new Map(skills.map((skill) => {
+        return [skill.id, skill.points]
       }))
       const newCharm: Charm = {
-        name: UserCharmList.getCharmName(skillMap, slots as Slots),
+        name: UserCharmList.getCharmName(skillMap, slots as Slots, skillNames),
         category: EquipmentCategory.CHARM,
         slots: slots as Slots,
         rarity: 0,

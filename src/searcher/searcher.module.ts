@@ -4,7 +4,7 @@ import ArmorType from '../data-provider/models/equipment/ArmorType'
 import Charm from '../data-provider/models/equipment/Charm'
 import Decoration from '../data-provider/models/equipment/Decoration'
 import EquipmentCategory from '../data-provider/models/equipment/EquipmentCategory'
-import EquipmentSkillsMin from '../data-provider/models/equipment/EquipmentSkillsMin'
+import EquipmentSkills from '../data-provider/models/equipment/EquipmentSkills'
 import Rarity from '../data-provider/models/equipment/Rarity'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
@@ -51,7 +51,7 @@ const filterRarity = (item: SkilledItem, rarity: Rarity) => {
 const filterHasSkill = (item: SkilledItem, desiredSkills: SkillActivation[]) => {
   return desiredSkills.some((act) => {
     const s = item.skills.get(act.requiredSkill)
-    return s && s.points > 0
+    return s && s > 0
   })
 }
 
@@ -148,7 +148,7 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
   return result
 }
 
-const serializeSkillMap = (m: EquipmentSkillsMin) => {
+const serializeSkillMap = (m: EquipmentSkills) => {
   return Array.from(m.entries())
     .sort(([aId, _a], [bId, _b]) => bId - aId)
     .map(([sId, sVal]) => `${sId}:${sVal}`)
@@ -156,12 +156,12 @@ const serializeSkillMap = (m: EquipmentSkillsMin) => {
 }
 
 const evaluateDecoPermutation = (decos: Decoration[]): DecoEvaluation => {
-  const skillMap: EquipmentSkillsMin = new Map()
+  const skillMap: EquipmentSkills = new Map()
   decos.forEach((deco) => {
     Array.from(deco.skills.entries()).forEach(([sId, sVal]) => {
       skillMap.has(sId)
-        ? skillMap.set(sId, { points: skillMap.get(sId)!.points + sVal.points })
-        : skillMap.set(sId, { points: sVal.points })
+        ? skillMap.set(sId, skillMap.get(sId)! + sVal)
+        : skillMap.set(sId, sVal)
     })
   })
 
@@ -238,16 +238,16 @@ const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
   return deduplicated
 }
 
-const addSkillMaps = (a: EquipmentSkillsMin, b: EquipmentSkillsMin) => {
-  const newSkillMap: EquipmentSkillsMin = new Map()
+const addSkillMaps = (a: EquipmentSkills, b: EquipmentSkills) => {
+  const newSkillMap: EquipmentSkills = new Map()
   for (const m of [a, b]) {
     for (const [sId, sVal] of Array.from(m.entries())) {
       const existingVal = newSkillMap.get(sId)
 
       if (existingVal) {
-        newSkillMap.set(sId, { points: existingVal.points + sVal.points })
+        newSkillMap.set(sId, existingVal + sVal)
       } else {
-        newSkillMap.set(sId, { points: sVal.points })
+        newSkillMap.set(sId, sVal)
       }
     }
   }
@@ -312,7 +312,7 @@ const tryAllDecoPermutationsForSet = (
     return [
       skill.requiredSkill,
       skill.requiredPoints - (set.evaluation.skills.has(skill.requiredSkill)
-        ? set.evaluation.skills.get(skill.requiredSkill)!.points
+        ? set.evaluation.skills.get(skill.requiredSkill)!
         : 0
       ),
     ]
@@ -325,7 +325,7 @@ const tryAllDecoPermutationsForSet = (
   const decoVarExists = bla
     .find((eva) => {
       return Array.from(missingPoints.entries()).every(x => {
-        return eva.skills.has(x[0]) && eva.skills.get(x[0])!.points >= x[1]
+        return eva.skills.has(x[0]) && eva.skills.get(x[0])! >= x[1]
       })
     })
 
