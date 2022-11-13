@@ -21,9 +21,9 @@ const onClick = (parent: Element, ele: Element) => {
   for (const panel of Array.from(panels)) {
     const panelNumber = panel.getAttribute('data-panel-number')
     if (selection === panelNumber) {
-      panel.classList.remove('panel-hide')
+      panel.classList.remove('hidden')
     } else {
-      panel.classList.add('panel-hide')
+      panel.classList.add('hidden')
     }
   }
 }

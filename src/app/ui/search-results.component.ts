@@ -7,15 +7,34 @@ const onSetClick = (tbNode: Node, viewGetter: () => Node) => {
   const children = tbNode.childNodes
   const finalNode = children[children.length - 1] as HTMLTableRowElement
 
+  // toggle if details have already been rendered
   if (finalNode.classList.contains('result-set-details')) {
-    finalNode.classList.toggle('hidden-details')
+    finalNode.classList.toggle('hidden')
     return
   }
 
+  // render and append them otherwise
   tbNode.appendChild(viewGetter())
 }
 
 const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams: SearchConstraints) => {
+  // build header
+  const header = htmlToElement(`
+    <tr>
+      <th>Skill</th>
+      <th style="width: 6%">Weapon</th>
+      <th style="width: 6%">Head</th>
+      <th style="width: 6%">Chest</th>
+      <th style="width: 6%">Arms</th>
+      <th style="width: 6%">Waist</th>
+      <th style="width: 6%">Legs</th>
+      <th style="width: 6%">Charm</th>
+      <th style="width: 6%">Deco</th>
+      <th style="width: 6%">Total</th>
+      <th>Active</th>
+    </tr>
+  `)
+
   // build skills rows
   const skillRows = Array.from(set.evaluation.skills.entries())
     .sort(([_a, a], [_b, b]) => b.points - a.points)
@@ -27,9 +46,10 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
         r.append(htmlToElement(`<td>${p.skills.get(sId) ? p.skills.get(sId)!.points : ''}</td>`))
       }
       r.append(htmlToElement(`<td>${set.charm.skills.get(sId) ? set.charm.skills.get(sId)!.points : ''}</td>`))
+      r.append(htmlToElement('<td>deco</td>'))
       r.append(htmlToElement(`<td>${sVal.points}</td>`))
       const possibleAct = set.evaluation.activations.find(a => a.requiredSkill === sId)
-      if (possibleAct) r.append(htmlToElement(`<td>${possibleAct.name}</td>`))
+      if (possibleAct) r.append(htmlToElement(`<td ${!possibleAct.isPositive ? 'class="neg-skill"' : ''}}">${possibleAct.name}</td>`))
       return r
     })
 
@@ -41,13 +61,18 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
 
   // append elements to table
   const skillTable = htmlToElement('<table class="result-set-skill-table"></table>')
+  skillTable.appendChild(header)
   skillRows.forEach(x => skillTable.appendChild(x))
   skillTable.appendChild(slotRow)
 
   // return final div
-  const d = htmlToElement('<div class="result-set-details"></div>')
+  const tr = htmlToElement('<tr class="result-set-details"></tr>')
+  const td = htmlToElement('<td colspan="6""></td>')
+  const d = htmlToElement('<div class="result-set-details-container"></div>')
   d.appendChild(skillTable)
-  return d
+  td.appendChild(d)
+  tr.appendChild(td)
+  return tr
 }
 
 const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: SearchConstraints) => {
@@ -61,7 +86,7 @@ const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: 
   const unrelatedHtmlStrings = unrelatedActivations
     .sort((a, b) => b.requiredPoints - a.requiredPoints)
     .map((x) => {
-      return `<span class="result-set-unrelated-skill result-set-unrelated-${x.isPositive ? 'pos' : 'neg'}">${x.name}</span>`
+      return `<span class="result-set-unrelated-skill ${!x.isPositive ? 'neg-skill' : ''}">${x.name}</span>`
     })
 
   // get basic display components
@@ -78,12 +103,12 @@ const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: 
   const row2 = htmlToElement(`
     <tr class="result-set-row result-set-row2">
       <td colspan="6">
-        <p><span class="result-set-def">DEF</span> <span>${set.evaluation.defense.max}</span></p>
-        <p><span class="result-set-fir">FIR</span> <span>${set.evaluation.resistance[0]}</span></p>
-        <p><span class="result-set-wat">WAT</span> <span>${set.evaluation.resistance[1]}</span></p>
-        <p><span class="result-set-ice">ICE</span> <span>${set.evaluation.resistance[2]}</span></p>
-        <p><span class="result-set-thn">THN</span> <span>${set.evaluation.resistance[3]}</span></p>
-        <p><span class="result-set-drg">DRG</span> <span>${set.evaluation.resistance[4]}</span></p>
+        <p><span class="def">DEF</span> <span>${set.evaluation.defense.max}</span></p>
+        <p><span class="fir">FIR</span> <span>${set.evaluation.resistance[0]}</span></p>
+        <p><span class="wat">WAT</span> <span>${set.evaluation.resistance[1]}</span></p>
+        <p><span class="ice">ICE</span> <span>${set.evaluation.resistance[2]}</span></p>
+        <p><span class="thn">THN</span> <span>${set.evaluation.resistance[3]}</span></p>
+        <p><span class="drg">DRG</span> <span>${set.evaluation.resistance[4]}</span></p>
         <span class="result-set-unrelated">${unrelatedHtmlStrings.join('')}</span>
       </td>
     </tr>`)
@@ -120,7 +145,7 @@ export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, sear
   }
 
   // build table and table header
-  const table = htmlToElement('<table id="results-table"></table>')
+  const table = htmlToElement('<table class="results-table" id="results-table"></table>')
   const header = htmlToElement('<tr><th>Head</th><th>Torso</th><th>Arms</th><th>Waist</th><th>Legs</th><th>Charm</th></tr>')
   table.appendChild(header)
   resultContainer.appendChild(table)

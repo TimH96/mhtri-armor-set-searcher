@@ -13,11 +13,14 @@
   --color-negative-skill: rgb(206, 8, 8);
 }
 
+/* global */
+
 table {
   border-collapse: collapse;
 }
 
 body {
+  min-width: 600px;
   background-color: var(--color-background);
   overflow-x: hidden;
   line-height: 1.4;
@@ -38,6 +41,8 @@ ul {
   margin: 0;
 }
 
+/* main sections */
+
 #header {
   color: var(--color-highlight);
   background-color: var(--color-header-background);
@@ -50,7 +55,6 @@ ul {
 }
 
 #open-source {
-  min-width: 680px;
   max-width: 1200px;
   margin: auto;
   margin-bottom: 3em;
@@ -64,10 +68,57 @@ ul {
 }
 
 #main-body {
-  min-width: 680px;
   max-width: 1200px;
   margin: auto;
 }
+
+/* global classes */
+
+.banner {
+  background-color: var(--color-highlight);
+  border-style: solid;
+  border-width: 1px;
+  border-color: var(--color-border);
+  border-radius: 6px;
+}
+
+.def {
+  color: rgb(0, 0, 0);
+}
+
+.fir {
+  color: rgb(235, 69, 69);
+}
+
+.wat {
+  color: rgb(54, 91, 146);
+}
+
+.ice {
+  color: rgb(50, 204, 224);
+}
+
+.thn {
+  color: rgb(207, 204, 9);
+}
+
+.drg {
+  color: rgb(122, 49, 170);
+}
+
+.neg-skill {
+  color: var(--color-negative-skill);
+}
+
+.hidden {
+  display: none;
+}
+
+.highlighted {
+  background-color: var(--color-highlighted-background);
+}
+
+/* navbar */
 
 #navbar-container {
   font-size: 1.6em;
@@ -98,17 +149,7 @@ ul {
   z-index: 3;
 }
 
-.banner {
-  background-color: var(--color-highlight);
-  border-style: solid;
-  border-width: 1px;
-  border-color: var(--color-border);
-  border-radius: 6px;
-}
-
-.panel-hide {
-  display: none;
-}
+/* skill picker and search controls */
 
 #search-global-settings select {
   font-size: 1.4em;
@@ -140,9 +181,7 @@ ul {
   padding: 0 0.4em;
 }
 
-.highlighted {
-  background-color: var(--color-highlighted-background);
-}
+/* charms */
 
 #charm-picker {
   padding-bottom: 0.4em;
@@ -190,6 +229,8 @@ th {
   user-select: none;
 }
 
+/* results */
+
 .results-title {
   margin-top: 1.6em;
   font-size: 1.4em;
@@ -201,12 +242,12 @@ th {
   padding: 0.4em 1em;
 }
 
-#results-table {
+.results-table {
   margin-top: 1em;
   width: 100%;
 }
 
-#results-table th {
+.results-table th {
   font-size: 1.4em;
   text-align: center;
   background-color: var(--color-highlight);
@@ -233,42 +274,35 @@ th {
   padding-left: 3em;
 }
 
-.result-set-def {
-  color: rgb(0, 0, 0);
-}
-
-.result-set-fir {
-  color: rgb(235, 69, 69);
-}
-
-.result-set-wat {
-  color: rgb(54, 91, 146);
-}
-
-.result-set-ice {
-  color: rgb(50, 204, 224);
-}
-
-.result-set-thn {
-  color: rgb(207, 204, 9);
-}
-
-.result-set-drg {
-  color: rgb(122, 49, 170);
-}
-
 .result-set-unrelated {
   margin-left: 3em;
-}
-
-.result-set-unrelated-neg {
-  color: var(--color-negative-skill);
 }
 
 .result-set-unrelated-skill {
   margin-left: 2em;
 }
 
-.hidden-details {
-  display: none;
+.result-set-details {
+  width: 100%;
+}
+
+.result-set-details-container {
+  margin: 1em auto;
+  width: 80%;
+}
+
+.result-set-skill-table th {
+  font-size: 1em;
+  border-width: 1px 0;
+  border-color: var(--color-border);
+  border-style: solid;
+  background-color: var(--color-highlight);
+}
+
+.result-set-skill-table td {
+  font-size: 0.8em;
+}
+
+.result-set-skill-table {
+  table-layout: unset;
 }
