@@ -35,6 +35,7 @@ const getSkillActivations = (data: {
     })
     // map to proper data model
     .map((element) => {
+      const name = element.textContent!.trim()
       const id = parseInt(element.getAttribute('data-id')!)
       const requiredSkill = parseInt(element.getAttribute('data-skill')!)
       const requiredPoints = parseInt(element.getAttribute('data-points')!)
@@ -42,7 +43,7 @@ const getSkillActivations = (data: {
 
       return {
         id,
-        name: data.skillName.get(requiredSkill)!,
+        name,
         requiredPoints,
         requiredSkill,
         isPositive: requiredPoints > 0,
