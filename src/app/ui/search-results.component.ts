@@ -41,7 +41,7 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
     .map(([sId, sVal]) => {
       const r = document.createElement('tr')
 
-      const computedDecoValue = set.decorations
+      const computedDecoValue = set.decos
         .filter(d => d.skills.has(sId))
         .map(d => d.skills.get(sId)!)
         .reduce((sum, c) => sum + c, 0)

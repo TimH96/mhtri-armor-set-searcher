@@ -10,6 +10,7 @@ import SkilledEquipment from '../data-provider/models/equipment/SkilledEquipment
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
+import StaticSkillData from './models/StaticSkillData'
 import ArmorEvaluation from './models/ArmorEvaluation'
 import ArmorSet from './models/ArmorSet'
 import DecoEvaluation from './models/DecoEvaluation'
@@ -293,6 +294,7 @@ const tryAllDecoPermutationsForArmor = (
   decoVariationsPerSlot: DecoPermutation[][],
   wantedSkills: EquipmentSkills,
   constraints: SearchConstraints,
+  skillData: StaticSkillData,
 ): ArmorSet | null => {
   const slotsList: Slots[] = [
     constraints.weaponSlots,
@@ -319,7 +321,8 @@ const tryAllDecoPermutationsForArmor = (
           waist: armorEvaluation.equipment[3] as ArmorPiece,
           legs: armorEvaluation.equipment[4] as ArmorPiece,
           charm: armorEvaluation.equipment[5] as Charm,
-        },
+          decos: decoEval.decos,
+        }, skillData.skillActivation,
       )
     }
   }
@@ -332,6 +335,7 @@ const findSets = (
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
+  skillData: StaticSkillData,
 ) => {
   const decoVariationsPerSlotLevel = getDecorationVariationsPerSlotLevel(decorations)
   const initialArmorEval = getIntiailArmorEval(constraints.armorType)
@@ -352,6 +356,7 @@ const findSets = (
       decoVariationsPerSlotLevel,
       wantedSkills,
       constraints,
+      skillData,
     )
 
     // append set if any was found
@@ -374,6 +379,7 @@ const search = (
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
+  skillData: StaticSkillData,
 ) => {
   const a = armorPieces
     .map((piecesOfCategory, i) => {
@@ -388,6 +394,7 @@ const search = (
     d as Decoration[],
     c,
     constraints,
+    skillData,
   )
 }
 // #endregion
