@@ -1,6 +1,6 @@
 [
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 1,
             "max": 31,
@@ -25,7 +25,7 @@
         "type": 0
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 3,
             "max": 31,
@@ -48,7 +48,7 @@
         "type": 0
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 2,
             "max": 32,
@@ -73,7 +73,7 @@
         "type": 0
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 4,
             "max": 32,
@@ -97,7 +97,7 @@
         "type": 0
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 6,
             "max": 58,
@@ -123,7 +123,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 3,
             "max": 32,
@@ -149,7 +149,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 62,
@@ -174,7 +174,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 4,
             "max": 34,
@@ -199,7 +199,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 62,
@@ -224,7 +224,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 4,
             "max": 34,
@@ -249,7 +249,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 10,
             "max": 66,
@@ -274,7 +274,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 5,
             "max": 36,
@@ -299,7 +299,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 10,
             "max": 66,
@@ -323,7 +323,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 5,
             "max": 36,
@@ -347,7 +347,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 12,
             "max": 66,
@@ -373,7 +373,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 6,
             "max": 36,
@@ -399,7 +399,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 12,
             "max": 66,
@@ -425,7 +425,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 6,
             "max": 37,
@@ -451,7 +451,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 13,
             "max": 68,
@@ -476,7 +476,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 7,
             "max": 38,
@@ -501,7 +501,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 12,
             "max": 66,
@@ -525,7 +525,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 13,
             "max": 68,
@@ -550,7 +550,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 7,
             "max": 38,
@@ -575,7 +575,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 15,
             "max": 72,
@@ -600,7 +600,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 40,
@@ -625,7 +625,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 16,
             "max": 74,
@@ -650,7 +650,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 42,
@@ -675,7 +675,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 15,
             "max": 72,
@@ -700,7 +700,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 40,
@@ -725,7 +725,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 15,
             "max": 72,
@@ -750,7 +750,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 40,
@@ -775,7 +775,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 16,
             "max": 74,
@@ -800,7 +800,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 8,
             "max": 42,
@@ -825,7 +825,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 18,
             "max": 78,
@@ -850,7 +850,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 9,
             "max": 44,
@@ -875,7 +875,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 18,
             "max": 74,
@@ -900,7 +900,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 9,
             "max": 42,
@@ -925,7 +925,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 20,
             "max": 78,
@@ -950,7 +950,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 10,
             "max": 44,
@@ -975,7 +975,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 20,
             "max": 78,
@@ -1000,7 +1000,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 10,
             "max": 44,
@@ -1025,7 +1025,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 20,
             "max": 78,
@@ -1050,7 +1050,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 10,
             "max": 44,
@@ -1075,7 +1075,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 22,
             "max": 78,
@@ -1100,7 +1100,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 11,
             "max": 45,
@@ -1125,7 +1125,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 22,
             "max": 78,
@@ -1150,7 +1150,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 11,
             "max": 45,
@@ -1175,7 +1175,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 24,
             "max": 82,
@@ -1200,7 +1200,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 12,
             "max": 47,
@@ -1225,7 +1225,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 24,
             "max": 82,
@@ -1250,7 +1250,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 12,
             "max": 47,
@@ -1275,7 +1275,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 26,
             "max": 58
@@ -1298,7 +1298,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 15,
             "max": 31
@@ -1321,7 +1321,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 26,
             "max": 58
@@ -1342,7 +1342,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 15,
             "max": 31
@@ -1363,7 +1363,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 30,
             "max": 58
@@ -1386,7 +1386,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 18,
             "max": 32
@@ -1409,7 +1409,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 30,
             "max": 58
@@ -1432,7 +1432,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 18,
             "max": 32
@@ -1455,7 +1455,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 30,
             "max": 58
@@ -1479,7 +1479,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 18,
             "max": 32
@@ -1503,7 +1503,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 34,
             "max": 62
@@ -1527,7 +1527,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 20,
             "max": 34
@@ -1551,7 +1551,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 34,
             "max": 62
@@ -1575,7 +1575,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 20,
             "max": 34
@@ -1599,7 +1599,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 38,
             "max": 66
@@ -1623,7 +1623,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 22,
             "max": 36
@@ -1647,7 +1647,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 38,
             "max": 66
@@ -1670,7 +1670,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 22,
             "max": 36
@@ -1693,7 +1693,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 38,
             "max": 66
@@ -1717,7 +1717,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 22,
             "max": 36
@@ -1741,7 +1741,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 42,
             "max": 66
@@ -1766,7 +1766,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 25,
             "max": 37
@@ -1791,7 +1791,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 44,
             "max": 68
@@ -1815,7 +1815,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 26,
             "max": 38
@@ -1839,7 +1839,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 42,
             "max": 68
@@ -1862,7 +1862,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 44,
             "max": 68
@@ -1887,7 +1887,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 26,
             "max": 38
@@ -1912,7 +1912,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 48,
             "max": 72
@@ -1936,7 +1936,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 28,
             "max": 40
@@ -1960,7 +1960,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 50,
             "max": 74
@@ -1984,7 +1984,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 30,
             "max": 42
@@ -2008,7 +2008,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 36,
             "max": 60
@@ -2032,7 +2032,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 22,
             "max": 34
@@ -2056,7 +2056,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 50,
             "max": 74
@@ -2080,7 +2080,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 30,
             "max": 42
@@ -2104,7 +2104,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 54,
             "max": 78
@@ -2128,7 +2128,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 32,
             "max": 44
@@ -2152,7 +2152,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 54,
             "max": 74
@@ -2176,7 +2176,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 32,
             "max": 42
@@ -2200,7 +2200,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 58,
             "max": 78
@@ -2224,7 +2224,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 34,
             "max": 44
@@ -2248,7 +2248,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 58,
             "max": 78
@@ -2272,7 +2272,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 34,
             "max": 44
@@ -2296,7 +2296,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 58,
             "max": 78
@@ -2320,7 +2320,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 34,
             "max": 44
@@ -2344,7 +2344,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 58,
             "max": 78
@@ -2368,7 +2368,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 34,
             "max": 44
@@ -2392,7 +2392,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 62,
             "max": 78
@@ -2416,7 +2416,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 37,
             "max": 45
@@ -2440,7 +2440,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 62,
             "max": 78
@@ -2464,7 +2464,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 37,
             "max": 45
@@ -2488,7 +2488,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 64,
             "max": 80
@@ -2509,7 +2509,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 38,
             "max": 46
@@ -2530,7 +2530,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 62,
             "max": 78
@@ -2554,7 +2554,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 37,
             "max": 45
@@ -2578,7 +2578,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 66,
             "max": 82
@@ -2602,7 +2602,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 39,
             "max": 47
@@ -2626,7 +2626,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 66,
             "max": 82
@@ -2650,7 +2650,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 39,
             "max": 47
@@ -2674,7 +2674,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 70,
             "max": 82
@@ -2698,7 +2698,7 @@
         "type": 1
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 42,
             "max": 48
@@ -2722,7 +2722,7 @@
         "type": 2
     },
     {
-        "category": 4,
+        "category": 3,
         "defense": {
             "base": 18,
             "max": 32

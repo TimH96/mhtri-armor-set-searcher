@@ -44,7 +44,7 @@ if __name__ == "__main__":
             modeled_piece = {
                 "name": piece["name"],
                 "slots": piece["slots"],
-                "category": armor_category + 1,
+                "category": armor_category,
                 "rarity": piece["rarity"],
                 "type": t,
                 "defense": defense,

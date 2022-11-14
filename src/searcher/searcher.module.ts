@@ -363,7 +363,7 @@ const search = (
 ) => {
   const a = armorPieces
     .map((piecesOfCategory, i) => {
-      return applyArmorFilter(piecesOfCategory, constraints.armorRarity, constraints.armorType, i + 1, constraints.skillActivations)
+      return applyArmorFilter(piecesOfCategory, constraints.armorRarity, constraints.armorType, i, constraints.skillActivations)
     })
   const c = applyCharmFilter(charms, constraints.skillActivations)
   const d = applyRarityFilter(decorations, constraints.decoRarity)

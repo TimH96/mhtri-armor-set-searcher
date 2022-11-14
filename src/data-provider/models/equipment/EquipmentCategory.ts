@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 enum EquipmentCategory {
-  WEAPON = 0,
-  HEAD = 1,
-  CHEST = 2,
-  ARMS = 3,
-  WAIST = 4,
-  LEGS = 5,
-  CHARM = 6,
+  HEAD = 0,
+  CHEST = 1,
+  ARMS = 2,
+  WAIST = 3,
+  LEGS = 4,
+  CHARM = 5,
+  WEAPON = 6,
 }
 
 export default EquipmentCategory
