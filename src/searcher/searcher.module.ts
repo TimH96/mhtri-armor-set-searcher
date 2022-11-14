@@ -202,7 +202,7 @@ const evaluateDecoPermutation = (decos: Decoration[]): DecoEvaluation => {
 }
 
 /** returns all the ways you can possibly arrange the viable decorations on a given slot level (1, 2, 3) */
-const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
+const getDecorationVariationsPerSlotLevel = (decorations: Decoration[]) => {
   // get all decorations of specific slot
   const rawOneSlots = decorations.filter(d => d.requiredSlots === 1)
   const rawTwoSlots = decorations.filter(d => d.requiredSlots === 2)
@@ -251,7 +251,7 @@ const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
     threeSlotVariations,
   ].map(variationList => variationList.map(variation => evaluateDecoPermutation(variation)))
 
-  // throw out duplicates and return
+  // throw out duplicates
   const deduplicated = evaluations
     .map(evaluationList => {
       const serializedList: string[] = []
@@ -264,7 +264,33 @@ const getDecorationVariationsPerSlot = (decorations: Decoration[]) => {
         return true
       })
     })
-  return deduplicated
+
+  // throw out variations that are the same of downgrades as another
+  const final: DecoEvaluation[][] = deduplicated
+    .map(evalsOfSlotLevel => evalsOfSlotLevel.filter((thisEval, i) => {
+      // true when there is no evaluation that has the same or better points for every single skill
+      // we are trying to find an element that is better
+      return !evalsOfSlotLevel.find((comparingEval, j) => {
+        if (i === j) return false
+
+        // check every skills
+        return Array.from(thisEval.skills.entries()).every(([sId, sVal]) => {
+          const comparingSVal = comparingEval.skills.get(sId)
+
+          if (sVal >= 0) {
+            // positive skill
+            if (comparingSVal === undefined) return false
+          } else {
+            // negative skill
+            if (comparingSVal === undefined) return true
+          }
+
+          return comparingSVal >= sVal
+        })
+      })
+    }))
+
+  return final
 }
 
 const addSkillMaps = (a: EquipmentSkills, b: EquipmentSkills) => {
@@ -336,7 +362,7 @@ const findSets = (
   constraints: SearchConstraints,
   skillData: StaticSkillData,
 ) => {
-  const decoVariations = getDecorationVariationsPerSlot(decorations)
+  const decoVariations = getDecorationVariationsPerSlotLevel(decorations)
 
   const validSets = []
   let length = 0
