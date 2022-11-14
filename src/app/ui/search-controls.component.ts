@@ -40,7 +40,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   }
 
   // search for sets
-  const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams, skillData)
+  const result = search(equData.armor, equData.decorations, UserCharmList.Instance.get(), searchParams)
 
   // render results
   renderResults(result, skillData, searchParams)

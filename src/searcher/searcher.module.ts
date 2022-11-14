@@ -6,14 +6,34 @@ import Decoration from '../data-provider/models/equipment/Decoration'
 import EquipmentCategory from '../data-provider/models/equipment/EquipmentCategory'
 import EquipmentSkills from '../data-provider/models/equipment/EquipmentSkills'
 import Rarity from '../data-provider/models/equipment/Rarity'
+import SkilledEquipment from '../data-provider/models/equipment/SkilledEquipment'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
 import Slots from '../data-provider/models/equipment/Slots'
 import SkillActivation from '../data-provider/models/skills/SkillActivation'
+import ArmorEvaluation from './models/ArmorEvaluation'
 import ArmorSet from './models/ArmorSet'
 import DecoEvaluation from './models/DecoEvaluation'
-import DecoSlots from './models/DecoSlots'
+import DecoPermutation from './models/DecoPermutation'
 import SearchConstraints from './models/SearchConstraints'
-import StaticSkillData from './models/StaticSkillData'
+
+// #region data filters and helpers
+const serializeSkillMap = (m: EquipmentSkills) => {
+  return Array.from(m.entries())
+    .sort(([aId, _a], [bId, _b]) => bId - aId)
+    .map(([sId, sVal]) => `${sId}:${sVal}`)
+    .join(',')
+}
+
+const evaluateListOfDecos = (decos: Decoration[]): DecoPermutation => {
+  const skillMap: EquipmentSkills = new EquipmentSkills()
+  decos.forEach(deco => skillMap.addSkills(deco.skills))
+
+  return {
+    skills: skillMap,
+    serialized: serializeSkillMap(skillMap),
+    decos,
+  }
+}
 
 const filterType = (piece: ArmorPiece, type: ArmorType) => {
   return piece.type === ArmorType.ALL || piece.type === type
@@ -46,7 +66,7 @@ const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
         slots: slots as Slots,
         category: EquipmentCategory.CHARM,
         rarity: 0,
-        skills: new Map(),
+        skills: new EquipmentSkills(),
       }
       highestGenericSlotCharm.push(newC)
       break
@@ -57,17 +77,6 @@ const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
   const result = charms
     .filter(x => filterHasSkill(x, skills))
     .concat(...highestGenericSlotCharm)
-
-  // include dummy if there are no fitting pieces
-  if (result.length === 0) {
-    result.push({
-      name: 'None',
-      slots: 0,
-      category: EquipmentCategory.CHARM,
-      rarity: 0,
-      skills: new Map(),
-    })
-  }
 
   return result
 }
@@ -90,7 +99,7 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
         slots: slots as Slots,
         category: x.category,
         rarity: x.rarity,
-        skills: new Map(),
+        skills: new EquipmentSkills(),
       }
       highestGenericSlotPiece.push(p)
       break
@@ -98,107 +107,49 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
   }
 
   // find piece with torso up with highest defense
-  const torsoUpPiece: ArmorPiece[] = [sorted.find(p => p.skills.get(TORSO_UP_ID) !== undefined)].filter(x => x !== undefined) as ArmorPiece[]
+  // TODO readd torso up pieces
+  // const torsoUpPiece: ArmorPiece[] = [sorted.find(p => p.skills.get(TORSO_UP_ID) !== undefined)].filter(x => x !== undefined) as ArmorPiece[]
 
   // build list of pieces with wanted skills, with slots, or with torso up
   const result = sorted
     .filter(x => filterHasSkill(x, skills))
     .concat(...highestGenericSlotPiece)
-    .concat(...torsoUpPiece)
-
-  // include dummy if there are no fitting pieces
-  if (result.length === 0) {
-    result.push({
-      type,
-      defense: { base: 0, max: 0, maxLr: 0 },
-      resistance: [0, 0, 0, 0, 0],
-      name: 'None',
-      slots: 0,
-      category,
-      rarity: 0,
-      skills: new Map(),
-    })
-  }
+    // .concat(...torsoUpPiece)
 
   return result
 }
+// #endregion
 
-function * getArmorPermutations (armorPieces: ArmorPiece[][], charms: Charm[]) {
-  for (const head of armorPieces[0]) {
-    for (const chest of armorPieces[1]) {
-      for (const arms of armorPieces[2]) {
-        for (const waist of armorPieces[3]) {
-          for (const legs of armorPieces[4]) {
-            for (const charm of charms) {
-              const set: ArmorSet = new ArmorSet({
-                head,
-                chest,
-                arms,
-                waist,
-                legs,
-                charm,
-              })
-              yield set
-            }
-          }
-        }
-      }
-    }
+// #region initial search data
+const getIntiailArmorEval = (type: ArmorType) => {
+  const dummyPiece: ArmorPiece = {
+    name: 'None',
+    type,
+    defense: { base: 0, max: 0, maxLr: 0 },
+    resistance: [0, 0, 0, 0, 0],
+    category: -1,
+    slots: 0,
+    rarity: 0,
+    skills: new EquipmentSkills(),
   }
-}
 
-function * getDecorationPermutationsForSet (
-  set: ArmorSet,
-  slotsList: DecoSlots[],
-  possibilitiesPerArmorSlot: DecoEvaluation[][],
-  chosenVariations: DecoEvaluation[],
-  i: number,
-): Generator<DecoEvaluation, void, undefined> {
-  if (i === -1) {
-    const combinedDecoEvaluation: DecoEvaluation = {
-      decos: chosenVariations.map(v => v.decos).flat(),
-      skills: chosenVariations
-        .map(v => v.skills)
-        .reduce((p, c) => {
-          return addSkillMaps(p, c)
-        }, new Map()),
+  const categoryArray = [
+    EquipmentCategory.HEAD,
+    EquipmentCategory.CHEST,
+    EquipmentCategory.ARMS,
+    EquipmentCategory.WAIST,
+    EquipmentCategory.LEGS,
+    EquipmentCategory.CHARM,
+  ]
+
+  const pieces: ArmorPiece[] = categoryArray.map((x) => {
+    return {
+      ...dummyPiece,
+      category: x,
     }
-    yield combinedDecoEvaluation
-  } else {
-    for (let j = 0; j < possibilitiesPerArmorSlot[i].length; j++) {
-      yield * getDecorationPermutationsForSet(
-        set,
-        slotsList,
-        possibilitiesPerArmorSlot,
-        chosenVariations.concat(possibilitiesPerArmorSlot[i][j]),
-        i - 1,
-      )
-    }
-  }
-}
-
-const serializeSkillMap = (m: EquipmentSkills) => {
-  return Array.from(m.entries())
-    .sort(([aId, _a], [bId, _b]) => bId - aId)
-    .map(([sId, sVal]) => `${sId}:${sVal}`)
-    .join(',')
-}
-
-const evaluateDecoPermutation = (decos: Decoration[]): DecoEvaluation => {
-  const skillMap: EquipmentSkills = new Map()
-  decos.forEach((deco) => {
-    Array.from(deco.skills.entries()).forEach(([sId, sVal]) => {
-      skillMap.has(sId)
-        ? skillMap.set(sId, skillMap.get(sId)! + sVal)
-        : skillMap.set(sId, sVal)
-    })
   })
 
-  return {
-    skills: skillMap,
-    serialized: serializeSkillMap(skillMap),
-    decos,
-  }
+  return new ArmorEvaluation(pieces)
 }
 
 /** returns all the ways you can possibly arrange the viable decorations on a given slot level (1, 2, 3) */
@@ -249,7 +200,7 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[]) => {
     oneSlotVariations,
     twoSlotVariations,
     threeSlotVariations,
-  ].map(variationList => variationList.map(variation => evaluateDecoPermutation(variation)))
+  ].map(variationList => variationList.map(variation => evaluateListOfDecos(variation)))
 
   // throw out duplicates
   const deduplicated = evaluations
@@ -265,23 +216,21 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[]) => {
       })
     })
 
-  // throw out variations that are the same of downgrades as another
-  const final: DecoEvaluation[][] = deduplicated
+  // throw out variations that are the same as another or downgrades of another
+  const final: DecoPermutation[][] = deduplicated
     .map(evalsOfSlotLevel => evalsOfSlotLevel.filter((thisEval, i) => {
       // true when there is no evaluation that has the same or better points for every single skill
       // we are trying to find an element that is better
       return !evalsOfSlotLevel.find((comparingEval, j) => {
         if (i === j) return false
 
-        // check every skills
+        // check every skill
         return Array.from(thisEval.skills.entries()).every(([sId, sVal]) => {
           const comparingSVal = comparingEval.skills.get(sId)
 
           if (sVal >= 0) {
-            // positive skill
             if (comparingSVal === undefined) return false
           } else {
-            // negative skill
             if (comparingSVal === undefined) return true
           }
 
@@ -292,63 +241,85 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[]) => {
 
   return final
 }
+// #endregion
 
-const addSkillMaps = (a: EquipmentSkills, b: EquipmentSkills) => {
-  const newSkillMap: EquipmentSkills = new Map()
-  for (const m of [a, b]) {
-    for (const [sId, sVal] of Array.from(m.entries())) {
-      const existingVal = newSkillMap.get(sId)
+// #region search logic
+function * getArmorPermutations (
+  equipment: SkilledEquipment[][],
+  previousEval: ArmorEvaluation,
+  categoryIndex: number,
+): Generator<ArmorEvaluation, void, undefined> {
+  for (const piece of equipment[categoryIndex]) {
+    // create and eval new set and yield it
+    const thisEval = previousEval.copy()
+    thisEval.addPiece(piece)
+    yield thisEval
 
-      if (existingVal) {
-        newSkillMap.set(sId, existingVal + sVal)
-      } else {
-        newSkillMap.set(sId, sVal)
-      }
+    if (categoryIndex > 0) {
+      // then yield the next loop if there is one
+      yield * getArmorPermutations(
+        equipment,
+        thisEval,
+        categoryIndex - 1,
+      )
     }
   }
-
-  return newSkillMap
 }
 
-const tryAllDecoPermutationsForSet = (
-  set: ArmorSet,
-  decoVariationsPerSlot: DecoEvaluation[][],
-  wantedSkills: SkillActivation[],
+function * getDecoPermutations (
+  permutationsPerArmorSlot: DecoPermutation[][],
+  previousEval: DecoEvaluation,
+  slotIndex: number,
+): Generator<DecoEvaluation, void, undefined> {
+  for (const decoPermutationOfSlot of permutationsPerArmorSlot[slotIndex]) {
+    // create and eval new combination of decos and yield it
+    const thisEval = previousEval.copy()
+    thisEval.addDecos(decoPermutationOfSlot)
+    yield thisEval
+
+    if (slotIndex > 0) {
+      // then yield the next loop if there is one
+      yield * getDecoPermutations(
+        permutationsPerArmorSlot,
+        thisEval,
+        slotIndex - 1,
+      )
+    }
+  }
+}
+
+const tryAllDecoPermutationsForArmor = (
+  armorEvaluation: ArmorEvaluation,
+  decoVariationsPerSlot: DecoPermutation[][],
+  wantedSkills: EquipmentSkills,
   constraints: SearchConstraints,
 ): ArmorSet | null => {
-  const slotsList: DecoSlots[] = [
-    { slots: set.charm.slots, torsoUp: false },
-    { slots: constraints.weaponSlots, torsoUp: false },
-    ...set.getPieces().map((x) => {
-      return {
-        slots: x.slots,
-        torsoUp: x.category === EquipmentCategory.CHEST && set.torsoUpCount !== 0,
-      }
-    }),
-  ].filter(x => x.slots > 0)
+  const slotsList: Slots[] = [
+    constraints.weaponSlots,
+    ...armorEvaluation.equipment.map(x => x.slots),
+  ].filter(x => x > 0)
 
-  const possibilitiesPerArmorSlot = slotsList
-    .map(s => decoVariationsPerSlot[s.slots - 1])
+  const permutationsPerArmorSlot = slotsList
+    .map(x => decoVariationsPerSlot[x - 1])
 
-  const missingPoints = new Map(wantedSkills
-    .map((skill) => {
-      return [
-        skill.requiredSkill,
-        skill.requiredPoints - set.partial.skills.get(skill.requiredSkill)! || 0,
-      ]
-    }))
+  const missingSkills = new EquipmentSkills(wantedSkills)
+  missingSkills.substractSkills(armorEvaluation.skills)
 
-  // after many confusing transforms right here we finally get a list of deco evaluations
-  // where each evaluation is the combination of the evaluation of each individual piece
-  // therefore holding both the total amount of decos and skills for the entire set
-  for (const eva of getDecorationPermutationsForSet(set, slotsList, possibilitiesPerArmorSlot, [], slotsList.length - 1)) {
-    const decosAreSufficient = Array.from(missingPoints.entries()).every(([sId, sVal]) => {
-      return eva.skills.has(sId) && eva.skills.get(sId)! >= sVal
-    })
+  for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), slotsList.length - 1)) {
+    const decosSufficient = Array.from(missingSkills)
+      .every(([sId, sVal]) => decoEval.skills.get(sId) >= sVal)
 
-    if (decosAreSufficient) {
-      set.addDecorations(eva.decos)
-      return set
+    if (decosSufficient) {
+      return new ArmorSet(
+        {
+          head: armorEvaluation.equipment[0] as ArmorPiece,
+          chest: armorEvaluation.equipment[1] as ArmorPiece,
+          arms: armorEvaluation.equipment[2] as ArmorPiece,
+          waist: armorEvaluation.equipment[3] as ArmorPiece,
+          legs: armorEvaluation.equipment[4] as ArmorPiece,
+          charm: armorEvaluation.equipment[5] as Charm,
+        },
+      )
     }
   }
 
@@ -360,18 +331,33 @@ const findSets = (
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
-  skillData: StaticSkillData,
 ) => {
-  const decoVariations = getDecorationVariationsPerSlotLevel(decorations)
+  const decoVariationsPerSlotLevel = getDecorationVariationsPerSlotLevel(decorations)
+  const initialArmorEval = getIntiailArmorEval(constraints.armorType)
+  const wantedSkills: EquipmentSkills = new EquipmentSkills(
+    constraints.skillActivations.map(x => [x.requiredSkill, x.requiredPoints]),
+  )
 
-  const validSets = []
+  const skilledEquipment: SkilledEquipment[][] = armorPieces
+  skilledEquipment.push(charms)
+
   let length = 0
-  const wantedSkills = constraints.skillActivations.map(x => x)
-  for (const set of getArmorPermutations(armorPieces, charms)) {
-    const foundSet = tryAllDecoPermutationsForSet(set, decoVariations, wantedSkills, constraints)
+  const validSets: ArmorSet[] = []
+  // try all armor permuations
+  for (const armorEvaluation of getArmorPermutations(skilledEquipment, initialArmorEval, armorPieces.length - 1)) {
+    // try all deco permutations
+    const foundSet = tryAllDecoPermutationsForArmor(
+      armorEvaluation,
+      decoVariationsPerSlotLevel,
+      wantedSkills,
+      constraints,
+    )
+
+    // append set if any was found
     if (foundSet) {
-      foundSet.evaluate(skillData.skillActivation)
       validSets.push(foundSet)
+
+      // exit if enough sets found
       if (length === constraints.limit - 1) break
       length++
     }
@@ -379,13 +365,14 @@ const findSets = (
 
   return validSets
 }
+// #endregion
 
+// #region entrypoint
 const search = (
   armorPieces: ArmorPiece[][],
   decorations: Decoration[],
   charms: Charm[],
   constraints: SearchConstraints,
-  skillData: StaticSkillData,
 ) => {
   const a = armorPieces
     .map((piecesOfCategory, i) => {
@@ -400,8 +387,8 @@ const search = (
     d as Decoration[],
     c,
     constraints,
-    skillData,
   )
 }
+// #endregion
 
 export { search }

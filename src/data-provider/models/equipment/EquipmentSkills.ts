@@ -7,7 +7,7 @@ export default class EquipmentSkills extends Map<GameID, Skill> {
   }
 
   add (key: GameID, val: Skill) {
-    super.set(key, val + this.get(key))
+    this.set(key, val + this.get(key))
   }
 
   addSkills (m: EquipmentSkills) {
@@ -17,7 +17,7 @@ export default class EquipmentSkills extends Map<GameID, Skill> {
   }
 
   substract (key: GameID, val: Skill) {
-    super.set(key, val + this.get(key))
+    this.set(key, val + this.get(key))
   }
 
   substractSkills (m: EquipmentSkills) {
