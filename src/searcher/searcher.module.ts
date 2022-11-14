@@ -302,8 +302,9 @@ const tryAllDecoPermutationsForArmor = (
   const permutationsPerArmorSlot = slotsList
     .map(x => decoVariationsPerSlot[x - 1])
 
-  const missingSkills = new EquipmentSkills(wantedSkills)
-  missingSkills.substractSkills(armorEvaluation.skills)
+  const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
+    return [sId, wantedSkills.get(sId) - sVal]
+  }))
 
   for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), slotsList.length - 1)) {
     const decosSufficient = Array.from(missingSkills)
