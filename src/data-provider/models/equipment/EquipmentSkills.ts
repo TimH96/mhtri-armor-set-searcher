@@ -1,6 +1,28 @@
 import GameID from '../GameId'
 import Skill from '../skills/Skill'
 
-type EquipmentSkills = Map<GameID, Skill>;
+export default class EquipmentSkills extends Map<GameID, Skill> {
+  get (key: GameID): Skill {
+    return super.get(key) || 0
+  }
 
-export default EquipmentSkills
+  add (key: GameID, val: Skill) {
+    super.set(key, val + this.get(key))
+  }
+
+  addSkills (m: EquipmentSkills) {
+    for (const [k, v] of m) {
+      this.add(k, v)
+    }
+  }
+
+  substract (key: GameID, val: Skill) {
+    super.set(key, val + this.get(key))
+  }
+
+  substractSkills (m: EquipmentSkills) {
+    for (const [k, v] of m) {
+      this.substract(k, v)
+    }
+  }
+}

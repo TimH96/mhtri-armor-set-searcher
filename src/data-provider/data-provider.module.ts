@@ -21,7 +21,7 @@ const getRawData = async (url: string) => {
 const getDataWithTransformedSkillMap = async (url: string): Promise<{skills: EquipmentSkills}[]> => {
   const raw = await getRawData(url)
   return raw.map((rawX: any) => {
-    const skillMap: EquipmentSkills = new Map()
+    const skillMap: EquipmentSkills = new EquipmentSkills()
     for (const x in rawX.skills) {
       const skill: Skill = rawX.skills[x]
       skillMap.set(parseInt(x), skill)
