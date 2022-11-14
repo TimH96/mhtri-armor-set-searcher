@@ -10,19 +10,33 @@ import { renderResults } from './search-results.component'
 const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) => {
   // build params
   const globalSettings = getGlobalSettings()
+  const skillActivations = getSkillActivations(skillData)
+
+  // return if no skill selected
+  if (skillActivations.length === 0) {
+    alert('Please select at least one skill')
+    return
+  }
+
+  // sanitize activation input to only include highest version of each skill
+  const sanitizedSkillActivations = skillActivations
+    .filter((thisAct, i) => {
+      return skillActivations.every((compareAct, j) => {
+        if (i === j) return true
+        if (thisAct.requiredSkill !== compareAct.requiredSkill) return true
+
+        return thisAct.requiredPoints >= compareAct.requiredPoints
+      })
+    })
+
+  // create search params
   const searchParams: SearchConstraints = {
     weaponSlots: globalSettings.weaponSlots,
     armorType: globalSettings.armorType,
     armorRarity: globalSettings.armorRarity,
     decoRarity: globalSettings.decoRarity,
-    skillActivations: getSkillActivations(skillData),
+    skillActivations: sanitizedSkillActivations,
     limit: 50,
-  }
-
-  // return if no skill selected
-  if (searchParams.skillActivations.length === 0) {
-    alert('Please select at least one skill')
-    return
   }
 
   // search for sets
