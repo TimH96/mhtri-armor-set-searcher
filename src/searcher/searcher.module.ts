@@ -305,7 +305,7 @@ const tryAllDecoPermutationsForArmor = (
     .map(x => decoVariationsPerSlot[x - 1])
 
   const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
-    return [sId, wantedSkills.get(sId) - sVal]
+    return [sId, sVal - armorEvaluation.skills.get(sId)]
   }))
 
   for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), slotsList.length - 1)) {
