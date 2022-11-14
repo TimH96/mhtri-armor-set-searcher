@@ -1,7 +1,4 @@
-import Equipment from './Equipment'
-import EquipmentSkills from './EquipmentSkills'
-import SkilledItem from './SkilledItem'
+import SkilledEquipment from './SkilledEquipment'
 
-export default interface Charm extends Equipment, SkilledItem {
-    skills: EquipmentSkills,
+export default interface Charm extends SkilledEquipment {
 }
