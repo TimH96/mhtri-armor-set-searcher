@@ -156,6 +156,11 @@ ul {
   margin-right: 0.6em;
 }
 
+#search-global-settings input {
+  font-size: 1.4em;
+  margin-right: 0.6em;
+}
+
 #search-controls button {
   font-size: 1.3em;
   min-width: 8em;

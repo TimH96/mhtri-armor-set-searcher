@@ -35,8 +35,8 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
     armorType: globalSettings.armorType,
     armorRarity: globalSettings.armorRarity,
     decoRarity: globalSettings.decoRarity,
+    limit: Math.min(Math.max(globalSettings.limit, 1), 1000),
     skillActivations: sanitizedSkillActivations,
-    limit: 50,
   }
 
   // search for sets
