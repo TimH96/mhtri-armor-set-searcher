@@ -41,6 +41,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
 
   // search for sets
   const result = search(
+    // equData.armor.map(x => x.filter(y => y.name.startsWith("Helios") && y.name.endsWith("+"))),
     equData.armor,
     equData.decorations,
     UserCharmList.Instance.get(),

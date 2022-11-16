@@ -307,19 +307,29 @@ function * getArmorPermutations (
 function * getDecoPermutations (
   permutationsPerArmorSlot: DecoPermutation[][],
   previousEval: DecoEvaluation,
+  requiredScore: number,
   slotIndex: number,
 ): Generator<DecoEvaluation, void, undefined> {
+  // base condition if the armor has no slots
+  if (permutationsPerArmorSlot.length === 0) {
+    yield previousEval
+    return
+  }
+
   for (const decoPermutationOfSlot of permutationsPerArmorSlot[slotIndex]) {
-    // create and eval new combination of decos and yield it
+    // create and eval new combination of decos
     const thisEval = previousEval.copy()
     thisEval.addDecos(decoPermutationOfSlot)
-    yield thisEval
 
+    // yield it if score is sufficient
+    if (thisEval.score >= requiredScore) yield thisEval
+
+    // then yield the next loop if there is one
     if (slotIndex > 0) {
-      // then yield the next loop if there is one
       yield * getDecoPermutations(
         permutationsPerArmorSlot,
         thisEval,
+        requiredScore,
         slotIndex - 1,
       )
     }
@@ -358,8 +368,11 @@ const tryAllDecoPermutationsForArmor = (
   const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
     return [sId, sVal - armorEvaluation.skills.get(sId)]
   }))
+  const missingScore = scoreSkillMap(missingSkills, wantedSkills)
 
-  for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), slotsList.length - 1)) {
+  console.log(permutationsPerArmorSlot)
+
+  for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), missingScore, slotsList.length - 1)) {
     const decosSufficient = Array.from(missingSkills)
       .every(([sId, sVal]) => decoEval.skills.get(sId) >= sVal)
 
