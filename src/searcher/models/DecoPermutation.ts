@@ -4,5 +4,6 @@ import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkill
 export default interface DecoPermutation {
     skills: EquipmentSkills,
     decos: Decoration[],
+    score: number,
     serialized?: string,
 }

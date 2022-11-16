@@ -91,7 +91,7 @@ export default class UserCharmList {
           return skill
         })
 
-      const skillMap: EquipmentSkills = new Map(skills.map((skill) => {
+      const skillMap: EquipmentSkills = new EquipmentSkills(skills.map((skill) => {
         return [skill.id, skill.points]
       }))
       const newCharm: Charm = {

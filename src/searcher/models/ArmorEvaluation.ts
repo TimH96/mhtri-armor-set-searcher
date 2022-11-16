@@ -1,24 +1,28 @@
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
-import SkilledEquipment from '../../data-provider/models/equipment/SkilledEquipment'
+import ScoredSkilledEquipment from './ScoredSkilledEquipment'
 
 export default class ArmorEvaluation {
-  equipment: SkilledEquipment[]
+  equipment: ScoredSkilledEquipment[]
   skills: EquipmentSkills = new EquipmentSkills()
+  score: number = 0
 
-  constructor (equipment: SkilledEquipment[], skills?: EquipmentSkills) {
+  constructor (equipment: ScoredSkilledEquipment[], skills?: EquipmentSkills, score?: number) {
     this.equipment = equipment
     if (skills) this.skills = skills
+    if (score) this.score = score
   }
 
   copy () {
     return new ArmorEvaluation(
       this.equipment,
       new EquipmentSkills(this.skills),
+      this.score,
     )
   }
 
-  addPiece (piece: SkilledEquipment) {
+  addPiece (piece: ScoredSkilledEquipment) {
     this.skills.addSkills(piece.skills)
     this.equipment[piece.category] = piece
+    this.score = this.score + piece.score
   }
 }
