@@ -27,7 +27,6 @@ export default class ArmorSet {
     decoEval: DecoEvaluation,
     skillActivations: SkillActivationMap,
   ) {
-    console.log(armorEval)
     this.head = armorEval.equipment[0] as unknown as ArmorPiece
     this.chest = armorEval.equipment[1] as unknown as ArmorPiece
     this.arms = armorEval.equipment[2] as unknown as ArmorPiece

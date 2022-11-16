@@ -434,7 +434,6 @@ const findSets = (
     }
   }
 
-  console.log({ validSets })
   return validSets
 }
 // #endregion
