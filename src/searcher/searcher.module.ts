@@ -347,7 +347,7 @@ function * getDecoPermutations (
   }
 }
 
-/** returns a mapping of score level to the amount of score it is worth */
+/** returns a mapping of slot level to the amount of score it is worth */
 const getDecoSlotScoreMap = (decoVariationsPerSlotLevel: DecoPermutation[][]): Map<number, number> => {
   const m = new Map()
 
@@ -388,6 +388,16 @@ const tryAllDecoPermutationsForArmor = (
     sum += m
     maximumRemainingScore.push(sum)
   })
+
+  if (missingScore === 0) {
+    return new ArmorSet(
+      armorEvaluation,
+      new DecoEvaluation(),
+      skillData.skillActivation,
+    )
+  } else {
+    return null
+  }
 
   for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), maximumRemainingScore, missingScore, slotsList.length - 1)) {
     const decosSufficient = Array.from(missingSkills)
