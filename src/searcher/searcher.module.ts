@@ -273,7 +273,10 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[], wantedSk
       })
     }))
 
-  return pruned
+  // sort by score
+  const sorted = pruned.map(x => x.sort((a, b) => b.score - a.score))
+
+  return sorted
 }
 // #endregion
 
@@ -281,6 +284,7 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[], wantedSk
 function * getArmorPermutations (
   equipment: ScoredSkilledEquipment[][],
   previousEval: ArmorEvaluation,
+  maximumRemainingScore: number[],
   requiredScore: number,
   categoryIndex: number,
 ): Generator<ArmorEvaluation, void, undefined> {
@@ -291,12 +295,17 @@ function * getArmorPermutations (
 
     // yield it if score is sufficient
     if (thisEval.score >= requiredScore) yield thisEval
+    // otherwise check if its possible to still find sets on this branch and break if not
+    else {
+      if ((thisEval.score + maximumRemainingScore[categoryIndex]) < requiredScore) break
+    }
 
     // then yield the next loop if there is one
     if (categoryIndex > 0) {
       yield * getArmorPermutations(
         equipment,
         thisEval,
+        maximumRemainingScore,
         requiredScore,
         categoryIndex - 1,
       )
@@ -307,6 +316,7 @@ function * getArmorPermutations (
 function * getDecoPermutations (
   permutationsPerArmorSlot: DecoPermutation[][],
   previousEval: DecoEvaluation,
+  maximumRemainingScore: number[],
   requiredScore: number,
   slotIndex: number,
 ): Generator<DecoEvaluation, void, undefined> {
@@ -329,6 +339,7 @@ function * getDecoPermutations (
       yield * getDecoPermutations(
         permutationsPerArmorSlot,
         thisEval,
+        maximumRemainingScore,
         requiredScore,
         slotIndex - 1,
       )
@@ -370,7 +381,15 @@ const tryAllDecoPermutationsForArmor = (
   }))
   const missingScore = scoreSkillMap(missingSkills, wantedSkills)
 
-  for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), missingScore, slotsList.length - 1)) {
+  // get list of maximum score of remaining iterations
+  const maximumRemainingScore = [0]
+  let sum = 0
+  permutationsPerArmorSlot.map(x => x[0].score).forEach((m) => {
+    sum += m
+    maximumRemainingScore.push(sum)
+  })
+
+  for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), maximumRemainingScore, missingScore, slotsList.length - 1)) {
     const decosSufficient = Array.from(missingSkills)
       .every(([sId, sVal]) => decoEval.skills.get(sId) >= sVal)
 
@@ -402,6 +421,7 @@ const findSets = (
   const skilledEquipment: SkilledEquipment[][] = armorPieces
   skilledEquipment.push(charms)
 
+  // score equipment
   const scoredEquipment: ScoredSkilledEquipment[][] = skilledEquipment
     .map(equList => equList.map((equ) => {
       const score = slotScoreMap.get(equ.slots)! + scoreSkillMap(equ.skills, wantedSkills)
@@ -411,11 +431,22 @@ const findSets = (
       }
     }))
 
+  // sort equipment by score
+  const sorted = scoredEquipment.map(l => l.sort((a, b) => b.score - a.score))
+
+  // get list of maximum score of remaining iterations
+  const maximumRemainingScore = [0]
+  let sum = 0
+  sorted.map(x => x[0].score).forEach((m) => {
+    sum += m
+    maximumRemainingScore.push(sum)
+  })
+
   let length = 0
   const validSets: ArmorSet[] = []
   // try all armor permuations
-  for (const armorEvaluation of getArmorPermutations(scoredEquipment, initialArmorEval, wantedScore, armorPieces.length - 1)) {
-    // try all deco permutations
+  for (const armorEvaluation of getArmorPermutations(sorted, initialArmorEval, maximumRemainingScore, wantedScore, armorPieces.length - 1)) {
+    // try all deco permutations of armor
     const foundSet = tryAllDecoPermutationsForArmor(
       armorEvaluation,
       decoVariationsPerSlotLevel,
