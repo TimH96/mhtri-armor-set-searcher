@@ -32,7 +32,7 @@ const dummyPiece: ArmorPiece = {
 
 const scoreSkillMap = (m: EquipmentSkills, w: EquipmentSkills): number => {
   let score = 0
-  for (const [sId, _] of w) {
+  for (const [sId] of w) {
     score += m.get(sId) || 0
   }
 
@@ -370,23 +370,15 @@ const tryAllDecoPermutationsForArmor = (
   }))
   const missingScore = scoreSkillMap(missingSkills, wantedSkills)
 
-  console.log(permutationsPerArmorSlot)
-
   for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), missingScore, slotsList.length - 1)) {
     const decosSufficient = Array.from(missingSkills)
       .every(([sId, sVal]) => decoEval.skills.get(sId) >= sVal)
 
     if (decosSufficient) {
       return new ArmorSet(
-        {
-          head: armorEvaluation.equipment[0] as unknown as ArmorPiece,
-          chest: armorEvaluation.equipment[1] as unknown as ArmorPiece,
-          arms: armorEvaluation.equipment[2] as unknown as ArmorPiece,
-          waist: armorEvaluation.equipment[3] as unknown as ArmorPiece,
-          legs: armorEvaluation.equipment[4] as unknown as ArmorPiece,
-          charm: armorEvaluation.equipment[5] as Charm,
-          decos: decoEval.decos,
-        }, skillData.skillActivation,
+        armorEvaluation,
+        decoEval,
+        skillData.skillActivation,
       )
     }
   }

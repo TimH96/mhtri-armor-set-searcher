@@ -1,4 +1,3 @@
-/* eslint-disable no-undef */
 import ArmorPiece from './models/equipment/ArmorPiece'
 import Decoration from './models/equipment/Decoration'
 import EquipmentSkills from './models/equipment/EquipmentSkills'

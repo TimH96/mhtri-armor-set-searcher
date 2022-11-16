@@ -8,6 +8,8 @@ import Decoration from '../../data-provider/models/equipment/Decoration'
 import Charm from '../../data-provider/models/equipment/Charm'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
+import ArmorEvaluation from './ArmorEvaluation'
+import DecoEvaluation from './DecoEvaluation'
 
 export default class ArmorSet {
   readonly head: ArmorPiece
@@ -20,25 +22,20 @@ export default class ArmorSet {
 
   evaluation: Evaluation
 
-  torsoUpCount: number = 0
-
-  constructor (components: {
-    head: ArmorPiece,
-    chest: ArmorPiece,
-    arms: ArmorPiece,
-    waist: ArmorPiece,
-    legs: ArmorPiece,
-    charm: Charm,
-    decos: Decoration[],
-  }, skillActivations: SkillActivationMap) {
-    this.head = components.head
-    this.chest = components.chest
-    this.arms = components.arms
-    this.waist = components.waist
-    this.legs = components.legs
-    this.charm = components.charm
-    this.decos = components.decos
-    this.evaluation = this.evaluate(skillActivations)
+  constructor (
+    armorEval: ArmorEvaluation,
+    decoEval: DecoEvaluation,
+    skillActivations: SkillActivationMap,
+  ) {
+    console.log(armorEval)
+    this.head = armorEval.equipment[0] as unknown as ArmorPiece
+    this.chest = armorEval.equipment[1] as unknown as ArmorPiece
+    this.arms = armorEval.equipment[2] as unknown as ArmorPiece
+    this.waist = armorEval.equipment[3] as unknown as ArmorPiece
+    this.legs = armorEval.equipment[4] as unknown as ArmorPiece
+    this.charm = armorEval.equipment[5] as unknown as ArmorPiece
+    this.decos = decoEval.decos
+    this.evaluation = this.evaluate(armorEval, decoEval, skillActivations)
   }
 
   getPieces (): ArmorPiece[] {
@@ -51,48 +48,28 @@ export default class ArmorSet {
     ]
   }
 
-  evaluate (activations: SkillActivationMap): Evaluation {
-    const totalSkills = new EquipmentSkills()
+  evaluate (
+    armorEval: ArmorEvaluation,
+    decoEval: DecoEvaluation,
+    activations: SkillActivationMap,
+  ): Evaluation {
     const totalDefense: Defense = { base: 0, max: 0 }
     let totalResistance: Resistance = [0, 0, 0, 0, 0]
-    let torsoUpCount = 0
 
-    // iterate over all pieces other than charm
-    // order matters here because of torso up!
-    for (const piece of [this.head, this.arms, this.waist, this.legs, this.chest]) {
+    // iterate over all armor pieces
+    for (const piece of this.getPieces()) {
       totalDefense.base += piece.defense.base
       totalDefense.max += piece.defense.max
       totalResistance = piece.resistance.map((res, i) => res + totalResistance[i])
-
-      if (piece.skills.get(TORSO_UP_ID)) {
-        torsoUpCount++
-        continue
-      }
-
-      for (const [sId, sVal] of piece.skills) {
-        totalSkills.add(sId, sVal)
-      }
     }
 
-    // save torso up count
-    this.torsoUpCount = torsoUpCount
-
-    // add skills from charm
-    for (const [sId, sVal] of this.charm.skills) {
-      totalSkills.add(sId, sVal)
-    }
-
-    // TODO account for torso up
-    // add skills from decorations
-    for (const deco of this.decos) {
-      for (const [sId, sVal] of deco.skills) {
-        totalSkills.add(sId, sVal)
-      }
-    }
+    // get total skills
+    const skills = new EquipmentSkills(armorEval.skills)
+    skills.addSkills(new EquipmentSkills(decoEval.skills))
 
     // get activations
     const a: SkillActivation[] = []
-    for (const [sId, sVal] of totalSkills) {
+    for (const [sId, sVal] of skills) {
       if (Math.abs(sVal) < 10) {
         continue
       }
@@ -111,8 +88,7 @@ export default class ArmorSet {
       defense: totalDefense,
       resistance: totalResistance,
       activations: a,
-      torsoUpCount,
-      skills: totalSkills,
+      skills,
     }
     this.evaluation = thisEval
     return thisEval
