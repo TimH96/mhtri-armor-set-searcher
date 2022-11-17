@@ -13,7 +13,7 @@ import ArmorSet from './models/ArmorSet'
 import DecoEvaluation from '../scorer/models/DecoEvaluation'
 import DecoPermutation from '../scorer/models/DecoPermutation'
 import SearchConstraints from './models/SearchConstraints'
-import ScoredSkilledEquipment from './models/ScoredSkilledEquipment'
+import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
 import { evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
 

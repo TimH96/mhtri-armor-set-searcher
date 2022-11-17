@@ -1,5 +1,5 @@
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
-import ScoredSkilledEquipment from '../../searcher/models/ScoredSkilledEquipment'
+import ScoredSkilledEquipment from './ScoredSkilledEquipment'
 
 export default class ArmorEvaluation {
   equipment: ScoredSkilledEquipment[]
