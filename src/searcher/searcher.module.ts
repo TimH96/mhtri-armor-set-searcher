@@ -11,43 +11,14 @@ import StaticSkillData from '../data-provider/models/skills/StaticSkillData'
 import ArmorEvaluation from '../scorer/models/ArmorEvaluation'
 import ArmorSet from './models/ArmorSet'
 import DecoEvaluation from '../scorer/models/DecoEvaluation'
-import DecoPermutation from './models/DecoPermutation'
+import DecoPermutation from '../scorer/models/DecoPermutation'
 import SearchConstraints from './models/SearchConstraints'
 import ScoredSkilledEquipment from './models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
-
-// #region helpers
-const scoreSkillMap = (m: EquipmentSkills, w: EquipmentSkills): number => {
-  let score = 0
-  for (const [sId] of w) {
-    score += m.get(sId) || 0
-  }
-
-  return score
-}
-
-const serializeSkillMap = (m: EquipmentSkills) => {
-  return Array.from(m.entries())
-    .sort(([aId, _a], [bId, _b]) => bId - aId)
-    .map(([sId, sVal]) => `${sId}:${sVal}`)
-    .join(',')
-}
-
-const evaluateListOfDecos = (decos: Decoration[], wantedSkills: EquipmentSkills): DecoPermutation => {
-  const skillMap: EquipmentSkills = new EquipmentSkills()
-  decos.forEach(deco => skillMap.addSkills(deco.skills))
-  const score = scoreSkillMap(skillMap, wantedSkills)
-
-  return {
-    skills: skillMap,
-    serialized: serializeSkillMap(skillMap),
-    decos,
-    score,
-  }
-}
-// #endregion
+import { evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
 
 // #region initial search data
+/** get initial armor eval with all dummy pieces */
 const getIntiailArmorEval = (type: ArmorType) => {
   const categoryArray = [
     EquipmentCategory.HEAD,
@@ -231,20 +202,6 @@ function * getDecoPermutations (
   }
 }
 
-/** returns a mapping of slot level to the amount of score it is worth */
-const getDecoSlotScoreMap = (decoVariationsPerSlotLevel: DecoPermutation[][]): Map<number, number> => {
-  const m = new Map()
-
-  const slotValueArray = decoVariationsPerSlotLevel
-    .map(variationsOfSlot => Math.max(...variationsOfSlot.map(x => x.score)))
-    .map((score, i) => [i + 1, score])
-
-  slotValueArray.forEach(([l, s]) => m.set(l, s))
-  m.set(0, 0)
-
-  return m
-}
-
 const tryAllDecoPermutationsForArmor = (
   armorEvaluation: ArmorEvaluation,
   decoVariationsPerSlot: DecoPermutation[][],
@@ -263,7 +220,7 @@ const tryAllDecoPermutationsForArmor = (
   const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
     return [sId, sVal - armorEvaluation.skills.get(sId)]
   }))
-  const missingScore = scoreSkillMap(missingSkills, wantedSkills)
+  const missingScore = getScoreFromSkillMap(missingSkills, wantedSkills)
 
   // get list of maximum score of remaining iterations
   const maximumRemainingScore = [0]
@@ -310,7 +267,7 @@ const findSets = (
   const decoVariationsPerSlotLevel = getDecorationVariationsPerSlotLevel(decorations, wantedSkills)
   const slotScoreMap = getDecoSlotScoreMap(decoVariationsPerSlotLevel)
   const initialArmorEval = getIntiailArmorEval(constraints.armorType)
-  const wantedScore = scoreSkillMap(wantedSkills, wantedSkills) - slotScoreMap.get(constraints.weaponSlots)!
+  const wantedScore = getScoreFromSkillMap(wantedSkills, wantedSkills) - slotScoreMap.get(constraints.weaponSlots)!
 
   const skilledEquipment: SkilledEquipment[][] = armorPieces
   skilledEquipment.push(charms)
@@ -318,7 +275,7 @@ const findSets = (
   // score equipment
   const scoredEquipment: ScoredSkilledEquipment[][] = skilledEquipment
     .map(equList => equList.map((equ) => {
-      const score = slotScoreMap.get(equ.slots)! + scoreSkillMap(equ.skills, wantedSkills)
+      const score = slotScoreMap.get(equ.slots)! + getScoreFromSkillMap(equ.skills, wantedSkills)
       return {
         ...equ,
         score,
