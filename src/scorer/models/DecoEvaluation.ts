@@ -1,6 +1,6 @@
 import Decoration from '../../data-provider/models/equipment/Decoration'
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
-import DecoPermutation from './DecoPermutation'
+import DecoPermutation from '../../searcher/models/DecoPermutation'
 
 export default class DecoEvaluation {
   decos: Decoration[] = []

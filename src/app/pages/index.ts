@@ -1,5 +1,5 @@
 import { getArms, getChest, getDecorations, getHead, getLegs, getSkillActivationMap, getSkillCategories, getSkillNameMap, getWaist } from '../../data-provider/data-provider.module'
-import StaticSkillData from '../../searcher/models/StaticSkillData'
+import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
 import { renderCharmPicker } from '../ui/charms.component'
 import { initiateNavbar } from '../ui/navbar.component'
 import { renderSkillPicker } from '../ui/picker.component'

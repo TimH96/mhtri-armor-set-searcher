@@ -8,8 +8,8 @@ import Decoration from '../../data-provider/models/equipment/Decoration'
 import Charm from '../../data-provider/models/equipment/Charm'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
-import ArmorEvaluation from './ArmorEvaluation'
-import DecoEvaluation from './DecoEvaluation'
+import ArmorEvaluation from '../../scorer/models/ArmorEvaluation'
+import DecoEvaluation from '../../scorer/models/DecoEvaluation'
 
 export default class ArmorSet {
   readonly head: ArmorPiece

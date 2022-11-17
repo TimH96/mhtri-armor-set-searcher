@@ -1,6 +1,6 @@
 import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
-import StaticSkillData from '../../searcher/models/StaticSkillData'
+import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
 import { htmlToElement } from '../../helper/html.helper'
 
 const onSetClick = (tbNode: Node, viewGetter: () => Node) => {
