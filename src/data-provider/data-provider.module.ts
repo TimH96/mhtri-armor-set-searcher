@@ -11,6 +11,17 @@ const MAX_RARITY = 7
 
 const TORSO_UP_ID = 83
 
+const DUMMY_PIECE: ArmorPiece = {
+  name: 'None',
+  type: -1,
+  defense: { base: 0, max: 0, maxLr: 0 },
+  resistance: [0, 0, 0, 0, 0],
+  category: -1,
+  slots: 0,
+  rarity: 0,
+  skills: new EquipmentSkills(),
+}
+
 /** fetch from data directory */
 const getRawData = async (url: string) => {
   return (await fetch(url)).json()
@@ -99,6 +110,7 @@ const getSkillActivationMap = async (): Promise<SkillActivationMap> => {
 export {
   MAX_RARITY,
   TORSO_UP_ID,
+  DUMMY_PIECE,
   getHead,
   getChest,
   getArms,
