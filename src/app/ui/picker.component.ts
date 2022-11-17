@@ -1,6 +1,6 @@
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
-import { htmlToElement } from './html.helper'
+import { htmlToElement } from '../../helper/html.helper'
 import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 
 const getActivationElements = () => {

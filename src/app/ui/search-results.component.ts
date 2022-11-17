@@ -1,7 +1,7 @@
 import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticSkillData from '../../searcher/models/StaticSkillData'
-import { htmlToElement } from './html.helper'
+import { htmlToElement } from '../../helper/html.helper'
 
 const onSetClick = (tbNode: Node, viewGetter: () => Node) => {
   const children = tbNode.childNodes

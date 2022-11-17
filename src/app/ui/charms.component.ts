@@ -3,11 +3,12 @@ import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 import Charm from '../../data-provider/models/equipment/Charm'
 import Skill from '../../data-provider/models/skills/Skill'
 import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
-import { htmlToElement } from './html.helper'
+import { htmlToElement } from '../../helper/html.helper'
 import Slots from '../../data-provider/models/equipment/Slots'
 import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
 import GameID from '../../data-provider/models/GameId'
 import { range } from '../../helper/range.helper'
+import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 
 /*
   TODO this file is the only file so far where I'm regretting this straightforward functional
@@ -142,7 +143,7 @@ const onAddClick = (skillNames: SkillNameMap) => {
   }
 
   // map to model
-  const skillsMap = new Map<GameID, Skill>(skills
+  const skillsMap = new EquipmentSkills(skills
     .filter(s => validSkill(s.id, s.points))
     .map(s => [s.id, s.points]))
   const charm: Charm = {
