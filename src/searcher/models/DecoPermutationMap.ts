@@ -1,11 +1,11 @@
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 import DecoPermutation from '../../scorer/models/DecoPermutation'
 import Slots from '../../data-provider/models/equipment/Slots'
-import { cartesianProduct } from '../../helper/cartesian.helper'
+import { fastCartesian } from '../../helper/cartesian.helper'
 import { pruneDecoPermutations } from '../../scorer/scorer.module'
 
 export default class DecoPermutationMap {
-  private decoPermutationMap: Map<string, DecoPermutation[]>
+  decoPermutationMap: Map<string, DecoPermutation[]>
   private decoVariationsPerSlotLevel: Map<Slots, DecoPermutation[]>
   private wantedSkills: EquipmentSkills
 
@@ -41,11 +41,11 @@ export default class DecoPermutationMap {
     }
 
     // get cartesiean product of slot level perms and recursion of remaining key
-    const product = cartesianProduct(x, y)
+    const product = fastCartesian([x, y])
     const combined = product
       .map((perms) => {
-        const p1 = perms[0]
-        const p2 = perms[1]
+        const p1 = perms[0] as DecoPermutation
+        const p2 = perms[1] as DecoPermutation
 
         const newSkills = new EquipmentSkills(p1.skills)
         newSkills.addSkills(p2.skills)

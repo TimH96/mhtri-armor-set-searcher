@@ -188,12 +188,14 @@ const findSets = (
     const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
       return [sId, sVal - armorEvaluation.skills.get(sId)]
     }))
+    const missingScore = getScoreFromSkillMap(missingSkills, wantedSkills)
 
     // get list of all possible deco evaluations for slots of set
     const decoPerms = decoPermutationMap.get(armorEvaluation.getSlots())
 
     // find a sufficient deco evaluation
     const sufficientDecoPerm = decoPerms.find((dP) => {
+      if (dP.score < missingScore) return false
       return Array.from(missingSkills)
         .every(([sId, sVal]) => dP.skills.get(sId) >= sVal)
     })
