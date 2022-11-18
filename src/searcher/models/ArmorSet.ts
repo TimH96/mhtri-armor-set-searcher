@@ -1,4 +1,3 @@
-import { TORSO_UP_ID } from '../../data-provider/data-provider.module'
 import Defense from '../../data-provider/models/equipment/Defense'
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 import Resistance from '../../data-provider/models/equipment/Resistance'

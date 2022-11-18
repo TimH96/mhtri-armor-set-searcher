@@ -5,5 +5,4 @@ export default interface DecoPermutation {
     skills: EquipmentSkills,
     decos: Decoration[],
     score: number,
-    serialized?: string,
 }

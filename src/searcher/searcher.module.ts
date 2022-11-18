@@ -1,4 +1,4 @@
-import { DUMMY_PIECE, TORSO_UP_ID } from '../data-provider/data-provider.module'
+import { DUMMY_PIECE } from '../data-provider/data-provider.module'
 import ArmorPiece from '../data-provider/models/equipment/ArmorPiece'
 import ArmorType from '../data-provider/models/equipment/ArmorType'
 import Charm from '../data-provider/models/equipment/Charm'
@@ -15,7 +15,7 @@ import DecoPermutation from '../scorer/models/DecoPermutation'
 import SearchConstraints from './models/SearchConstraints'
 import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
-import { evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
+import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
 
 // #region initial search data
 /** get initial armor eval with all dummy pieces */
@@ -48,26 +48,37 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[], wantedSk
   const rawTwoSlots = decorations.filter(d => d.requiredSlots === 2)
   const rawThreeSlots = decorations.filter(d => d.requiredSlots === 3)
 
+  // create dummy for unused slots
+  const dummy: Decoration = {
+    name: 'None',
+    rarity: 0,
+    requiredSlots: 0,
+    skills: new EquipmentSkills(),
+  }
+
   // get all variations for 1 slot
-  const oneSlotVariations = rawOneSlots.map(x => [x])
+  const oneSlotVariations = rawOneSlots.map(x => [x]).concat([[dummy]])
+  const oneSlotEvaluated = pruneDecoPermutations(oneSlotVariations.map(x => evaluateListOfDecos(x, wantedSkills)), wantedSkills)
+  const prunedOneSlotVariations = oneSlotEvaluated.map(x => x.decos)
 
   // get all variations for 2 slots
   const twoOneSlotDecoVariations = []
-  for (let i = 0; i < oneSlotVariations.length; i++) {
-    const x = oneSlotVariations[i]
-    for (let j = Math.abs(i); j < oneSlotVariations.length; j++) {
-      const y = oneSlotVariations[j]
+  for (let i = 0; i < prunedOneSlotVariations.length; i++) {
+    const x = prunedOneSlotVariations[i]
+    for (let j = Math.abs(i); j < prunedOneSlotVariations.length; j++) {
+      const y = prunedOneSlotVariations[j]
       twoOneSlotDecoVariations.push(x.concat(y))
     }
   }
   const twoSlotVariations = rawTwoSlots
     .map(x => [x])
     .concat(twoOneSlotDecoVariations)
+  const twoSlotEvaluated = pruneDecoPermutations(twoSlotVariations.map(x => evaluateListOfDecos(x, wantedSkills)), wantedSkills)
 
   // get all variations for 3 slots
   const threeOneSlotDecoVariations = []
-  for (let i = 0; i < oneSlotVariations.length; i++) {
-    const x = oneSlotVariations[i]
+  for (let i = 0; i < prunedOneSlotVariations.length; i++) {
+    const x = prunedOneSlotVariations[i]
     for (let j = Math.abs(i); j < twoOneSlotDecoVariations.length; j++) {
       const y = twoOneSlotDecoVariations[j]
       threeOneSlotDecoVariations.push(x.concat(y))
@@ -83,55 +94,15 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[], wantedSk
     .map(x => [x])
     .concat(oneAndTwoSlotDecoVariations)
     .concat(threeOneSlotDecoVariations)
+  const threeSlotEvaluated = pruneDecoPermutations(threeSlotVariations.map(x => evaluateListOfDecos(x, wantedSkills)), wantedSkills)
 
-  // evaluate all permutations
+  // return pruned evaluations
   const evaluations = [
-    oneSlotVariations,
-    twoSlotVariations,
-    threeSlotVariations,
-  ].map(variationList => variationList.map(variation => evaluateListOfDecos(variation, wantedSkills)))
-
-  // throw out duplicates
-  const deduplicated = evaluations
-    .map(evaluationList => {
-      const serializedList: string[] = []
-      return evaluationList.filter(variation => {
-        if (serializedList.includes(variation.serialized!)) {
-          return false
-        }
-
-        serializedList.push(variation.serialized!)
-        return true
-      })
-    })
-
-  // throw out variations that are the same as another or downgrades of another
-  const pruned: DecoPermutation[][] = deduplicated
-    .map(evalsOfSlotLevel => evalsOfSlotLevel.filter((thisEval, i) => {
-      // true when there is no evaluation that has the same or better points for every single skill
-      // we are trying to find an element that is better
-      return !evalsOfSlotLevel.find((comparingEval, j) => {
-        if (i === j) return false
-
-        // check every skill
-        return Array.from(thisEval.skills.entries()).every(([sId, sVal]) => {
-          const comparingSVal = comparingEval.skills.get(sId)
-
-          if (sVal >= 0) {
-            if (comparingSVal === undefined) return false
-          } else {
-            if (comparingSVal === undefined) return true
-          }
-
-          return comparingSVal >= sVal
-        })
-      })
-    }))
-
-  // sort by score
-  const sorted = pruned.map(x => x.sort((a, b) => b.score - a.score))
-
-  return sorted
+    oneSlotEvaluated,
+    twoSlotEvaluated,
+    threeSlotEvaluated,
+  ]
+  return evaluations
 }
 // #endregion
 
