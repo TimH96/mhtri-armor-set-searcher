@@ -200,7 +200,7 @@ const findSets = (
         .every(([sId, sVal]) => dP.skills.get(sId) >= sVal)
     })
 
-    // build and append set if any was possible deco eval was found
+    // build and append set if any possible deco eval was found
     if (sufficientDecoPerm) {
       const set = new ArmorSet(armorEvaluation, sufficientDecoPerm, skillData.skillActivation)
       validSets.push(set)
