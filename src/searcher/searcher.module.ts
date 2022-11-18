@@ -10,12 +10,12 @@ import Slots from '../data-provider/models/equipment/Slots'
 import StaticSkillData from '../data-provider/models/skills/StaticSkillData'
 import ArmorEvaluation from '../scorer/models/ArmorEvaluation'
 import ArmorSet from './models/ArmorSet'
-import DecoEvaluation from '../scorer/models/DecoEvaluation'
 import DecoPermutation from '../scorer/models/DecoPermutation'
 import SearchConstraints from './models/SearchConstraints'
 import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
 import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
+import DecoPermutationMap from './models/DecoPermutationMap'
 
 // #region initial search data
 /** get initial armor eval with all dummy pieces */
@@ -42,7 +42,10 @@ const getIntiailArmorEval = (type: ArmorType) => {
 }
 
 /** returns all the ways you can possibly arrange the viable decorations on a given slot level (1, 2, 3) */
-const getDecorationVariationsPerSlotLevel = (decorations: Decoration[], wantedSkills: EquipmentSkills) => {
+const getDecorationVariationsPerSlotLevel = (
+  decorations: Decoration[],
+  wantedSkills: EquipmentSkills,
+): Map<Slots, DecoPermutation[]> => {
   // get all decorations of specific slot
   const rawOneSlots = decorations.filter(d => d.requiredSlots === 1)
   const rawTwoSlots = decorations.filter(d => d.requiredSlots === 2)
@@ -97,12 +100,12 @@ const getDecorationVariationsPerSlotLevel = (decorations: Decoration[], wantedSk
   const threeSlotEvaluated = pruneDecoPermutations(threeSlotVariations.map(x => evaluateListOfDecos(x, wantedSkills)), wantedSkills)
 
   // return pruned evaluations
-  const evaluations = [
-    oneSlotEvaluated,
-    twoSlotEvaluated,
-    threeSlotEvaluated,
-  ]
-  return evaluations
+  return new Map([
+    [0, []],
+    [1, oneSlotEvaluated],
+    [2, twoSlotEvaluated],
+    [3, threeSlotEvaluated],
+  ])
 }
 // #endregion
 
@@ -139,94 +142,6 @@ function * getArmorPermutations (
   }
 }
 
-function * getDecoPermutations (
-  permutationsPerArmorSlot: DecoPermutation[][],
-  previousEval: DecoEvaluation,
-  maximumRemainingScore: number[],
-  requiredScore: number,
-  slotIndex: number,
-): Generator<DecoEvaluation, void, undefined> {
-  // base condition if the armor has no slots
-  if (permutationsPerArmorSlot.length === 0) {
-    yield previousEval
-    return
-  }
-
-  for (const decoPermutationOfSlot of permutationsPerArmorSlot[slotIndex]) {
-    // create and eval new combination of decos
-    const thisEval = previousEval.copy()
-    thisEval.addDecos(decoPermutationOfSlot)
-
-    // yield it if score is sufficient
-    if (thisEval.score >= requiredScore) yield thisEval
-
-    // then yield the next loop if there is one
-    if (slotIndex > 0) {
-      yield * getDecoPermutations(
-        permutationsPerArmorSlot,
-        thisEval,
-        maximumRemainingScore,
-        requiredScore,
-        slotIndex - 1,
-      )
-    }
-  }
-}
-
-const tryAllDecoPermutationsForArmor = (
-  armorEvaluation: ArmorEvaluation,
-  decoVariationsPerSlot: DecoPermutation[][],
-  wantedSkills: EquipmentSkills,
-  constraints: SearchConstraints,
-  skillData: StaticSkillData,
-): ArmorSet | null => {
-  const slotsList: Slots[] = [
-    constraints.weaponSlots,
-    ...armorEvaluation.equipment.map(x => x.slots),
-  ].filter(x => x > 0)
-
-  const permutationsPerArmorSlot = slotsList
-    .map(x => decoVariationsPerSlot[x - 1])
-
-  const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
-    return [sId, sVal - armorEvaluation.skills.get(sId)]
-  }))
-  const missingScore = getScoreFromSkillMap(missingSkills, wantedSkills)
-
-  // get list of maximum score of remaining iterations
-  const maximumRemainingScore = [0]
-  let sum = 0
-  permutationsPerArmorSlot.map(x => x[0].score).forEach((m) => {
-    sum += m
-    maximumRemainingScore.push(sum)
-  })
-
-  if (missingScore === 0) {
-    return new ArmorSet(
-      armorEvaluation,
-      new DecoEvaluation(),
-      skillData.skillActivation,
-    )
-  } else {
-    return null
-  }
-
-  for (const decoEval of getDecoPermutations(permutationsPerArmorSlot, new DecoEvaluation(), maximumRemainingScore, missingScore, slotsList.length - 1)) {
-    const decosSufficient = Array.from(missingSkills)
-      .every(([sId, sVal]) => decoEval.skills.get(sId) >= sVal)
-
-    if (decosSufficient) {
-      return new ArmorSet(
-        armorEvaluation,
-        decoEval,
-        skillData.skillActivation,
-      )
-    }
-  }
-
-  return null
-}
-
 const findSets = (
   armorPieces: ArmorPiece[][],
   decorations: Decoration[],
@@ -235,10 +150,11 @@ const findSets = (
   skillData: StaticSkillData,
 ) => {
   const wantedSkills: EquipmentSkills = new EquipmentSkills(constraints.skillActivations.map(x => [x.requiredSkill, x.requiredPoints]))
-  const decoVariationsPerSlotLevel = getDecorationVariationsPerSlotLevel(decorations, wantedSkills)
-  const slotScoreMap = getDecoSlotScoreMap(decoVariationsPerSlotLevel)
+  const decoPermutationsPerSlotLevel = getDecorationVariationsPerSlotLevel(decorations, wantedSkills)
+  const slotScoreMap = getDecoSlotScoreMap(decoPermutationsPerSlotLevel)
   const initialArmorEval = getIntiailArmorEval(constraints.armorType)
   const wantedScore = getScoreFromSkillMap(wantedSkills, wantedSkills) - slotScoreMap.get(constraints.weaponSlots)!
+  const decoPermutationMap = new DecoPermutationMap(decoPermutationsPerSlotLevel, wantedSkills)
 
   const skilledEquipment: SkilledEquipment[][] = armorPieces
   skilledEquipment.push(charms)
@@ -268,18 +184,24 @@ const findSets = (
   const validSets: ArmorSet[] = []
   // try all armor permuations
   for (const armorEvaluation of getArmorPermutations(sorted, initialArmorEval, maximumRemainingScore, wantedScore, armorPieces.length - 1)) {
-    // try all deco permutations of armor
-    const foundSet = tryAllDecoPermutationsForArmor(
-      armorEvaluation,
-      decoVariationsPerSlotLevel,
-      wantedSkills,
-      constraints,
-      skillData,
-    )
+    // get map of missing skills
+    const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
+      return [sId, sVal - armorEvaluation.skills.get(sId)]
+    }))
 
-    // append set if any was found
-    if (foundSet) {
-      validSets.push(foundSet)
+    // get list of all possible deco evaluations for slots of set
+    const decoPerms = decoPermutationMap.get(armorEvaluation.getSlots())
+
+    // find a sufficient deco evaluation
+    const sufficientDecoPerm = decoPerms.find((dP) => {
+      return Array.from(missingSkills)
+        .every(([sId, sVal]) => dP.skills.get(sId) >= sVal)
+    })
+
+    // build and append set if any was possible deco eval was found
+    if (sufficientDecoPerm) {
+      const set = new ArmorSet(armorEvaluation, sufficientDecoPerm, skillData.skillActivation)
+      validSets.push(set)
 
       // exit if enough sets found
       if (length === constraints.limit - 1) break

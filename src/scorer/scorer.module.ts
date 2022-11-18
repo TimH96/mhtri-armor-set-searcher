@@ -1,5 +1,6 @@
 import Decoration from '../data-provider/models/equipment/Decoration'
 import EquipmentSkills from '../data-provider/models/equipment/EquipmentSkills'
+import Slots from '../data-provider/models/equipment/Slots'
 import DecoPermutation from './models/DecoPermutation'
 
 /** get score of a skill map relative to wanted skills */
@@ -49,14 +50,10 @@ const decoPermWorseOrSameAsComparison = (perm: DecoPermutation, comparison: Deco
 }
 
 /** returns a mapping of slot level to the amount of score it is worth */
-const getDecoSlotScoreMap = (decoVariationsPerSlotLevel: DecoPermutation[][]): Map<number, number> => {
-  const m = new Map()
-
-  const slotValueArray = decoVariationsPerSlotLevel
-    .map(variationsOfSlot => Math.max(...variationsOfSlot.map(x => x.score)))
-    .map((score, i) => [i + 1, score])
-
-  slotValueArray.forEach(([l, s]) => m.set(l, s))
+const getDecoSlotScoreMap = (decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>): Map<number, number> => {
+  const m = new Map(Array.from(decoPermutationsPerSlotLevel.entries()).map(([slotLevel, permList]) => {
+    return [slotLevel, Math.max(...permList.map(x => x.score))]
+  }))
   m.set(0, 0)
 
   return m

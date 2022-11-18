@@ -6,10 +6,20 @@ export default class ArmorEvaluation {
   skills: EquipmentSkills = new EquipmentSkills()
   score: number = 0
 
-  constructor (equipment: ScoredSkilledEquipment[], skills?: EquipmentSkills, score?: number) {
+  constructor (
+    equipment: ScoredSkilledEquipment[],
+    skills?: EquipmentSkills,
+    score?: number,
+  ) {
     this.equipment = equipment
     if (skills) this.skills = skills
     if (score) this.score = score
+  }
+
+  getSlots () {
+    return this.equipment
+      .map(x => x.slots)
+      .filter(x => x > 0)
   }
 
   copy () {
