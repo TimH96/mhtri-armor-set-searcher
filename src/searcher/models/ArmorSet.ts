@@ -8,7 +8,7 @@ import Charm from '../../data-provider/models/equipment/Charm'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 import ArmorEvaluation from '../../scorer/models/ArmorEvaluation'
-import DecoPermutation from '../../scorer/models/DecoPermutation'
+import DecoEvaluation from '../../scorer/models/DecoEvaluation'
 
 export default class ArmorSet {
   readonly head: ArmorPiece
@@ -23,7 +23,7 @@ export default class ArmorSet {
 
   constructor (
     armorEval: ArmorEvaluation,
-    decoPerm: DecoPermutation,
+    decoEval: DecoEvaluation,
     skillActivations: SkillActivationMap,
   ) {
     this.head = armorEval.equipment[0] as unknown as ArmorPiece
@@ -32,8 +32,8 @@ export default class ArmorSet {
     this.waist = armorEval.equipment[3] as unknown as ArmorPiece
     this.legs = armorEval.equipment[4] as unknown as ArmorPiece
     this.charm = armorEval.equipment[5] as unknown as ArmorPiece
-    this.decos = decoPerm.decos
-    this.evaluation = this.evaluate(armorEval, decoPerm, skillActivations)
+    this.decos = decoEval.decos
+    this.evaluation = this.evaluate(armorEval, decoEval, skillActivations)
   }
 
   getPieces (): ArmorPiece[] {
@@ -48,7 +48,7 @@ export default class ArmorSet {
 
   evaluate (
     armorEval: ArmorEvaluation,
-    decoPerm: DecoPermutation,
+    decoEval: DecoEvaluation,
     activations: SkillActivationMap,
   ): Evaluation {
     const totalDefense: Defense = { base: 0, max: 0 }
@@ -63,7 +63,7 @@ export default class ArmorSet {
 
     // get total skills
     const skills = new EquipmentSkills(armorEval.skills)
-    skills.addSkills(new EquipmentSkills(decoPerm.skills))
+    skills.addSkills(new EquipmentSkills(decoEval.skills))
 
     // get activations
     const a: SkillActivation[] = []

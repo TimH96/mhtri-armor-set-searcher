@@ -15,7 +15,7 @@ import SearchConstraints from './models/SearchConstraints'
 import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
 import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
-import DecoPermutationMap from './models/DecoPermutationMap'
+import DecoEvaluation from '../scorer/models/DecoEvaluation'
 
 // #region initial search data
 /** get initial armor eval with all dummy pieces */
@@ -142,6 +142,39 @@ function * getArmorPermutations (
   }
 }
 
+function * getSufficientDecoPermutations (
+  decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
+  slotsOfArmor: Slots[],
+  previousEval: DecoEvaluation,
+  missingSkills: EquipmentSkills,
+  slotIndex: number,
+): Generator<DecoEvaluation, void, undefined> {
+  const slotLevel = slotsOfArmor[slotIndex]
+  for (const perm of decoPermutationsPerSlotLevel.get(slotLevel)!) {
+    // create and eval new set
+    const thisEval = previousEval.copy()
+    thisEval.addPerm(perm)
+
+    // yield it if score is sufficient
+    if (Array.from(missingSkills.entries()).every(([sId, sVal]) => thisEval.skills.get(sId) >= sVal)) yield thisEval
+    // otherwise check if its possible to still find sets on this branch and break if not
+    else {
+      // if there are not enough slots to get remaining skills
+    }
+
+    // then yield the next loop if there is one
+    if (slotIndex > 0) {
+      yield * getSufficientDecoPermutations(
+        decoPermutationsPerSlotLevel,
+        slotsOfArmor,
+        thisEval,
+        missingSkills,
+        slotIndex - 1,
+      )
+    }
+  }
+}
+
 const findSets = (
   armorPieces: ArmorPiece[][],
   decorations: Decoration[],
@@ -154,7 +187,6 @@ const findSets = (
   const slotScoreMap = getDecoSlotScoreMap(decoPermutationsPerSlotLevel)
   const initialArmorEval = getIntiailArmorEval(constraints.armorType)
   const wantedScore = getScoreFromSkillMap(wantedSkills, wantedSkills) - slotScoreMap.get(constraints.weaponSlots)!
-  const decoPermutationMap = new DecoPermutationMap(decoPermutationsPerSlotLevel)
 
   const skilledEquipment: SkilledEquipment[][] = armorPieces
   skilledEquipment.push(charms)
@@ -182,27 +214,34 @@ const findSets = (
 
   let length = 0
   const validSets: ArmorSet[] = []
-  // try all armor permuations
-  for (const armorEvaluation of getArmorPermutations(sorted, initialArmorEval, maximumRemainingScore, wantedScore, armorPieces.length - 1)) {
+  // try all viable armor permuations
+  for (const armorEvaluation of getArmorPermutations(
+    sorted,
+    initialArmorEval,
+    maximumRemainingScore,
+    wantedScore,
+    armorPieces.length - 1,
+  )) {
     // get map of missing skills
     const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
       return [sId, sVal - armorEvaluation.skills.get(sId)]
     }))
-    const missingScore = getScoreFromSkillMap(missingSkills, wantedSkills)
 
-    // get list of all possible deco evaluations for slots of set
-    const decoPerms = decoPermutationMap.get(armorEvaluation.getSlots())
+    // iterate over list of viable deco permutations
+    const slotList = armorEvaluation.getSlots()
 
-    // find a sufficient deco evaluation
-    const sufficientDecoPerm = decoPerms.find((dP) => {
-      if (dP.score < missingScore) return false
-      return Array.from(missingSkills)
-        .every(([sId, sVal]) => dP.skills.get(sId) >= sVal)
-    })
+    // find first sufficient deco eval
+    const decoEvaluation = getSufficientDecoPermutations(
+      decoPermutationsPerSlotLevel,
+      slotList,
+      new DecoEvaluation(),
+      missingSkills,
+      slotList.length - 1,
+    ).next().value
 
-    // build and append set if any possible deco eval was found
-    if (sufficientDecoPerm) {
-      const set = new ArmorSet(armorEvaluation, sufficientDecoPerm, skillData.skillActivation)
+    // build and append set if there is any deco eval
+    if (decoEvaluation) {
+      const set = new ArmorSet(armorEvaluation, decoEvaluation, skillData.skillActivation)
       validSets.push(set)
 
       // exit if enough sets found
