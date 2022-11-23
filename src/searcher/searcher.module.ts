@@ -154,7 +154,7 @@ const findSets = (
   const slotScoreMap = getDecoSlotScoreMap(decoPermutationsPerSlotLevel)
   const initialArmorEval = getIntiailArmorEval(constraints.armorType)
   const wantedScore = getScoreFromSkillMap(wantedSkills, wantedSkills) - slotScoreMap.get(constraints.weaponSlots)!
-  const decoPermutationMap = new DecoPermutationMap(decoPermutationsPerSlotLevel, wantedSkills)
+  const decoPermutationMap = new DecoPermutationMap(decoPermutationsPerSlotLevel)
 
   const skilledEquipment: SkilledEquipment[][] = armorPieces
   skilledEquipment.push(charms)

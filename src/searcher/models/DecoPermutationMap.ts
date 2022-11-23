@@ -1,22 +1,17 @@
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 import DecoPermutation from '../../scorer/models/DecoPermutation'
 import Slots from '../../data-provider/models/equipment/Slots'
-import { fastCartesian } from '../../helper/cartesian.helper'
-import { pruneDecoPermutations } from '../../scorer/scorer.module'
 
 export default class DecoPermutationMap {
   decoPermutationMap: Map<string, DecoPermutation[]>
   private decoVariationsPerSlotLevel: Map<Slots, DecoPermutation[]>
-  private wantedSkills: EquipmentSkills
 
   constructor (
     decoVariationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
-    wantedSkills: EquipmentSkills,
   ) {
     this.decoPermutationMap = new Map()
     this.decoPermutationMap.set('', [])
     this.decoVariationsPerSlotLevel = decoVariationsPerSlotLevel
-    this.wantedSkills = wantedSkills
   }
 
   get (slotList: Slots[]): DecoPermutation[] {
@@ -34,19 +29,19 @@ export default class DecoPermutationMap {
     const x = this.decoVariationsPerSlotLevel.get(ele)!
     const y = this._get(sliced)
 
-    // if recursed perm is empty simply return perm of that slot level
-    if (y.length === 0) {
-      this.decoPermutationMap.set(keyString, x)
-      return x
-    }
+    // get new list, save it and return it
+    const newL = this.combinePermutationLists(x, y)
+    this.decoPermutationMap.set(keyString, newL)
+    return newL
+  }
 
-    // get cartesiean product of slot level perms and recursion of remaining key
-    const product = fastCartesian([x, y])
-    const combined = product
-      .map((perms) => {
-        const p1 = perms[0] as DecoPermutation
-        const p2 = perms[1] as DecoPermutation
+  private combinePermutationLists (x: DecoPermutation[], y: DecoPermutation[]): DecoPermutation[] {
+    if (x.length === 0) return y
+    if (y.length === 0) return x
 
+    const r = []
+    for (const p1 of x) {
+      for (const p2 of y) {
         const newSkills = new EquipmentSkills(p1.skills)
         newSkills.addSkills(p2.skills)
 
@@ -56,12 +51,10 @@ export default class DecoPermutationMap {
           skills: newSkills,
         }
 
-        return newP
-      })
+        r.push(newP)
+      }
+    }
 
-    // prune resulting perm list, save and return
-    const pruned = pruneDecoPermutations(combined, this.wantedSkills)
-    this.decoPermutationMap.set(keyString, pruned)
-    return pruned
+    return r
   }
 }
