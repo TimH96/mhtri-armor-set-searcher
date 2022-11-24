@@ -230,14 +230,14 @@ const findSets = (
     }))
 
     // iterate over list of viable deco permutations
-    const slotList = armorEvaluation.getSlots()
+    const slotList = armorEvaluation.getSlots().concat(constraints.weaponSlots ? constraints.weaponSlots : [])
 
     // find first sufficient deco eval
     const decoEvaluation = getSufficientDecoPermutations(
       decoMinSlotMap,
       decoPermutationsPerSlotLevel,
       slotList,
-      new DecoEvaluation(armorEvaluation.totalSlots, missingSkills),
+      new DecoEvaluation(armorEvaluation.totalSlots + constraints.weaponSlots, missingSkills),
       slotList.length - 1,
     ).next().value
 
