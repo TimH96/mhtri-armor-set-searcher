@@ -17,7 +17,6 @@ import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill }
 import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
 import DecoEvaluation from '../scorer/models/DecoEvaluation'
 import DecoMinSlotMap from '../scorer/models/DecoMinSlotMap'
-import { sum } from '../helper/sum.helper'
 
 // #region initial search data
 /** get initial armor eval with all dummy pieces */
@@ -238,7 +237,7 @@ const findSets = (
       decoMinSlotMap,
       decoPermutationsPerSlotLevel,
       slotList,
-      new DecoEvaluation(sum(slotList), missingSkills),
+      new DecoEvaluation(armorEvaluation.totalSlots, missingSkills),
       slotList.length - 1,
     ).next().value
 

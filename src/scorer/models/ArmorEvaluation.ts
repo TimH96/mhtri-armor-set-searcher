@@ -5,15 +5,18 @@ export default class ArmorEvaluation {
   equipment: ScoredSkilledEquipment[]
   skills: EquipmentSkills = new EquipmentSkills()
   score: number = 0
+  totalSlots: number = 0
 
   constructor (
     equipment: ScoredSkilledEquipment[],
     skills?: EquipmentSkills,
     score?: number,
+    totalSlots?: number,
   ) {
     this.equipment = equipment
     if (skills) this.skills = skills
     if (score) this.score = score
+    if (totalSlots) this.totalSlots = totalSlots
   }
 
   getSlots () {
@@ -27,6 +30,7 @@ export default class ArmorEvaluation {
       this.equipment,
       new EquipmentSkills(this.skills),
       this.score,
+      this.totalSlots,
     )
   }
 
@@ -34,5 +38,6 @@ export default class ArmorEvaluation {
     this.skills.addSkills(piece.skills)
     this.equipment[piece.category] = piece
     this.score = this.score + piece.score
+    this.totalSlots = this.totalSlots + piece.slots
   }
 }
