@@ -147,6 +147,7 @@ export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, sear
         No matching armor sets
       <div>
     `))
+    return
   }
 
   // build table and table header
