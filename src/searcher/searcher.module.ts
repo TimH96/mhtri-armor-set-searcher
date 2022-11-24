@@ -16,6 +16,8 @@ import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
 import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
 import DecoEvaluation from '../scorer/models/DecoEvaluation'
+import DecoMinSlotMap from './models/DecoMinSlotMap'
+import { sum } from '../helper/sum.helper'
 
 // #region initial search data
 /** get initial armor eval with all dummy pieces */
@@ -143,6 +145,7 @@ function * getArmorPermutations (
 }
 
 function * getSufficientDecoPermutations (
+  decoMinSlotMap: DecoMinSlotMap,
   decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
   slotsOfArmor: Slots[],
   previousEval: DecoEvaluation,
@@ -160,11 +163,17 @@ function * getSufficientDecoPermutations (
     // otherwise check if its possible to still find sets on this branch and break if not
     else {
       // if there are not enough slots to get remaining skills
+      const requiredSlotsList = Array.from(missingSkills.entries())
+        .map(([sId, sVal]) => decoMinSlotMap.getMinRequiredSlotsForSkill(sId, sVal - thisEval.skills.get(sId)!))
+      const requiredSlots = sum(requiredSlotsList)
+      const remainingSlots = sum(slotsOfArmor, slotIndex - 1)
+      if (remainingSlots < requiredSlots) continue
     }
 
     // then yield the next loop if there is one
     if (slotIndex > 0) {
       yield * getSufficientDecoPermutations(
+        decoMinSlotMap,
         decoPermutationsPerSlotLevel,
         slotsOfArmor,
         thisEval,
@@ -187,6 +196,7 @@ const findSets = (
   const slotScoreMap = getDecoSlotScoreMap(decoPermutationsPerSlotLevel)
   const initialArmorEval = getIntiailArmorEval(constraints.armorType)
   const wantedScore = getScoreFromSkillMap(wantedSkills, wantedSkills) - slotScoreMap.get(constraints.weaponSlots)!
+  const decoMinSlotMap = new DecoMinSlotMap(decorations, wantedSkills)
 
   const skilledEquipment: SkilledEquipment[][] = armorPieces
   skilledEquipment.push(charms)
@@ -232,6 +242,7 @@ const findSets = (
 
     // find first sufficient deco eval
     const decoEvaluation = getSufficientDecoPermutations(
+      decoMinSlotMap,
       decoPermutationsPerSlotLevel,
       slotList,
       new DecoEvaluation(),
