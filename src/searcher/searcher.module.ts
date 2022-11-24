@@ -156,7 +156,7 @@ function * getSufficientDecoPermutations (
   for (const perm of decoPermutationsPerSlotLevel.get(slotLevel)!) {
     // create and eval new set
     const thisEval = previousEval.copy()
-    thisEval.addPerm(perm)
+    thisEval.addPerm(perm, slotLevel)
 
     // yield it if score is sufficient
     if (Array.from(missingSkills.entries()).every(([sId, sVal]) => thisEval.skills.get(sId) >= sVal)) yield thisEval
@@ -166,7 +166,7 @@ function * getSufficientDecoPermutations (
       const requiredSlotsList = Array.from(missingSkills.entries())
         .map(([sId, sVal]) => decoMinSlotMap.getMinRequiredSlotsForSkill(sId, sVal - thisEval.skills.get(sId)!))
       const requiredSlots = sum(requiredSlotsList)
-      const remainingSlots = sum(slotsOfArmor, slotIndex - 1)
+      const remainingSlots = thisEval.unusedSlotsSum
       if (remainingSlots < requiredSlots) continue
     }
 
@@ -216,10 +216,10 @@ const findSets = (
 
   // get list of maximum score of remaining iterations
   const maximumRemainingScore = [0]
-  let sum = 0
+  let sumOfAllIterations = 0
   sorted.map(x => x[0].score).forEach((m) => {
-    sum += m
-    maximumRemainingScore.push(sum)
+    sumOfAllIterations += m
+    maximumRemainingScore.push(sumOfAllIterations)
   })
 
   let length = 0
@@ -245,7 +245,7 @@ const findSets = (
       decoMinSlotMap,
       decoPermutationsPerSlotLevel,
       slotList,
-      new DecoEvaluation(),
+      new DecoEvaluation(sum(slotList)),
       missingSkills,
       slotList.length - 1,
     ).next().value
