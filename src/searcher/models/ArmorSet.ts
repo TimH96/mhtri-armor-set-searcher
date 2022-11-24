@@ -62,8 +62,10 @@ export default class ArmorSet {
     }
 
     // get total skills
+    const decoSkills = new EquipmentSkills()
+    decoEval.decos.forEach(d => decoSkills.addSkills(d.skills))
     const skills = new EquipmentSkills(armorEval.skills)
-    skills.addSkills(new EquipmentSkills(decoEval.skills))
+    skills.addSkills(new EquipmentSkills(decoSkills))
 
     // get activations
     const a: SkillActivation[] = []

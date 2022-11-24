@@ -16,7 +16,7 @@ import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
 import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
 import DecoEvaluation from '../scorer/models/DecoEvaluation'
-import DecoMinSlotMap from './models/DecoMinSlotMap'
+import DecoMinSlotMap from '../scorer/models/DecoMinSlotMap'
 import { sum } from '../helper/sum.helper'
 
 // #region initial search data
@@ -149,25 +149,19 @@ function * getSufficientDecoPermutations (
   decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
   slotsOfArmor: Slots[],
   previousEval: DecoEvaluation,
-  missingSkills: EquipmentSkills,
   slotIndex: number,
 ): Generator<DecoEvaluation, void, undefined> {
   const slotLevel = slotsOfArmor[slotIndex]
   for (const perm of decoPermutationsPerSlotLevel.get(slotLevel)!) {
     // create and eval new set
     const thisEval = previousEval.copy()
-    thisEval.addPerm(perm, slotLevel)
+    thisEval.addPerm(perm, slotLevel, decoMinSlotMap)
 
     // yield it if score is sufficient
-    if (Array.from(missingSkills.entries()).every(([sId, sVal]) => thisEval.skills.get(sId) >= sVal)) yield thisEval
+    if (thisEval.requiredSlots <= 0) yield thisEval
     // otherwise check if its possible to still find sets on this branch and break if not
     else {
-      // if there are not enough slots to get remaining skills
-      const requiredSlotsList = Array.from(missingSkills.entries())
-        .map(([sId, sVal]) => decoMinSlotMap.getMinRequiredSlotsForSkill(sId, sVal - thisEval.skills.get(sId)!))
-      const requiredSlots = sum(requiredSlotsList)
-      const remainingSlots = thisEval.unusedSlotsSum
-      if (remainingSlots < requiredSlots) continue
+      if (thisEval.unusedSlotsSum < thisEval.requiredSlots) continue
     }
 
     // then yield the next loop if there is one
@@ -177,7 +171,6 @@ function * getSufficientDecoPermutations (
         decoPermutationsPerSlotLevel,
         slotsOfArmor,
         thisEval,
-        missingSkills,
         slotIndex - 1,
       )
     }
@@ -245,8 +238,7 @@ const findSets = (
       decoMinSlotMap,
       decoPermutationsPerSlotLevel,
       slotList,
-      new DecoEvaluation(sum(slotList)),
-      missingSkills,
+      new DecoEvaluation(sum(slotList), missingSkills),
       slotList.length - 1,
     ).next().value
 
