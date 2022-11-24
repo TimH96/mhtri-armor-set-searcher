@@ -2,6 +2,7 @@ import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
 import { htmlToElement } from '../../helper/html.helper'
+import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 
 const onSetClick = (tbNode: Node, viewGetter: () => Node) => {
   const children = tbNode.childNodes
@@ -128,12 +129,46 @@ const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: 
   return tb
 }
 
-export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, searchParams: SearchConstraints) => {
-  // get html container
-  const resultContainer = document.getElementById('search-results')!
+const onMoreSkillsActClick = (d: HTMLDivElement) => {
+  const id = parseInt(d.getAttribute('data-id')!)
 
-  // clear previous results
+  for (const ele of Array.from(document.getElementsByClassName('search-picker-activation'))) {
+    const thisId = parseInt(ele.getAttribute('data-id')!)
+    if (id === thisId) {
+      (ele as HTMLDivElement).click()
+      break
+    }
+  }
+}
+
+const clearAndGetResultsContainer = () => {
+  const resultContainer = document.getElementById('search-results')!
   for (const c of Array.from(resultContainer.children)) c.remove()
+  return resultContainer
+}
+
+export const renderMoreSkills = (activations: SkillActivation[]) => {
+  const resultContainer = clearAndGetResultsContainer()
+
+  if (activations.length === 0) {
+    resultContainer.appendChild(htmlToElement(`
+      <div class="results-banner banner">
+        Can't fit more skills
+      <div>
+    `))
+    return
+  }
+
+  for (const act of activations) {
+    const d = htmlToElement(`<div class="results-more-skills-act" data-id="${act.id}"></div>`) as HTMLDivElement
+    d.appendChild(htmlToElement(`<span>${act.name}</span>`))
+    d.addEventListener('click', () => { onMoreSkillsActClick(d) })
+    resultContainer.appendChild(d)
+  }
+}
+
+export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, searchParams: SearchConstraints) => {
+  const resultContainer = clearAndGetResultsContainer()
 
   // add search param element
   resultContainer.appendChild(htmlToElement(`

@@ -5,8 +5,11 @@ import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
 import { search } from '../../searcher/searcher.module'
 import { getGlobalSettings } from './global-settings.component'
 import { getSkillActivations, resetSkillActivations } from './picker.component'
-import { renderResults } from './search-results.component'
+import { renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
+import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
+import Decoration from '../../data-provider/models/equipment/Decoration'
+import Charm from '../../data-provider/models/equipment/Charm'
 
 const arrangeSearchData = (skillData: StaticSkillData) => {
   // build params
@@ -64,7 +67,28 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   renderResults(result, skillData, searchParams)
 }
 
-const moreSkillsLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) => {
+const asyncSearchWrapper = async (
+  armorPieces: ArmorPiece[][],
+  decorations: Decoration[],
+  charms: Charm[],
+  constraints: SearchConstraints,
+  skillData: StaticSkillData,
+): Promise<boolean> => {
+  return new Promise((resolve, _reject) => {
+    const result = search(
+      armorPieces,
+      decorations,
+      charms,
+      constraints,
+      skillData,
+    )
+
+    if (result.length > 0) resolve(true)
+    else resolve(false)
+  })
+}
+
+const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSkillData) => {
   const searchParams = arrangeSearchData(skillData)
 
   if (!searchParams) {
@@ -92,7 +116,7 @@ const moreSkillsLogic = (equData: StaticEquipmentData, skillData: StaticSkillDat
         skillActivations: searchParams.skillActivations.concat(act),
       }
 
-      const r = search(
+      const r = await asyncSearchWrapper(
         equData.armor,
         equData.decorations,
         charms,
@@ -104,6 +128,8 @@ const moreSkillsLogic = (equData: StaticEquipmentData, skillData: StaticSkillDat
       else aquirableSkills.push(act)
     }
   }
+
+  renderMoreSkills(aquirableSkills)
 }
 
 const resetLogic = () => {

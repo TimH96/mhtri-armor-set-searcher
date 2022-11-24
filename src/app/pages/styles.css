@@ -11,6 +11,8 @@
   --color-tab-hover: rgb(175, 175, 175);
 
   --color-negative-skill: rgb(206, 8, 8);
+
+  --color-more-skills: rgb(73, 121, 255);
 }
 
 /* global */
@@ -236,8 +238,11 @@ th {
 
 /* results */
 
+#search-results {
+  padding-top: 2em;
+}
+
 .results-title {
-  margin-top: 1.6em;
   font-size: 1.4em;
 }
 
@@ -310,4 +315,9 @@ th {
 
 .result-set-skill-table {
   table-layout: unset;
+}
+
+.results-more-skills-act {
+  font-size: 1.4em;
+  color: var(--color-more-skills);
 }
