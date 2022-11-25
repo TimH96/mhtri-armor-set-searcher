@@ -123,12 +123,12 @@ const getSetElement = (set: ArmorSet, skillData: StaticSkillData, searchParams: 
   const row2 = htmlToElement(`
     <tr class="result-set-row result-set-row2">
       <td colspan="6">
-        <p><span class="def">DEF</span> <span>${set.evaluation!.defense.max}</span></p>
-        <p><span class="fir">FIR</span> <span>${set.evaluation!.resistance[0]}</span></p>
-        <p><span class="wat">WAT</span> <span>${set.evaluation!.resistance[1]}</span></p>
-        <p><span class="ice">ICE</span> <span>${set.evaluation!.resistance[2]}</span></p>
-        <p><span class="thn">THN</span> <span>${set.evaluation!.resistance[3]}</span></p>
-        <p><span class="drg">DRG</span> <span>${set.evaluation!.resistance[4]}</span></p>
+        <p><span class="def">DEF</span> <span>${set.evaluation.defense.max}</span></p>
+        <p><span class="fir">FIR</span> <span>${set.evaluation.resistance[0]}</span></p>
+        <p><span class="wat">WAT</span> <span>${set.evaluation.resistance[1]}</span></p>
+        <p><span class="ice">ICE</span> <span>${set.evaluation.resistance[2]}</span></p>
+        <p><span class="thn">THN</span> <span>${set.evaluation.resistance[3]}</span></p>
+        <p><span class="drg">DRG</span> <span>${set.evaluation.resistance[4]}</span></p>
         <span class="result-set-unrelated">${unrelatedHtmlStrings.join('')}</span>
       </td>
     </tr>`)
@@ -206,5 +206,8 @@ export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, sear
   resultContainer.appendChild(table)
 
   // build and append html elements for each armor set
-  sets.map(set => getSetElement(set, skillData, searchParams)).forEach(ele => table.appendChild(ele))
+  sets
+    .sort((a, b) => b.evaluation.defense.max - a.evaluation.defense.max)
+    .map(set => getSetElement(set, skillData, searchParams))
+    .forEach(ele => table.appendChild(ele))
 }
