@@ -1,7 +1,9 @@
+import { TORSO_UP_ID } from '../data-provider/data-provider.module'
 import Decoration from '../data-provider/models/equipment/Decoration'
 import EquipmentSkills from '../data-provider/models/equipment/EquipmentSkills'
 import Slots from '../data-provider/models/equipment/Slots'
 import DecoPermutation from './models/DecoPermutation'
+import ScoredSkilledEquipment from './models/ScoredSkilledEquipment'
 
 /** get score of a skill map relative to wanted skills */
 const getScoreFromSkillMap = (m: EquipmentSkills, w: EquipmentSkills): number => {
@@ -11,6 +13,19 @@ const getScoreFromSkillMap = (m: EquipmentSkills, w: EquipmentSkills): number =>
   }
 
   return score
+}
+
+const scoreTorsoUpPieces = (piece: ScoredSkilledEquipment, maxTorsoScore: number) => {
+  if (piece.skills.has(TORSO_UP_ID)) {
+    const newPiece: ScoredSkilledEquipment = {
+      ...piece,
+      score: maxTorsoScore,
+    }
+
+    return newPiece
+  }
+
+  return piece
 }
 
 /** apply score to a list of decos */
@@ -95,6 +110,7 @@ const pruneDecoPermutations = (permList: DecoPermutation[], wantedSkills: Equipm
 
 export {
   getScoreFromSkillMap,
+  scoreTorsoUpPieces,
   evaluateListOfDecos,
   decoPermWorseOrSameAsComparison,
   getDecoSlotScoreMap,
