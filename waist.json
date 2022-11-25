@@ -1,0 +1,2743 @@
+[
+    {
+        "category": 3,
+        "defense": {
+            "base": 1,
+            "max": 31,
+            "maxLr": 9
+        },
+        "name": "Leather Belt",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            0,
+            0,
+            3,
+            2
+        ],
+        "skills": {
+            "2": 1,
+            "77": 4,
+            "78": 2,
+            "79": 1
+        },
+        "slots": 1,
+        "type": 0
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 3,
+            "max": 31,
+            "maxLr": 11
+        },
+        "name": "Piscine Belt",
+        "rarity": 1,
+        "resistance": [
+            -2,
+            4,
+            2,
+            -3,
+            0
+        ],
+        "skills": {
+            "20": 2,
+            "28": 9
+        },
+        "slots": 0,
+        "type": 0
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 2,
+            "max": 32,
+            "maxLr": 9
+        },
+        "name": "Chainmail Belt",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            -1,
+            3,
+            -1,
+            1
+        ],
+        "skills": {
+            "8": 1,
+            "40": 2,
+            "41": 4,
+            "48": 2
+        },
+        "slots": 1,
+        "type": 0
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 4,
+            "max": 32,
+            "maxLr": 11
+        },
+        "name": "Loc Lac Kilt",
+        "rarity": 1,
+        "resistance": [
+            4,
+            -3,
+            -4,
+            2,
+            0
+        ],
+        "skills": {
+            "9": 5,
+            "19": 3,
+            "26": 3
+        },
+        "slots": 0,
+        "type": 0
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 6,
+            "max": 58,
+            "maxLr": 20
+        },
+        "name": "Hunter's Faulds",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+        ],
+        "skills": {
+            "2": 1,
+            "33": -1,
+            "47": 4,
+            "71": 2,
+            "72": 1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 3,
+            "max": 32,
+            "maxLr": 10
+        },
+        "name": "Hunter's Coat",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+        ],
+        "skills": {
+            "2": 1,
+            "33": -1,
+            "47": 3,
+            "71": 3,
+            "72": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 62,
+            "maxLr": 22
+        },
+        "name": "Bone Faulds",
+        "rarity": 1,
+        "resistance": [
+            2,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "12": 2,
+            "24": -1,
+            "42": 4,
+            "73": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 4,
+            "max": 34,
+            "maxLr": 11
+        },
+        "name": "Bone Coat",
+        "rarity": 1,
+        "resistance": [
+            2,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "12": 2,
+            "24": -1,
+            "42": 3,
+            "73": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 62,
+            "maxLr": 22
+        },
+        "name": "Alloy Coil",
+        "rarity": 1,
+        "resistance": [
+            1,
+            1,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "3": 3,
+            "13": -2,
+            "38": 3,
+            "56": 1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 4,
+            "max": 34,
+            "maxLr": 11
+        },
+        "name": "Alloy Coat",
+        "rarity": 1,
+        "resistance": [
+            1,
+            1,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "3": 3,
+            "13": -2,
+            "38": 3,
+            "63": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 10,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Jaggi Faulds",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            1
+        ],
+        "skills": {
+            "2": 1,
+            "25": 3,
+            "27": -1,
+            "46": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 5,
+            "max": 36,
+            "maxLr": 12
+        },
+        "name": "Jaggi Coat",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            1
+        ],
+        "skills": {
+            "2": 1,
+            "25": 3,
+            "27": -1,
+            "46": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 10,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Bnahabra Coil",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            -1,
+            -1,
+            2,
+            5
+        ],
+        "skills": {
+            "5": 3,
+            "22": -5,
+            "55": 3
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 5,
+            "max": 36,
+            "maxLr": 12
+        },
+        "name": "Bnahabra Coat",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            -1,
+            -1,
+            2,
+            5
+        ],
+        "skills": {
+            "5": 3,
+            "22": -5,
+            "69": 3
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 12,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Rhenoplos Coil",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "2": 1,
+            "29": 2,
+            "31": 1,
+            "34": -1,
+            "44": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 6,
+            "max": 36,
+            "maxLr": 12
+        },
+        "name": "Rhenoplos Coat",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "2": 1,
+            "34": -1,
+            "44": 3,
+            "64": 1,
+            "68": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 12,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Qurupeco Coil",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -2,
+            -3,
+            0,
+            1
+        ],
+        "skills": {
+            "2": 2,
+            "6": 1,
+            "14": 2,
+            "35": -2,
+            "45": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 6,
+            "max": 37,
+            "maxLr": 12
+        },
+        "name": "Qurupeco Coat",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -2,
+            -3,
+            0,
+            1
+        ],
+        "skills": {
+            "2": 2,
+            "6": 2,
+            "14": 1,
+            "35": -3,
+            "45": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 13,
+            "max": 68,
+            "maxLr": 25
+        },
+        "name": "Ludroth Faulds",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            2,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "7": 1,
+            "10": 3,
+            "28": 4,
+            "32": -1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 7,
+            "max": 38,
+            "maxLr": 13
+        },
+        "name": "Ludroth Coat",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            2,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "7": 3,
+            "10": 1,
+            "32": -2,
+            "61": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 12,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Steel Faulds",
+        "rarity": 2,
+        "resistance": [
+            -1,
+            1,
+            1,
+            -1,
+            0
+        ],
+        "skills": {
+            "16": 3,
+            "20": -3,
+            "56": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 13,
+            "max": 68,
+            "maxLr": 25
+        },
+        "name": "Baggi Coil",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            3,
+            -1,
+            1
+        ],
+        "skills": {
+            "25": -1,
+            "35": 3,
+            "53": 2,
+            "74": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 7,
+            "max": 38,
+            "maxLr": 13
+        },
+        "name": "Baggi Coat",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            3,
+            -1,
+            1
+        ],
+        "skills": {
+            "25": -1,
+            "35": 2,
+            "60": 2,
+            "74": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 15,
+            "max": 72,
+            "maxLr": 27
+        },
+        "name": "Barroth Faulds",
+        "rarity": 2,
+        "resistance": [
+            4,
+            -4,
+            -3,
+            3,
+            0
+        ],
+        "skills": {
+            "0": 3,
+            "2": 1,
+            "3": -2,
+            "11": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 40,
+            "maxLr": 14
+        },
+        "name": "Barroth Coat",
+        "rarity": 2,
+        "resistance": [
+            4,
+            -4,
+            -3,
+            3,
+            0
+        ],
+        "skills": {
+            "0": 3,
+            "2": 1,
+            "3": -2,
+            "11": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 16,
+            "max": 74,
+            "maxLr": 28
+        },
+        "name": "Gobul Faulds",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            3,
+            0,
+            -3,
+            2
+        ],
+        "skills": {
+            "9": -1,
+            "25": 4,
+            "33": 2,
+            "44": 4
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 42,
+            "maxLr": 14
+        },
+        "name": "Gobul Coat",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            3,
+            0,
+            -3,
+            2
+        ],
+        "skills": {
+            "9": -1,
+            "25": 4,
+            "33": 2,
+            "44": 4
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 15,
+            "max": 72,
+            "maxLr": 27
+        },
+        "name": "Ranger's Faulds",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "43": 4,
+            "75": -2,
+            "76": 4,
+            "78": 2
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 40,
+            "maxLr": 14
+        },
+        "name": "Archer's Bandolier",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "43": 4,
+            "75": -3,
+            "76": 3,
+            "78": 2
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 15,
+            "max": 72,
+            "maxLr": 27
+        },
+        "name": "Guild Bard Coil",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "14": 2,
+            "72": 4,
+            "75": 4,
+            "80": -1
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 40,
+            "maxLr": 14
+        },
+        "name": "Guild Bard Coat",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "14": 3,
+            "72": 4,
+            "75": 2,
+            "80": -2
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 16,
+            "max": 74,
+            "maxLr": 28
+        },
+        "name": "Rathian Faulds",
+        "rarity": 2,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "8": 2,
+            "21": 3,
+            "32": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 8,
+            "max": 42,
+            "maxLr": 14
+        },
+        "name": "Rathian Coat",
+        "rarity": 2,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "8": 3,
+            "21": 3,
+            "32": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 18,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Gigginox Faulds",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            0,
+            2,
+            2,
+            -1
+        ],
+        "skills": {
+            "5": 2,
+            "8": -1,
+            "10": 3,
+            "22": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 9,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Gigginox Coat",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            0,
+            2,
+            2,
+            -1
+        ],
+        "skills": {
+            "5": 2,
+            "8": -2,
+            "10": 4,
+            "22": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 18,
+            "max": 74,
+            "maxLr": 28
+        },
+        "name": "Ingot Coil",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            1
+        ],
+        "skills": {
+            "17": 3,
+            "29": 1,
+            "34": 3,
+            "56": -2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 9,
+            "max": 42,
+            "maxLr": 14
+        },
+        "name": "Ingot Coat",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            1
+        ],
+        "skills": {
+            "17": 3,
+            "34": 3,
+            "68": 1,
+            "69": -2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 20,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Lagiacrus Faulds",
+        "rarity": 3,
+        "resistance": [
+            -3,
+            2,
+            -1,
+            4,
+            -2
+        ],
+        "skills": {
+            "4": 1,
+            "5": -2,
+            "20": 3,
+            "55": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 10,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Lagiacrus Coat",
+        "rarity": 3,
+        "resistance": [
+            -3,
+            2,
+            -1,
+            4,
+            -2
+        ],
+        "skills": {
+            "4": 1,
+            "5": -2,
+            "20": 3,
+            "62": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 20,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Rathalos Faulds",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "2": 5,
+            "3": 3,
+            "6": -2,
+            "26": 1
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 10,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Rathalos Coat",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "2": 4,
+            "3": 3,
+            "6": -2,
+            "26": 2
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 20,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Barioth Faulds",
+        "rarity": 3,
+        "resistance": [
+            -4,
+            2,
+            4,
+            -3,
+            0
+        ],
+        "skills": {
+            "11": 4,
+            "14": 2,
+            "26": -1,
+            "27": 4
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 10,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Barioth Coat",
+        "rarity": 3,
+        "resistance": [
+            -4,
+            2,
+            4,
+            -3,
+            0
+        ],
+        "skills": {
+            "11": 3,
+            "14": 5,
+            "26": -2,
+            "27": 1
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 22,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Uragaan Faulds",
+        "rarity": 3,
+        "resistance": [
+            3,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "6": 3,
+            "39": 2,
+            "44": -2,
+            "52": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 11,
+            "max": 45,
+            "maxLr": 15
+        },
+        "name": "Uragaan Coat",
+        "rarity": 3,
+        "resistance": [
+            3,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "6": 2,
+            "39": 2,
+            "44": -3,
+            "68": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 22,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Agnaktor Faulds",
+        "rarity": 3,
+        "resistance": [
+            4,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -2,
+            "16": 2,
+            "17": 2,
+            "81": 1
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 11,
+            "max": 45,
+            "maxLr": 15
+        },
+        "name": "Agnaktor Coat",
+        "rarity": 3,
+        "resistance": [
+            4,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -2,
+            "17": 2,
+            "69": 2,
+            "81": 1
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 24,
+            "max": 82,
+            "maxLr": 32
+        },
+        "name": "Helios Coil",
+        "rarity": 3,
+        "resistance": [
+            0,
+            4,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "21": 5,
+            "50": 3,
+            "55": -2
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 12,
+            "max": 47,
+            "maxLr": 16
+        },
+        "name": "Helios Coat",
+        "rarity": 3,
+        "resistance": [
+            0,
+            4,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "21": 5,
+            "66": 3,
+            "68": -2
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 24,
+            "max": 82,
+            "maxLr": 32
+        },
+        "name": "Yamato Koshiate",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            -3,
+            0,
+            -3
+        ],
+        "skills": {
+            "9": 2,
+            "40": -2,
+            "53": 1,
+            "55": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 12,
+            "max": 47,
+            "maxLr": 16
+        },
+        "name": "Mutsu Koshiate",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            -3,
+            0,
+            -3
+        ],
+        "skills": {
+            "9": 1,
+            "40": -3,
+            "65": 1,
+            "68": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 26,
+            "max": 58
+        },
+        "name": "Leather Faulds+",
+        "rarity": 4,
+        "resistance": [
+            -2,
+            0,
+            -2,
+            3,
+            2
+        ],
+        "skills": {
+            "77": 3,
+            "78": 1,
+            "79": 4
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 15,
+            "max": 31
+        },
+        "name": "Leather Coat+",
+        "rarity": 4,
+        "resistance": [
+            -2,
+            0,
+            -2,
+            3,
+            2
+        ],
+        "skills": {
+            "77": 2,
+            "78": 2,
+            "79": 4
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 26,
+            "max": 58
+        },
+        "name": "Piscine Belt+",
+        "rarity": 4,
+        "resistance": [
+            -3,
+            5,
+            2,
+            -4,
+            0
+        ],
+        "skills": {
+            "28": 13
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 15,
+            "max": 31
+        },
+        "name": "Piscine Tank+",
+        "rarity": 4,
+        "resistance": [
+            -3,
+            5,
+            2,
+            -4,
+            0
+        ],
+        "skills": {
+            "28": 11
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 30,
+            "max": 58
+        },
+        "name": "Chainmail Faulds+",
+        "rarity": 4,
+        "resistance": [
+            -1,
+            -2,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "8": 2,
+            "40": 2,
+            "41": 4
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Chainmail Coat+",
+        "rarity": 4,
+        "resistance": [
+            -1,
+            -2,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "8": 3,
+            "40": 1,
+            "41": 4
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 30,
+            "max": 58
+        },
+        "name": "Loc Lac Kilt+",
+        "rarity": 4,
+        "resistance": [
+            5,
+            -4,
+            -5,
+            2,
+            0
+        ],
+        "skills": {
+            "9": 6,
+            "19": 2,
+            "26": 5
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Loc Lac Coat+",
+        "rarity": 4,
+        "resistance": [
+            5,
+            -4,
+            -5,
+            2,
+            0
+        ],
+        "skills": {
+            "9": 6,
+            "19": 2,
+            "26": 5
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 30,
+            "max": 58
+        },
+        "name": "Hunter's Faulds+",
+        "rarity": 4,
+        "resistance": [
+            0,
+            -2,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "14": 3,
+            "33": -1,
+            "71": 1,
+            "72": 4
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Hunter's Coat+",
+        "rarity": 4,
+        "resistance": [
+            0,
+            -2,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "14": 2,
+            "33": -2,
+            "71": 1,
+            "72": 4
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 34,
+            "max": 62
+        },
+        "name": "Bone Faulds+",
+        "rarity": 4,
+        "resistance": [
+            3,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "11": 3,
+            "12": 4,
+            "24": -1,
+            "73": 1
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 20,
+            "max": 34
+        },
+        "name": "Bone Coat+",
+        "rarity": 4,
+        "resistance": [
+            3,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "11": 1,
+            "12": 4,
+            "24": -1,
+            "73": 3
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 34,
+            "max": 62
+        },
+        "name": "Alloy Faulds+",
+        "rarity": 4,
+        "resistance": [
+            1,
+            2,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "3": 2,
+            "13": -2,
+            "38": 2,
+            "56": 3
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 20,
+            "max": 34
+        },
+        "name": "Alloy Coat+",
+        "rarity": 4,
+        "resistance": [
+            1,
+            2,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "3": 2,
+            "13": -2,
+            "38": 2,
+            "63": 3
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 38,
+            "max": 66
+        },
+        "name": "Jaggi Faulds+",
+        "rarity": 5,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "2": 2,
+            "25": 3,
+            "27": -1,
+            "46": 3
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 22,
+            "max": 36
+        },
+        "name": "Jaggi Coat+",
+        "rarity": 5,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "2": 2,
+            "25": 4,
+            "27": -2,
+            "46": 1
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 38,
+            "max": 66
+        },
+        "name": "Bnahabra Faulds+",
+        "rarity": 5,
+        "resistance": [
+            -5,
+            0,
+            0,
+            2,
+            6
+        ],
+        "skills": {
+            "5": 6,
+            "22": -2,
+            "55": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 22,
+            "max": 36
+        },
+        "name": "Bnahabra Coat+",
+        "rarity": 5,
+        "resistance": [
+            -5,
+            0,
+            0,
+            2,
+            6
+        ],
+        "skills": {
+            "5": 5,
+            "22": -2,
+            "69": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 38,
+            "max": 66
+        },
+        "name": "Rhenoplos Coil+",
+        "rarity": 5,
+        "resistance": [
+            3,
+            -1,
+            -1,
+            -2,
+            2
+        ],
+        "skills": {
+            "29": 6,
+            "31": 1,
+            "34": -1,
+            "44": 1
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 22,
+            "max": 36
+        },
+        "name": "Rhenoplos Coat+",
+        "rarity": 5,
+        "resistance": [
+            3,
+            -1,
+            -1,
+            -2,
+            2
+        ],
+        "skills": {
+            "34": -1,
+            "44": 1,
+            "64": 2,
+            "68": 5
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 42,
+            "max": 66
+        },
+        "name": "Qurupeco Coil+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            -3,
+            -4,
+            0,
+            1
+        ],
+        "skills": {
+            "3": 1,
+            "6": 2,
+            "35": -1,
+            "43": 5,
+            "45": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 25,
+            "max": 37
+        },
+        "name": "Qurupeco Coat+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            -3,
+            -4,
+            0,
+            1
+        ],
+        "skills": {
+            "3": 1,
+            "6": 2,
+            "35": -1,
+            "43": 4,
+            "45": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 44,
+            "max": 68
+        },
+        "name": "Ludroth Faulds+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            4,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "7": 1,
+            "10": 2,
+            "12": -3,
+            "28": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 26,
+            "max": 38
+        },
+        "name": "Ludroth Coat+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            4,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "7": 1,
+            "10": 2,
+            "12": -3,
+            "61": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 42,
+            "max": 68
+        },
+        "name": "Steel Coil+",
+        "rarity": 5,
+        "resistance": [
+            -1,
+            1,
+            1,
+            -1,
+            0
+        ],
+        "skills": {
+            "16": 4,
+            "20": -3,
+            "56": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 44,
+            "max": 68
+        },
+        "name": "Baggi Coil+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "3": 1,
+            "25": -1,
+            "35": 4,
+            "53": 1,
+            "74": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 26,
+            "max": 38
+        },
+        "name": "Baggi Coat+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "3": 1,
+            "25": -1,
+            "35": 4,
+            "60": 2,
+            "74": 1
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 48,
+            "max": 72
+        },
+        "name": "Barroth Faulds+",
+        "rarity": 5,
+        "resistance": [
+            5,
+            -5,
+            -4,
+            4,
+            0
+        ],
+        "skills": {
+            "0": 5,
+            "2": 2,
+            "3": -1,
+            "11": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 28,
+            "max": 40
+        },
+        "name": "Barroth Coat+",
+        "rarity": 5,
+        "resistance": [
+            5,
+            -5,
+            -4,
+            4,
+            0
+        ],
+        "skills": {
+            "0": 4,
+            "2": 2,
+            "3": -2,
+            "11": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 50,
+            "max": 74
+        },
+        "name": "Gobul Faulds+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            4,
+            0,
+            -4,
+            2
+        ],
+        "skills": {
+            "3": 1,
+            "9": -1,
+            "25": 4,
+            "44": 5
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 30,
+            "max": 42
+        },
+        "name": "Gobul Coat+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            4,
+            0,
+            -4,
+            2
+        ],
+        "skills": {
+            "3": 1,
+            "9": -1,
+            "25": 4,
+            "44": 5
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 36,
+            "max": 60
+        },
+        "name": "Guild Bard Coil+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "7": -5,
+            "74": 1,
+            "75": 2,
+            "76": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 22,
+            "max": 34
+        },
+        "name": "Guild Bard Coat+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "7": -5,
+            "74": 2,
+            "75": 2,
+            "76": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 50,
+            "max": 74
+        },
+        "name": "Rathian Faulds+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "8": 4,
+            "21": 2,
+            "32": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 30,
+            "max": 42
+        },
+        "name": "Rathian Coat+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "8": 5,
+            "21": 1,
+            "32": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 54,
+            "max": 78
+        },
+        "name": "Gigginox Faulds+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            2,
+            3,
+            0
+        ],
+        "skills": {
+            "5": 3,
+            "8": -1,
+            "10": 4,
+            "22": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 32,
+            "max": 44
+        },
+        "name": "Gigginox Coat+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            2,
+            3,
+            0
+        ],
+        "skills": {
+            "5": 3,
+            "8": -1,
+            "10": 4,
+            "22": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 54,
+            "max": 74
+        },
+        "name": "Ingot Coil+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            2
+        ],
+        "skills": {
+            "17": 2,
+            "29": 1,
+            "34": 1,
+            "56": -3
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 32,
+            "max": 42
+        },
+        "name": "Ingot Coat+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            2
+        ],
+        "skills": {
+            "17": 2,
+            "34": 1,
+            "68": 1,
+            "69": -3
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Dober Coil",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            -2,
+            1,
+            1,
+            5
+        ],
+        "skills": {
+            "0": -1,
+            "11": 3,
+            "36": 5,
+            "51": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Dober Coat",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            -2,
+            1,
+            1,
+            5
+        ],
+        "skills": {
+            "0": -2,
+            "36": 4,
+            "60": 1,
+            "61": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Lagiacrus Faulds+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            -1,
+            5,
+            -2
+        ],
+        "skills": {
+            "4": 2,
+            "5": -3,
+            "20": 2,
+            "57": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Lagiacrus Coat+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            -1,
+            5,
+            -2
+        ],
+        "skills": {
+            "4": 2,
+            "5": -3,
+            "20": 2,
+            "67": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Rathalos Faulds+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "3": 5,
+            "6": -1,
+            "26": 3,
+            "54": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Rathalos Coat+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "3": 3,
+            "6": -3,
+            "26": 4,
+            "62": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Barioth Faulds+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            5,
+            -3,
+            0
+        ],
+        "skills": {
+            "14": 2,
+            "15": 1,
+            "26": -3,
+            "27": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Barioth Coat+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            5,
+            -3,
+            0
+        ],
+        "skills": {
+            "14": 2,
+            "15": 1,
+            "26": -3,
+            "27": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 62,
+            "max": 78
+        },
+        "name": "Uragaan Faulds+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "6": 6,
+            "39": 2,
+            "44": -1,
+            "52": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 37,
+            "max": 45
+        },
+        "name": "Uragaan Coat+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "6": 2,
+            "39": 2,
+            "44": -1,
+            "68": 6
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 62,
+            "max": 78
+        },
+        "name": "Agnaktor Faulds+",
+        "rarity": 6,
+        "resistance": [
+            5,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -3,
+            "16": 1,
+            "55": 2,
+            "81": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 37,
+            "max": 45
+        },
+        "name": "Agnaktor Coat+",
+        "rarity": 6,
+        "resistance": [
+            5,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -3,
+            "62": 1,
+            "63": 2,
+            "81": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 64,
+            "max": 80
+        },
+        "name": "Vangis Coil",
+        "rarity": 7,
+        "resistance": [
+            0,
+            0,
+            3,
+            -4,
+            -4
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 38,
+            "max": 46
+        },
+        "name": "Vangis Coat",
+        "rarity": 7,
+        "resistance": [
+            0,
+            0,
+            3,
+            -4,
+            -4
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 62,
+            "max": 78
+        },
+        "name": "Damascus Coil",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            0,
+            2,
+            -2,
+            3
+        ],
+        "skills": {
+            "8": 4,
+            "11": -1,
+            "17": 3,
+            "52": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 37,
+            "max": 45
+        },
+        "name": "Damascus Coat",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            0,
+            2,
+            -2,
+            3
+        ],
+        "skills": {
+            "8": 3,
+            "11": -1,
+            "17": 4,
+            "69": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 66,
+            "max": 82
+        },
+        "name": "Helios Coil+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            5,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "21": 1,
+            "50": 2,
+            "55": -3
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 39,
+            "max": 47
+        },
+        "name": "Helios Coat+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            5,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "21": 1,
+            "66": 2,
+            "68": -3
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 66,
+            "max": 82
+        },
+        "name": "Yamato Koshiate+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            -3,
+            0,
+            -4
+        ],
+        "skills": {
+            "9": 3,
+            "40": -1,
+            "53": 2,
+            "55": 5
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 39,
+            "max": 47
+        },
+        "name": "Mutsu Koshiate+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            -3,
+            0,
+            -4
+        ],
+        "skills": {
+            "9": 2,
+            "40": -3,
+            "65": 4,
+            "68": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 70,
+            "max": 82
+        },
+        "name": "Escadora Might",
+        "rarity": 7,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            0,
+            -5
+        ],
+        "skills": {
+            "15": 3,
+            "37": 2,
+            "45": -2,
+            "57": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 42,
+            "max": 48
+        },
+        "name": "Escadora Force",
+        "rarity": 7,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            0,
+            -5
+        ],
+        "skills": {
+            "15": 3,
+            "37": 2,
+            "45": -2,
+            "67": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 3,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Chakra Waistlet",
+        "rarity": 7,
+        "resistance": [
+            10,
+            0,
+            -10,
+            0,
+            0
+        ],
+        "skills": {},
+        "slots": 3,
+        "type": 0
+    }
+]

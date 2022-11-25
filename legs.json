@@ -1,0 +1,2693 @@
+[
+    {
+        "category": 4,
+        "defense": {
+            "base": 1,
+            "max": 31,
+            "maxLr": 9
+        },
+        "name": "Leather Pants",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            0,
+            0,
+            3,
+            2
+        ],
+        "skills": {
+            "2": 1,
+            "77": 3,
+            "78": 1,
+            "79": 3
+        },
+        "slots": 1,
+        "type": 0
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 3,
+            "max": 31,
+            "maxLr": 11
+        },
+        "name": "Piscine Leggings",
+        "rarity": 1,
+        "resistance": [
+            -2,
+            4,
+            2,
+            -3,
+            0
+        ],
+        "skills": {
+            "20": 8,
+            "28": 1
+        },
+        "slots": 1,
+        "type": 0
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 2,
+            "max": 32,
+            "maxLr": 9
+        },
+        "name": "Chainmail Pants",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            -1,
+            3,
+            -1,
+            1
+        ],
+        "skills": {
+            "8": 2,
+            "40": 1,
+            "41": 2,
+            "48": 4
+        },
+        "slots": 1,
+        "type": 0
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 4,
+            "max": 32,
+            "maxLr": 11
+        },
+        "name": "Loc Lac Boots",
+        "rarity": 1,
+        "resistance": [
+            4,
+            -3,
+            -4,
+            2,
+            0
+        ],
+        "skills": {
+            "9": 3,
+            "19": 5,
+            "26": 3
+        },
+        "slots": 0,
+        "type": 0
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 6,
+            "max": 58,
+            "maxLr": 20
+        },
+        "name": "Hunter's Greaves",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+        ],
+        "skills": {
+            "33": -1,
+            "47": 2,
+            "71": 4,
+            "72": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 3,
+            "max": 32,
+            "maxLr": 10
+        },
+        "name": "Hunter's Leggings",
+        "rarity": 1,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+        ],
+        "skills": {
+            "33": -1,
+            "47": 2,
+            "71": 4,
+            "72": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 62,
+            "maxLr": 22
+        },
+        "name": "Bone Greaves",
+        "rarity": 1,
+        "resistance": [
+            2,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "2": 1,
+            "12": 1,
+            "24": -1,
+            "42": 2,
+            "73": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 4,
+            "max": 34,
+            "maxLr": 11
+        },
+        "name": "Bone Leggings",
+        "rarity": 1,
+        "resistance": [
+            2,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "2": 1,
+            "12": 1,
+            "24": -1,
+            "42": 2,
+            "73": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 62,
+            "maxLr": 22
+        },
+        "name": "Alloy Greaves",
+        "rarity": 1,
+        "resistance": [
+            1,
+            1,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 4,
+            "max": 34,
+            "maxLr": 11
+        },
+        "name": "Alloy Leggings",
+        "rarity": 1,
+        "resistance": [
+            1,
+            1,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 10,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Jaggi Greaves",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            1
+        ],
+        "skills": {
+            "2": 3,
+            "25": 2,
+            "27": -2,
+            "46": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 5,
+            "max": 36,
+            "maxLr": 12
+        },
+        "name": "Jaggi Leggings",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            1
+        ],
+        "skills": {
+            "2": 3,
+            "25": 3,
+            "27": -2,
+            "46": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 10,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Bnahabra Boots",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            -1,
+            -1,
+            2,
+            5
+        ],
+        "skills": {
+            "5": 4,
+            "22": -3,
+            "55": 4
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 5,
+            "max": 36,
+            "maxLr": 12
+        },
+        "name": "Bnahabra Pants",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            -1,
+            -1,
+            2,
+            5
+        ],
+        "skills": {
+            "5": 4,
+            "22": -3,
+            "69": 4
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 12,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Rhenoplos Greaves",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "29": 3,
+            "31": 3,
+            "34": -1,
+            "44": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 6,
+            "max": 36,
+            "maxLr": 12
+        },
+        "name": "Rhenoplos Leggings",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "34": -2,
+            "44": 4,
+            "64": 2,
+            "68": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 12,
+            "max": 66,
+            "maxLr": 24
+        },
+        "name": "Qurupeco Greaves",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -2,
+            -3,
+            0,
+            1
+        ],
+        "skills": {
+            "6": 1,
+            "14": 3,
+            "35": -1,
+            "45": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 6,
+            "max": 37,
+            "maxLr": 12
+        },
+        "name": "Qurupeco Leggings",
+        "rarity": 2,
+        "resistance": [
+            2,
+            -2,
+            -3,
+            0,
+            1
+        ],
+        "skills": {
+            "6": 4,
+            "14": 2,
+            "35": -1,
+            "45": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 13,
+            "max": 68,
+            "maxLr": 25
+        },
+        "name": "Ludroth Greaves",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            2,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "2": 2,
+            "7": 2,
+            "10": 2,
+            "28": 2,
+            "32": -1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 7,
+            "max": 38,
+            "maxLr": 13
+        },
+        "name": "Ludroth Leggings",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            2,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "2": 2,
+            "7": 2,
+            "10": 2,
+            "32": -1,
+            "61": 2
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 13,
+            "max": 68,
+            "maxLr": 25
+        },
+        "name": "Baggi Greaves",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            3,
+            -1,
+            1
+        ],
+        "skills": {
+            "25": -1,
+            "35": 1,
+            "53": 3,
+            "74": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 7,
+            "max": 38,
+            "maxLr": 13
+        },
+        "name": "Baggi Leggings",
+        "rarity": 2,
+        "resistance": [
+            -3,
+            -1,
+            3,
+            -1,
+            1
+        ],
+        "skills": {
+            "25": -1,
+            "35": 2,
+            "60": 2,
+            "74": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 15,
+            "max": 72,
+            "maxLr": 27
+        },
+        "name": "Barroth Greaves",
+        "rarity": 2,
+        "resistance": [
+            4,
+            -4,
+            -3,
+            3,
+            0
+        ],
+        "skills": {
+            "0": 2,
+            "2": 1,
+            "3": -2,
+            "11": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 40,
+            "maxLr": 14
+        },
+        "name": "Barroth Leggings",
+        "rarity": 2,
+        "resistance": [
+            4,
+            -4,
+            -3,
+            3,
+            0
+        ],
+        "skills": {
+            "0": 2,
+            "2": 1,
+            "3": -2,
+            "11": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 16,
+            "max": 74,
+            "maxLr": 28
+        },
+        "name": "Gobul Greaves",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            3,
+            0,
+            -3,
+            2
+        ],
+        "skills": {
+            "2": 1,
+            "9": -1,
+            "25": 2,
+            "33": 1,
+            "44": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 42,
+            "maxLr": 14
+        },
+        "name": "Gobul Leggings",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            3,
+            0,
+            -3,
+            2
+        ],
+        "skills": {
+            "2": 1,
+            "9": -1,
+            "25": 3,
+            "33": 1,
+            "44": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 15,
+            "max": 72,
+            "maxLr": 27
+        },
+        "name": "Ranger's Espadrilles",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "43": 3,
+            "75": -3,
+            "76": 3,
+            "78": 1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 40,
+            "maxLr": 14
+        },
+        "name": "Archer's Espadrilles",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "43": 3,
+            "75": -3,
+            "76": 3,
+            "78": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 15,
+            "max": 72,
+            "maxLr": 27
+        },
+        "name": "Guild Bard Boots",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 40,
+            "maxLr": 14
+        },
+        "name": "Guild Bard Gaiters",
+        "rarity": 3,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 16,
+            "max": 74,
+            "maxLr": 28
+        },
+        "name": "Rathian Greaves",
+        "rarity": 2,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "8": 2,
+            "21": 2,
+            "32": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 8,
+            "max": 42,
+            "maxLr": 14
+        },
+        "name": "Rathian Leggings",
+        "rarity": 2,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -1,
+            "8": 1,
+            "21": 2,
+            "32": 3
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 18,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Gigginox Greaves",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            0,
+            2,
+            2,
+            -1
+        ],
+        "skills": {
+            "5": 4,
+            "8": -1,
+            "10": 2,
+            "22": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 9,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Gigginox Leggings",
+        "rarity": 2,
+        "resistance": [
+            -4,
+            0,
+            2,
+            2,
+            -1
+        ],
+        "skills": {
+            "5": 3,
+            "8": -1,
+            "10": 2,
+            "22": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 18,
+            "max": 74,
+            "maxLr": 28
+        },
+        "name": "Ingot Greaves",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            1
+        ],
+        "skills": {
+            "17": 3,
+            "29": 2,
+            "34": 3,
+            "56": -1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 9,
+            "max": 42,
+            "maxLr": 14
+        },
+        "name": "Ingot Leggings",
+        "rarity": 2,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            1
+        ],
+        "skills": {
+            "17": 3,
+            "34": 3,
+            "68": 2,
+            "69": -1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 20,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Lagiacrus Greaves",
+        "rarity": 3,
+        "resistance": [
+            -3,
+            2,
+            -1,
+            4,
+            -2
+        ],
+        "skills": {
+            "4": 3,
+            "5": -2,
+            "20": 1,
+            "55": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 10,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Lagiacrus Leggings",
+        "rarity": 3,
+        "resistance": [
+            -3,
+            2,
+            -1,
+            4,
+            -2
+        ],
+        "skills": {
+            "4": 3,
+            "5": -2,
+            "20": 1,
+            "62": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 20,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Rathalos Greaves",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "2": 2,
+            "3": 2,
+            "6": -1,
+            "26": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 10,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Rathalos Leggings",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "2": 2,
+            "3": 2,
+            "6": -1,
+            "26": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 20,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Barioth Greaves",
+        "rarity": 3,
+        "resistance": [
+            -4,
+            2,
+            4,
+            -3,
+            0
+        ],
+        "skills": {
+            "11": 1,
+            "14": 3,
+            "26": -1,
+            "27": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 10,
+            "max": 44,
+            "maxLr": 15
+        },
+        "name": "Barioth Leggings",
+        "rarity": 3,
+        "resistance": [
+            -4,
+            2,
+            4,
+            -3,
+            0
+        ],
+        "skills": {
+            "11": 1,
+            "14": 2,
+            "26": -2,
+            "27": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 22,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Uragaan Greaves",
+        "rarity": 3,
+        "resistance": [
+            3,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 11,
+            "max": 45,
+            "maxLr": 15
+        },
+        "name": "Uragaan Leggings",
+        "rarity": 3,
+        "resistance": [
+            3,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 22,
+            "max": 78,
+            "maxLr": 30
+        },
+        "name": "Agnaktor Greaves",
+        "rarity": 3,
+        "resistance": [
+            4,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -2,
+            "16": 5,
+            "17": 2,
+            "81": 2
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 11,
+            "max": 45,
+            "maxLr": 15
+        },
+        "name": "Agnaktor Leggings",
+        "rarity": 3,
+        "resistance": [
+            4,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -2,
+            "17": 2,
+            "69": 4,
+            "81": 3
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 24,
+            "max": 82,
+            "maxLr": 32
+        },
+        "name": "Helios Greaves",
+        "rarity": 3,
+        "resistance": [
+            0,
+            4,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "21": 3,
+            "50": 5,
+            "55": -1
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 12,
+            "max": 47,
+            "maxLr": 16
+        },
+        "name": "Helios Leggings",
+        "rarity": 3,
+        "resistance": [
+            0,
+            4,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "21": 3,
+            "66": 5,
+            "68": -1
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 24,
+            "max": 82,
+            "maxLr": 32
+        },
+        "name": "Yamato Gusoku",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            -3,
+            0,
+            -3
+        ],
+        "skills": {
+            "9": 2,
+            "40": -1,
+            "53": 3,
+            "55": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 12,
+            "max": 47,
+            "maxLr": 16
+        },
+        "name": "Mutsu Gusoku",
+        "rarity": 3,
+        "resistance": [
+            3,
+            0,
+            -3,
+            0,
+            -3
+        ],
+        "skills": {
+            "9": 3,
+            "40": -1,
+            "65": 2,
+            "68": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 26,
+            "max": 58
+        },
+        "name": "Leather Greaves+",
+        "rarity": 4,
+        "resistance": [
+            -2,
+            0,
+            -2,
+            3,
+            2
+        ],
+        "skills": {
+            "77": 3,
+            "78": 3,
+            "79": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 15,
+            "max": 31
+        },
+        "name": "Leather Leggings+",
+        "rarity": 4,
+        "resistance": [
+            -2,
+            0,
+            -2,
+            3,
+            2
+        ],
+        "skills": {
+            "77": 3,
+            "78": 3,
+            "79": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 26,
+            "max": 58
+        },
+        "name": "Piscine Leggings+",
+        "rarity": 4,
+        "resistance": [
+            -3,
+            5,
+            2,
+            -4,
+            0
+        ],
+        "skills": {
+            "20": 10,
+            "28": 1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 15,
+            "max": 31
+        },
+        "name": "Piscine Pants+",
+        "rarity": 4,
+        "resistance": [
+            -3,
+            5,
+            2,
+            -4,
+            0
+        ],
+        "skills": {
+            "20": 10,
+            "28": 1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 30,
+            "max": 58
+        },
+        "name": "Chainmail Greaves+",
+        "rarity": 4,
+        "resistance": [
+            -1,
+            -2,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "8": 3,
+            "40": 4,
+            "41": 1
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Chainmail Leggings+",
+        "rarity": 4,
+        "resistance": [
+            -1,
+            -2,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "8": 2,
+            "40": 4,
+            "41": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 30,
+            "max": 58
+        },
+        "name": "Loc Lac Boots+",
+        "rarity": 4,
+        "resistance": [
+            5,
+            -4,
+            -5,
+            2,
+            0
+        ],
+        "skills": {
+            "9": 2,
+            "19": 5,
+            "26": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Loc Lac Gaiters+",
+        "rarity": 4,
+        "resistance": [
+            5,
+            -4,
+            -5,
+            2,
+            0
+        ],
+        "skills": {
+            "9": 2,
+            "19": 5,
+            "26": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 30,
+            "max": 58
+        },
+        "name": "Hunter's Greaves+",
+        "rarity": 4,
+        "resistance": [
+            0,
+            -2,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "14": 2,
+            "33": -1,
+            "71": 5,
+            "72": 1
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Hunter's Leggings+",
+        "rarity": 4,
+        "resistance": [
+            0,
+            -2,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "14": 3,
+            "33": -2,
+            "71": 3,
+            "72": 1
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 34,
+            "max": 62
+        },
+        "name": "Bone Greaves+",
+        "rarity": 4,
+        "resistance": [
+            3,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "11": 3,
+            "12": 2,
+            "24": -1,
+            "73": 3
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 20,
+            "max": 34
+        },
+        "name": "Bone Leggings+",
+        "rarity": 4,
+        "resistance": [
+            3,
+            -2,
+            -1,
+            2,
+            3
+        ],
+        "skills": {
+            "11": 3,
+            "12": 2,
+            "24": -2,
+            "73": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 34,
+            "max": 62
+        },
+        "name": "Alloy Greaves+",
+        "rarity": 4,
+        "resistance": [
+            1,
+            2,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 20,
+            "max": 34
+        },
+        "name": "Alloy Leggings+",
+        "rarity": 4,
+        "resistance": [
+            1,
+            2,
+            -1,
+            -2,
+            -1
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 38,
+            "max": 66
+        },
+        "name": "Jaggi Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "2": 2,
+            "3": 2,
+            "25": 3,
+            "27": -1,
+            "46": 1
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 22,
+            "max": 36
+        },
+        "name": "Jaggi Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -3,
+            -1,
+            -1,
+            -1,
+            2
+        ],
+        "skills": {
+            "2": 2,
+            "3": 2,
+            "25": 2,
+            "27": -1,
+            "46": 2
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 38,
+            "max": 66
+        },
+        "name": "Bnahabra Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -5,
+            0,
+            0,
+            2,
+            6
+        ],
+        "skills": {
+            "5": 2,
+            "22": -3,
+            "55": 6
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 22,
+            "max": 36
+        },
+        "name": "Bnahabra Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -5,
+            0,
+            0,
+            2,
+            6
+        ],
+        "skills": {
+            "5": 2,
+            "22": -3,
+            "69": 6
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 38,
+            "max": 66
+        },
+        "name": "Rhenoplos Greaves+",
+        "rarity": 5,
+        "resistance": [
+            3,
+            -1,
+            -1,
+            -2,
+            2
+        ],
+        "skills": {
+            "29": 1,
+            "31": 5,
+            "34": -1,
+            "44": 2
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 22,
+            "max": 36
+        },
+        "name": "Rhenoplos Leggings+",
+        "rarity": 5,
+        "resistance": [
+            3,
+            -1,
+            -1,
+            -2,
+            2
+        ],
+        "skills": {
+            "34": -1,
+            "44": 2,
+            "64": 3,
+            "68": 3
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 42,
+            "max": 66
+        },
+        "name": "Qurupeco Greaves+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            -3,
+            -4,
+            0,
+            1
+        ],
+        "skills": {
+            "6": 1,
+            "35": -3,
+            "43": 2,
+            "45": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 25,
+            "max": 37
+        },
+        "name": "Qurupeco Leggings+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            -3,
+            -4,
+            0,
+            1
+        ],
+        "skills": {
+            "6": 2,
+            "35": -3,
+            "43": 1,
+            "45": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 44,
+            "max": 68
+        },
+        "name": "Ludroth Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            4,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "7": 2,
+            "10": 3,
+            "12": -1,
+            "28": 3
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 26,
+            "max": 38
+        },
+        "name": "Ludroth Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            4,
+            0,
+            -1,
+            1
+        ],
+        "skills": {
+            "7": 3,
+            "10": 2,
+            "12": -1,
+            "61": 3
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 44,
+            "max": 68
+        },
+        "name": "Baggi Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "25": -1,
+            "35": 7,
+            "53": 2,
+            "74": 3
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 26,
+            "max": 38
+        },
+        "name": "Baggi Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            4,
+            -1,
+            1
+        ],
+        "skills": {
+            "25": -2,
+            "35": 6,
+            "60": 2,
+            "74": 3
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 48,
+            "max": 72
+        },
+        "name": "Barroth Greaves+",
+        "rarity": 5,
+        "resistance": [
+            5,
+            -5,
+            -4,
+            4,
+            0
+        ],
+        "skills": {
+            "0": 4,
+            "2": 1,
+            "3": -2,
+            "11": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 28,
+            "max": 40
+        },
+        "name": "Barroth Leggings+",
+        "rarity": 5,
+        "resistance": [
+            5,
+            -5,
+            -4,
+            4,
+            0
+        ],
+        "skills": {
+            "0": 4,
+            "2": 1,
+            "3": -2,
+            "11": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 50,
+            "max": 74
+        },
+        "name": "Gobul Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            4,
+            0,
+            -4,
+            2
+        ],
+        "skills": {
+            "3": 2,
+            "9": -2,
+            "25": 2,
+            "44": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 30,
+            "max": 42
+        },
+        "name": "Gobul Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            4,
+            0,
+            -4,
+            2
+        ],
+        "skills": {
+            "3": 2,
+            "9": -3,
+            "25": 1,
+            "44": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 36,
+            "max": 60
+        },
+        "name": "Guild Bard Boots+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 22,
+            "max": 34
+        },
+        "name": "Guild Bard Gaiters+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            0,
+            0,
+            0,
+            0
+        ],
+        "skills": {
+            "83": 0
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 50,
+            "max": 74
+        },
+        "name": "Rathian Greaves+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -3,
+            "8": 3,
+            "21": 2,
+            "32": 3
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 30,
+            "max": 42
+        },
+        "name": "Rathian Leggings+",
+        "rarity": 5,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "7": -3,
+            "8": 2,
+            "21": 2,
+            "32": 4
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 54,
+            "max": 78
+        },
+        "name": "Gigginox Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            2,
+            3,
+            0
+        ],
+        "skills": {
+            "5": 2,
+            "8": -2,
+            "10": 2,
+            "22": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 32,
+            "max": 44
+        },
+        "name": "Gigginox Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -4,
+            -1,
+            2,
+            3,
+            0
+        ],
+        "skills": {
+            "5": 2,
+            "8": -3,
+            "10": 1,
+            "22": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 54,
+            "max": 74
+        },
+        "name": "Ingot Greaves+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            2
+        ],
+        "skills": {
+            "17": 2,
+            "29": 5,
+            "34": 3,
+            "56": -1
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 32,
+            "max": 42
+        },
+        "name": "Ingot Leggings+",
+        "rarity": 5,
+        "resistance": [
+            -2,
+            -1,
+            1,
+            3,
+            2
+        ],
+        "skills": {
+            "17": 2,
+            "34": 3,
+            "68": 5,
+            "69": -1
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Dober Greaves",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            -2,
+            1,
+            1,
+            5
+        ],
+        "skills": {
+            "0": -3,
+            "11": 1,
+            "36": 2,
+            "51": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Dober Leggings",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            -2,
+            1,
+            1,
+            5
+        ],
+        "skills": {
+            "0": -3,
+            "36": 1,
+            "60": 1,
+            "61": 2
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Lagiacrus Greaves+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            -1,
+            5,
+            -2
+        ],
+        "skills": {
+            "4": 3,
+            "5": -2,
+            "20": 2,
+            "57": 4
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Lagiacrus Leggings+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            -1,
+            5,
+            -2
+        ],
+        "skills": {
+            "4": 3,
+            "5": -2,
+            "20": 3,
+            "67": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Rathalos Greaves+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "3": 3,
+            "6": -2,
+            "26": 5,
+            "54": 3
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Rathalos Leggings+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            0,
+            -2,
+            -4
+        ],
+        "skills": {
+            "3": 3,
+            "6": -2,
+            "26": 6,
+            "62": 2
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 58,
+            "max": 78
+        },
+        "name": "Barioth Greaves+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            5,
+            -3,
+            0
+        ],
+        "skills": {
+            "14": 3,
+            "15": 4,
+            "26": -2,
+            "27": 4
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 34,
+            "max": 44
+        },
+        "name": "Barioth Leggings+",
+        "rarity": 6,
+        "resistance": [
+            -4,
+            2,
+            5,
+            -3,
+            0
+        ],
+        "skills": {
+            "14": 3,
+            "15": 4,
+            "26": -2,
+            "27": 4
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 62,
+            "max": 78
+        },
+        "name": "Uragaan Greaves+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "6": 1,
+            "39": 1,
+            "44": -3,
+            "52": 2
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 37,
+            "max": 45
+        },
+        "name": "Uragaan Leggings+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            -4,
+            -1,
+            1,
+            -2
+        ],
+        "skills": {
+            "6": 2,
+            "39": 1,
+            "44": -3,
+            "68": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 62,
+            "max": 78
+        },
+        "name": "Agnaktor Greaves+",
+        "rarity": 6,
+        "resistance": [
+            5,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -1,
+            "16": 2,
+            "55": 2,
+            "81": 4
+        },
+        "slots": 2,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 37,
+            "max": 45
+        },
+        "name": "Agnaktor Leggings+",
+        "rarity": 6,
+        "resistance": [
+            5,
+            -4,
+            -2,
+            1,
+            0
+        ],
+        "skills": {
+            "11": -2,
+            "62": 2,
+            "63": 1,
+            "81": 4
+        },
+        "slots": 2,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 64,
+            "max": 80
+        },
+        "name": "Vangis Greaves",
+        "rarity": 7,
+        "resistance": [
+            0,
+            0,
+            3,
+            -4,
+            -4
+        ],
+        "skills": {
+            "2": 1,
+            "12": -3,
+            "50": 2,
+            "72": 1
+        },
+        "slots": 3,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 38,
+            "max": 46
+        },
+        "name": "Vangis Leggings",
+        "rarity": 7,
+        "resistance": [
+            0,
+            0,
+            3,
+            -4,
+            -4
+        ],
+        "skills": {
+            "2": 1,
+            "12": -3,
+            "66": 2,
+            "72": 1
+        },
+        "slots": 3,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 62,
+            "max": 78
+        },
+        "name": "Damascus Greaves",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            0,
+            2,
+            -2,
+            3
+        ],
+        "skills": {
+            "8": 5,
+            "11": -1,
+            "17": 3,
+            "52": 2
+        },
+        "slots": 1,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 37,
+            "max": 45
+        },
+        "name": "Damascus Leggings",
+        "rarity": 6,
+        "resistance": [
+            -2,
+            0,
+            2,
+            -2,
+            3
+        ],
+        "skills": {
+            "8": 6,
+            "11": -1,
+            "17": 2,
+            "69": 4
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 66,
+            "max": 82
+        },
+        "name": "Helios Greaves+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            5,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "21": 4,
+            "50": 4,
+            "55": -3
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 39,
+            "max": 47
+        },
+        "name": "Helios Leggings+",
+        "rarity": 6,
+        "resistance": [
+            0,
+            5,
+            3,
+            -3,
+            -4
+        ],
+        "skills": {
+            "7": -2,
+            "21": 4,
+            "66": 4,
+            "68": -3
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 66,
+            "max": 80
+        },
+        "name": "Yamato Gusoku+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            -3,
+            0,
+            -4
+        ],
+        "skills": {
+            "9": 5,
+            "40": -3,
+            "53": 3,
+            "55": 2
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 39,
+            "max": 47
+        },
+        "name": "Mutsu Gusoku+",
+        "rarity": 6,
+        "resistance": [
+            4,
+            0,
+            -3,
+            0,
+            -4
+        ],
+        "skills": {
+            "9": 4,
+            "40": -2,
+            "65": 4,
+            "68": 3
+        },
+        "slots": 0,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 70,
+            "max": 82
+        },
+        "name": "Escadora Scale",
+        "rarity": 7,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            0,
+            -5
+        ],
+        "skills": {
+            "15": 4,
+            "37": 2,
+            "45": -2,
+            "57": 5
+        },
+        "slots": 0,
+        "type": 1
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 42,
+            "max": 48
+        },
+        "name": "Escadora Scala",
+        "rarity": 7,
+        "resistance": [
+            -1,
+            -1,
+            -1,
+            0,
+            -5
+        ],
+        "skills": {
+            "15": 4,
+            "37": 2,
+            "45": -2,
+            "67": 3
+        },
+        "slots": 1,
+        "type": 2
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 18,
+            "max": 32
+        },
+        "name": "Chakra Anklet",
+        "rarity": 7,
+        "resistance": [
+            0,
+            -10,
+            0,
+            10,
+            0
+        ],
+        "skills": {},
+        "slots": 3,
+        "type": 0
+    },
+    {
+        "category": 4,
+        "defense": {
+            "base": 28,
+            "max": 40
+        },
+        "name": "Black Leather Pants",
+        "rarity": 6,
+        "resistance": [
+            2,
+            2,
+            2,
+            2,
+            2
+        ],
+        "skills": {
+            "0": 13
+        },
+        "slots": 0,
+        "type": 0
+    }
+]
