@@ -71,6 +71,19 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
   skillRows.forEach(x => skillTable.appendChild(x))
   skillTable.appendChild(slotRow)
 
+  // build deco list
+  const decoNameMap: Map<string, number> = new Map()
+  for (const deco of set.decos) {
+    const name = deco.name
+    decoNameMap.set(name, 1 + (decoNameMap.get(name) || 0))
+  }
+  const decoNameList = Array.from(decoNameMap.entries())
+    .map(([name, amount]) => `${amount} x ${name}`)
+  const decoNameString = decoNameList.join(', ')
+  const decoNameContainer = htmlToElement(`
+    <div><span>${decoNameString}</span></div>
+  `)
+
   // return final div
   const tr = htmlToElement('<tr class="result-set-details"></tr>')
   const td = htmlToElement('<td colspan="6""></td>')
@@ -78,6 +91,7 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
   d.appendChild(skillTable)
   td.appendChild(d)
   tr.appendChild(td)
+  d.appendChild(decoNameContainer)
   return tr
 }
 
