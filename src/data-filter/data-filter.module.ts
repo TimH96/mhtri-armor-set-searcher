@@ -1,4 +1,4 @@
-import { DUMMY_PIECE, MAX_RARITY } from '../data-provider/data-provider.module'
+import { DUMMY_PIECE, MAX_RARITY, TORSO_UP_ID } from '../data-provider/data-provider.module'
 import ArmorPiece from '../data-provider/models/equipment/ArmorPiece'
 import ArmorType from '../data-provider/models/equipment/ArmorType'
 import Charm from '../data-provider/models/equipment/Charm'
@@ -89,14 +89,21 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
   }
 
   // find piece with torso up with highest defense
-  // TODO readd torso up pieces
-  // const torsoUpPiece: ArmorPiece[] = [sorted.find(p => p.skills.get(TORSO_UP_ID) !== undefined)].filter(x => x !== undefined) as ArmorPiece[]
+  const torsoUpPieces: ArmorPiece[] = [sorted.find(p => p.skills.has(TORSO_UP_ID))]
+    .filter(x => x !== undefined)
+    .map(x => {
+      const renamed: ArmorPiece = {
+        ...x!,
+        name: 'Torso Up Piece',
+      }
+      return renamed
+    }) as ArmorPiece[]
 
   // build list of pieces with wanted skills, with slots, or with torso up
   const result = sorted
     .filter(x => filterHasSkill(x, skills))
     .concat(...highestGenericSlotPiece)
-    // .concat(...torsoUpPiece)
+    .concat(...torsoUpPieces)
 
   // return list with dummy element if there are no pieces
   if (result.length === 0) {
