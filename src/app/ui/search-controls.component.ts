@@ -7,9 +7,6 @@ import { getGlobalSettings } from './global-settings.component'
 import { getSkillActivations, resetSkillActivations } from './picker.component'
 import { renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
-import ArmorPiece from '../../data-provider/models/equipment/ArmorPiece'
-import Decoration from '../../data-provider/models/equipment/Decoration'
-import Charm from '../../data-provider/models/equipment/Charm'
 
 const arrangeSearchData = (skillData: StaticSkillData) => {
   // build params
@@ -67,27 +64,6 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   renderResults(result, skillData, searchParams)
 }
 
-const asyncSearchWrapper = async (
-  armorPieces: ArmorPiece[][],
-  decorations: Decoration[],
-  charms: Charm[],
-  constraints: SearchConstraints,
-  skillData: StaticSkillData,
-): Promise<boolean> => {
-  return new Promise((resolve, _reject) => {
-    const result = search(
-      armorPieces,
-      decorations,
-      charms,
-      constraints,
-      skillData,
-    )
-
-    if (result.length > 0) resolve(true)
-    else resolve(false)
-  })
-}
-
 const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSkillData) => {
   const searchParams = arrangeSearchData(skillData)
 
@@ -107,7 +83,7 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
       .filter(act => act.requiredPoints >= 0)
       .filter(act => !searchParams.skillActivations.map(x => x.id).includes(act.id))
       .filter(act => !searchParams.skillActivations.find(x => act.requiredSkill === x.requiredSkill && act.requiredPoints < x.requiredPoints))
-      .sort((a, b) => b.requiredPoints - a.requiredPoints)
+      .sort((a, b) => a.requiredPoints - b.requiredPoints)
 
     for (const act of processedActs) {
       const newParams: SearchConstraints = {
@@ -116,7 +92,7 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
         skillActivations: searchParams.skillActivations.concat(act),
       }
 
-      const r = await asyncSearchWrapper(
+      const r = search(
         equData.armor,
         equData.decorations,
         charms,
@@ -124,7 +100,7 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
         skillData,
       )
 
-      if (!r) break
+      if (r.length === 0) break
       else aquirableSkills.push(act)
     }
   }
