@@ -27,7 +27,7 @@ export default class ArmorEvaluation {
 
   copy () {
     return new ArmorEvaluation(
-      this.equipment,
+      this.equipment.map(x => x),
       new EquipmentSkills(this.skills),
       this.score,
       this.totalSlots,
