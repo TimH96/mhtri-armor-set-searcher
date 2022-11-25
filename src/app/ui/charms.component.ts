@@ -10,12 +10,6 @@ import GameID from '../../data-provider/models/GameId'
 import { range } from '../../helper/range.helper'
 import EquipmentSkills from '../../data-provider/models/equipment/EquipmentSkills'
 
-/*
-  TODO this file is the only file so far where I'm regretting this straightforward functional
-  component approach, probably needs some refactoring at some point, I think moving different
-  parts (picker vs table vs export) into own files would fix it already
-*/
-
 const saveToStorage = (skillNames: SkillNameMap) => {
   window.localStorage.setItem('charms', UserCharmList.Instance.serialize(skillNames))
 }
