@@ -9,6 +9,7 @@ import SkillActivationMap from '../../data-provider/models/skills/SkillActivatio
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 import ArmorEvaluation from '../../scorer/models/ArmorEvaluation'
 import DecoEvaluation from '../../scorer/models/DecoEvaluation'
+import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
 
 export default class ArmorSet {
   readonly head: ArmorPiece
@@ -26,14 +27,25 @@ export default class ArmorSet {
     decoEval: DecoEvaluation,
     skillActivations: SkillActivationMap,
   ) {
-    this.head = armorEval.equipment[0] as unknown as ArmorPiece
-    this.chest = armorEval.equipment[1] as unknown as ArmorPiece
-    this.arms = armorEval.equipment[2] as unknown as ArmorPiece
-    this.waist = armorEval.equipment[3] as unknown as ArmorPiece
-    this.legs = armorEval.equipment[4] as unknown as ArmorPiece
-    this.charm = armorEval.equipment[5] as unknown as ArmorPiece
+    const chest = armorEval.equipment[EquipmentCategory.CHEST] as unknown as ArmorPiece
+
+    this.chest = armorEval.torsoUp > 0 ? ArmorSet.applyTorsoUpToChest(chest, armorEval.torsoUp) : chest
+    this.head = armorEval.equipment[EquipmentCategory.HEAD] as unknown as ArmorPiece
+    this.arms = armorEval.equipment[EquipmentCategory.ARMS] as unknown as ArmorPiece
+    this.waist = armorEval.equipment[EquipmentCategory.WAIST] as unknown as ArmorPiece
+    this.legs = armorEval.equipment[EquipmentCategory.LEGS] as unknown as ArmorPiece
+    this.charm = armorEval.equipment[EquipmentCategory.CHARM] as unknown as Charm
     this.decos = decoEval.decos
     this.evaluation = this.evaluate(armorEval, decoEval, skillActivations)
+  }
+
+  private static applyTorsoUpToChest (chest: ArmorPiece, torsoUp: number): ArmorPiece {
+    const newSkills = new EquipmentSkills(chest.skills)
+    newSkills.multiply(torsoUp + 1)
+    return {
+      ...chest,
+      skills: newSkills,
+    }
   }
 
   getPieces (): ArmorPiece[] {
@@ -89,6 +101,7 @@ export default class ArmorSet {
       resistance: totalResistance,
       activations: a,
       skills,
+      torsoUp: armorEval.torsoUp,
     }
     this.evaluation = thisEval
     return thisEval

@@ -5,25 +5,29 @@ import DecoMinSlotMap from './DecoMinSlotMap'
 import DecoPermutation from './DecoPermutation'
 
 export default class DecoEvaluation {
+  decoMinSlotMap: DecoMinSlotMap
   unusedSlotsSum: number
   missingSkills: EquipmentSkills
   decos: Decoration[] = []
   requiredSlots: number = 0
 
   constructor (
+    decoMinSlotMap: DecoMinSlotMap,
     unusedSlotsSum: number,
     missingSkills: EquipmentSkills,
     decos?: Decoration[],
     requiredSlots?: number,
   ) {
+    this.decoMinSlotMap = decoMinSlotMap
     this.unusedSlotsSum = unusedSlotsSum
     this.missingSkills = missingSkills
     if (decos) this.decos = decos
-    if (requiredSlots) this.requiredSlots = requiredSlots
+    this.requiredSlots = requiredSlots || this.calculateRequiredSlots()
   }
 
   copy () {
     return new DecoEvaluation(
+      this.decoMinSlotMap,
       this.unusedSlotsSum,
       new EquipmentSkills(this.missingSkills),
       this.decos.map(x => x),
@@ -31,10 +35,23 @@ export default class DecoEvaluation {
     )
   }
 
-  addPerm (perm: DecoPermutation, slotLevel: Slots, decoMinSlotMap: DecoMinSlotMap) {
+  calculateRequiredSlots (): number {
+    let newRequiredSlots: number = 0
+    for (const w of this.missingSkills) {
+      const sId = w[0]
+      const sVal = w[1]
+      newRequiredSlots += this.decoMinSlotMap.getMinRequiredSlotsForSkill(sId, sVal)
+    }
+    this.requiredSlots = newRequiredSlots
+    return newRequiredSlots
+  }
+
+  addPerm (perm: DecoPermutation, slotLevel: Slots) {
     this.unusedSlotsSum -= slotLevel
     this.decos.push(...perm.decos)
 
+    // use custom loop instead of EquipmentSkills.substractSkills and DecoEvaluation.calculateRequiredSlots
+    // to save on processing because this method is called a lot
     let newRequiredSlots: number = 0
     for (const w of this.missingSkills) {
       const sId = w[0]
@@ -42,7 +59,7 @@ export default class DecoEvaluation {
 
       const newVal = sVal - perm.skills.get(sId)
       this.missingSkills.set(sId, newVal)
-      newRequiredSlots += decoMinSlotMap.getMinRequiredSlotsForSkill(sId, newVal)
+      newRequiredSlots += this.decoMinSlotMap.getMinRequiredSlotsForSkill(sId, newVal)
     }
 
     this.requiredSlots = newRequiredSlots

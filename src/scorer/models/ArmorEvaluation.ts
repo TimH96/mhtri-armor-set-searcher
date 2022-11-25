@@ -30,6 +30,13 @@ export default class ArmorEvaluation {
       .filter(x => x > 0)
   }
 
+  getSlotsExceptChest () {
+    return this.equipment
+      .filter(x => x.category !== EquipmentCategory.CHEST)
+      .map(x => x.slots)
+      .filter(x => x > 0)
+  }
+
   copy () {
     return new ArmorEvaluation(
       this.equipment.map(x => x),

@@ -8,4 +8,5 @@ export default interface Evaluation {
   activations: SkillActivation[];
   defense: Defense;
   resistance: Resistance;
+  torsoUp: number;
 }

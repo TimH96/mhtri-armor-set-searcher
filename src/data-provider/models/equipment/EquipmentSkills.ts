@@ -25,4 +25,10 @@ export default class EquipmentSkills extends Map<GameID, Skill> {
       this.substract(k, v)
     }
   }
+
+  multiply (factor: number) {
+    for (const [k, v] of this) {
+      this.set(k, v * factor)
+    }
+  }
 }

@@ -6,4 +6,5 @@ export default interface Decoration extends SkilledItem {
   name: string;
   requiredSlots: Slots;
   rarity: Rarity;
+  affectedByTorsoUp?: boolean;
 }

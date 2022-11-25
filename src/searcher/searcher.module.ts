@@ -144,7 +144,6 @@ function * getArmorPermutations (
 }
 
 function * getDecoPermutations (
-  decoMinSlotMap: DecoMinSlotMap,
   decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
   slotsOfArmor: Slots[],
   previousEval: DecoEvaluation,
@@ -154,7 +153,7 @@ function * getDecoPermutations (
   for (const perm of decoPermutationsPerSlotLevel.get(slotLevel)!) {
     // create and eval new set
     const thisEval = previousEval.copy()
-    thisEval.addPerm(perm, slotLevel, decoMinSlotMap)
+    thisEval.addPerm(perm, slotLevel)
 
     // yield it if score is sufficient
     if (thisEval.requiredSlots <= 0) yield thisEval
@@ -166,7 +165,6 @@ function * getDecoPermutations (
     // then yield the next loop if there is one
     if (slotIndex > 0) {
       yield * getDecoPermutations(
-        decoMinSlotMap,
         decoPermutationsPerSlotLevel,
         slotsOfArmor,
         thisEval,
@@ -176,24 +174,88 @@ function * getDecoPermutations (
   }
 }
 
+const transformTorsoUpDecoPermutation = (perm: DecoPermutation, torsoUp: number): DecoPermutation => {
+  const factor = torsoUp + 1
+
+  const score = perm.score * factor
+  const decos = perm.decos.map(d => {
+    const newSkills = new EquipmentSkills(d.skills)
+    newSkills.multiply(factor)
+    const newDeco: Decoration = {
+      ...d,
+      affectedByTorsoUp: true,
+      name: d.name.concat(' (TorsoUp)'),
+      skills: newSkills,
+    }
+
+    return newDeco
+  })
+  const newTotalSkills = new EquipmentSkills(perm.skills)
+  newTotalSkills.multiply(factor)
+  const skills = newTotalSkills
+
+  return {
+    score,
+    decos,
+    skills,
+  }
+}
+
 const findSufficientDecoPermutation = (
+  armorEval: ArmorEvaluation,
+  constraints: SearchConstraints,
+  wantedSkills: EquipmentSkills,
   decoMinSlotMap: DecoMinSlotMap,
   decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
-  slotList: Slots[],
-  initialEval: DecoEvaluation,
 ): DecoEvaluation | undefined => {
-  if (slotList.length === 0) return undefined
+  const _inner = (
+    _slotList: Slots[],
+    _initialEval: DecoEvaluation,
+  ): DecoEvaluation | undefined => {
+    if (_initialEval.requiredSlots <= 0) return _initialEval
+    if (_initialEval.unusedSlotsSum > _initialEval.requiredSlots) return undefined
+    if (_slotList.length === 0) return undefined
 
-  const decoEvaluation = getDecoPermutations(
-    decoMinSlotMap,
-    decoPermutationsPerSlotLevel,
-    slotList,
-    initialEval,
-    slotList.length - 1,
-  ).next().value
+    const decoEvaluation = getDecoPermutations(
+      decoPermutationsPerSlotLevel,
+      _slotList,
+      _initialEval,
+      _slotList.length - 1,
+    ).next().value
 
-  if (decoEvaluation) return decoEvaluation
-  return undefined
+    if (decoEvaluation) return decoEvaluation
+    return undefined
+  }
+
+  let r: DecoEvaluation | undefined
+  const torsoSlots = armorEval.equipment[EquipmentCategory.CHEST].slots
+  const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
+    return [sId, sVal - armorEval.skills.get(sId)]
+  }))
+  const slotSum = armorEval.totalSlots + constraints.weaponSlots
+
+  if (armorEval.torsoUp > 0 && torsoSlots > 0) {
+    // if torso up, fill the chest slots and then iterate over permutations from there
+    const slotList = armorEval.getSlotsExceptChest().concat(constraints.weaponSlots ? constraints.weaponSlots : [])
+    const slotSumWithoutTorso = slotSum - torsoSlots
+    const initialEval = new DecoEvaluation(decoMinSlotMap, slotSumWithoutTorso, missingSkills)
+    for (const chestPerm of decoPermutationsPerSlotLevel.get(torsoSlots)!) {
+      const transformedPerm = transformTorsoUpDecoPermutation(chestPerm, armorEval.torsoUp)
+      const copiedEval = initialEval.copy()
+      copiedEval.addPerm(transformedPerm, torsoSlots)
+      const temp = _inner(slotList, copiedEval)
+      if (temp) {
+        r = temp
+        break
+      }
+    }
+  } else {
+    // otherwise just iterate over permutations
+    const slotList = armorEval.getSlots().concat(constraints.weaponSlots ? constraints.weaponSlots : [])
+    r = _inner(slotList, new DecoEvaluation(decoMinSlotMap, armorEval.totalSlots + constraints.weaponSlots, missingSkills))
+  }
+
+  return r
 }
 
 const findSets = (
@@ -255,20 +317,13 @@ const findSets = (
     wantedScore,
     sorted.length - 1,
   )) {
-    // get map of missing skills
-    const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
-      return [sId, sVal - armorEvaluation.skills.get(sId)]
-    }))
-
-    // iterate over list of viable deco permutations
-    const slotList = armorEvaluation.getSlots().concat(constraints.weaponSlots ? constraints.weaponSlots : [])
-
     // find first sufficient deco eval
     const decoEvaluation = findSufficientDecoPermutation(
+      armorEvaluation,
+      constraints,
+      wantedSkills,
       decoMinSlotMap,
       decoPermutationsPerSlotLevel,
-      slotList,
-      new DecoEvaluation(armorEvaluation.totalSlots + constraints.weaponSlots, missingSkills),
     )
 
     // build and append set if there is any deco eval
