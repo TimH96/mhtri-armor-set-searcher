@@ -2,7 +2,7 @@
 
 ## About
 
-This is an armor set searcher for the game Monster Hunter Tri, as seen for many of the newer (and even older) Monster Hunter games. Oddly enough, there wasn't one for this game when almost every other entry in the series has one, so now here it is 13 years after the fact. Put in your charms, select the skills you want to have and hopefully find your sets. The website is hosted [right here](TODO) on GitHub via gh-pages.
+This is an armor set searcher for the game Monster Hunter Tri, as seen for many of the newer (and even older) Monster Hunter games. Oddly enough, there wasn't one for this game when almost every other entry in the series has one, so now here it is 13 years after the fact. Put in your charms, select the skills you want to have and hopefully find your sets. The website is hosted [right here](https://timh96.github.io/mhtri-armor-set-searcher/) on GitHub via gh-pages.
 
 The development of this was driven by the revival of the online features and return to Loc Lac by the community developed and hosted servers. Here you can find the [MH3SP repository](https://github.com/sepalani/MH3SP) and the related [community Discord server](https://discord.com/invite/4sBmXC55V6).
 
