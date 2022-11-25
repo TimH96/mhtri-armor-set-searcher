@@ -3,6 +3,21 @@ import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
 import { htmlToElement } from '../../helper/html.helper'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
+import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
+
+export function * moreSkillsIterator (skillActivations: SkillActivationMap) {
+  const rContainer = clearAndGetResultsContainer()
+  const countDiv = document.createElement('div')
+  rContainer.appendChild(countDiv)
+
+  const totalActCount = Array.from(skillActivations.values())
+    .reduce((sum, c) => sum + c.length, 0)
+
+  for (let i = 0; i < totalActCount; i++) {
+    countDiv.innerHTML = `Checked ${i} possible skills ...`
+    yield i
+  }
+}
 
 const onSetClick = (tbNode: Node, viewGetter: () => Node) => {
   const children = tbNode.childNodes

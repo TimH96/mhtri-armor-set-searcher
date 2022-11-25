@@ -1,11 +1,12 @@
 import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
+import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticEquipmentData from '../../data-provider/models/equipment/StaticEquipmentData'
 import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
 import { search } from '../../searcher/searcher.module'
 import { getGlobalSettings } from './global-settings.component'
 import { getSkillActivations, resetSkillActivations } from './picker.component'
-import { renderMoreSkills, renderResults } from './search-results.component'
+import { moreSkillsIterator, renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 
 const arrangeSearchData = (skillData: StaticSkillData) => {
@@ -76,6 +77,8 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
 
   const aquirableSkills: SkillActivation[] = []
 
+  const outputIterator = moreSkillsIterator(skillData.skillActivation)
+
   for (const actMap of skillData.skillActivation) {
     const sActs = actMap[1]
 
@@ -85,22 +88,31 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
       .filter(act => !searchParams.skillActivations.find(x => act.requiredSkill === x.requiredSkill && act.requiredPoints < x.requiredPoints))
       .sort((a, b) => a.requiredPoints - b.requiredPoints)
 
+    let breakFlag = false
     for (const act of processedActs) {
+      outputIterator.next()
+      if (breakFlag) continue
+
       const newParams: SearchConstraints = {
         ...searchParams,
         limit: 1,
         skillActivations: searchParams.skillActivations.concat(act),
       }
 
-      const r = search(
-        equData.armor,
-        equData.decorations,
-        charms,
-        newParams,
-        skillData,
-      )
+      const r = await new Promise<ArmorSet[]>((resolve, _reject) => {
+        setTimeout(() => {
+          const innerR = search(
+            equData.armor,
+            equData.decorations,
+            charms,
+            newParams,
+            skillData,
+          )
+          resolve(innerR)
+        })
+      })
 
-      if (r.length === 0) break
+      if (r.length === 0) breakFlag = true
       else aquirableSkills.push(act)
     }
   }
