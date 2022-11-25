@@ -730,11 +730,6 @@ var html_helper_1 = require("../../helper/html.helper");
 var EquipmentCategory_1 = __importDefault(require("../../data-provider/models/equipment/EquipmentCategory"));
 var range_helper_1 = require("../../helper/range.helper");
 var EquipmentSkills_1 = __importDefault(require("../../data-provider/models/equipment/EquipmentSkills"));
-/*
-  TODO this file is the only file so far where I'm regretting this straightforward functional
-  component approach, probably needs some refactoring at some point, I think moving different
-  parts (picker vs table vs export) into own files would fix it already
-*/
 var saveToStorage = function saveToStorage(skillNames) {
   window.localStorage.setItem('charms', UserCharmList_1.default.Instance.serialize(skillNames));
 };
@@ -2337,6 +2332,29 @@ var getExpandedView = function getExpandedView(set, skillData, searchParams) {
     return skillTable.appendChild(x);
   });
   skillTable.appendChild(slotRow);
+  // build deco list
+  var decoNameMap = new Map();
+  var _iterator2 = _createForOfIteratorHelper(set.decos),
+    _step2;
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var deco = _step2.value;
+      var name = deco.name;
+      decoNameMap.set(name, 1 + (decoNameMap.get(name) || 0));
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+  var decoNameList = Array.from(decoNameMap.entries()).map(function (_ref7) {
+    var _ref8 = _slicedToArray(_ref7, 2),
+      name = _ref8[0],
+      amount = _ref8[1];
+    return "".concat(amount, " x ").concat(name);
+  });
+  var decoNameString = decoNameList.join(', ');
+  var decoNameContainer = html_helper_1.htmlToElement("\n    <div><span>".concat(decoNameString, "</span></div>\n  "));
   // return final div
   var tr = html_helper_1.htmlToElement('<tr class="result-set-details"></tr>');
   var td = html_helper_1.htmlToElement('<td colspan="6""></td>');
@@ -2344,6 +2362,7 @@ var getExpandedView = function getExpandedView(set, skillData, searchParams) {
   d.appendChild(skillTable);
   td.appendChild(d);
   tr.appendChild(td);
+  d.appendChild(decoNameContainer);
   return tr;
 };
 var getSetElement = function getSetElement(set, skillData, searchParams) {
@@ -2408,11 +2427,11 @@ exports.renderMoreSkills = function (activations) {
     resultContainer.appendChild(html_helper_1.htmlToElement("\n      <div class=\"results-banner banner\">\n        Can't fit more skills\n      <div>\n    "));
     return;
   }
-  var _iterator2 = _createForOfIteratorHelper(activations),
-    _step2;
+  var _iterator3 = _createForOfIteratorHelper(activations),
+    _step3;
   try {
     var _loop = function _loop() {
-      var act = _step2.value;
+      var act = _step3.value;
       var d = html_helper_1.htmlToElement("<div class=\"results-more-skills-act\" data-id=\"".concat(act.id, "\"></div>"));
       d.appendChild(html_helper_1.htmlToElement("<span>".concat(act.name, "</span>")));
       d.addEventListener('click', function () {
@@ -2420,13 +2439,13 @@ exports.renderMoreSkills = function (activations) {
       });
       resultContainer.appendChild(d);
     };
-    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
       _loop();
     }
   } catch (err) {
-    _iterator2.e(err);
+    _iterator3.e(err);
   } finally {
-    _iterator2.f();
+    _iterator3.f();
   }
 };
 exports.renderResults = function (sets, skillData, searchParams) {
@@ -2788,7 +2807,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56363" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57459" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
