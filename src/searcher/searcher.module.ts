@@ -14,7 +14,7 @@ import DecoPermutation from '../scorer/models/DecoPermutation'
 import SearchConstraints from './models/SearchConstraints'
 import ScoredSkilledEquipment from '../scorer/models/ScoredSkilledEquipment'
 import { applyArmorFilter, applyCharmFilter, applyRarityFilter, filterHasSkill } from '../data-filter/data-filter.module'
-import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap } from '../scorer/scorer.module'
+import { pruneDecoPermutations, evaluateListOfDecos, getDecoSlotScoreMap, getScoreFromSkillMap, scoreTorsoUpPieces } from '../scorer/scorer.module'
 import DecoEvaluation from '../scorer/models/DecoEvaluation'
 import DecoMinSlotMap from '../scorer/models/DecoMinSlotMap'
 
@@ -223,8 +223,19 @@ const findSets = (
       }
     }))
 
+  // reorder equipment and manually rescore torso up pieces
+  const maxTorsoScore = Math.max(...scoredEquipment[1].map(x => x.score))
+  const readjustedEquipment = [
+    scoredEquipment[1], // chest first to simplify torso up calculation
+    scoredEquipment[0].map(x => scoreTorsoUpPieces(x, maxTorsoScore)),
+    scoredEquipment[2], // arms cant have torso up
+    scoredEquipment[3].map(x => scoreTorsoUpPieces(x, maxTorsoScore)),
+    scoredEquipment[4].map(x => scoreTorsoUpPieces(x, maxTorsoScore)),
+    scoredEquipment[5], // charm cant have torso up
+  ]
+
   // sort equipment by score
-  const sorted = scoredEquipment.map(l => l.sort((a, b) => b.score - a.score))
+  const sorted = readjustedEquipment.map(l => l.sort((a, b) => b.score - a.score))
 
   // get list of maximum score of remaining iterations
   const maximumRemainingScore = [0]
@@ -242,7 +253,7 @@ const findSets = (
     initialArmorEval,
     maximumRemainingScore,
     wantedScore,
-    armorPieces.length - 1,
+    sorted.length - 1,
   )) {
     // get map of missing skills
     const missingSkills = new EquipmentSkills(Array.from(wantedSkills).map(([sId, sVal]) => {
