@@ -9,10 +9,10 @@ import { getSkillActivations, resetSkillActivations } from './picker.component'
 import { moreSkillsIterator, renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 
-const arrangeSearchData = (skillData: StaticSkillData) => {
+const arrangeSearchData = () => {
   // build params
   const globalSettings = getGlobalSettings()
-  const skillActivations = getSkillActivations(skillData)
+  const skillActivations = getSkillActivations()
 
   // return if no skill selected
   if (skillActivations.length === 0) {
@@ -44,7 +44,7 @@ const arrangeSearchData = (skillData: StaticSkillData) => {
 }
 
 const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) => {
-  const searchParams = arrangeSearchData(skillData)
+  const searchParams = arrangeSearchData()
 
   if (!searchParams) {
     alert('Please select at least one skill')
@@ -66,7 +66,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
 }
 
 const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSkillData) => {
-  const searchParams = arrangeSearchData(skillData)
+  const searchParams = arrangeSearchData()
 
   if (!searchParams) {
     alert('Please select at least one skill')

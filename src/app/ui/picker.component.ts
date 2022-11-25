@@ -1,7 +1,6 @@
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 import { htmlToElement } from '../../helper/html.helper'
-import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 
 const getActivationElements = () => {
   return Array.from(document.getElementsByClassName('search-picker-activation'))
@@ -21,10 +20,7 @@ const resetSkillActivations = () => {
 }
 
 /** get list of currently selected skill activations */
-const getSkillActivations = (data: {
-  skillName: SkillNameMap,
-  skillActivation: SkillActivationMap,
-}): SkillActivation[] => {
+const getSkillActivations = (): SkillActivation[] => {
   const activations = getActivationElements()
 
   return activations
