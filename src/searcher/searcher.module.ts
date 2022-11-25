@@ -143,7 +143,7 @@ function * getArmorPermutations (
   }
 }
 
-function * getSufficientDecoPermutations (
+function * getDecoPermutations (
   decoMinSlotMap: DecoMinSlotMap,
   decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
   slotsOfArmor: Slots[],
@@ -165,7 +165,7 @@ function * getSufficientDecoPermutations (
 
     // then yield the next loop if there is one
     if (slotIndex > 0) {
-      yield * getSufficientDecoPermutations(
+      yield * getDecoPermutations(
         decoMinSlotMap,
         decoPermutationsPerSlotLevel,
         slotsOfArmor,
@@ -174,6 +174,26 @@ function * getSufficientDecoPermutations (
       )
     }
   }
+}
+
+const findSufficientDecoPermutation = (
+  decoMinSlotMap: DecoMinSlotMap,
+  decoPermutationsPerSlotLevel: Map<Slots, DecoPermutation[]>,
+  slotList: Slots[],
+  initialEval: DecoEvaluation,
+): DecoEvaluation | undefined => {
+  if (slotList.length === 0) return undefined
+
+  const decoEvaluation = getDecoPermutations(
+    decoMinSlotMap,
+    decoPermutationsPerSlotLevel,
+    slotList,
+    initialEval,
+    slotList.length - 1,
+  ).next().value
+
+  if (decoEvaluation) return decoEvaluation
+  return undefined
 }
 
 const findSets = (
@@ -233,13 +253,12 @@ const findSets = (
     const slotList = armorEvaluation.getSlots().concat(constraints.weaponSlots ? constraints.weaponSlots : [])
 
     // find first sufficient deco eval
-    const decoEvaluation = getSufficientDecoPermutations(
+    const decoEvaluation = findSufficientDecoPermutation(
       decoMinSlotMap,
       decoPermutationsPerSlotLevel,
       slotList,
       new DecoEvaluation(armorEvaluation.totalSlots + constraints.weaponSlots, missingSkills),
-      slotList.length - 1,
-    ).next().value
+    )
 
     // build and append set if there is any deco eval
     if (decoEvaluation) {
