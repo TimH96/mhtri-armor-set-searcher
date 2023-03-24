@@ -213,7 +213,7 @@ const findSufficientDecoPermutation = (
     _initialEval: DecoEvaluation,
   ): DecoEvaluation | undefined => {
     if (_initialEval.requiredSlots <= 0) return _initialEval
-    if (_initialEval.unusedSlotsSum > _initialEval.requiredSlots) return undefined
+    if (_initialEval.unusedSlotsSum < _initialEval.requiredSlots) return undefined
     if (_slotList.length === 0) return undefined
 
     const decoEvaluation = getDecoPermutations(
@@ -317,6 +317,7 @@ const findSets = (
     wantedScore,
     sorted.length - 1,
   )) {
+    console.log(armorEvaluation)
     // find first sufficient deco eval
     const decoEvaluation = findSufficientDecoPermutation(
       armorEvaluation,
