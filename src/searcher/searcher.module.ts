@@ -317,7 +317,6 @@ const findSets = (
     wantedScore,
     sorted.length - 1,
   )) {
-    console.log(armorEvaluation)
     // find first sufficient deco eval
     const decoEvaluation = findSufficientDecoPermutation(
       armorEvaluation,
