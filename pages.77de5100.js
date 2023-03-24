@@ -2585,24 +2585,13 @@ var arrangeSearchData = function arrangeSearchData() {
   return searchParams;
 };
 var searchLogic = function searchLogic(equData, skillData) {
-  var bla = Array.from(document.getElementsByClassName("search-picker-activation-name")).filter(function (ele) {
-    return ["Attack Up (M)", "Guard +2", "Evasion +1", "Razor Sharp"].includes(ele.innerHTML);
-  }).forEach(function (ele) {
-    return ele.parentElement.children[0].checked = true;
-  });
   var searchParams = arrangeSearchData();
   if (!searchParams) {
     alert('Please select at least one skill');
     return;
   }
   // search for sets
-  var result = searcher_module_1.search(equData.armor.map(function (x) {
-    return x.filter(function (y) {
-      return y.name.startsWith("Agnaktor") && y.name.endsWith("+");
-    });
-  }),
-  //equData.armor,
-  equData.decorations, UserCharmList_1.default.Instance.get(), searchParams, skillData);
+  var result = searcher_module_1.search(equData.armor, equData.decorations, UserCharmList_1.default.Instance.get(), searchParams, skillData);
   // render results
   search_results_component_1.renderResults(result, skillData, searchParams);
 };
@@ -2887,7 +2876,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "65405" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52088" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
