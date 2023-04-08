@@ -190,7 +190,7 @@ export const renderMoreSkills = (activations: SkillActivation[]) => {
 
   for (const act of activations) {
     const d = htmlToElement(`<div class="results-more-skills-act" data-id="${act.id}"></div>`) as HTMLDivElement
-    d.appendChild(htmlToElement(`<span>${act.name}</span>`))
+    d.appendChild(htmlToElement(`<span class="results-more-skills-act-content">${act.name}</span>`))
     d.addEventListener('click', () => { onMoreSkillsActClick(d) })
     resultContainer.appendChild(d)
   }

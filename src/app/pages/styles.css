@@ -321,3 +321,7 @@ th {
   font-size: 1.4em;
   color: var(--color-more-skills);
 }
+
+.results-more-skills-act-content {
+  cursor: pointer;
+}
