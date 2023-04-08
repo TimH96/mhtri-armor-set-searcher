@@ -322,5 +322,9 @@ th {
   color: var(--color-more-skills);
 }
 
+.results-more-skills-act-content {
+  cursor: pointer;
+}
+
 
 /*# sourceMappingURL=/styles.8986bff4.css.map */

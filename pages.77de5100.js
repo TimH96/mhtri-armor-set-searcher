@@ -2191,7 +2191,6 @@ var findSets = function findSets(armorPieces, decorations, charms, constraints, 
   try {
     for (_iterator6.s(); !(_step6 = _iterator6.n()).done;) {
       var armorEvaluation = _step6.value;
-      console.log(armorEvaluation);
       // find first sufficient deco eval
       var decoEvaluation = findSufficientDecoPermutation(armorEvaluation, constraints, wantedSkills, decoMinSlotMap, decoPermutationsPerSlotLevel);
       // build and append set if there is any deco eval
@@ -2470,7 +2469,7 @@ exports.renderMoreSkills = function (activations) {
     var _loop = function _loop() {
       var act = _step3.value;
       var d = html_helper_1.htmlToElement("<div class=\"results-more-skills-act\" data-id=\"".concat(act.id, "\"></div>"));
-      d.appendChild(html_helper_1.htmlToElement("<span>".concat(act.name, "</span>")));
+      d.appendChild(html_helper_1.htmlToElement("<span class=\"results-more-skills-act-content\">".concat(act.name, "</span>")));
       d.addEventListener('click', function () {
         onMoreSkillsActClick(d);
       });
@@ -2876,7 +2875,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52088" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64517" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
