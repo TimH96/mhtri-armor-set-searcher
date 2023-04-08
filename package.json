@@ -1,6 +1,6 @@
 {
   "name": "mhtri-armor-set-searcher",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "web-based armor set searcher for Monster Hunter Tri",
   "main": "index.js",
   "repository": {
