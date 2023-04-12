@@ -1,9 +1,9 @@
 import EquipmentCategory from '../equipment/EquipmentCategory'
 import Equipment from '../equipment/Equipment'
 
-export default class UserSettings {
+export default class UserEquipmentSettings {
   // eslint-disable-next-line no-use-before-define
-  private static _instance: UserSettings
+  private static _instance: UserEquipmentSettings
 
   private pins: (Equipment | undefined)[]
 
@@ -82,6 +82,7 @@ export default class UserSettings {
     const parsed = JSON.parse(raw) as {
       pins: (Equipment | undefined)[];
       exclusions: Equipment[][];
+      
     }
     this.pins = parsed.pins
     this.exclusions = parsed.exclusions
