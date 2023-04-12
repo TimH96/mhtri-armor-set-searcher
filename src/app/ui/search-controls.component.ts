@@ -1,4 +1,4 @@
-import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
+import UserCharmList from '../../data-provider/models/user/UserCharmList'
 import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticEquipmentData from '../../data-provider/models/equipment/StaticEquipmentData'

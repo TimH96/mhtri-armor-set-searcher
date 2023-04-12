@@ -1,9 +1,9 @@
 import { range } from '../../../helper/range.helper'
 import SkillNameMap from '../skills/SkillNameMap'
-import Charm from './Charm'
-import EquipmentCategory from './EquipmentCategory'
-import EquipmentSkills from './EquipmentSkills'
-import Slots from './Slots'
+import Charm from '../equipment/Charm'
+import EquipmentCategory from '../equipment/EquipmentCategory'
+import EquipmentSkills from '../equipment/EquipmentSkills'
+import Slots from '../equipment/Slots'
 
 export default class UserCharmList {
   // eslint-disable-next-line no-use-before-define
@@ -19,9 +19,14 @@ export default class UserCharmList {
     return this._instance || (this._instance = new this())
   }
 
-  public static getCharmName (skills: EquipmentSkills, slots: Slots, skillNames: SkillNameMap): string {
-    const skillStrings = Array.from(skills.entries())
-      .map(s => `${skillNames.get(s[0])}:${s[1]}`)
+  public static getCharmName (
+    skills: EquipmentSkills,
+    slots: Slots,
+    skillNames: SkillNameMap,
+  ): string {
+    const skillStrings = Array.from(skills.entries()).map(
+      (s) => `${skillNames.get(s[0])}:${s[1]}`,
+    )
     const slotString = slots !== 0 ? `${slots} Slots` : ''
 
     return [...skillStrings, slotString].join(' ').trim()
@@ -44,24 +49,26 @@ export default class UserCharmList {
 
   /** serializes charm list as csv */
   serialize (skillNames: SkillNameMap): string {
-    return this.list.map((charm) => {
-      const s = []
+    return this.list
+      .map((charm) => {
+        const s = []
 
-      const skillArray = Array.from(charm.skills.entries())
-      skillArray.forEach(([sId, sVal]) => {
-        s.push(`${skillNames.get(sId)},${sVal},`)
+        const skillArray = Array.from(charm.skills.entries())
+        skillArray.forEach(([sId, sVal]) => {
+          s.push(`${skillNames.get(sId)},${sVal},`)
+        })
+
+        const amountOfSkills = skillArray.length
+        // eslint-disable-next-line no-unused-vars
+        for (const _ in range(amountOfSkills, 2)) {
+          s.push(',,')
+        }
+
+        s.push(`${charm.slots}`)
+
+        return s.join('')
       })
-
-      const amountOfSkills = skillArray.length
-      // eslint-disable-next-line no-unused-vars
-      for (const _ in range(amountOfSkills, 2)) {
-        s.push(',,')
-      }
-
-      s.push(`${charm.slots}`)
-
-      return s.join('')
-    }).join('\n')
+      .join('\n')
   }
 
   /** populate charm list from csv */
@@ -72,15 +79,17 @@ export default class UserCharmList {
       const spl = charm.split(',')
 
       const slots = parseInt(spl[4])
-      const skills = [[0, 1], [2, 3]]
+      const skills = [
+        [0, 1],
+        [2, 3],
+      ]
         .filter(([_, j]) => !isNaN(parseInt(spl[j])))
         .map(([i, j]) => {
           const name = spl[i]
 
-          const id = Array.from(skillNames.entries())
-            .find(([_, n]) => {
-              return n === name
-            })![0]
+          const id = Array.from(skillNames.entries()).find(([_, n]) => {
+            return n === name
+          })![0]
 
           // build skill model
           const skill = {
@@ -91,9 +100,11 @@ export default class UserCharmList {
           return skill
         })
 
-      const skillMap: EquipmentSkills = new EquipmentSkills(skills.map((skill) => {
-        return [skill.id, skill.points]
-      }))
+      const skillMap: EquipmentSkills = new EquipmentSkills(
+        skills.map((skill) => {
+          return [skill.id, skill.points]
+        }),
+      )
       const newCharm: Charm = {
         name: UserCharmList.getCharmName(skillMap, slots as Slots, skillNames),
         category: EquipmentCategory.CHARM,

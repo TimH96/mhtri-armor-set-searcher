@@ -2,7 +2,7 @@ import SkillActivationMap from '../../data-provider/models/skills/SkillActivatio
 import SkillNameMap from '../../data-provider/models/skills/SkillNameMap'
 import Charm from '../../data-provider/models/equipment/Charm'
 import Skill from '../../data-provider/models/skills/Skill'
-import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
+import UserCharmList from '../../data-provider/models/user/UserCharmList'
 import { htmlToElement } from '../../helper/html.helper'
 import Slots from '../../data-provider/models/equipment/Slots'
 import EquipmentCategory from '../../data-provider/models/equipment/EquipmentCategory'
