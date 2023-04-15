@@ -23,6 +23,7 @@ const getExclusionElement = (x: EquipmentMin) => {
   remove.addEventListener('click', () => removeExlusion(x, root))
   remove.style.marginRight = '1em'
   remove.style.marginLeft = '1em'
+  remove.style.cursor = "pointer"
 
   root.appendChild(remove)
   root.appendChild(content)
@@ -48,6 +49,7 @@ const getPinPicker = (cat: EquipmentCategory, eq: EquipmentMin[]) => {
   remove.addEventListener('click', () => removePin(eq[0].category, content))
   remove.style.marginRight = '1em'
   remove.style.marginLeft = '1em'
+  remove.style.cursor = "pointer"
 
   root.appendChild(remove)
   root.appendChild(content)
