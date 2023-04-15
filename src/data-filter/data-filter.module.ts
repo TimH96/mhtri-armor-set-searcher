@@ -82,6 +82,7 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
         category: x.category,
         rarity: x.rarity,
         skills: new EquipmentSkills(),
+        isGeneric: true,
       }
       highestGenericSlotPiece.push(p)
       break
@@ -95,6 +96,7 @@ const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType,
       const renamed: ArmorPiece = {
         ...x!,
         name: 'Torso Up Piece',
+        isGeneric: true,
       }
       return renamed
     }) as ArmorPiece[]

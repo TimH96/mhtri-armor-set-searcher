@@ -17,10 +17,12 @@ const getFromStorage = () => {
 const getExclusionElement = (x: EquipmentMin) => {
   const root = document.createElement('div')
   root.style.textAlign = 'left'
+  root.setAttribute("data-name", x.name)
+  root.classList.add("eq-exclusion-ele")
 
   const content = htmlToElement(`<span>${x.name}</span>`)
   const remove = htmlToElement('<span>X</span>') as HTMLSpanElement
-  remove.addEventListener('click', () => removeExlusion(x, root))
+  remove.addEventListener('click', () => removeExlusion(x))
   remove.style.marginRight = '1em'
   remove.style.marginLeft = '1em'
   remove.style.cursor = "pointer"
@@ -46,7 +48,7 @@ const getPinPicker = (cat: EquipmentCategory, eq: EquipmentMin[]) => {
     addPin({ name: content.value, category: cat })
   })
   const remove = htmlToElement('<span>X</span>') as HTMLSpanElement
-  remove.addEventListener('click', () => removePin(eq[0].category, content))
+  remove.addEventListener('click', () => removePin(eq[0].category))
   remove.style.marginRight = '1em'
   remove.style.marginLeft = '1em'
   remove.style.cursor = "pointer"
@@ -69,27 +71,17 @@ const renderColumns = (armor: EquipmentMin[][]) => {
     const name = item[1] as string
     const eq = item[2] as EquipmentMin[]
 
-    const root = htmlToElement(
-      `<div class="eq-column" data-eq-column-type="${cat}"></div>`,
-    )
+    const root = htmlToElement(`<div class="eq-column" data-eq-column-type="${cat}"></div>`,)
 
     // pins
-    const pinHeader = htmlToElement(
-      `<div class="eq-column-item eq-column-header">${name} Pinned</div>`,
-    )
-    const pinContent = htmlToElement(
-      '<div class="eq-column-item eq-column-content eq-column-pin"></div>',
-    )
+    const pinHeader = htmlToElement(`<div class="eq-column-item eq-column-header">${name} Pinned</div>`,)
+    const pinContent = htmlToElement('<div class="eq-column-item eq-column-content eq-column-pin"></div>',)
     const pinElement = getPinPicker(cat, eq)
     pinContent.appendChild(pinElement)
 
     // exclusions
-    const exclusionHeader = htmlToElement(
-      `<div class="eq-column-item eq-column-header">${name} Excluded</div>`,
-    )
-    const exclusionContent = htmlToElement(
-      `<div id="eq-${cat}-exclusion" class="eq-column-item eq-column-content eq-column-exclusion"></div>`,
-    )
+    const exclusionHeader = htmlToElement(`<div class="eq-column-item eq-column-header">${name} Excluded</div>`,)
+    const exclusionContent = htmlToElement(`<div id="eq-${cat}-exclusion" class="eq-column-item eq-column-content eq-column-exclusion"></div>`,)
 
     root.appendChild(pinHeader)
     root.appendChild(pinContent)
@@ -99,21 +91,28 @@ const renderColumns = (armor: EquipmentMin[][]) => {
   }
 }
 
-const removeExlusion = (x: EquipmentMin, ele: HTMLElement) => {
-  UserEquipmentSettings.Instance.removeExclusion(x)
-  ele.remove()
-  saveToStorage()
-}
-
-const removePin = (cat: EquipmentCategory, ele: HTMLSelectElement) => {
-  UserEquipmentSettings.Instance.removePin(cat)
-  ele.selectedIndex = 0
-  saveToStorage()
-}
-
 const _addExclusion = (x: EquipmentMin) => {
   const parent = document.getElementById(`eq-${x.category}-exclusion`)
   parent!.appendChild(getExclusionElement(x))
+}
+
+export const removeExlusion = (x: EquipmentMin) => {
+  const ele = Array.from(document.getElementsByClassName("eq-exclusion-ele")).find((a) => {
+    const b = a as HTMLElement
+    return b.getAttribute("data-name") === x.name
+  }) as HTMLElement
+  if (!ele) return
+
+  ele.remove()
+  UserEquipmentSettings.Instance.removeExclusion(x)
+  saveToStorage()
+}
+
+export const removePin = (cat: EquipmentCategory) => {
+  const ele = document.getElementById(`eq-${cat}-pin-picker`) as HTMLSelectElement
+  UserEquipmentSettings.Instance.removePin(cat)
+  ele.selectedIndex = 0
+  saveToStorage()
 }
 
 export const addExclusion = (x: EquipmentMin) => {
@@ -147,7 +146,8 @@ export const renderEqSettings = (armor: EquipmentMin[][]) => {
       _addExclusion(x)
     }
   }
-  for (const x of UserEquipmentSettings.Instance.pins) {
+  UserEquipmentSettings.Instance.pins.forEach((x, i) => {
     if (x) addPin(x)
-  }
+    else removePin(i)
+  })
 }

@@ -72,7 +72,18 @@ export default class UserEquipmentSettings {
     this.evaluateActivation()
   }
 
-  hasExclusion (x:EquipmentMin): boolean {
+  /** returns true if pin is same as given element */
+  hasPin (x: EquipmentMin | undefined): boolean {
+    if (!x) return false
+    if (x.isGeneric) return false
+
+    const pin = this.pins[x.category]
+    if (!pin) return false
+    return pin.name === x.name
+  }
+
+  /** returns true if piece is already excluded */
+  hasExclusion (x: EquipmentMin): boolean {
     return !!this.exclusions[x.category].find(y => y.name === x.name)
   }
 

@@ -1,9 +1,11 @@
 import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticSkillData from '../../data-provider/models/skills/StaticSkillData'
+import UserEquipmentSettings from '../../data-provider/models/user/UserEquipmentSettings'
 import { htmlToElement } from '../../helper/html.helper'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 import SkillActivationMap from '../../data-provider/models/skills/SkillActivationMap'
+import { addExclusion, addPin, removeExlusion, removePin } from './eq-settings.component'
 
 export function * moreSkillsIterator (skillActivations: SkillActivationMap) {
   const rContainer = clearAndGetResultsContainer()
@@ -99,13 +101,65 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
     <div><span>${decoNameString}</span></div>
   `)
 
+  // build piece table
+  const pieceTable = htmlToElement('<table class="result-set-piece-table"></table>')
+  const pieceTableHeader = htmlToElement('<tr><th>Def</th><th>Piece</th><th>Pin</th><th>Excl</th></tr>')
+  pieceTable.appendChild(pieceTableHeader)
+  for (const piece of set.getPieces()) {
+    const pieceTableEle = document.createElement("tr")
+    const pieceTableDef = htmlToElement(`<td style="width: 20%;">${piece.defense.max}</td>`)
+    const pieceTableName = htmlToElement(`<td style="width: 50%;">${piece.name}</td>`)
+
+    const pieceTablePin = (piece.isGeneric
+      ? htmlToElement(`<td style="user-select: none; width: 15%;"></td>`)
+      : htmlToElement(`<td style="user-select: none; width: 15%; cursor: pointer;">✓</td>`)) as HTMLElement
+    const pieceTableExcl = (piece.isGeneric
+      ? htmlToElement(`<td style="user-select: none; width: 15%;"></td>`)
+      : htmlToElement(`<td style="user-select: none; width: 15%; cursor: pointer;">X</td>`)) as HTMLElement
+    if (UserEquipmentSettings.Instance.hasPin(piece)) pieceTablePin.classList.add("pin-highlighted")
+    if (UserEquipmentSettings.Instance.hasExclusion(piece)) pieceTableExcl.classList.add("excl-highlighted")
+
+    pieceTablePin.addEventListener("click", () => {
+      if (piece.isGeneric) return
+
+      if (UserEquipmentSettings.Instance.hasPin(piece)) {
+        removePin(piece.category)
+        pieceTablePin.classList.remove("pin-highlighted")
+      }
+      else {
+        addPin(piece)
+        pieceTablePin.classList.add("pin-highlighted")
+      }
+    })
+    pieceTableExcl.addEventListener("click", () => {
+      if (piece.isGeneric) return
+
+      if (UserEquipmentSettings.Instance.hasExclusion(piece)) {
+        removeExlusion(piece)
+        pieceTableExcl.classList.remove("excl-highlighted")
+      }
+      else {
+        addExclusion(piece)
+        pieceTableExcl.classList.add("excl-highlighted")
+      }
+    })
+
+    pieceTableEle.appendChild(pieceTableDef)
+    pieceTableEle.appendChild(pieceTableName)
+    pieceTableEle.appendChild(pieceTablePin)
+    pieceTableEle.appendChild(pieceTableExcl)
+    pieceTable.appendChild(pieceTableEle)
+  }
+
   // return final div
   const tr = htmlToElement('<tr class="result-set-details"></tr>')
   const td = htmlToElement('<td colspan="6""></td>')
   const d = htmlToElement('<div class="result-set-details-container"></div>')
-  d.appendChild(skillTable)
   td.appendChild(d)
   tr.appendChild(td)
+  d.appendChild(pieceTable)
+  d.appendChild(skillTable)
+  d.appendChild(document.createElement("div")) // dummy for easy grid
   d.appendChild(decoNameContainer)
   return tr
 }
@@ -217,8 +271,8 @@ export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, sear
   // build table and table header
   const table = htmlToElement('<table class="results-table" id="results-table"></table>')
   const header = htmlToElement('<tr><th>Head</th><th>Torso</th><th>Arms</th><th>Waist</th><th>Legs</th><th>Charm</th></tr>')
-  table.appendChild(header)
   resultContainer.appendChild(table)
+  table.appendChild(header)
 
   // build and append html elements for each armor set
   sets
