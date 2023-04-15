@@ -236,6 +236,29 @@ th {
   user-select: none;
 }
 
+/* eq-settings */
+
+#eq-container {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0.5em;
+}
+
+.eq-column {
+  border: var(--color-border) solid 1px;
+  border-radius: 6px;
+  justify-content: center;
+  text-align: center;
+}
+
+.eq-column-item {
+  padding: 1em;
+}
+
+.eq-column-header {
+  background-color: var(--color-highlight);
+}
+
 /* results */
 
 #search-results {

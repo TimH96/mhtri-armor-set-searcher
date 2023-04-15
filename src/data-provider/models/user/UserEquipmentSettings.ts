@@ -1,13 +1,13 @@
 import EquipmentCategory from '../equipment/EquipmentCategory'
-import Equipment from '../equipment/Equipment'
+import EquipmentMin from '../equipment/EquipmentMin'
 
 export default class UserEquipmentSettings {
   // eslint-disable-next-line no-use-before-define
   private static _instance: UserEquipmentSettings
 
-  private pins: (Equipment | undefined)[]
+  pins: (EquipmentMin | undefined)[]
 
-  private exclusions: Equipment[][]
+  exclusions: EquipmentMin[][]
 
   isActive: boolean
 
@@ -47,7 +47,7 @@ export default class UserEquipmentSettings {
   }
 
   /** pins given equipment to corresponding category */
-  addPin (x: Equipment): void {
+  addPin (x: EquipmentMin): void {
     this.pins[x.category] = x
     this.activate()
   }
@@ -59,17 +59,21 @@ export default class UserEquipmentSettings {
   }
 
   /** adds given equipment to exclusion list of corresponding category */
-  addExclusion (x: Equipment): void {
+  addExclusion (x: EquipmentMin): void {
     this.exclusions[x.category].push(x)
     this.activate()
   }
 
   /** removes equipment from exclusion list */
-  removeExclusion (x: Equipment): void {
+  removeExclusion (x: EquipmentMin): void {
     const arr = this.exclusions[x.category]
     const index = arr.findIndex((y) => y.name === x.name)
     this.exclusions[x.category].splice(index, 1)
     this.evaluateActivation()
+  }
+
+  hasExclusion (x:EquipmentMin): boolean {
+    return !!this.exclusions[x.category].find(y => y.name === x.name)
   }
 
   /** serializes settings as json */
@@ -80,9 +84,9 @@ export default class UserEquipmentSettings {
   /** populate settings from json */
   deserialize (raw: string): void {
     const parsed = JSON.parse(raw) as {
-      pins: (Equipment | undefined)[];
-      exclusions: Equipment[][];
-      
+      pins: (EquipmentMin | undefined)[];
+      exclusions: EquipmentMin[][];
+
     }
     this.pins = parsed.pins
     this.exclusions = parsed.exclusions
