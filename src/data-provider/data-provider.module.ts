@@ -20,6 +20,7 @@ const DUMMY_PIECE: ArmorPiece = {
   slots: 0,
   rarity: 0,
   skills: new EquipmentSkills(),
+  isGeneric: true,
 }
 
 /** fetch from data directory */

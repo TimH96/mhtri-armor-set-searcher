@@ -1,4 +1,4 @@
-import UserCharmList from '../../data-provider/models/equipment/UserCharmList'
+import UserCharmList from '../../data-provider/models/user/UserCharmList'
 import ArmorSet from '../../searcher/models/ArmorSet'
 import SearchConstraints from '../../searcher/models/SearchConstraints'
 import StaticEquipmentData from '../../data-provider/models/equipment/StaticEquipmentData'
@@ -8,6 +8,12 @@ import { getGlobalSettings } from './global-settings.component'
 import { getSkillActivations, resetSkillActivations } from './picker.component'
 import { moreSkillsIterator, renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
+import UserEquipmentSettings from '../../data-provider/models/user/UserEquipmentSettings'
+import EquipmentMin from '../../data-provider/models/equipment/EquipmentMin'
+
+const pinsOrExclusionsActive = (pins: (EquipmentMin | undefined)[], exclusions: EquipmentMin[][]): boolean => {
+    return pins.some(p => p !== undefined) || exclusions.some(eL => eL.length > 0)
+}
 
 const arrangeSearchData = () => {
   // build params
@@ -38,6 +44,8 @@ const arrangeSearchData = () => {
     decoRarity: globalSettings.decoRarity,
     limit: Math.min(Math.max(globalSettings.limit, 1), 1000),
     skillActivations: sanitizedSkillActivations,
+    pins: UserEquipmentSettings.Instance.pins,
+    exclusions: UserEquipmentSettings.Instance.exclusions,
   }
 
   return searchParams
@@ -61,7 +69,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   )
 
   // render results
-  renderResults(result, skillData, searchParams)
+  renderResults(result, skillData, searchParams, pinsOrExclusionsActive(searchParams.pins, searchParams.exclusions))
 }
 
 const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSkillData) => {
@@ -116,7 +124,7 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
     }
   }
 
-  renderMoreSkills(aquirableSkills)
+  renderMoreSkills(aquirableSkills, pinsOrExclusionsActive(searchParams.pins, searchParams.exclusions))
 }
 
 const resetLogic = () => {
