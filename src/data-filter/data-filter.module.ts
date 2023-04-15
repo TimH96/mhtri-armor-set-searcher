@@ -3,6 +3,7 @@ import ArmorPiece from '../data-provider/models/equipment/ArmorPiece'
 import ArmorType from '../data-provider/models/equipment/ArmorType'
 import Charm from '../data-provider/models/equipment/Charm'
 import EquipmentCategory from '../data-provider/models/equipment/EquipmentCategory'
+import EquipmentMin from '../data-provider/models/equipment/EquipmentMin'
 import EquipmentSkills from '../data-provider/models/equipment/EquipmentSkills'
 import Rarity from '../data-provider/models/equipment/Rarity'
 import SkilledItem from '../data-provider/models/equipment/SkilledItem'
@@ -11,6 +12,10 @@ import SkillActivation from '../data-provider/models/skills/SkillActivation'
 
 const filterType = (piece: ArmorPiece, type: ArmorType) => {
   return piece.type === ArmorType.ALL || piece.type === type
+}
+
+const filterExlusions = (piece: ArmorPiece, exclusionNames: string[]) => {
+  return !exclusionNames.includes(piece.name)
 }
 
 const filterRarity = (item: SkilledItem, rarity: Rarity) => {
@@ -63,10 +68,21 @@ const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
   return result
 }
 
-const applyArmorFilter = (pieces: ArmorPiece[], rarity: Rarity, type: ArmorType, category: EquipmentCategory, skills: SkillActivation[]) => {
+const applyArmorFilter = (
+  pieces: ArmorPiece[],
+  rarity: Rarity,
+  type: ArmorType,
+  category: EquipmentCategory,
+  pin: EquipmentMin | undefined,
+  exclusions: EquipmentMin[],
+  skills: SkillActivation[]
+) => {
+  if (pin) return [pieces.find(x => x.name === pin.name)!]
+
   const rarityFiltered = applyRarityFilter(pieces, rarity) as ArmorPiece[]
   const typeFiltered = rarityFiltered.filter(p => filterType(p, type))
-  const sorted = typeFiltered.sort((a, b) => b.defense.max - a.defense.max)
+  const exclusionFiltered = typeFiltered.filter(p => filterExlusions(p, exclusions.map(e => e.name)))
+  const sorted = exclusionFiltered.sort((a, b) => b.defense.max - a.defense.max)
 
   // find generic slot pieces with highest defense
   const highestGenericSlotPiece: ArmorPiece[] = []

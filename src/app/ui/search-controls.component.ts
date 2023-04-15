@@ -8,6 +8,7 @@ import { getGlobalSettings } from './global-settings.component'
 import { getSkillActivations, resetSkillActivations } from './picker.component'
 import { moreSkillsIterator, renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
+import UserEquipmentSettings from '../../data-provider/models/user/UserEquipmentSettings'
 
 const arrangeSearchData = () => {
   // build params
@@ -38,6 +39,8 @@ const arrangeSearchData = () => {
     decoRarity: globalSettings.decoRarity,
     limit: Math.min(Math.max(globalSettings.limit, 1), 1000),
     skillActivations: sanitizedSkillActivations,
+    pins: UserEquipmentSettings.Instance.pins,
+    exclusions: UserEquipmentSettings.Instance.exclusions,
   }
 
   return searchParams
