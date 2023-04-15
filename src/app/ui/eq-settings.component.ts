@@ -119,6 +119,7 @@ export const addExclusion = (x: EquipmentMin) => {
   if (UserEquipmentSettings.Instance.hasExclusion(x)) return
   UserEquipmentSettings.Instance.addExclusion(x)
   _addExclusion(x)
+  saveToStorage()
 }
 
 export const addPin = (x: EquipmentMin) => {
