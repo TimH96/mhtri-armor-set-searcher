@@ -281,7 +281,8 @@ var DUMMY_PIECE = {
   category: -1,
   slots: 0,
   rarity: 0,
-  skills: new EquipmentSkills_1.default()
+  skills: new EquipmentSkills_1.default(),
+  isGeneric: true
 };
 exports.DUMMY_PIECE = DUMMY_PIECE;
 /** fetch from data directory */
@@ -543,7 +544,7 @@ var EquipmentCategory;
   EquipmentCategory[EquipmentCategory["WEAPON"] = 6] = "WEAPON";
 })(EquipmentCategory || (EquipmentCategory = {}));
 exports.default = EquipmentCategory;
-},{}],"../../data-provider/models/equipment/UserCharmList.ts":[function(require,module,exports) {
+},{}],"../../data-provider/models/user/UserCharmList.ts":[function(require,module,exports) {
 "use strict";
 
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
@@ -569,8 +570,8 @@ Object.defineProperty(exports, "__esModule", {
   value: true
 });
 var range_helper_1 = require("../../../helper/range.helper");
-var EquipmentCategory_1 = __importDefault(require("./EquipmentCategory"));
-var EquipmentSkills_1 = __importDefault(require("./EquipmentSkills"));
+var EquipmentCategory_1 = __importDefault(require("../equipment/EquipmentCategory"));
+var EquipmentSkills_1 = __importDefault(require("../equipment/EquipmentSkills"));
 var UserCharmList = /*#__PURE__*/function () {
   function UserCharmList() {
     _classCallCheck(this, UserCharmList);
@@ -695,7 +696,7 @@ var UserCharmList = /*#__PURE__*/function () {
   return UserCharmList;
 }();
 exports.default = UserCharmList;
-},{"../../../helper/range.helper":"../../helper/range.helper.ts","./EquipmentCategory":"../../data-provider/models/equipment/EquipmentCategory.ts","./EquipmentSkills":"../../data-provider/models/equipment/EquipmentSkills.ts"}],"../../helper/html.helper.ts":[function(require,module,exports) {
+},{"../../../helper/range.helper":"../../helper/range.helper.ts","../equipment/EquipmentCategory":"../../data-provider/models/equipment/EquipmentCategory.ts","../equipment/EquipmentSkills":"../../data-provider/models/equipment/EquipmentSkills.ts"}],"../../helper/html.helper.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -725,7 +726,7 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var UserCharmList_1 = __importDefault(require("../../data-provider/models/equipment/UserCharmList"));
+var UserCharmList_1 = __importDefault(require("../../data-provider/models/user/UserCharmList"));
 var html_helper_1 = require("../../helper/html.helper");
 var EquipmentCategory_1 = __importDefault(require("../../data-provider/models/equipment/EquipmentCategory"));
 var range_helper_1 = require("../../helper/range.helper");
@@ -933,7 +934,279 @@ exports.renderCharmPicker = function (skillNames, skillActivation, skillCategori
     populateCharmsFromCSV(savedCharms, skillNames);
   }
 };
-},{"../../data-provider/models/equipment/UserCharmList":"../../data-provider/models/equipment/UserCharmList.ts","../../helper/html.helper":"../../helper/html.helper.ts","../../data-provider/models/equipment/EquipmentCategory":"../../data-provider/models/equipment/EquipmentCategory.ts","../../helper/range.helper":"../../helper/range.helper.ts","../../data-provider/models/equipment/EquipmentSkills":"../../data-provider/models/equipment/EquipmentSkills.ts"}],"../ui/navbar.component.ts":[function(require,module,exports) {
+},{"../../data-provider/models/user/UserCharmList":"../../data-provider/models/user/UserCharmList.ts","../../helper/html.helper":"../../helper/html.helper.ts","../../data-provider/models/equipment/EquipmentCategory":"../../data-provider/models/equipment/EquipmentCategory.ts","../../helper/range.helper":"../../helper/range.helper.ts","../../data-provider/models/equipment/EquipmentSkills":"../../data-provider/models/equipment/EquipmentSkills.ts"}],"../../data-provider/models/user/UserEquipmentSettings.ts":[function(require,module,exports) {
+"use strict";
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); Object.defineProperty(Constructor, "prototype", { writable: false }); return Constructor; }
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var EquipmentCategory_1 = __importDefault(require("../equipment/EquipmentCategory"));
+var UserEquipmentSettings = /*#__PURE__*/function () {
+  function UserEquipmentSettings() {
+    var _this = this;
+    _classCallCheck(this, UserEquipmentSettings);
+    this.pins = [];
+    this.exclusions = [];
+    var supportedCategoires = [EquipmentCategory_1.default.HEAD, EquipmentCategory_1.default.CHEST, EquipmentCategory_1.default.ARMS, EquipmentCategory_1.default.WAIST, EquipmentCategory_1.default.LEGS];
+    supportedCategoires.forEach(function (_) {
+      _this.pins.push(undefined);
+      _this.exclusions.push([]);
+    });
+    this.isActive = false;
+  }
+  _createClass(UserEquipmentSettings, [{
+    key: "addPin",
+    value: /** pins given equipment to corresponding category */
+    function addPin(x) {
+      this.pins[x.category] = x;
+    }
+    /** removes pin of category */
+  }, {
+    key: "removePin",
+    value: function removePin(cat) {
+      this.pins[cat] = undefined;
+    }
+    /** adds given equipment to exclusion list of corresponding category */
+  }, {
+    key: "addExclusion",
+    value: function addExclusion(x) {
+      this.exclusions[x.category].push(x);
+    }
+    /** removes equipment from exclusion list */
+  }, {
+    key: "removeExclusion",
+    value: function removeExclusion(x) {
+      var arr = this.exclusions[x.category];
+      var index = arr.findIndex(function (y) {
+        return y.name === x.name;
+      });
+      this.exclusions[x.category].splice(index, 1);
+    }
+    /** returns true if pin is same as given element */
+  }, {
+    key: "hasPin",
+    value: function hasPin(x) {
+      if (!x) return false;
+      if (x.isGeneric) return false;
+      var pin = this.pins[x.category];
+      if (!pin) return false;
+      return pin.name === x.name;
+    }
+    /** returns true if piece is already excluded */
+  }, {
+    key: "hasExclusion",
+    value: function hasExclusion(x) {
+      return !!this.exclusions[x.category].find(function (y) {
+        return y.name === x.name;
+      });
+    }
+    /** serializes settings as json */
+  }, {
+    key: "serialize",
+    value: function serialize() {
+      return JSON.stringify({
+        pins: this.pins,
+        exclusions: this.exclusions
+      });
+    }
+    /** populate settings from json */
+  }, {
+    key: "deserialize",
+    value: function deserialize(raw) {
+      var parsed = JSON.parse(raw);
+      this.pins = parsed.pins;
+      this.exclusions = parsed.exclusions;
+    }
+  }], [{
+    key: "Instance",
+    get: function get() {
+      return this._instance || (this._instance = new this());
+    }
+  }]);
+  return UserEquipmentSettings;
+}();
+exports.default = UserEquipmentSettings;
+},{"../equipment/EquipmentCategory":"../../data-provider/models/equipment/EquipmentCategory.ts"}],"../ui/eq-settings.component.ts":[function(require,module,exports) {
+"use strict";
+
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter); }
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+function _createForOfIteratorHelper(o, allowArrayLike) { var it = typeof Symbol !== "undefined" && o[Symbol.iterator] || o["@@iterator"]; if (!it) { if (Array.isArray(o) || (it = _unsupportedIterableToArray(o)) || allowArrayLike && o && typeof o.length === "number") { if (it) o = it; var i = 0; var F = function F() {}; return { s: F, n: function n() { if (i >= o.length) return { done: true }; return { done: false, value: o[i++] }; }, e: function e(_e) { throw _e; }, f: F }; } throw new TypeError("Invalid attempt to iterate non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); } var normalCompletion = true, didErr = false, err; return { s: function s() { it = it.call(o); }, n: function n() { var step = it.next(); normalCompletion = step.done; return step; }, e: function e(_e2) { didErr = true; err = _e2; }, f: function f() { try { if (!normalCompletion && it.return != null) it.return(); } finally { if (didErr) throw err; } } }; }
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var EquipmentCategory_1 = __importDefault(require("../../data-provider/models/equipment/EquipmentCategory"));
+var UserEquipmentSettings_1 = __importDefault(require("../../data-provider/models/user/UserEquipmentSettings"));
+var html_helper_1 = require("../../helper/html.helper");
+var saveToStorage = function saveToStorage() {
+  window.localStorage.setItem('eq-settings', UserEquipmentSettings_1.default.Instance.serialize());
+};
+var getFromStorage = function getFromStorage() {
+  return window.localStorage.getItem('eq-settings');
+};
+var getExclusionElement = function getExclusionElement(x) {
+  var root = document.createElement('div');
+  root.style.textAlign = 'left';
+  root.setAttribute("data-name", x.name);
+  root.classList.add("eq-exclusion-ele");
+  var content = html_helper_1.htmlToElement("<span>".concat(x.name, "</span>"));
+  var remove = html_helper_1.htmlToElement('<span>X</span>');
+  remove.addEventListener('click', function () {
+    return exports.removeExlusion(x);
+  });
+  remove.style.marginRight = '1em';
+  remove.style.marginLeft = '1em';
+  remove.style.cursor = "pointer";
+  root.appendChild(remove);
+  root.appendChild(content);
+  return root;
+};
+var getPinPicker = function getPinPicker(cat, eq) {
+  var _ref;
+  var root = document.createElement('div');
+  root.style.textAlign = 'left';
+  var content = document.createElement('select');
+  content.setAttribute('id', "eq-".concat(cat, "-pin-picker"));
+  content.style.width = '72%';
+  var _iterator = _createForOfIteratorHelper((_ref = [{
+      name: 'None',
+      category: cat
+    }]).concat.apply(_ref, _toConsumableArray(eq))),
+    _step;
+  try {
+    for (_iterator.s(); !(_step = _iterator.n()).done;) {
+      var x = _step.value;
+      content.appendChild(html_helper_1.htmlToElement("<option value=\"".concat(x.name, "\">").concat(x.name, "</option>")));
+    }
+  } catch (err) {
+    _iterator.e(err);
+  } finally {
+    _iterator.f();
+  }
+  content.addEventListener('change', function () {
+    exports.addPin({
+      name: content.value,
+      category: cat
+    });
+  });
+  var remove = html_helper_1.htmlToElement('<span>X</span>');
+  remove.addEventListener('click', function () {
+    return exports.removePin(eq[0].category);
+  });
+  remove.style.marginRight = '1em';
+  remove.style.marginLeft = '1em';
+  remove.style.cursor = "pointer";
+  root.appendChild(remove);
+  root.appendChild(content);
+  return root;
+};
+var renderColumns = function renderColumns(armor) {
+  var parent = document.getElementById('eq-container');
+  for (var _i = 0, _arr = [[EquipmentCategory_1.default.HEAD, 'Head', armor[0]], [EquipmentCategory_1.default.CHEST, 'Chest', armor[1]], [EquipmentCategory_1.default.ARMS, 'Arms', armor[2]], [EquipmentCategory_1.default.WAIST, 'Waist', armor[3]], [EquipmentCategory_1.default.LEGS, 'Legs', armor[4]]]; _i < _arr.length; _i++) {
+    var item = _arr[_i];
+    var cat = item[0];
+    var name = item[1];
+    var eq = item[2];
+    var root = html_helper_1.htmlToElement("<div class=\"eq-column\" data-eq-column-type=\"".concat(cat, "\"></div>"));
+    // pins
+    var pinHeader = html_helper_1.htmlToElement("<div class=\"eq-column-item eq-column-header\">".concat(name, " Pinned</div>"));
+    var pinContent = html_helper_1.htmlToElement('<div class="eq-column-item eq-column-content eq-column-pin"></div>');
+    var pinElement = getPinPicker(cat, eq);
+    pinContent.appendChild(pinElement);
+    // exclusions
+    var exclusionHeader = html_helper_1.htmlToElement("<div class=\"eq-column-item eq-column-header\">".concat(name, " Excluded</div>"));
+    var exclusionContent = html_helper_1.htmlToElement("<div id=\"eq-".concat(cat, "-exclusion\" class=\"eq-column-item eq-column-content eq-column-exclusion\"></div>"));
+    root.appendChild(pinHeader);
+    root.appendChild(pinContent);
+    root.appendChild(exclusionHeader);
+    root.appendChild(exclusionContent);
+    parent.appendChild(root);
+  }
+};
+var _addExclusion = function _addExclusion(x) {
+  var parent = document.getElementById("eq-".concat(x.category, "-exclusion"));
+  parent.appendChild(getExclusionElement(x));
+};
+exports.removeExlusion = function (x) {
+  var ele = Array.from(document.getElementsByClassName("eq-exclusion-ele")).find(function (a) {
+    var b = a;
+    return b.getAttribute("data-name") === x.name;
+  });
+  if (!ele) return;
+  ele.remove();
+  UserEquipmentSettings_1.default.Instance.removeExclusion(x);
+  saveToStorage();
+};
+exports.removePin = function (cat) {
+  var ele = document.getElementById("eq-".concat(cat, "-pin-picker"));
+  UserEquipmentSettings_1.default.Instance.removePin(cat);
+  ele.selectedIndex = 0;
+  saveToStorage();
+};
+exports.addExclusion = function (x) {
+  if (UserEquipmentSettings_1.default.Instance.hasExclusion(x)) return;
+  UserEquipmentSettings_1.default.Instance.addExclusion(x);
+  _addExclusion(x);
+};
+exports.addPin = function (x) {
+  if (x.name === 'None') {
+    UserEquipmentSettings_1.default.Instance.removePin(x.category);
+    return;
+  }
+  UserEquipmentSettings_1.default.Instance.addPin(x);
+  saveToStorage();
+  var select = document.getElementById("eq-".concat(x.category, "-pin-picker"));
+  select.value = x.name;
+};
+exports.renderEqSettings = function (armor) {
+  renderColumns(armor);
+  var raw = getFromStorage();
+  if (raw) UserEquipmentSettings_1.default.Instance.deserialize(raw);
+  var _iterator2 = _createForOfIteratorHelper(UserEquipmentSettings_1.default.Instance.exclusions),
+    _step2;
+  try {
+    for (_iterator2.s(); !(_step2 = _iterator2.n()).done;) {
+      var exclusionList = _step2.value;
+      var _iterator3 = _createForOfIteratorHelper(exclusionList),
+        _step3;
+      try {
+        for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+          var x = _step3.value;
+          _addExclusion(x);
+        }
+      } catch (err) {
+        _iterator3.e(err);
+      } finally {
+        _iterator3.f();
+      }
+    }
+  } catch (err) {
+    _iterator2.e(err);
+  } finally {
+    _iterator2.f();
+  }
+  UserEquipmentSettings_1.default.Instance.pins.forEach(function (x, i) {
+    if (x) exports.addPin(x);else exports.removePin(i);
+  });
+};
+},{"../../data-provider/models/equipment/EquipmentCategory":"../../data-provider/models/equipment/EquipmentCategory.ts","../../data-provider/models/user/UserEquipmentSettings":"../../data-provider/models/user/UserEquipmentSettings.ts","../../helper/html.helper":"../../helper/html.helper.ts"}],"../ui/navbar.component.ts":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -1339,6 +1612,9 @@ var filterType = function filterType(piece, type) {
   return piece.type === ArmorType_1.default.ALL || piece.type === type;
 };
 exports.filterType = filterType;
+var filterExlusions = function filterExlusions(piece, exclusionNames) {
+  return !exclusionNames.includes(piece.name);
+};
 var filterRarity = function filterRarity(item, rarity) {
   return item.rarity <= rarity;
 };
@@ -1395,13 +1671,21 @@ var applyCharmFilter = function applyCharmFilter(charms, skills) {
   return result;
 };
 exports.applyCharmFilter = applyCharmFilter;
-var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category, skills) {
+var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category, pin, exclusions, skills) {
   var _sorted$filter$concat, _sorted$filter;
+  if (pin) return [pieces.find(function (x) {
+    return x.name === pin.name;
+  })];
   var rarityFiltered = applyRarityFilter(pieces, rarity);
   var typeFiltered = rarityFiltered.filter(function (p) {
     return filterType(p, type);
   });
-  var sorted = typeFiltered.sort(function (a, b) {
+  var exclusionFiltered = typeFiltered.filter(function (p) {
+    return filterExlusions(p, exclusions.map(function (e) {
+      return e.name;
+    }));
+  });
+  var sorted = exclusionFiltered.sort(function (a, b) {
     return b.defense.max - a.defense.max;
   });
   // find generic slot pieces with highest defense
@@ -1420,7 +1704,8 @@ var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category,
         slots: slots,
         category: x.category,
         rarity: x.rarity,
-        skills: new EquipmentSkills_1.default()
+        skills: new EquipmentSkills_1.default(),
+        isGeneric: true
       };
       highestGenericSlotPiece.push(p);
       return "break";
@@ -1437,7 +1722,8 @@ var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category,
     return x !== undefined;
   }).map(function (x) {
     var renamed = Object.assign({}, x, {
-      name: 'Torso Up Piece'
+      name: 'Torso Up Piece',
+      isGeneric: true
     });
     return renamed;
   });
@@ -2213,7 +2499,7 @@ var findSets = function findSets(armorPieces, decorations, charms, constraints, 
 // #region entrypoint
 var search = function search(armorPieces, decorations, charms, constraints, skillData) {
   var a = armorPieces.map(function (piecesOfCategory, i) {
-    return data_filter_module_1.applyArmorFilter(piecesOfCategory, constraints.armorRarity, constraints.armorType, i, constraints.skillActivations);
+    return data_filter_module_1.applyArmorFilter(piecesOfCategory, constraints.armorRarity, constraints.armorType, i, constraints.pins[i], constraints.exclusions[i], constraints.skillActivations);
   });
   var c = data_filter_module_1.applyCharmFilter(charms, constraints.skillActivations);
   var d = data_filter_module_1.applyRarityFilter(decorations, constraints.decoRarity).filter(function (x) {
@@ -2259,10 +2545,17 @@ function _iterableToArrayLimit(arr, i) { var _i = arr == null ? null : typeof Sy
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return exports; }; var exports = {}, Op = Object.prototype, hasOwn = Op.hasOwnProperty, defineProperty = Object.defineProperty || function (obj, key, desc) { obj[key] = desc.value; }, $Symbol = "function" == typeof Symbol ? Symbol : {}, iteratorSymbol = $Symbol.iterator || "@@iterator", asyncIteratorSymbol = $Symbol.asyncIterator || "@@asyncIterator", toStringTagSymbol = $Symbol.toStringTag || "@@toStringTag"; function define(obj, key, value) { return Object.defineProperty(obj, key, { value: value, enumerable: !0, configurable: !0, writable: !0 }), obj[key]; } try { define({}, ""); } catch (err) { define = function define(obj, key, value) { return obj[key] = value; }; } function wrap(innerFn, outerFn, self, tryLocsList) { var protoGenerator = outerFn && outerFn.prototype instanceof Generator ? outerFn : Generator, generator = Object.create(protoGenerator.prototype), context = new Context(tryLocsList || []); return defineProperty(generator, "_invoke", { value: makeInvokeMethod(innerFn, self, context) }), generator; } function tryCatch(fn, obj, arg) { try { return { type: "normal", arg: fn.call(obj, arg) }; } catch (err) { return { type: "throw", arg: err }; } } exports.wrap = wrap; var ContinueSentinel = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var IteratorPrototype = {}; define(IteratorPrototype, iteratorSymbol, function () { return this; }); var getProto = Object.getPrototypeOf, NativeIteratorPrototype = getProto && getProto(getProto(values([]))); NativeIteratorPrototype && NativeIteratorPrototype !== Op && hasOwn.call(NativeIteratorPrototype, iteratorSymbol) && (IteratorPrototype = NativeIteratorPrototype); var Gp = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(IteratorPrototype); function defineIteratorMethods(prototype) { ["next", "throw", "return"].forEach(function (method) { define(prototype, method, function (arg) { return this._invoke(method, arg); }); }); } function AsyncIterator(generator, PromiseImpl) { function invoke(method, arg, resolve, reject) { var record = tryCatch(generator[method], generator, arg); if ("throw" !== record.type) { var result = record.arg, value = result.value; return value && "object" == _typeof(value) && hasOwn.call(value, "__await") ? PromiseImpl.resolve(value.__await).then(function (value) { invoke("next", value, resolve, reject); }, function (err) { invoke("throw", err, resolve, reject); }) : PromiseImpl.resolve(value).then(function (unwrapped) { result.value = unwrapped, resolve(result); }, function (error) { return invoke("throw", error, resolve, reject); }); } reject(record.arg); } var previousPromise; defineProperty(this, "_invoke", { value: function value(method, arg) { function callInvokeWithMethodAndArg() { return new PromiseImpl(function (resolve, reject) { invoke(method, arg, resolve, reject); }); } return previousPromise = previousPromise ? previousPromise.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(innerFn, self, context) { var state = "suspendedStart"; return function (method, arg) { if ("executing" === state) throw new Error("Generator is already running"); if ("completed" === state) { if ("throw" === method) throw arg; return doneResult(); } for (context.method = method, context.arg = arg;;) { var delegate = context.delegate; if (delegate) { var delegateResult = maybeInvokeDelegate(delegate, context); if (delegateResult) { if (delegateResult === ContinueSentinel) continue; return delegateResult; } } if ("next" === context.method) context.sent = context._sent = context.arg;else if ("throw" === context.method) { if ("suspendedStart" === state) throw state = "completed", context.arg; context.dispatchException(context.arg); } else "return" === context.method && context.abrupt("return", context.arg); state = "executing"; var record = tryCatch(innerFn, self, context); if ("normal" === record.type) { if (state = context.done ? "completed" : "suspendedYield", record.arg === ContinueSentinel) continue; return { value: record.arg, done: context.done }; } "throw" === record.type && (state = "completed", context.method = "throw", context.arg = record.arg); } }; } function maybeInvokeDelegate(delegate, context) { var method = delegate.iterator[context.method]; if (undefined === method) { if (context.delegate = null, "throw" === context.method) { if (delegate.iterator.return && (context.method = "return", context.arg = undefined, maybeInvokeDelegate(delegate, context), "throw" === context.method)) return ContinueSentinel; context.method = "throw", context.arg = new TypeError("The iterator does not provide a 'throw' method"); } return ContinueSentinel; } var record = tryCatch(method, delegate.iterator, context.arg); if ("throw" === record.type) return context.method = "throw", context.arg = record.arg, context.delegate = null, ContinueSentinel; var info = record.arg; return info ? info.done ? (context[delegate.resultName] = info.value, context.next = delegate.nextLoc, "return" !== context.method && (context.method = "next", context.arg = undefined), context.delegate = null, ContinueSentinel) : info : (context.method = "throw", context.arg = new TypeError("iterator result is not an object"), context.delegate = null, ContinueSentinel); } function pushTryEntry(locs) { var entry = { tryLoc: locs[0] }; 1 in locs && (entry.catchLoc = locs[1]), 2 in locs && (entry.finallyLoc = locs[2], entry.afterLoc = locs[3]), this.tryEntries.push(entry); } function resetTryEntry(entry) { var record = entry.completion || {}; record.type = "normal", delete record.arg, entry.completion = record; } function Context(tryLocsList) { this.tryEntries = [{ tryLoc: "root" }], tryLocsList.forEach(pushTryEntry, this), this.reset(!0); } function values(iterable) { if (iterable) { var iteratorMethod = iterable[iteratorSymbol]; if (iteratorMethod) return iteratorMethod.call(iterable); if ("function" == typeof iterable.next) return iterable; if (!isNaN(iterable.length)) { var i = -1, next = function next() { for (; ++i < iterable.length;) { if (hasOwn.call(iterable, i)) return next.value = iterable[i], next.done = !1, next; } return next.value = undefined, next.done = !0, next; }; return next.next = next; } } return { next: doneResult }; } function doneResult() { return { value: undefined, done: !0 }; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, defineProperty(Gp, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), defineProperty(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, toStringTagSymbol, "GeneratorFunction"), exports.isGeneratorFunction = function (genFun) { var ctor = "function" == typeof genFun && genFun.constructor; return !!ctor && (ctor === GeneratorFunction || "GeneratorFunction" === (ctor.displayName || ctor.name)); }, exports.mark = function (genFun) { return Object.setPrototypeOf ? Object.setPrototypeOf(genFun, GeneratorFunctionPrototype) : (genFun.__proto__ = GeneratorFunctionPrototype, define(genFun, toStringTagSymbol, "GeneratorFunction")), genFun.prototype = Object.create(Gp), genFun; }, exports.awrap = function (arg) { return { __await: arg }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, asyncIteratorSymbol, function () { return this; }), exports.AsyncIterator = AsyncIterator, exports.async = function (innerFn, outerFn, self, tryLocsList, PromiseImpl) { void 0 === PromiseImpl && (PromiseImpl = Promise); var iter = new AsyncIterator(wrap(innerFn, outerFn, self, tryLocsList), PromiseImpl); return exports.isGeneratorFunction(outerFn) ? iter : iter.next().then(function (result) { return result.done ? result.value : iter.next(); }); }, defineIteratorMethods(Gp), define(Gp, toStringTagSymbol, "Generator"), define(Gp, iteratorSymbol, function () { return this; }), define(Gp, "toString", function () { return "[object Generator]"; }), exports.keys = function (val) { var object = Object(val), keys = []; for (var key in object) { keys.push(key); } return keys.reverse(), function next() { for (; keys.length;) { var key = keys.pop(); if (key in object) return next.value = key, next.done = !1, next; } return next.done = !0, next; }; }, exports.values = values, Context.prototype = { constructor: Context, reset: function reset(skipTempReset) { if (this.prev = 0, this.next = 0, this.sent = this._sent = undefined, this.done = !1, this.delegate = null, this.method = "next", this.arg = undefined, this.tryEntries.forEach(resetTryEntry), !skipTempReset) for (var name in this) { "t" === name.charAt(0) && hasOwn.call(this, name) && !isNaN(+name.slice(1)) && (this[name] = undefined); } }, stop: function stop() { this.done = !0; var rootRecord = this.tryEntries[0].completion; if ("throw" === rootRecord.type) throw rootRecord.arg; return this.rval; }, dispatchException: function dispatchException(exception) { if (this.done) throw exception; var context = this; function handle(loc, caught) { return record.type = "throw", record.arg = exception, context.next = loc, caught && (context.method = "next", context.arg = undefined), !!caught; } for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i], record = entry.completion; if ("root" === entry.tryLoc) return handle("end"); if (entry.tryLoc <= this.prev) { var hasCatch = hasOwn.call(entry, "catchLoc"), hasFinally = hasOwn.call(entry, "finallyLoc"); if (hasCatch && hasFinally) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } else if (hasCatch) { if (this.prev < entry.catchLoc) return handle(entry.catchLoc, !0); } else { if (!hasFinally) throw new Error("try statement without catch or finally"); if (this.prev < entry.finallyLoc) return handle(entry.finallyLoc); } } } }, abrupt: function abrupt(type, arg) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc <= this.prev && hasOwn.call(entry, "finallyLoc") && this.prev < entry.finallyLoc) { var finallyEntry = entry; break; } } finallyEntry && ("break" === type || "continue" === type) && finallyEntry.tryLoc <= arg && arg <= finallyEntry.finallyLoc && (finallyEntry = null); var record = finallyEntry ? finallyEntry.completion : {}; return record.type = type, record.arg = arg, finallyEntry ? (this.method = "next", this.next = finallyEntry.finallyLoc, ContinueSentinel) : this.complete(record); }, complete: function complete(record, afterLoc) { if ("throw" === record.type) throw record.arg; return "break" === record.type || "continue" === record.type ? this.next = record.arg : "return" === record.type ? (this.rval = this.arg = record.arg, this.method = "return", this.next = "end") : "normal" === record.type && afterLoc && (this.next = afterLoc), ContinueSentinel; }, finish: function finish(finallyLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.finallyLoc === finallyLoc) return this.complete(entry.completion, entry.afterLoc), resetTryEntry(entry), ContinueSentinel; } }, catch: function _catch(tryLoc) { for (var i = this.tryEntries.length - 1; i >= 0; --i) { var entry = this.tryEntries[i]; if (entry.tryLoc === tryLoc) { var record = entry.completion; if ("throw" === record.type) { var thrown = record.arg; resetTryEntry(entry); } return thrown; } } throw new Error("illegal catch attempt"); }, delegateYield: function delegateYield(iterable, resultName, nextLoc) { return this.delegate = { iterator: values(iterable), resultName: resultName, nextLoc: nextLoc }, "next" === this.method && (this.arg = undefined), ContinueSentinel; } }, exports; }
 var _marked = /*#__PURE__*/_regeneratorRuntime().mark(moreSkillsIterator);
+var __importDefault = this && this.__importDefault || function (mod) {
+  return mod && mod.__esModule ? mod : {
+    "default": mod
+  };
+};
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+var UserEquipmentSettings_1 = __importDefault(require("../../data-provider/models/user/UserEquipmentSettings"));
 var html_helper_1 = require("../../helper/html.helper");
+var eq_settings_component_1 = require("./eq-settings.component");
 function moreSkillsIterator(skillActivations) {
   var rContainer, countDiv, totalActCount, i;
   return _regeneratorRuntime().wrap(function moreSkillsIterator$(_context) {
@@ -2307,6 +2600,7 @@ var onSetClick = function onSetClick(tbNode, viewGetter) {
   // render and append them otherwise
   tbNode.appendChild(viewGetter());
 };
+var PINS_OR_EXCL_ACTIVE_BANNER = html_helper_1.htmlToElement("\n  <div class=\"results-banner banner\">\n    You have some pins or exclusions active, which may be limiting results. You may find some results by removing those pins or exclusions.\n  <div>\n");
 var getExpandedView = function getExpandedView(set, skillData, searchParams) {
   // build header
   var header = html_helper_1.htmlToElement("\n    <tr>\n      <th>Skill</th>\n      <th style=\"width: 6%\">Weapon</th>\n      <th style=\"width: 6%\">Head</th>\n      <th style=\"width: 6%\">Chest</th>\n      <th style=\"width: 6%\">Arms</th>\n      <th style=\"width: 6%\">Waist</th>\n      <th style=\"width: 6%\">Legs</th>\n      <th style=\"width: 6%\">Charm</th>\n      <th style=\"width: 6%\">Deco</th>\n      <th style=\"width: 6%\">Total</th>\n      <th>Active</th>\n    </tr>\n  ");
@@ -2391,13 +2685,65 @@ var getExpandedView = function getExpandedView(set, skillData, searchParams) {
   });
   var decoNameString = decoNameList.join(', ');
   var decoNameContainer = html_helper_1.htmlToElement("\n    <div><span>".concat(decoNameString, "</span></div>\n  "));
-  // return final div
+  // build piece table
+  var pieceTable = html_helper_1.htmlToElement('<table class="result-set-piece-table"></table>');
+  var pieceTableHeader = html_helper_1.htmlToElement('<tr><th>Def</th><th>Piece</th><th>Pin</th><th>Excl</th></tr>');
+  pieceTable.appendChild(pieceTableHeader);
+  var _iterator3 = _createForOfIteratorHelper(set.getPieces()),
+    _step3;
+  try {
+    var _loop = function _loop() {
+      var piece = _step3.value;
+      var pieceTableEle = document.createElement("tr");
+      var pieceTableDef = html_helper_1.htmlToElement("<td style=\"width: 20%;\">".concat(piece.defense.max, "</td>"));
+      var pieceTableName = html_helper_1.htmlToElement("<td style=\"width: 50%;\">".concat(piece.name, "</td>"));
+      var pieceTablePin = piece.isGeneric ? html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%;\"></td>") : html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%; cursor: pointer;\">\u2713</td>");
+      var pieceTableExcl = piece.isGeneric ? html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%;\"></td>") : html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%; cursor: pointer;\">X</td>");
+      if (UserEquipmentSettings_1.default.Instance.hasPin(piece)) pieceTablePin.classList.add("pin-highlighted");
+      if (UserEquipmentSettings_1.default.Instance.hasExclusion(piece)) pieceTableExcl.classList.add("excl-highlighted");
+      pieceTablePin.addEventListener("click", function () {
+        if (piece.isGeneric) return;
+        if (UserEquipmentSettings_1.default.Instance.hasPin(piece)) {
+          eq_settings_component_1.removePin(piece.category);
+          pieceTablePin.classList.remove("pin-highlighted");
+        } else {
+          eq_settings_component_1.addPin(piece);
+          pieceTablePin.classList.add("pin-highlighted");
+        }
+      });
+      pieceTableExcl.addEventListener("click", function () {
+        if (piece.isGeneric) return;
+        if (UserEquipmentSettings_1.default.Instance.hasExclusion(piece)) {
+          eq_settings_component_1.removeExlusion(piece);
+          pieceTableExcl.classList.remove("excl-highlighted");
+        } else {
+          eq_settings_component_1.addExclusion(piece);
+          pieceTableExcl.classList.add("excl-highlighted");
+        }
+      });
+      pieceTableEle.appendChild(pieceTableDef);
+      pieceTableEle.appendChild(pieceTableName);
+      pieceTableEle.appendChild(pieceTablePin);
+      pieceTableEle.appendChild(pieceTableExcl);
+      pieceTable.appendChild(pieceTableEle);
+    };
+    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
+      _loop();
+    }
+    // return final div
+  } catch (err) {
+    _iterator3.e(err);
+  } finally {
+    _iterator3.f();
+  }
   var tr = html_helper_1.htmlToElement('<tr class="result-set-details"></tr>');
   var td = html_helper_1.htmlToElement('<td colspan="6""></td>');
   var d = html_helper_1.htmlToElement('<div class="result-set-details-container"></div>');
-  d.appendChild(skillTable);
   td.appendChild(d);
   tr.appendChild(td);
+  d.appendChild(pieceTable);
+  d.appendChild(skillTable);
+  d.appendChild(document.createElement("div")); // dummy for easy grid
   d.appendChild(decoNameContainer);
   return tr;
 };
@@ -2457,17 +2803,18 @@ var clearAndGetResultsContainer = function clearAndGetResultsContainer() {
   }
   return resultContainer;
 };
-exports.renderMoreSkills = function (activations) {
+exports.renderMoreSkills = function (activations, pinsOrExclActive) {
   var resultContainer = clearAndGetResultsContainer();
   if (activations.length === 0) {
     resultContainer.appendChild(html_helper_1.htmlToElement("\n      <div class=\"results-banner banner\">\n        Can't fit more skills\n      <div>\n    "));
+    if (pinsOrExclActive) resultContainer.appendChild(PINS_OR_EXCL_ACTIVE_BANNER);
     return;
   }
-  var _iterator3 = _createForOfIteratorHelper(activations),
-    _step3;
+  var _iterator4 = _createForOfIteratorHelper(activations),
+    _step4;
   try {
-    var _loop = function _loop() {
-      var act = _step3.value;
+    var _loop2 = function _loop2() {
+      var act = _step4.value;
       var d = html_helper_1.htmlToElement("<div class=\"results-more-skills-act\" data-id=\"".concat(act.id, "\"></div>"));
       d.appendChild(html_helper_1.htmlToElement("<span class=\"results-more-skills-act-content\">".concat(act.name, "</span>")));
       d.addEventListener('click', function () {
@@ -2475,16 +2822,16 @@ exports.renderMoreSkills = function (activations) {
       });
       resultContainer.appendChild(d);
     };
-    for (_iterator3.s(); !(_step3 = _iterator3.n()).done;) {
-      _loop();
+    for (_iterator4.s(); !(_step4 = _iterator4.n()).done;) {
+      _loop2();
     }
   } catch (err) {
-    _iterator3.e(err);
+    _iterator4.e(err);
   } finally {
-    _iterator3.f();
+    _iterator4.f();
   }
 };
-exports.renderResults = function (sets, skillData, searchParams) {
+exports.renderResults = function (sets, skillData, searchParams, pinsOrExclActive) {
   var resultContainer = clearAndGetResultsContainer();
   // add search param element
   resultContainer.appendChild(html_helper_1.htmlToElement("\n    <div class=\"results-title\">Results for ".concat(searchParams.skillActivations.map(function (x) {
@@ -2493,13 +2840,14 @@ exports.renderResults = function (sets, skillData, searchParams) {
   // return if no results
   if (sets.length === 0) {
     resultContainer.appendChild(html_helper_1.htmlToElement("\n      <div class=\"results-banner banner\">\n        No matching armor sets\n      <div>\n    "));
+    if (pinsOrExclActive) resultContainer.appendChild(PINS_OR_EXCL_ACTIVE_BANNER);
     return;
   }
   // build table and table header
   var table = html_helper_1.htmlToElement('<table class="results-table" id="results-table"></table>');
   var header = html_helper_1.htmlToElement('<tr><th>Head</th><th>Torso</th><th>Arms</th><th>Waist</th><th>Legs</th><th>Charm</th></tr>');
-  table.appendChild(header);
   resultContainer.appendChild(table);
+  table.appendChild(header);
   // build and append html elements for each armor set
   sets.sort(function (a, b) {
     return b.evaluation.defense.max - a.evaluation.defense.max;
@@ -2509,7 +2857,7 @@ exports.renderResults = function (sets, skillData, searchParams) {
     return table.appendChild(ele);
   });
 };
-},{"../../helper/html.helper":"../../helper/html.helper.ts"}],"../ui/search-controls.component.ts":[function(require,module,exports) {
+},{"../../data-provider/models/user/UserEquipmentSettings":"../../data-provider/models/user/UserEquipmentSettings.ts","../../helper/html.helper":"../../helper/html.helper.ts","./eq-settings.component":"../ui/eq-settings.component.ts"}],"../ui/search-controls.component.ts":[function(require,module,exports) {
 var define;
 "use strict";
 
@@ -2551,11 +2899,19 @@ var __importDefault = this && this.__importDefault || function (mod) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var UserCharmList_1 = __importDefault(require("../../data-provider/models/equipment/UserCharmList"));
+var UserCharmList_1 = __importDefault(require("../../data-provider/models/user/UserCharmList"));
 var searcher_module_1 = require("../../searcher/searcher.module");
 var global_settings_component_1 = require("./global-settings.component");
 var picker_component_1 = require("./picker.component");
 var search_results_component_1 = require("./search-results.component");
+var UserEquipmentSettings_1 = __importDefault(require("../../data-provider/models/user/UserEquipmentSettings"));
+var pinsOrExclusionsActive = function pinsOrExclusionsActive(pins, exclusions) {
+  return pins.some(function (p) {
+    return p !== undefined;
+  }) || exclusions.some(function (eL) {
+    return eL.length > 0;
+  });
+};
 var arrangeSearchData = function arrangeSearchData() {
   // build params
   var globalSettings = global_settings_component_1.getGlobalSettings();
@@ -2579,7 +2935,9 @@ var arrangeSearchData = function arrangeSearchData() {
     armorRarity: globalSettings.armorRarity,
     decoRarity: globalSettings.decoRarity,
     limit: Math.min(Math.max(globalSettings.limit, 1), 1000),
-    skillActivations: sanitizedSkillActivations
+    skillActivations: sanitizedSkillActivations,
+    pins: UserEquipmentSettings_1.default.Instance.pins,
+    exclusions: UserEquipmentSettings_1.default.Instance.exclusions
   };
   return searchParams;
 };
@@ -2592,7 +2950,7 @@ var searchLogic = function searchLogic(equData, skillData) {
   // search for sets
   var result = searcher_module_1.search(equData.armor, equData.decorations, UserCharmList_1.default.Instance.get(), searchParams, skillData);
   // render results
-  search_results_component_1.renderResults(result, skillData, searchParams);
+  search_results_component_1.renderResults(result, skillData, searchParams, pinsOrExclusionsActive(searchParams.pins, searchParams.exclusions));
 };
 var moreSkillsLogic = function moreSkillsLogic(equData, skillData) {
   return __awaiter(_this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
@@ -2716,7 +3074,7 @@ var moreSkillsLogic = function moreSkillsLogic(equData, skillData) {
             _iterator.f();
             return _context2.finish(41);
           case 44:
-            search_results_component_1.renderMoreSkills(aquirableSkills);
+            search_results_component_1.renderMoreSkills(aquirableSkills, pinsOrExclusionsActive(searchParams.pins, searchParams.exclusions));
           case 45:
           case "end":
             return _context2.stop();
@@ -2743,7 +3101,7 @@ exports.attachControlListeners = function (equData, skillData) {
     resetLogic();
   });
 };
-},{"../../data-provider/models/equipment/UserCharmList":"../../data-provider/models/equipment/UserCharmList.ts","../../searcher/searcher.module":"../../searcher/searcher.module.ts","./global-settings.component":"../ui/global-settings.component.ts","./picker.component":"../ui/picker.component.ts","./search-results.component":"../ui/search-results.component.ts"}],"index.ts":[function(require,module,exports) {
+},{"../../data-provider/models/user/UserCharmList":"../../data-provider/models/user/UserCharmList.ts","../../searcher/searcher.module":"../../searcher/searcher.module.ts","./global-settings.component":"../ui/global-settings.component.ts","./picker.component":"../ui/picker.component.ts","./search-results.component":"../ui/search-results.component.ts","../../data-provider/models/user/UserEquipmentSettings":"../../data-provider/models/user/UserEquipmentSettings.ts"}],"index.ts":[function(require,module,exports) {
 "use strict";
 
 function _typeof(obj) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (obj) { return typeof obj; } : function (obj) { return obj && "function" == typeof Symbol && obj.constructor === Symbol && obj !== Symbol.prototype ? "symbol" : typeof obj; }, _typeof(obj); }
@@ -2778,70 +3136,72 @@ Object.defineProperty(exports, "__esModule", {
 });
 var data_provider_module_1 = require("../../data-provider/data-provider.module");
 var charms_component_1 = require("../ui/charms.component");
+var eq_settings_component_1 = require("../ui/eq-settings.component");
 var navbar_component_1 = require("../ui/navbar.component");
 var picker_component_1 = require("../ui/picker.component");
 var search_controls_component_1 = require("../ui/search-controls.component");
 var main = function main() {
   return __awaiter(_this, void 0, void 0, /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var skillData, armor, decorations;
+    var armor, decorations, skillData;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) {
         switch (_context.prev = _context.next) {
           case 0:
             // initiate static components
             navbar_component_1.initiateNavbar();
-            // load skill data and render skill picker and charms with it
+            // load remaining data
             _context.next = 3;
-            return data_provider_module_1.getSkillNameMap();
+            return data_provider_module_1.getHead();
           case 3:
             _context.t0 = _context.sent;
             _context.next = 6;
-            return data_provider_module_1.getSkillActivationMap();
+            return data_provider_module_1.getChest();
           case 6:
             _context.t1 = _context.sent;
             _context.next = 9;
-            return data_provider_module_1.getSkillCategories();
+            return data_provider_module_1.getArms();
           case 9:
             _context.t2 = _context.sent;
+            _context.next = 12;
+            return data_provider_module_1.getWaist();
+          case 12:
+            _context.t3 = _context.sent;
+            _context.next = 15;
+            return data_provider_module_1.getLegs();
+          case 15:
+            _context.t4 = _context.sent;
+            armor = [_context.t0, _context.t1, _context.t2, _context.t3, _context.t4];
+            _context.next = 19;
+            return data_provider_module_1.getDecorations();
+          case 19:
+            decorations = _context.sent;
+            _context.next = 22;
+            return data_provider_module_1.getSkillNameMap();
+          case 22:
+            _context.t5 = _context.sent;
+            _context.next = 25;
+            return data_provider_module_1.getSkillActivationMap();
+          case 25:
+            _context.t6 = _context.sent;
+            _context.next = 28;
+            return data_provider_module_1.getSkillCategories();
+          case 28:
+            _context.t7 = _context.sent;
             skillData = {
-              skillName: _context.t0,
-              skillActivation: _context.t1,
-              skillCategories: _context.t2
+              skillName: _context.t5,
+              skillActivation: _context.t6,
+              skillCategories: _context.t7
             };
+            // render ui
             picker_component_1.renderSkillPicker(skillData.skillActivation, skillData.skillCategories);
             charms_component_1.renderCharmPicker(skillData.skillName, skillData.skillActivation, skillData.skillCategories);
-            // load remaining data
-            _context.next = 15;
-            return data_provider_module_1.getHead();
-          case 15:
-            _context.t3 = _context.sent;
-            _context.next = 18;
-            return data_provider_module_1.getChest();
-          case 18:
-            _context.t4 = _context.sent;
-            _context.next = 21;
-            return data_provider_module_1.getArms();
-          case 21:
-            _context.t5 = _context.sent;
-            _context.next = 24;
-            return data_provider_module_1.getWaist();
-          case 24:
-            _context.t6 = _context.sent;
-            _context.next = 27;
-            return data_provider_module_1.getLegs();
-          case 27:
-            _context.t7 = _context.sent;
-            armor = [_context.t3, _context.t4, _context.t5, _context.t6, _context.t7];
-            _context.next = 31;
-            return data_provider_module_1.getDecorations();
-          case 31:
-            decorations = _context.sent;
+            eq_settings_component_1.renderEqSettings(armor);
             // initialize search controls
             search_controls_component_1.attachControlListeners({
               armor: armor,
               decorations: decorations
             }, skillData);
-          case 33:
+          case 34:
           case "end":
             return _context.stop();
         }
@@ -2850,7 +3210,7 @@ var main = function main() {
   }));
 };
 main();
-},{"../../data-provider/data-provider.module":"../../data-provider/data-provider.module.ts","../ui/charms.component":"../ui/charms.component.ts","../ui/navbar.component":"../ui/navbar.component.ts","../ui/picker.component":"../ui/picker.component.ts","../ui/search-controls.component":"../ui/search-controls.component.ts"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
+},{"../../data-provider/data-provider.module":"../../data-provider/data-provider.module.ts","../ui/charms.component":"../ui/charms.component.ts","../ui/eq-settings.component":"../ui/eq-settings.component.ts","../ui/navbar.component":"../ui/navbar.component.ts","../ui/picker.component":"../ui/picker.component.ts","../ui/search-controls.component":"../ui/search-controls.component.ts"}],"../../../node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
 var OldModule = module.bundle.Module;
@@ -2875,7 +3235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "64517" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51932" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
