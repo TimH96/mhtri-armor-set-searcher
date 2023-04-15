@@ -353,6 +353,10 @@ th {
   cursor: pointer;
 }
 
+.result-set-piece-table {
+  height: fit-content;
+}
+
 .result-set-piece-table th {
   font-size: 0.8em;
 }
