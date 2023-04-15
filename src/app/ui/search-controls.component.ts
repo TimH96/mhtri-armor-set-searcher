@@ -9,6 +9,11 @@ import { getSkillActivations, resetSkillActivations } from './picker.component'
 import { moreSkillsIterator, renderMoreSkills, renderResults } from './search-results.component'
 import SkillActivation from '../../data-provider/models/skills/SkillActivation'
 import UserEquipmentSettings from '../../data-provider/models/user/UserEquipmentSettings'
+import EquipmentMin from '../../data-provider/models/equipment/EquipmentMin'
+
+const pinsOrExclusionsActive = (pins: (EquipmentMin | undefined)[], exclusions: EquipmentMin[][]): boolean => {
+    return pins.some(p => p !== undefined) || exclusions.some(eL => eL.length > 0)
+}
 
 const arrangeSearchData = () => {
   // build params
@@ -64,7 +69,7 @@ const searchLogic = (equData: StaticEquipmentData, skillData: StaticSkillData) =
   )
 
   // render results
-  renderResults(result, skillData, searchParams)
+  renderResults(result, skillData, searchParams, pinsOrExclusionsActive(searchParams.pins, searchParams.exclusions))
 }
 
 const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSkillData) => {
@@ -119,7 +124,7 @@ const moreSkillsLogic = async (equData: StaticEquipmentData, skillData: StaticSk
     }
   }
 
-  renderMoreSkills(aquirableSkills)
+  renderMoreSkills(aquirableSkills, pinsOrExclusionsActive(searchParams.pins, searchParams.exclusions))
 }
 
 const resetLogic = () => {

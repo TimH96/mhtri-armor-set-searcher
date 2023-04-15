@@ -35,6 +35,12 @@ const onSetClick = (tbNode: Node, viewGetter: () => Node) => {
   tbNode.appendChild(viewGetter())
 }
 
+const PINS_OR_EXCL_ACTIVE_BANNER = htmlToElement(`
+  <div class="results-banner banner">
+    You have some pins or exclusions active, which may be limiting results. You may find some results by removing those pins or exclusions.
+  <div>
+`)
+
 const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams: SearchConstraints) => {
   // build header
   const header = htmlToElement(`
@@ -230,7 +236,7 @@ const clearAndGetResultsContainer = () => {
   return resultContainer
 }
 
-export const renderMoreSkills = (activations: SkillActivation[]) => {
+export const renderMoreSkills = (activations: SkillActivation[], pinsOrExclActive: boolean) => {
   const resultContainer = clearAndGetResultsContainer()
 
   if (activations.length === 0) {
@@ -239,6 +245,9 @@ export const renderMoreSkills = (activations: SkillActivation[]) => {
         Can't fit more skills
       <div>
     `))
+
+    if (pinsOrExclActive) resultContainer.appendChild(PINS_OR_EXCL_ACTIVE_BANNER)
+
     return
   }
 
@@ -250,7 +259,7 @@ export const renderMoreSkills = (activations: SkillActivation[]) => {
   }
 }
 
-export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, searchParams: SearchConstraints) => {
+export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, searchParams: SearchConstraints, pinsOrExclActive: boolean) => {
   const resultContainer = clearAndGetResultsContainer()
 
   // add search param element
@@ -265,6 +274,9 @@ export const renderResults = (sets: ArmorSet[], skillData: StaticSkillData, sear
         No matching armor sets
       <div>
     `))
+
+    if (pinsOrExclActive) resultContainer.appendChild(PINS_OR_EXCL_ACTIVE_BANNER)
+
     return
   }
 

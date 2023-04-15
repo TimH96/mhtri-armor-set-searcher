@@ -35,33 +35,19 @@ export default class UserEquipmentSettings {
     return this._instance || (this._instance = new this())
   }
 
-  private activate () {
-    this.isActive = true
-  }
-
-  private evaluateActivation () {
-    this.isActive = !(
-      this.pins.every((x) => x === undefined) &&
-      this.exclusions.every((x) => x.length === 0)
-    )
-  }
-
   /** pins given equipment to corresponding category */
   addPin (x: EquipmentMin): void {
     this.pins[x.category] = x
-    this.activate()
   }
 
   /** removes pin of category */
   removePin (cat: EquipmentCategory): void {
     this.pins[cat] = undefined
-    this.evaluateActivation()
   }
 
   /** adds given equipment to exclusion list of corresponding category */
   addExclusion (x: EquipmentMin): void {
     this.exclusions[x.category].push(x)
-    this.activate()
   }
 
   /** removes equipment from exclusion list */
@@ -69,7 +55,6 @@ export default class UserEquipmentSettings {
     const arr = this.exclusions[x.category]
     const index = arr.findIndex((y) => y.name === x.name)
     this.exclusions[x.category].splice(index, 1)
-    this.evaluateActivation()
   }
 
   /** returns true if pin is same as given element */
@@ -101,6 +86,5 @@ export default class UserEquipmentSettings {
     }
     this.pins = parsed.pins
     this.exclusions = parsed.exclusions
-    this.evaluateActivation()
   }
 }
