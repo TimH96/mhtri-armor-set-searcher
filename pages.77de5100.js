@@ -1164,6 +1164,7 @@ exports.addExclusion = function (x) {
   if (UserEquipmentSettings_1.default.Instance.hasExclusion(x)) return;
   UserEquipmentSettings_1.default.Instance.addExclusion(x);
   _addExclusion(x);
+  saveToStorage();
 };
 exports.addPin = function (x) {
   if (x.name === 'None') {
@@ -3235,7 +3236,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51932" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56565" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
