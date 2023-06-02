@@ -35,8 +35,8 @@ const applyRarityFilter = (items: SkilledItem[], rarity: Rarity) => {
 }
 
 const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
-  // find highest generic slot charms
-  const highestGenericSlotCharm: Charm[] = []
+  // find generic slot charms
+  const genericSlotCharm: Charm[] = []
   for (const slots of [3, 2, 1]) {
     const x = charms.find(c => c.slots === slots)
     if (x) {
@@ -47,15 +47,14 @@ const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
         rarity: 0,
         skills: new EquipmentSkills(),
       }
-      highestGenericSlotCharm.push(newC)
-      break
+      genericSlotCharm.push(newC)
     }
   }
 
   // build list of charms with wanted skills or with slots
   const result = charms
     .filter(x => filterHasSkill(x, skills))
-    .concat(...highestGenericSlotCharm)
+    .concat(...genericSlotCharm)
 
   // return list with dummy charm if there are no pieces
   if (result.length === 0) {
