@@ -1636,8 +1636,8 @@ var applyRarityFilter = function applyRarityFilter(items, rarity) {
 exports.applyRarityFilter = applyRarityFilter;
 var applyCharmFilter = function applyCharmFilter(charms, skills) {
   var _charms$filter;
-  // find highest generic slot charms
-  var highestGenericSlotCharm = [];
+  // find generic slot charms
+  var genericSlotCharm = [];
   var _loop = function _loop() {
     var slots = _arr[_i];
     var x = charms.find(function (c) {
@@ -1651,18 +1651,16 @@ var applyCharmFilter = function applyCharmFilter(charms, skills) {
         rarity: 0,
         skills: new EquipmentSkills_1.default()
       };
-      highestGenericSlotCharm.push(newC);
-      return "break";
+      genericSlotCharm.push(newC);
     }
   };
   for (var _i = 0, _arr = [3, 2, 1]; _i < _arr.length; _i++) {
-    var _ret = _loop();
-    if (_ret === "break") break;
+    _loop();
   }
   // build list of charms with wanted skills or with slots
   var result = (_charms$filter = charms.filter(function (x) {
     return filterHasSkill(x, skills);
-  })).concat.apply(_charms$filter, highestGenericSlotCharm);
+  })).concat.apply(_charms$filter, genericSlotCharm);
   // return list with dummy charm if there are no pieces
   if (result.length === 0) {
     return [Object.assign({}, data_provider_module_1.DUMMY_PIECE, {
@@ -1713,8 +1711,8 @@ var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category,
     }
   };
   for (var _i2 = 0, _arr2 = [3, 2, 1]; _i2 < _arr2.length; _i2++) {
-    var _ret2 = _loop2();
-    if (_ret2 === "break") break;
+    var _ret = _loop2();
+    if (_ret === "break") break;
   }
   // find piece with torso up with highest defense
   var torsoUpPieces = [sorted.find(function (p) {
@@ -3236,7 +3234,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53221" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61317" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
