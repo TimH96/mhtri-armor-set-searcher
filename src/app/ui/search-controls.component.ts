@@ -12,7 +12,7 @@ import UserEquipmentSettings from '../../data-provider/models/user/UserEquipment
 import EquipmentMin from '../../data-provider/models/equipment/EquipmentMin'
 
 const pinsOrExclusionsActive = (pins: (EquipmentMin | undefined)[], exclusions: EquipmentMin[][]): boolean => {
-    return pins.some(p => p !== undefined) || exclusions.some(eL => eL.length > 0)
+  return pins.some(p => p !== undefined) || exclusions.some(eL => eL.length > 0)
 }
 
 const arrangeSearchData = () => {
