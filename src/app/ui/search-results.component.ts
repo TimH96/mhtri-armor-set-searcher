@@ -112,41 +112,35 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
   const pieceTableHeader = htmlToElement('<tr><th>Def</th><th>Piece</th><th>Pin</th><th>Excl</th></tr>')
   pieceTable.appendChild(pieceTableHeader)
   for (const piece of set.getPieces()) {
-    const pieceTableEle = document.createElement("tr")
+    const pieceTableEle = document.createElement('tr')
     const pieceTableDef = htmlToElement(`<td style="width: 20%;">${piece.defense.max}</td>`)
     const pieceTableName = htmlToElement(`<td style="width: 50%;">${piece.name}</td>`)
 
     const pieceTablePin = (piece.isGeneric
-      ? htmlToElement(`<td style="user-select: none; width: 15%;"></td>`)
-      : htmlToElement(`<td style="user-select: none; width: 15%; cursor: pointer;">✓</td>`)) as HTMLElement
-    const pieceTableExcl = (piece.isGeneric
-      ? htmlToElement(`<td style="user-select: none; width: 15%;"></td>`)
-      : htmlToElement(`<td style="user-select: none; width: 15%; cursor: pointer;">X</td>`)) as HTMLElement
-    if (UserEquipmentSettings.Instance.hasPin(piece)) pieceTablePin.classList.add("pin-highlighted")
-    if (UserEquipmentSettings.Instance.hasExclusion(piece)) pieceTableExcl.classList.add("excl-highlighted")
+      ? htmlToElement('<td style="user-select: none; width: 15%;"></td>')
+      : htmlToElement('<td style="user-select: none; width: 15%; cursor: pointer;">✓</td>')) as HTMLElement
+    const pieceTableExcl = htmlToElement('<td style="user-select: none; width: 15%; cursor: pointer;">X</td>') as HTMLElement
+    if (UserEquipmentSettings.Instance.hasPin(piece)) pieceTablePin.classList.add('pin-highlighted')
+    if (UserEquipmentSettings.Instance.hasExclusion(piece)) pieceTableExcl.classList.add('excl-highlighted')
 
-    pieceTablePin.addEventListener("click", () => {
+    pieceTablePin.addEventListener('click', () => {
       if (piece.isGeneric) return
 
       if (UserEquipmentSettings.Instance.hasPin(piece)) {
         removePin(piece.category)
-        pieceTablePin.classList.remove("pin-highlighted")
-      }
-      else {
+        pieceTablePin.classList.remove('pin-highlighted')
+      } else {
         addPin(piece)
-        pieceTablePin.classList.add("pin-highlighted")
+        pieceTablePin.classList.add('pin-highlighted')
       }
     })
-    pieceTableExcl.addEventListener("click", () => {
-      if (piece.isGeneric) return
-
+    pieceTableExcl.addEventListener('click', () => {
       if (UserEquipmentSettings.Instance.hasExclusion(piece)) {
         removeExlusion(piece)
-        pieceTableExcl.classList.remove("excl-highlighted")
-      }
-      else {
+        pieceTableExcl.classList.remove('excl-highlighted')
+      } else {
         addExclusion(piece)
-        pieceTableExcl.classList.add("excl-highlighted")
+        pieceTableExcl.classList.add('excl-highlighted')
       }
     })
 
@@ -165,7 +159,7 @@ const getExpandedView = (set: ArmorSet, skillData: StaticSkillData, searchParams
   tr.appendChild(td)
   d.appendChild(pieceTable)
   d.appendChild(skillTable)
-  d.appendChild(document.createElement("div")) // dummy for easy grid
+  d.appendChild(document.createElement('div')) // dummy for easy grid
   d.appendChild(decoNameContainer)
   return tr
 }

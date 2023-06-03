@@ -14,7 +14,7 @@ const filterType = (piece: ArmorPiece, type: ArmorType) => {
   return piece.type === ArmorType.ALL || piece.type === type
 }
 
-const filterExlusions = (piece: ArmorPiece, exclusionNames: string[]) => {
+const filterExclusions = (piece: ArmorPiece, exclusionNames: string[]) => {
   return !exclusionNames.includes(piece.name)
 }
 
@@ -36,7 +36,7 @@ const applyRarityFilter = (items: SkilledItem[], rarity: Rarity) => {
 
 const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
   // find generic slot charms
-  const genericSlotCharm: Charm[] = []
+  const genericSlotCharms: Charm[] = []
   for (const slots of [3, 2, 1]) {
     const x = charms.find(c => c.slots === slots)
     if (x) {
@@ -47,14 +47,14 @@ const applyCharmFilter = (charms: Charm[], skills: SkillActivation[]) => {
         rarity: 0,
         skills: new EquipmentSkills(),
       }
-      genericSlotCharm.push(newC)
+      genericSlotCharms.push(newC)
     }
   }
 
   // build list of charms with wanted skills or with slots
   const result = charms
     .filter(x => filterHasSkill(x, skills))
-    .concat(...genericSlotCharm)
+    .concat(...genericSlotCharms)
 
   // return list with dummy charm if there are no pieces
   if (result.length === 0) {
@@ -74,17 +74,19 @@ const applyArmorFilter = (
   category: EquipmentCategory,
   pin: EquipmentMin | undefined,
   exclusions: EquipmentMin[],
-  skills: SkillActivation[]
+  skills: SkillActivation[],
 ) => {
   if (pin) return [pieces.find(x => x.name === pin.name)!]
 
+  const excludedNames = exclusions.map(e => e.name)
+
   const rarityFiltered = applyRarityFilter(pieces, rarity) as ArmorPiece[]
   const typeFiltered = rarityFiltered.filter(p => filterType(p, type))
-  const exclusionFiltered = typeFiltered.filter(p => filterExlusions(p, exclusions.map(e => e.name)))
+  const exclusionFiltered = typeFiltered.filter(p => filterExclusions(p, excludedNames))
   const sorted = exclusionFiltered.sort((a, b) => b.defense.max - a.defense.max)
 
   // find generic slot pieces with highest defense
-  const highestGenericSlotPiece: ArmorPiece[] = []
+  const genericSlotPieces: ArmorPiece[] = []
   for (const slots of [3, 2, 1]) {
     const x = sorted.find(p => p.slots === slots)
     if (x) {
@@ -99,8 +101,7 @@ const applyArmorFilter = (
         skills: new EquipmentSkills(),
         isGeneric: true,
       }
-      highestGenericSlotPiece.push(p)
-      break
+      if (filterExclusions(p, excludedNames)) genericSlotPieces.push(p)
     }
   }
 
@@ -114,12 +115,13 @@ const applyArmorFilter = (
         isGeneric: true,
       }
       return renamed
-    }) as ArmorPiece[]
+    })
+    .filter(x => filterExclusions(x, excludedNames)) as ArmorPiece[]
 
   // build list of pieces with wanted skills, with slots, or with torso up
   const result = sorted
     .filter(x => filterHasSkill(x, skills))
-    .concat(...highestGenericSlotPiece)
+    .concat(...genericSlotPieces)
     .concat(...torsoUpPieces)
 
   // return list with dummy element if there are no pieces
