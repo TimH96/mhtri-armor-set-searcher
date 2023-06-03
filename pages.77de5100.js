@@ -1064,8 +1064,8 @@ var getFromStorage = function getFromStorage() {
 var getExclusionElement = function getExclusionElement(x) {
   var root = document.createElement('div');
   root.style.textAlign = 'left';
-  root.setAttribute("data-name", x.name);
-  root.classList.add("eq-exclusion-ele");
+  root.setAttribute('data-name', x.name);
+  root.classList.add('eq-exclusion-ele');
   var content = html_helper_1.htmlToElement("<span>".concat(x.name, "</span>"));
   var remove = html_helper_1.htmlToElement('<span>X</span>');
   remove.addEventListener('click', function () {
@@ -1073,7 +1073,7 @@ var getExclusionElement = function getExclusionElement(x) {
   });
   remove.style.marginRight = '1em';
   remove.style.marginLeft = '1em';
-  remove.style.cursor = "pointer";
+  remove.style.cursor = 'pointer';
   root.appendChild(remove);
   root.appendChild(content);
   return root;
@@ -1112,7 +1112,7 @@ var getPinPicker = function getPinPicker(cat, eq) {
   });
   remove.style.marginRight = '1em';
   remove.style.marginLeft = '1em';
-  remove.style.cursor = "pointer";
+  remove.style.cursor = 'pointer';
   root.appendChild(remove);
   root.appendChild(content);
   return root;
@@ -1145,9 +1145,9 @@ var _addExclusion = function _addExclusion(x) {
   parent.appendChild(getExclusionElement(x));
 };
 exports.removeExlusion = function (x) {
-  var ele = Array.from(document.getElementsByClassName("eq-exclusion-ele")).find(function (a) {
+  var ele = Array.from(document.getElementsByClassName('eq-exclusion-ele')).find(function (a) {
     var b = a;
-    return b.getAttribute("data-name") === x.name;
+    return b.getAttribute('data-name') === x.name;
   });
   if (!ele) return;
   ele.remove();
@@ -1169,6 +1169,7 @@ exports.addExclusion = function (x) {
 exports.addPin = function (x) {
   if (x.name === 'None') {
     UserEquipmentSettings_1.default.Instance.removePin(x.category);
+    saveToStorage();
     return;
   }
   UserEquipmentSettings_1.default.Instance.addPin(x);
@@ -1613,7 +1614,7 @@ var filterType = function filterType(piece, type) {
   return piece.type === ArmorType_1.default.ALL || piece.type === type;
 };
 exports.filterType = filterType;
-var filterExlusions = function filterExlusions(piece, exclusionNames) {
+var filterExclusions = function filterExclusions(piece, exclusionNames) {
   return !exclusionNames.includes(piece.name);
 };
 var filterRarity = function filterRarity(item, rarity) {
@@ -1637,7 +1638,7 @@ exports.applyRarityFilter = applyRarityFilter;
 var applyCharmFilter = function applyCharmFilter(charms, skills) {
   var _charms$filter;
   // find generic slot charms
-  var genericSlotCharm = [];
+  var genericSlotCharms = [];
   var _loop = function _loop() {
     var slots = _arr[_i];
     var x = charms.find(function (c) {
@@ -1651,7 +1652,7 @@ var applyCharmFilter = function applyCharmFilter(charms, skills) {
         rarity: 0,
         skills: new EquipmentSkills_1.default()
       };
-      genericSlotCharm.push(newC);
+      genericSlotCharms.push(newC);
     }
   };
   for (var _i = 0, _arr = [3, 2, 1]; _i < _arr.length; _i++) {
@@ -1660,7 +1661,7 @@ var applyCharmFilter = function applyCharmFilter(charms, skills) {
   // build list of charms with wanted skills or with slots
   var result = (_charms$filter = charms.filter(function (x) {
     return filterHasSkill(x, skills);
-  })).concat.apply(_charms$filter, genericSlotCharm);
+  })).concat.apply(_charms$filter, genericSlotCharms);
   // return list with dummy charm if there are no pieces
   if (result.length === 0) {
     return [Object.assign({}, data_provider_module_1.DUMMY_PIECE, {
@@ -1675,20 +1676,21 @@ var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category,
   if (pin) return [pieces.find(function (x) {
     return x.name === pin.name;
   })];
+  var excludedNames = exclusions.map(function (e) {
+    return e.name;
+  });
   var rarityFiltered = applyRarityFilter(pieces, rarity);
   var typeFiltered = rarityFiltered.filter(function (p) {
     return filterType(p, type);
   });
   var exclusionFiltered = typeFiltered.filter(function (p) {
-    return filterExlusions(p, exclusions.map(function (e) {
-      return e.name;
-    }));
+    return filterExclusions(p, excludedNames);
   });
   var sorted = exclusionFiltered.sort(function (a, b) {
     return b.defense.max - a.defense.max;
   });
   // find generic slot pieces with highest defense
-  var highestGenericSlotPiece = [];
+  var genericSlotPieces = [];
   var _loop2 = function _loop2() {
     var slots = _arr2[_i2];
     var x = sorted.find(function (p) {
@@ -1706,13 +1708,11 @@ var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category,
         skills: new EquipmentSkills_1.default(),
         isGeneric: true
       };
-      highestGenericSlotPiece.push(p);
-      return "break";
+      if (filterExclusions(p, excludedNames)) genericSlotPieces.push(p);
     }
   };
   for (var _i2 = 0, _arr2 = [3, 2, 1]; _i2 < _arr2.length; _i2++) {
-    var _ret = _loop2();
-    if (_ret === "break") break;
+    _loop2();
   }
   // find piece with torso up with highest defense
   var torsoUpPieces = [sorted.find(function (p) {
@@ -1725,11 +1725,13 @@ var applyArmorFilter = function applyArmorFilter(pieces, rarity, type, category,
       isGeneric: true
     });
     return renamed;
+  }).filter(function (x) {
+    return filterExclusions(x, excludedNames);
   });
   // build list of pieces with wanted skills, with slots, or with torso up
   var result = (_sorted$filter$concat = (_sorted$filter = sorted.filter(function (x) {
     return filterHasSkill(x, skills);
-  })).concat.apply(_sorted$filter, highestGenericSlotPiece)).concat.apply(_sorted$filter$concat, _toConsumableArray(torsoUpPieces));
+  })).concat.apply(_sorted$filter, genericSlotPieces)).concat.apply(_sorted$filter$concat, _toConsumableArray(torsoUpPieces));
   // return list with dummy element if there are no pieces
   if (result.length === 0) {
     return [Object.assign({}, data_provider_module_1.DUMMY_PIECE, {
@@ -2693,31 +2695,30 @@ var getExpandedView = function getExpandedView(set, skillData, searchParams) {
   try {
     var _loop = function _loop() {
       var piece = _step3.value;
-      var pieceTableEle = document.createElement("tr");
+      var pieceTableEle = document.createElement('tr');
       var pieceTableDef = html_helper_1.htmlToElement("<td style=\"width: 20%;\">".concat(piece.defense.max, "</td>"));
       var pieceTableName = html_helper_1.htmlToElement("<td style=\"width: 50%;\">".concat(piece.name, "</td>"));
-      var pieceTablePin = piece.isGeneric ? html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%;\"></td>") : html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%; cursor: pointer;\">\u2713</td>");
-      var pieceTableExcl = piece.isGeneric ? html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%;\"></td>") : html_helper_1.htmlToElement("<td style=\"user-select: none; width: 15%; cursor: pointer;\">X</td>");
-      if (UserEquipmentSettings_1.default.Instance.hasPin(piece)) pieceTablePin.classList.add("pin-highlighted");
-      if (UserEquipmentSettings_1.default.Instance.hasExclusion(piece)) pieceTableExcl.classList.add("excl-highlighted");
-      pieceTablePin.addEventListener("click", function () {
+      var pieceTablePin = piece.isGeneric ? html_helper_1.htmlToElement('<td style="user-select: none; width: 15%;"></td>') : html_helper_1.htmlToElement('<td style="user-select: none; width: 15%; cursor: pointer;">✓</td>');
+      var pieceTableExcl = html_helper_1.htmlToElement('<td style="user-select: none; width: 15%; cursor: pointer;">X</td>');
+      if (UserEquipmentSettings_1.default.Instance.hasPin(piece)) pieceTablePin.classList.add('pin-highlighted');
+      if (UserEquipmentSettings_1.default.Instance.hasExclusion(piece)) pieceTableExcl.classList.add('excl-highlighted');
+      pieceTablePin.addEventListener('click', function () {
         if (piece.isGeneric) return;
         if (UserEquipmentSettings_1.default.Instance.hasPin(piece)) {
           eq_settings_component_1.removePin(piece.category);
-          pieceTablePin.classList.remove("pin-highlighted");
+          pieceTablePin.classList.remove('pin-highlighted');
         } else {
           eq_settings_component_1.addPin(piece);
-          pieceTablePin.classList.add("pin-highlighted");
+          pieceTablePin.classList.add('pin-highlighted');
         }
       });
-      pieceTableExcl.addEventListener("click", function () {
-        if (piece.isGeneric) return;
+      pieceTableExcl.addEventListener('click', function () {
         if (UserEquipmentSettings_1.default.Instance.hasExclusion(piece)) {
           eq_settings_component_1.removeExlusion(piece);
-          pieceTableExcl.classList.remove("excl-highlighted");
+          pieceTableExcl.classList.remove('excl-highlighted');
         } else {
           eq_settings_component_1.addExclusion(piece);
-          pieceTableExcl.classList.add("excl-highlighted");
+          pieceTableExcl.classList.add('excl-highlighted');
         }
       });
       pieceTableEle.appendChild(pieceTableDef);
@@ -2742,7 +2743,7 @@ var getExpandedView = function getExpandedView(set, skillData, searchParams) {
   tr.appendChild(td);
   d.appendChild(pieceTable);
   d.appendChild(skillTable);
-  d.appendChild(document.createElement("div")); // dummy for easy grid
+  d.appendChild(document.createElement('div')); // dummy for easy grid
   d.appendChild(decoNameContainer);
   return tr;
 };
@@ -3234,7 +3235,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61317" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61621" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
