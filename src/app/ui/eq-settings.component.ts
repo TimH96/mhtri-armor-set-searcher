@@ -125,6 +125,7 @@ export const addExclusion = (x: EquipmentMin) => {
 export const addPin = (x: EquipmentMin) => {
   if (x.name === 'None') {
     UserEquipmentSettings.Instance.removePin(x.category)
+    saveToStorage()
     return
   }
 
