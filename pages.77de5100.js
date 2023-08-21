@@ -1801,11 +1801,7 @@ var evaluateListOfDecos = function evaluateListOfDecos(decos, wantedSkills) {
   decos.forEach(function (deco) {
     return skillMap.addSkills(deco.skills);
   });
-  // get max of default and computed score
-  // default score can only be higher than computed when the decos of 2 wanted skills cancel each other out (e.g. handicraft and sharpness)
-  var computedScore = getScoreFromSkillMap(skillMap, wantedSkills);
-  var defaultScore = Math.max.apply(Math, _toConsumableArray(Array.from(skillMap.values())));
-  var score = Math.max(computedScore, defaultScore);
+  var score = getScoreFromSkillMap(skillMap, wantedSkills);
   return {
     skills: skillMap,
     decos: decos,
@@ -3235,7 +3231,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61621" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56654" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
