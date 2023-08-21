@@ -33,11 +33,7 @@ const evaluateListOfDecos = (decos: Decoration[], wantedSkills: EquipmentSkills)
   const skillMap: EquipmentSkills = new EquipmentSkills()
   decos.forEach(deco => skillMap.addSkills(deco.skills))
 
-  // get max of default and computed score
-  // default score can only be higher than computed when the decos of 2 wanted skills cancel each other out (e.g. handicraft and sharpness)
-  const computedScore = getScoreFromSkillMap(skillMap, wantedSkills)
-  const defaultScore = Math.max(...Array.from(skillMap.values()))
-  const score = (Math.max(computedScore, defaultScore))
+  const score = getScoreFromSkillMap(skillMap, wantedSkills)
 
   return {
     skills: skillMap,
